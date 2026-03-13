@@ -1,0 +1,20 @@
+Removed Pin From Net: NetName=Beacon_ID_3 Pin=R19-1
+Removed Pin From Net: NetName=Beacon_ID_2 Pin=R20-1
+Removed Pin From Net: NetName=Beacon_ID_1 Pin=R21-1
+Removed Pin From Net: NetName=Beacon_ID_0 Pin=R22-1
+Removed Pin From Net: NetName=Beacon_ID_3 Pin=SW3-5
+Removed Pin From Net: NetName=Beacon_ID_2 Pin=SW3-6
+Removed Pin From Net: NetName=Beacon_ID_1 Pin=SW3-7
+Removed Pin From Net: NetName=Beacon_ID_0 Pin=SW3-8
+Change Component Designator: OldDesignator=B1 NewDesignator=SW2
+Change Component Designator: OldDesignator=DWM1000 NewDesignator=MD1
+Change Component Designator: OldDesignator=ESP32 NewDesignator=U2
+Change Component Designator: OldDesignator=Reset NewDesignator=SW1
+Added Pin To Net: NetName=Beacon_ID_0 Pin=R19-1
+Added Pin To Net: NetName=Beacon_ID_1 Pin=R20-1
+Added Pin To Net: NetName=Beacon_ID_2 Pin=R21-1
+Added Pin To Net: NetName=Beacon_ID_3 Pin=R22-1
+Added Pin To Net: NetName=Beacon_ID_0 Pin=SW3-5
+Added Pin To Net: NetName=Beacon_ID_1 Pin=SW3-6
+Added Pin To Net: NetName=Beacon_ID_2 Pin=SW3-7
+Added Pin To Net: NetName=Beacon_ID_3 Pin=SW3-8

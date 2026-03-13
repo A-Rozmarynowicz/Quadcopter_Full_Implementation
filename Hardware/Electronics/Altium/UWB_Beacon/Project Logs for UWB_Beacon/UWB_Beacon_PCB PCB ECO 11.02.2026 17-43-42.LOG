@@ -1,0 +1,5 @@
+Change Component Designator: OldDesignator=U? NewDesignator=U1
+Added Component: Designator=F?(FP-PTSLR06036V175-MFG)
+Added Component: Designator=F?(FP-PTSLR06036V175-MFG)
+Added Member To Class: ClassName=UWB_Beacon_Schematic Member=Component F? PTSLR06036V175
+Added Member To Class: ClassName=UWB_Beacon_Schematic Member=Component F? PTSLR06036V175

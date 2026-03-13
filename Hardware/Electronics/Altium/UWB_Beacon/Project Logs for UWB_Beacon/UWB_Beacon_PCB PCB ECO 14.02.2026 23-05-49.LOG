@@ -1,0 +1,10 @@
+Removed Pin From Net: NetName=NetC4_1 Pin=C4-1
+Removed Pin From Net: NetName=VCC Pin=C4-2
+Change Component Footprint: Designator=C4 Old Footprint=CAPC2013X145X48NL20T23 New Footprint=CAPC2013X140X50ML20T25
+Change Managed Component Library Link : Designator=C4 Old VaultGUID=B7D15EC3-160A-466F-A46C-7801FE6295A7 New VaultGUID=B7D15EC3-160A-466F-A46C-7801FE6295A7 Old ItemGUID=4BBFA777-75AF-465D-92E9-C609A9669868 New ItemGUID=E0E34DBC-29AD-43EA-8AF0-F32393ED6E2A Old RevisionGUID=ECC40C58-9D62-422A-95F1-1DAE74579BCD New RevisionGUID=AD3609CE-A470-4AA5-8A73-18BCF8E1FB95
+Change component parameters: Designator = "C4" ("C4"); Footprint = "CAPC2013X145X48NL20T23"; UniqueID = "\OPXUHWDJ" ("\OPXUHWDJ")
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "AVX Interconnect / Elco"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Part Number"; Value = "0805DD104KAT2A"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=VCC Pin=C4-1
+Added Pin To Net: NetName=NetC4_1 Pin=C4-2
+Change Net Name : Old Net Name=NetC4_1 New Net Name=NetC4_2

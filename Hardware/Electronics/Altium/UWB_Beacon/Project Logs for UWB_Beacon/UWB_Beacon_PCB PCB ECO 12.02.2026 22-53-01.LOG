@@ -1,0 +1,11 @@
+Change Component Comment : Designator=J6 Old Comment=105455-0101 New Comment=USB_Mount
+Added Pin To Net: NetName=GND Pin=J6-A1
+Added Pin To Net: NetName=GND Pin=J6-A12
+Added Pin To Net: NetName=GND Pin=J6-B1
+Added Pin To Net: NetName=GND Pin=J6-B12
+Added Pin To Net: NetName=USB_Vin Pin=J6-A4
+Added Pin To Net: NetName=USB_Vin Pin=J6-A9
+Added Pin To Net: NetName=USB_Vin Pin=J6-B4
+Added Pin To Net: NetName=USB_Vin Pin=J6-B9
+Added Net: Name=USB_Vin
+Added Member To Class: ClassName=Connectors Member=Component J6 USB_Mount

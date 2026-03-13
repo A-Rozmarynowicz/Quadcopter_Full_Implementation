@@ -1,0 +1,8 @@
+Change Component Footprint: Designator=J? Old Footprint=FP-1054500101-MFG New Footprint=FP-105455-0101-MFG
+Change Component Comment : Designator=J? Old Comment=1054500101 New Comment=105455-0101
+Change Managed Component Library Link : Designator=J? Old VaultGUID=B7D15EC3-160A-466F-A46C-7801FE6295A7 New VaultGUID=B7D15EC3-160A-466F-A46C-7801FE6295A7 Old ItemGUID=B8C23617-1114-4636-A234-0F01FB2A190F New ItemGUID=B4FE6E05-B796-4473-A5A6-913998CE8F66 Old RevisionGUID=AB081C05-0EAE-48C0-8184-8448205FE6D5 New RevisionGUID=E15F66CE-13D5-4239-A349-D419C4F50193
+Change component parameters: Designator = "J?" ("J?"); Footprint = "FP-1054500101-MFG"; UniqueID = "\BDWKKUTW" ("\BDWKKUTW")
+Added Component: Designator=J?(FP-105455-0101-MFG)
+Added Component: Designator=J?(FP-105455-0101-MFG)
+Added Member To Class: ClassName=UWB_Beacon_Schematic Member=Component J? 105455-0101
+Added Member To Class: ClassName=UWB_Beacon_Schematic Member=Component J? 105455-0101

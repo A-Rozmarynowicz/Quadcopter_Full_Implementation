@@ -1,0 +1,2 @@
+Removed Pin From Net: NetName=VCC Pin=MD1-8
+Change Net Name : Old Net Name=VCC New Net Name=ISL85_VCC

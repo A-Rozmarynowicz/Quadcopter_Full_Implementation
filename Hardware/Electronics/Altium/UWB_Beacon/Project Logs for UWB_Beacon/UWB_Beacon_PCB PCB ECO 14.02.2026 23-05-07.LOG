@@ -1,0 +1,18 @@
+Removed Pin From Net: NetName=Input_Voltage_Protected Pin=C1-1
+Removed Pin From Net: NetName=GND Pin=C1-2
+Removed Member From Class: ClassName=UWB_Beacon Member=J7
+Removed Member From Class: ClassName=UWB_Beacon Member=R26
+Change Component Footprint: Designator=C3 Old Footprint=FP-0805-L_2_01_0_2-W_1_25-MFG New Footprint=CAPC2013X140X50ML20T25
+Change Component Footprint: Designator=C1 Old Footprint=FP-CC0805-0_85-MFG New Footprint=CAPC2013X140X50ML20T25
+Change Managed Component Library Link : Designator=C1 Old VaultGUID=B7D15EC3-160A-466F-A46C-7801FE6295A7 New VaultGUID=B7D15EC3-160A-466F-A46C-7801FE6295A7 Old ItemGUID=03967947-49BB-41BA-B5C0-2F20D1F50609 New ItemGUID=E0E34DBC-29AD-43EA-8AF0-F32393ED6E2A Old RevisionGUID=807E0B4B-839A-40F8-BE27-6071036ADD73 New RevisionGUID=AD3609CE-A470-4AA5-8A73-18BCF8E1FB95
+Change Managed Component Library Link : Designator=C3 Old VaultGUID=B7D15EC3-160A-466F-A46C-7801FE6295A7 New VaultGUID=B7D15EC3-160A-466F-A46C-7801FE6295A7 Old ItemGUID=456F065E-05E0-4B76-983C-E16C79C086E3 New ItemGUID=E0E34DBC-29AD-43EA-8AF0-F32393ED6E2A Old RevisionGUID=2028E34C-44EC-49C2-8A8B-2FA66D55C9D9 New RevisionGUID=AD3609CE-A470-4AA5-8A73-18BCF8E1FB95
+Change component parameters: Designator = "C3" ("C3"); Footprint = "FP-0805-L_2_01_0_2-W_1_25-MFG"; UniqueID = "\OLHFMHKU" ("\OLHFMHKU")
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "AVX Interconnect / Elco"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Part Number"; Value = "0805DD104KAT2A"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C1" ("C1"); Footprint = "FP-CC0805-0_85-MFG"; UniqueID = "\CXOCHQDQ" ("\CXOCHQDQ")
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "AVX Interconnect / Elco"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Part Number"; Value = "0805DD104KAT2A"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=GND Pin=C1-1
+Added Pin To Net: NetName=Input_Voltage_Protected Pin=C1-2
+Added Member To Class: ClassName=Interface Member=Component J7 Mode Select
+Added Member To Class: ClassName=Interface Member=Component R26 10k

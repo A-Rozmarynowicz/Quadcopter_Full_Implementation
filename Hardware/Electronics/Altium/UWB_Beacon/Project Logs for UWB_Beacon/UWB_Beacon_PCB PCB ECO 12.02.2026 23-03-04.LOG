@@ -1,0 +1,16 @@
+Removed Member From Class: ClassName=UWB_Beacon_Schematic Member=Q1
+Removed Member From Class: ClassName=UWB_Beacon_Schematic Member=Q2
+Change Net Name : Old Net Name=InterfaceButton1 New Net Name=B1_Pin
+Change Net Name : Old Net Name=InterfaceButton2 New Net Name=B2_Pin
+Change Net Name : Old Net Name=InterfaceButton3 New Net Name=B3_Pin
+Change Net Name : Old Net Name=InterfaceButton4 New Net Name=B4_Pin
+Change Net Name : Old Net Name=NetC5_2 New Net Name=InterfaceButton2
+Change Net Name : Old Net Name=NetC6_2 New Net Name=InterfaceButton1
+Change Net Name : Old Net Name=NetC7_2 New Net Name=InterfaceButton4
+Change Net Name : Old Net Name=NetC8_2 New Net Name=InterfaceButton3
+Added Pin To Net: NetName=UART0_Rx Pin=J4-4
+Added Net: Name=UART0_Rx
+Added Pin To Net: NetName=UART0_Tx Pin=J4-3
+Added Net: Name=UART0_Tx
+Added Member To Class: ClassName=Connectors Member=Component Q1 UART_Protection
+Added Member To Class: ClassName=Connectors Member=Component Q2 Power_Protection

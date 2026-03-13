@@ -1,0 +1,17 @@
+Change Component Designator: OldDesignator=Q1 NewDesignator=Q1_A
+Change Component Designator: OldDesignator=Q3 NewDesignator=Q1_C
+Change Component Designator: OldDesignator=Q4 NewDesignator=Q1_D
+Added Component: Designator=D10(DIONM5127X250N)
+Add component (AddParameter): Name = "Arrow Part Number"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Arrow Price/Stock"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Link"; Value = "https://www.yageo.com/upload/media/product/productsearch/datasheet/cpc/tvs/SMAJ-HP6AT_1.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Geometry.Height"; Value = "2.5mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "YAGEO"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "SMAJ12CA-HP6AT/13"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Part Number"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Price/Stock"; Value = ""; VariantName = "[No Variations]"
+Added Pin To Net: NetName=NetQ1_4 Pin=D10-1
+Added Pin To Net: NetName=NetF1_2 Pin=D10-2
+Change Net Name : Old Net Name=NetF1_2 New Net Name=MOSFETs_Source
+Change Net Name : Old Net Name=NetQ1_4 New Net Name=MOSFETSs_Gate
+Added Member To Class: ClassName=Power Member=Component D10 SOURCE_GATE_TVS

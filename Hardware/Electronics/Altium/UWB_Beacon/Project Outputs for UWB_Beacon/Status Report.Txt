@@ -1,0 +1,13 @@
+Output: NC Drill Files
+Type  : NC Drill
+From  : Project [UWB_Beacon.PrjPcb]
+   Generated File[UWB_Beacon_PCB-RoundHoles.TXT]
+   Generated File[UWB_Beacon_PCB-SlotHoles.TXT]
+   Generated File[UWB_Beacon_PCB.LDP]
+   Generated File[UWB_Beacon_PCB.DRR]
+
+
+Files Generated   : 4
+Documents Printed : 0
+
+Finished Output Generation At 15:11:37 On 02.03.2026

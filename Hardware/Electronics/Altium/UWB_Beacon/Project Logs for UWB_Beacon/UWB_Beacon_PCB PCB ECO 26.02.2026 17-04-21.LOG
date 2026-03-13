@@ -1,0 +1,4 @@
+Change Component Designator: OldDesignator=Q1_B NewDesignator=Q1_A
+Change Component Designator: OldDesignator=Q1_C NewDesignator=Q1_B
+Change Component Designator: OldDesignator=Q1_D NewDesignator=Q1_C
+Added Member To Class: ClassName=Power Member=Component D8 SOURCE_GATE_TVS

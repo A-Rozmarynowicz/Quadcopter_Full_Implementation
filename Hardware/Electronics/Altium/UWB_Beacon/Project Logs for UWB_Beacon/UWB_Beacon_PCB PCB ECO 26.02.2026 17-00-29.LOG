@@ -1,0 +1,38 @@
+Removed Pin From Net: NetName=GND Pin=D4-1
+Removed Pin From Net: NetName=GND Pin=D8-1
+Removed Pin From Net: NetName=GND Pin=D9-1
+Removed Pin From Net: NetName=MOSFETs_Source Pin=Q1_A-1
+Removed Pin From Net: NetName=MOSFETs_Source Pin=Q1_A-2
+Removed Pin From Net: NetName=MOSFETs_Source Pin=Q1_A-3
+Removed Pin From Net: NetName=MOSFETSs_Gate Pin=Q1_A-4
+Removed Member From Class: ClassName=Power Member=D4
+Removed Member From Class: ClassName=Power Member=D9
+Removed Member From Class: ClassName=Power Member=D10
+Removed Member From Class: ClassName=Power Member=Q1_A
+Change Component Footprint: Designator=J4 Old Footprint=FP-BM04B-GHS-TBT_LF_SN-MFG New Footprint=FP-SM02B-GHS-TB_LF_SN-MFG
+Change Component Comment : Designator=J4 Old Comment=UART_Connector New Comment=Unprotected_Power
+Change Component Designator: OldDesignator=D10 NewDesignator=D8
+Change Managed Component Library Link : Designator=J4 Old VaultGUID=B7D15EC3-160A-466F-A46C-7801FE6295A7 New VaultGUID=B7D15EC3-160A-466F-A46C-7801FE6295A7 Old ItemGUID=26D0CD59-DBD6-440C-826A-C079F8D9FDCB New ItemGUID=553A0A49-74B5-4373-A55D-69D15CF7B644 Old RevisionGUID=E4913C47-8456-4C49-86A4-9FC8EEFBCCC4 New RevisionGUID=1FB2ED07-084D-4A1C-BEAB-FA0E09279245
+Change component parameters: Designator = "J4" ("J4"); Footprint = "FP-BM04B-GHS-TBT_LF_SN-MFG"; UniqueID = "\ILHZENEY" ("\ILHZENEY")
+Change component parameters (AddParameter): Name = "Color"; Value = "Natural"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Connector Type"; Value = "Outer Shroud Contact"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Contact Material"; Value = "Bronze"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Contact Plating"; Value = "Tin"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Contact Type"; Value = "Male Pin"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Current Rating"; Value = "1A"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Fastening Type"; Value = "Latch"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Housing Color"; Value = "Natural"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Housing Material"; Value = "Nylon"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Lead Free"; Value = "Lead Free"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mount"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Number of Contacts"; Value = "2"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Number of Positions"; Value = "2"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Number of Rows"; Value = "1"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Orientation"; Value = "Right Angle"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Package Quantity"; Value = "2500"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Packaging"; Value = "Tape and Reel"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Pitch"; Value = "0.049inch"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Series"; Value = "GH"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Termination"; Value = "Solder"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Voltage Rating"; Value = "50V"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=VCC Pin=J4-2

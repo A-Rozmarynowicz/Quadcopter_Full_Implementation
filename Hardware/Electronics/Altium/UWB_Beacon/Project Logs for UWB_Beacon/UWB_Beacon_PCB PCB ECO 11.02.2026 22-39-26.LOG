@@ -1,0 +1,5 @@
+Change Component Designator: OldDesignator=J? NewDesignator=E1
+Change Component Designator: OldDesignator=J? NewDesignator=E2
+Change Component Designator: OldDesignator=J? NewDesignator=E3
+Added Member To Class: ClassName=UWB_Beacon_Schematic Member=Component E1 105455-0101
+Added Member To Class: ClassName=UWB_Beacon_Schematic Member=Component E2 105455-0101

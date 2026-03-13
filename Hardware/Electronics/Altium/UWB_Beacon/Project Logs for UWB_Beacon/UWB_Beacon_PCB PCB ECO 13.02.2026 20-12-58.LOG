@@ -1,0 +1,33 @@
+Removed Member From Class: ClassName=Connectors Member=J1
+Removed Member From Class: ClassName=Connectors Member=J2
+Removed Member From Class: ClassName=Connectors Member=J3
+Removed Member From Class: ClassName=Connectors Member=J4
+Removed Member From Class: ClassName=Connectors Member=J5
+Removed Member From Class: ClassName=Connectors Member=J6
+Change Component Footprint: Designator=J5 Old Footprint=FP-BM02B-GHS-TBT_LF_SN-MFG New Footprint=FP-SM02B-GHS-TB_LF_SN-MFG
+Change Managed Component Library Link : Designator=J5 Old VaultGUID=B7D15EC3-160A-466F-A46C-7801FE6295A7 New VaultGUID=B7D15EC3-160A-466F-A46C-7801FE6295A7 Old ItemGUID=1AB88AA9-F6CA-4AFA-A2CC-408489898FE2 New ItemGUID=553A0A49-74B5-4373-A55D-69D15CF7B644 Old RevisionGUID=50C44BC5-004E-4EFB-870F-BEB7F01574A5 New RevisionGUID=1FB2ED07-084D-4A1C-BEAB-FA0E09279245
+Change component parameters: Designator = "J5" ("J5"); Footprint = "FP-BM02B-GHS-TBT_LF_SN-MFG"; UniqueID = "\MYURVBQQ" ("\MYURVBQQ")
+Change component parameters (AddParameter): Name = "Color"; Value = "Natural"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Connector Type"; Value = "Outer Shroud Contact"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Contact Material"; Value = "Bronze"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Contact Plating"; Value = "Tin"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Contact Type"; Value = "Male Pin"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Current Rating"; Value = "1A"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Fastening Type"; Value = "Latch"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Housing Color"; Value = "Natural"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Housing Material"; Value = "Nylon"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Lead Free"; Value = "Lead Free"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mount"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Number of Contacts"; Value = "2"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Number of Positions"; Value = "2"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Number of Rows"; Value = "1"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Orientation"; Value = "Right Angle"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Package Quantity"; Value = "2500"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Packaging"; Value = "Tape and Reel"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Pitch"; Value = "0.049inch"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Series"; Value = "GH"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Termination"; Value = "Solder"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Voltage Rating"; Value = "50V"; VariantName = "[No Variations]"
+Change Class Name : Old Net Name=Connectors New Net Name=Interface
+Change Class Name : Old Net Name=UWB_Beacon_Schematic New Net Name=UWB_Beacon
+Added Class: Name=Connectors

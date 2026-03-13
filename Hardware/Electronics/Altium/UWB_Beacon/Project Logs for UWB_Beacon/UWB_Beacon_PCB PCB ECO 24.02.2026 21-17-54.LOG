@@ -1,0 +1,10 @@
+Removed Pin From Net: NetName=Beacon_ID_3 Pin=U2-21
+Removed Pin From Net: NetName=Beacon_ID_0 Pin=U2-23
+Removed Pin From Net: NetName=Beacon_ID_1 Pin=U2-24
+Removed Pin From Net: NetName=Beacon_ID_2 Pin=U2-25
+Added Pin To Net: NetName=Beacon_ID_0 Pin=U2-21
+Added Pin To Net: NetName=Beacon_ID_3 Pin=U2-23
+Added Pin To Net: NetName=Beacon_ID_2 Pin=U2-24
+Added Pin To Net: NetName=Beacon_ID_1 Pin=U2-25
+Added Member To Class: ClassName=Interface Member=Component R21 10k
+Added Member To Class: ClassName=Interface Member=Component R22 10k

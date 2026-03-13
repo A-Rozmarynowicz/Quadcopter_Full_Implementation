@@ -1,0 +1,4 @@
+Added Component: Designator=DUPA(CAPC2013X145X48NL20T23)
+Add component (AddParameter): Name = "Manufacturer"; Value = "Vitramon"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part Number"; Value = "VJ0805Y104KXAMR"; VariantName = "[No Variations]"
+Added Member To Class: ClassName=UWB_Beacon Member=Component DUPA VJ0805Y104KXAMR

@@ -1,0 +1,6 @@
+Removed Pin From Net: NetName=GND Pin=J6-B1
+Removed Pin From Net: NetName=GND Pin=J6-B12
+Change Component Comment : Designator=J6 Old Comment=USBC_Power New Comment=105455-0101
+Added Component: Designator=J7(FP-105455-0101-MFG)
+Added Member To Class: ClassName=Connectors Member=Component C8 100nF
+Added Member To Class: ClassName=Connectors Member=Component J7 105455-0101

@@ -1,0 +1,4 @@
+Removed Member From Class: ClassName=UWB_Beacon_Schematic Member=E1
+Removed Member From Class: ClassName=UWB_Beacon_Schematic Member=E2
+Added Component: Designator=J6(FP-105455-0101-MFG)
+Added Member To Class: ClassName=UWB_Beacon_Schematic Member=Component J6 105455-0101

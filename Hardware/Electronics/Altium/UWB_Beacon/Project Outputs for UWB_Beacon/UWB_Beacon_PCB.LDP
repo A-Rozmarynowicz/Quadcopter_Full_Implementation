@@ -1,0 +1,3 @@
+Layer Pairs Export File for PCB: C:\Users\arekr\OneDrive\Pulpit\Altium\UWB_Beacon\UWB_Beacon_PCB.PcbDoc
+LayersSetName=Top_Bot_Thru_Holes|DrillFile=uwb_beacon_pcb-roundholes.txt|DrillLayers=gtl,gbl
+LayersSetName=Top_Bot_Slot_Holes|DrillFile=uwb_beacon_pcb-slotholes.txt|DrillLayers=gtl,gbl
