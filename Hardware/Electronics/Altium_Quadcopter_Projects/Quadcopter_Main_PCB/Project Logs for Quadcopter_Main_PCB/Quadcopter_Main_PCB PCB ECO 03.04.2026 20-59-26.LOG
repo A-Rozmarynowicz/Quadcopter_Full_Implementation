@@ -1,0 +1,3 @@
+Added Component: Designator=R?(Resistor_0805)
+Add component (AddParameter): Name = "Value"; Value = "10k?"; VariantName = "[No Variations]"
+Added Class: Name=Power
