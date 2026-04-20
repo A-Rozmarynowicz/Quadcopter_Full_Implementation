@@ -1,0 +1,119 @@
+Change Component Comment : Designator=C3 Old Comment=1uF New Comment=100nF
+Change Component Comment : Designator=C1 Old Comment=4.7uF New Comment=100nF
+Change Component Comment : Designator=R6 Old Comment=10k New Comment=10k?
+Change Component Comment : Designator=R7 Old Comment=10k New Comment=10k?
+Change Component Comment : Designator=R2 Old Comment=22.1k New Comment=10k?
+Change Component Comment : Designator=C6 Old Comment=22uF New Comment=100nF
+Change Component Comment : Designator=L1 Old Comment=22uH 8282 New Comment=IHLP3232DZER220M51
+Change Component Comment : Designator=C4 Old Comment=27pF New Comment=100nF
+Change Component Comment : Designator=R1 Old Comment=100k New Comment=10k?
+Change Component Comment : Designator=R3 Old Comment=100k New Comment=10k?
+Change Component Comment : Designator=R4 Old Comment=100k New Comment=10k?
+Change Component Comment : Designator=R9 Old Comment=100k New Comment=10k?
+Change Component Comment : Designator=C5 Old Comment=100uF New Comment=865080545012
+Change Component Comment : Designator=R5 Old Comment=120R New Comment=10k?
+Change Component Comment : Designator=R8 Old Comment=270k New Comment=10k?
+Change component parameters: Designator = "C1" ("C1"); Footprint = "Cap_0603_Medium_Density"; UniqueID = "\ILXDGOSQ\YMTCNKRU" ("\ILXDGOSQ\YMTCNKRU")
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Online Store Link"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Part Number"; Value = "-"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "100nF"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Voltage"; Value = ""; VariantName = "[No Variations]"
+Change component parameters: Designator = "C3" ("C3"); Footprint = "Cap_0603_Medium_Density"; UniqueID = "\ILXDGOSQ\SDLUSHJR" ("\ILXDGOSQ\SDLUSHJR")
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Online Store Link"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Part Number"; Value = "-"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "100nF"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Voltage"; Value = ""; VariantName = "[No Variations]"
+Change component parameters: Designator = "C4" ("C4"); Footprint = "Cap_0603_Medium_Density"; UniqueID = "\ILXDGOSQ\BHKPAZXF" ("\ILXDGOSQ\BHKPAZXF")
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Online Store Link"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Part Number"; Value = "-"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "100nF"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Voltage"; Value = ""; VariantName = "[No Variations]"
+Change component parameters: Designator = "C6" ("C6"); Footprint = "Cap_0603_Medium_Density"; UniqueID = "\ILXDGOSQ\BVKCXRIP" ("\ILXDGOSQ\BVKCXRIP")
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Online Store Link"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Part Number"; Value = "-"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "100nF"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Voltage"; Value = ""; VariantName = "[No Variations]"
+Change component parameters: Designator = "R1" ("R1"); Footprint = "Res_0603_Medium_Density"; UniqueID = "\ILXDGOSQ\FDSCUOEA" ("\ILXDGOSQ\FDSCUOEA")
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Online Store Link"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Part Number"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "10k?"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Voltage"; Value = ""; VariantName = "[No Variations]"
+Change component parameters: Designator = "R2" ("R2"); Footprint = "Res_0603_Medium_Density"; UniqueID = "\ILXDGOSQ\LMHMFQKF" ("\ILXDGOSQ\LMHMFQKF")
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Online Store Link"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Part Number"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "10k?"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Voltage"; Value = ""; VariantName = "[No Variations]"
+Change component parameters: Designator = "R3" ("R3"); Footprint = "Res_0603_Medium_Density"; UniqueID = "\ILXDGOSQ\HOCKHOTO" ("\ILXDGOSQ\HOCKHOTO")
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Online Store Link"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Part Number"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "10k?"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Voltage"; Value = ""; VariantName = "[No Variations]"
+Change component parameters: Designator = "R4" ("R4"); Footprint = "Res_0603_Medium_Density"; UniqueID = "\ILXDGOSQ\HCYLLNJP" ("\ILXDGOSQ\HCYLLNJP")
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Online Store Link"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Part Number"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "10k?"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Voltage"; Value = ""; VariantName = "[No Variations]"
+Change component parameters: Designator = "R5" ("R5"); Footprint = "Res_0603_Medium_Density"; UniqueID = "\ILXDGOSQ\QDNTRAVD" ("\ILXDGOSQ\QDNTRAVD")
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Online Store Link"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Part Number"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "10k?"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Voltage"; Value = ""; VariantName = "[No Variations]"
+Change component parameters: Designator = "R6" ("R6"); Footprint = "Res_0603_Medium_Density"; UniqueID = "\ILXDGOSQ\GXTEAZJH" ("\ILXDGOSQ\GXTEAZJH")
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Online Store Link"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Part Number"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "10k?"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Voltage"; Value = ""; VariantName = "[No Variations]"
+Change component parameters: Designator = "R7" ("R7"); Footprint = "Res_0603_Medium_Density"; UniqueID = "\ILXDGOSQ\IMPELSDK" ("\ILXDGOSQ\IMPELSDK")
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Online Store Link"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Part Number"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "10k?"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Voltage"; Value = ""; VariantName = "[No Variations]"
+Change component parameters: Designator = "R8" ("R8"); Footprint = "Res_0603_Medium_Density"; UniqueID = "\ILXDGOSQ\IQIYUCPA" ("\ILXDGOSQ\IQIYUCPA")
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Online Store Link"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Part Number"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "10k?"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Voltage"; Value = ""; VariantName = "[No Variations]"
+Change component parameters: Designator = "R9" ("R9"); Footprint = "Res_0603_Medium_Density"; UniqueID = "\ILXDGOSQ\TIUGQOZT" ("\ILXDGOSQ\TIUGQOZT")
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Online Store Link"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Part Number"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "10k?"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Voltage"; Value = ""; VariantName = "[No Variations]"
