@@ -1,0 +1,437 @@
+Change Component Designator: OldDesignator=R? NewDesignator=R21
+Change Component Designator: OldDesignator=R? NewDesignator=R22
+Change Component Designator: OldDesignator=X? NewDesignator=X1
+Change Component Designator: OldDesignator=X? NewDesignator=X2
+Added Component: Designator=B3(QFP50P1200X1200X160-64N)
+Add component (AddParameter): Name = "Arrow Part Number"; Value = "STM32F413RHT3"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Arrow Price/Stock"; Value = "https://www.arrow.com/en/products/stm32f413rht3/stmicroelectronics?utm_currency=USD&region=nac"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Link"; Value = "https://www.st.com/resource/en/datasheet/stm32f413cg.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Geometry.Height"; Value = "1.6mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "STMicroelectronics"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "STM32F413RHT3"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Part Number"; Value = "511-STM32F413RHT3"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.co.uk/ProductDetail/STMicroelectronics/STM32F413RHT3?qs=FNcb6ahWXRwlxxHMGg5GHA%3D%3D"; VariantName = "[No Variations]"
+Added Component: Designator=C13(Cap_0603_Medium_Density)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Online Store Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part Number"; Value = "-"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "100nF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=C14(Cap_0603_Medium_Density)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Online Store Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part Number"; Value = "-"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "1uF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=C15(Cap_0603_Medium_Density)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Online Store Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part Number"; Value = "-"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "100nF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=C16(Cap_0603_Medium_Density)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Online Store Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part Number"; Value = "-"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "100nF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=C17(Cap_0603_Medium_Density)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Online Store Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part Number"; Value = "-"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "10uF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=C18(Cap_0603_Medium_Density)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Online Store Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part Number"; Value = "-"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "100nF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=C19(Cap_0603_Medium_Density)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Online Store Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part Number"; Value = "-"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "100nF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=C20(Cap_0603_Medium_Density)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Online Store Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part Number"; Value = "-"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "100nF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=C21(Cap_0603_Medium_Density)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Online Store Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part Number"; Value = "-"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "100nF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=C22(Cap_0603_Medium_Density)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Online Store Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part Number"; Value = "-"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "100nF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=C23(Cap_0603_Medium_Density)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Online Store Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part Number"; Value = "-"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "30pF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=C24(Cap_0603_Medium_Density)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Online Store Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part Number"; Value = "-"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "30pF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=C25(Cap_0603_Medium_Density)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Online Store Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part Number"; Value = "-"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "100nF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=C26(Cap_0603_Medium_Density)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Online Store Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part Number"; Value = "-"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "100nF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=C27(Cap_0603_Medium_Density)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Online Store Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part Number"; Value = "06035U4R7JAT2A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "4.7uF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=D7(LEDC2012X40N)
+Add component (AddParameter): Name = "Arrow Part Number"; Value = "LS R976"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Arrow Price/Stock"; Value = "https://www.arrow.com/en/products/lsr976/osram-opto-semiconductors?region=europe"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Link"; Value = "http://uk.rs-online.com/web/p/products/4974804"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Geometry.Height"; Value = "0.4mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "ams OSRAM"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "LS R976"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Part Number"; Value = "720-LSR976D5178"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.co.uk/ProductDetail/OSRAM-Opto-Semiconductors/LS-R976?qs=OIr7YF%252B2cWVTfzKl425Fkw%3D%3D"; VariantName = "[No Variations]"
+Added Component: Designator=D8(LEDC2012X40N)
+Add component (AddParameter): Name = "Arrow Part Number"; Value = "LS R976"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Arrow Price/Stock"; Value = "https://www.arrow.com/en/products/lsr976/osram-opto-semiconductors?region=europe"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Link"; Value = "http://uk.rs-online.com/web/p/products/4974804"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Geometry.Height"; Value = "0.4mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "ams OSRAM"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "LS R976"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Part Number"; Value = "720-LSR976D5178"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.co.uk/ProductDetail/OSRAM-Opto-Semiconductors/LS-R976?qs=OIr7YF%252B2cWVTfzKl425Fkw%3D%3D"; VariantName = "[No Variations]"
+Added Component: Designator=R23(Res_0603_Medium_Density)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Online Store Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part Number"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "10k"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=R24(Res_0603_Medium_Density)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Online Store Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part Number"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "120R"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=R25(Res_0603_Medium_Density)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Online Store Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part Number"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "10k"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=R26(Res_0603_Medium_Density)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Online Store Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part Number"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "10k"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=R27(Res_0603_Medium_Density)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Online Store Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part Number"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "120R"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=R28(Res_0603_Medium_Density)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Online Store Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part Number"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "10k"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=X3(USLPT2616CT2TR)
+Add component (AddParameter): Name = "Arrow Part Number"; Value = "USLPT2616CT2TR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Arrow Price/Stock"; Value = "https://www.arrow.com/en/products/uslpt2616ct2tr/te-connectivity?region=nac"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Link"; Value = "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2337224-1&DocType=Data%20Sheet&DocLang=English&PartCntxt=2337224-1&DocFormat=pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Geometry.Height"; Value = "0.55mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "TE Connectivity"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "USLPT2616CT2TR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Part Number"; Value = "506-USLPT2616CT2TR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.co.uk/ProductDetail/TE-Connectivity-Alcoswitch/USLPT2616CT2TR?qs=qSfuJ%252Bfl%2Fd725nA8XgU6qQ%3D%3D"; VariantName = "[No Variations]"
+Added Component: Designator=X4(ABRA-ABMM2-4_V)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer URL"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "http://www.abracon.com/"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = "http://www.abracon.com/Resonators/ABMM2.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3Description"; Value = "Package Specification"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3URL"; Value = "http://www.abracon.com/Resonators/ABMM2.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "DatasheetVersion"; Value = "Jan-13"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ESR"; Value = "72 Ohm Max."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Frequency"; Value = "8 MHz"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Load Capacitance CL"; Value = "18 pF Typ."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Abracon"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mounting Technology"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageDescription"; Value = "4-Pin SMD, Body 6 x 3.6 mm, Pitch 4.4 mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Packing"; Value = "1000pcs / Reel"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PartNumber"; Value = "ABMM2-8.000MHZ-E2-T"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RoHS"; Value = "TRUE"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Shunt Capacitance C0"; Value = "7 pF Max."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Temperature Range"; Value = "-20 to 70 degC"; VariantName = "[No Variations]"
+Added Component: Designator=X5(USLPT2616CT2TR)
+Add component (AddParameter): Name = "Arrow Part Number"; Value = "USLPT2616CT2TR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Arrow Price/Stock"; Value = "https://www.arrow.com/en/products/uslpt2616ct2tr/te-connectivity?region=nac"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Link"; Value = "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2337224-1&DocType=Data%20Sheet&DocLang=English&PartCntxt=2337224-1&DocFormat=pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Geometry.Height"; Value = "0.55mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "TE Connectivity"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "USLPT2616CT2TR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Part Number"; Value = "506-USLPT2616CT2TR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.co.uk/ProductDetail/TE-Connectivity-Alcoswitch/USLPT2616CT2TR?qs=qSfuJ%252Bfl%2Fd725nA8XgU6qQ%3D%3D"; VariantName = "[No Variations]"
+Added Component: Designator=X6(USLPT2616CT2TR)
+Add component (AddParameter): Name = "Arrow Part Number"; Value = "USLPT2616CT2TR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Arrow Price/Stock"; Value = "https://www.arrow.com/en/products/uslpt2616ct2tr/te-connectivity?region=nac"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Link"; Value = "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2337224-1&DocType=Data%20Sheet&DocLang=English&PartCntxt=2337224-1&DocFormat=pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Geometry.Height"; Value = "0.55mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "TE Connectivity"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "USLPT2616CT2TR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Part Number"; Value = "506-USLPT2616CT2TR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.co.uk/ProductDetail/TE-Connectivity-Alcoswitch/USLPT2616CT2TR?qs=qSfuJ%252Bfl%2Fd725nA8XgU6qQ%3D%3D"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=3V3 Pin=B2-2
+Added Pin To Net: NetName=GND Pin=B2-9
+Added Pin To Net: NetName=GND Pin=B2-11
+Added Pin To Net: NetName=3V3 Pin=B2-13
+Added Pin To Net: NetName=3V3 Pin=B3-1
+Added Pin To Net: NetName=GND Pin=B3-12
+Added Pin To Net: NetName=3V3 Pin=B3-13
+Added Pin To Net: NetName=GND Pin=B3-18
+Added Pin To Net: NetName=3V3 Pin=B3-19
+Added Pin To Net: NetName=GND Pin=B3-31
+Added Pin To Net: NetName=3V3 Pin=B3-32
+Added Pin To Net: NetName=GND Pin=B3-47
+Added Pin To Net: NetName=3V3 Pin=B3-48
+Added Pin To Net: NetName=GND Pin=B3-63
+Added Pin To Net: NetName=3V3 Pin=B3-64
+Added Pin To Net: NetName=GND Pin=C13-1
+Added Pin To Net: NetName=GND Pin=C14-1
+Added Pin To Net: NetName=3V3 Pin=C14-2
+Added Pin To Net: NetName=GND Pin=C15-1
+Added Pin To Net: NetName=3V3 Pin=C15-2
+Added Pin To Net: NetName=GND Pin=C16-1
+Added Pin To Net: NetName=3V3 Pin=C16-2
+Added Pin To Net: NetName=GND Pin=C17-1
+Added Pin To Net: NetName=GND Pin=C18-1
+Added Pin To Net: NetName=3V3 Pin=C18-2
+Added Pin To Net: NetName=GND Pin=C19-1
+Added Pin To Net: NetName=3V3 Pin=C19-2
+Added Pin To Net: NetName=GND Pin=C20-1
+Added Pin To Net: NetName=3V3 Pin=C20-2
+Added Pin To Net: NetName=GND Pin=C21-1
+Added Pin To Net: NetName=3V3 Pin=C21-2
+Added Pin To Net: NetName=GND Pin=C22-1
+Added Pin To Net: NetName=3V3 Pin=C22-2
+Added Pin To Net: NetName=GND Pin=C23-1
+Added Pin To Net: NetName=GND Pin=C24-1
+Added Pin To Net: NetName=GND Pin=C25-1
+Added Pin To Net: NetName=3V3 Pin=C26-2
+Added Pin To Net: NetName=GND Pin=C27-1
+Added Pin To Net: NetName=3V3 Pin=D7-2
+Added Pin To Net: NetName=3V3 Pin=R23-2
+Added Pin To Net: NetName=GND Pin=R24-2
+Added Pin To Net: NetName=GND Pin=R25-1
+Added Pin To Net: NetName=3V3 Pin=R26-2
+Added Pin To Net: NetName=GND Pin=R27-2
+Added Pin To Net: NetName=GND Pin=R28-1
+Added Pin To Net: NetName=3V3 Pin=U5-2
+Added Pin To Net: NetName=3V3 Pin=U5-3
+Added Pin To Net: NetName=3V3 Pin=U5-5
+Added Pin To Net: NetName=GND Pin=U5-6
+Added Pin To Net: NetName=GND Pin=U5-7
+Added Pin To Net: NetName=3V3 Pin=U5-8
+Added Pin To Net: NetName=GND Pin=X3-2
+Added Pin To Net: NetName=GND Pin=X3-4
+Added Pin To Net: NetName=GND Pin=X4-2
+Added Pin To Net: NetName=GND Pin=X4-4
+Added Pin To Net: NetName=GND Pin=X5-2
+Added Pin To Net: NetName=GND Pin=X5-4
+Added Pin To Net: NetName=3V3 Pin=X6-2
+Added Pin To Net: NetName=3V3 Pin=X6-4
+Added Pin To Net: NetName=BOOT0 Pin=B3-60
+Added Pin To Net: NetName=BOOT0 Pin=R25-2
+Added Net: Name=BOOT0
+Added Pin To Net: NetName=Button_1 Pin=B1-13
+Added Pin To Net: NetName=Button_1 Pin=C13-2
+Added Pin To Net: NetName=Button_1 Pin=R23-1
+Added Pin To Net: NetName=Button_1 Pin=X3-1
+Added Pin To Net: NetName=Button_1 Pin=X3-3
+Added Net: Name=Button_1
+Added Pin To Net: NetName=I2C_Interrupt Pin=B1-33
+Added Net: Name=I2C_Interrupt
+Added Pin To Net: NetName=NetB2_1 Pin=B2-1
+Added Net: Name=NetB2_1
+Added Pin To Net: NetName=NetB2_4 Pin=B2-4
+Added Net: Name=NetB2_4
+Added Pin To Net: NetName=NetB2_5 Pin=B2-5
+Added Net: Name=NetB2_5
+Added Pin To Net: NetName=NetB2_10 Pin=B2-10
+Added Pin To Net: NetName=NetB2_10 Pin=C17-2
+Added Net: Name=NetB2_10
+Added Pin To Net: NetName=NetB2_15 Pin=B2-15
+Added Net: Name=NetB2_15
+Added Pin To Net: NetName=NetB2_16 Pin=B2-16
+Added Net: Name=NetB2_16
+Added Pin To Net: NetName=NetB3_10 Pin=B3-10
+Added Net: Name=NetB3_10
+Added Pin To Net: NetName=NetB3_11 Pin=B3-11
+Added Net: Name=NetB3_11
+Added Pin To Net: NetName=NetB3_14 Pin=B3-14
+Added Net: Name=NetB3_14
+Added Pin To Net: NetName=NetB3_15 Pin=B3-15
+Added Net: Name=NetB3_15
+Added Pin To Net: NetName=NetB3_16 Pin=B3-16
+Added Net: Name=NetB3_16
+Added Pin To Net: NetName=NetB3_17 Pin=B3-17
+Added Net: Name=NetB3_17
+Added Pin To Net: NetName=NetB3_20 Pin=B3-20
+Added Net: Name=NetB3_20
+Added Pin To Net: NetName=NetB3_21 Pin=B3-21
+Added Net: Name=NetB3_21
+Added Pin To Net: NetName=NetB3_22 Pin=B3-22
+Added Net: Name=NetB3_22
+Added Pin To Net: NetName=NetB3_23 Pin=B3-23
+Added Net: Name=NetB3_23
+Added Pin To Net: NetName=NetB3_24 Pin=B3-24
+Added Net: Name=NetB3_24
+Added Pin To Net: NetName=NetB3_29 Pin=B3-29
+Added Net: Name=NetB3_29
+Added Pin To Net: NetName=NetB3_33 Pin=B3-33
+Added Net: Name=NetB3_33
+Added Pin To Net: NetName=NetB3_41 Pin=B3-41
+Added Net: Name=NetB3_41
+Added Pin To Net: NetName=NetB3_42 Pin=B3-42
+Added Net: Name=NetB3_42
+Added Pin To Net: NetName=NetB3_43 Pin=B3-43
+Added Net: Name=NetB3_43
+Added Pin To Net: NetName=NetB3_44 Pin=B3-44
+Added Net: Name=NetB3_44
+Added Pin To Net: NetName=NetB3_46 Pin=B3-46
+Added Net: Name=NetB3_46
+Added Pin To Net: NetName=NetB3_49 Pin=B3-49
+Added Net: Name=NetB3_49
+Added Pin To Net: NetName=NetB3_50 Pin=B3-50
+Added Net: Name=NetB3_50
+Added Pin To Net: NetName=NetB3_51 Pin=B3-51
+Added Net: Name=NetB3_51
+Added Pin To Net: NetName=NetB3_52 Pin=B3-52
+Added Net: Name=NetB3_52
+Added Pin To Net: NetName=NetB3_53 Pin=B3-53
+Added Net: Name=NetB3_53
+Added Pin To Net: NetName=NetB3_55 Pin=B3-55
+Added Net: Name=NetB3_55
+Added Pin To Net: NetName=NetB3_57 Pin=B3-57
+Added Net: Name=NetB3_57
+Added Pin To Net: NetName=NetB3_58 Pin=B3-58
+Added Net: Name=NetB3_58
+Added Pin To Net: NetName=NetB3_59 Pin=B3-59
+Added Net: Name=NetB3_59
+Added Pin To Net: NetName=NetD7_1 Pin=D7-1
+Added Pin To Net: NetName=NetD7_1 Pin=R24-1
+Added Net: Name=NetD7_1
+Added Pin To Net: NetName=NetD8_1 Pin=D8-1
+Added Pin To Net: NetName=NetD8_1 Pin=R27-1
+Added Net: Name=NetD8_1
+Added Pin To Net: NetName=NetU5_1 Pin=U5-1
+Added Net: Name=NetU5_1
+Added Pin To Net: NetName=NetU5_4 Pin=U5-4
+Added Net: Name=NetU5_4
+Added Pin To Net: NetName=NetU5_9 Pin=U5-9
+Added Net: Name=NetU5_9
+Added Pin To Net: NetName=NetU5_12 Pin=U5-12
+Added Net: Name=NetU5_12
+Added Pin To Net: NetName=NetU5_13 Pin=U5-13
+Added Net: Name=NetU5_13
+Added Pin To Net: NetName=NetU5_14 Pin=U5-14
+Added Net: Name=NetU5_14
+Added Pin To Net: NetName=OSC_IN Pin=B3-5
+Added Pin To Net: NetName=OSC_IN Pin=C23-2
+Added Pin To Net: NetName=OSC_IN Pin=X4-1
+Added Net: Name=OSC_IN
+Added Pin To Net: NetName=OSC_OUT Pin=B3-6
+Added Pin To Net: NetName=OSC_OUT Pin=C24-2
+Added Pin To Net: NetName=OSC_OUT Pin=X4-3
+Added Net: Name=OSC_OUT
+Added Pin To Net: NetName=RST Pin=B3-7
+Added Pin To Net: NetName=RST Pin=C25-2
+Added Pin To Net: NetName=RST Pin=R26-1
+Added Pin To Net: NetName=RST Pin=X5-1
+Added Pin To Net: NetName=RST Pin=X5-3
+Added Net: Name=RST
+Added Pin To Net: NetName=Status_Button Pin=B3-56
+Added Pin To Net: NetName=Status_Button Pin=C26-1
+Added Pin To Net: NetName=Status_Button Pin=R28-2
+Added Pin To Net: NetName=Status_Button Pin=X6-1
+Added Pin To Net: NetName=Status_Button Pin=X6-3
+Added Net: Name=Status_Button
+Add Net: Net with name "Status_LED" already exists
+Added Pin To Net: NetName=VCAP_1 Pin=B3-30
+Added Pin To Net: NetName=VCAP_1 Pin=C27-2
+Added Net: Name=VCAP_1
+Added Class: Name=U_Interface_STM32
+Added Class: Name=U_STM32
+Added Member To Class: ClassName=U_UWB_Positioning Member=Component C13 100nF
+Added Member To Class: ClassName=U_Sensors Member=Component C14 1uF
+Added Member To Class: ClassName=U_Sensors Member=Component C15 100nF
+Added Member To Class: ClassName=U_Sensors Member=Component C16 100nF
+Added Member To Class: ClassName=U_Sensors Member=Component C17 10uF
+Added Member To Class: ClassName=U_Power Member=Component D7 LS_R976
+Added Member To Class: ClassName=U_UWB_Positioning Member=Component R21 4.7k
+Added Member To Class: ClassName=U_UWB_Positioning Member=Component R23 10k
+Added Member To Class: ClassName=U_Power Member=Component R24 120R
+Added Member To Class: ClassName=U_UWB_Positioning Member=Component X2 USLPT2616CT2TR
+Added Member To Class: ClassName=U_UWB_Positioning Member=Component X3 USLPT2616CT2TR
