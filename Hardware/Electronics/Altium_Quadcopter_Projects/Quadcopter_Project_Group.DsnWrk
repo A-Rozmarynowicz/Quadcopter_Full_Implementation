@@ -4,3 +4,5 @@ Version=1.0
 ProjectPath=Quadcopter_Main_PCB\Quadcopter_Main_PCB.PrjPcb
 [Project2]
 ProjectPath=..\..\..\..\UWB_Positioning_System\Hardware\Electronics\Altium_UWB_Beacon_Project\UWB_Beacon\UWB_Beacon.PrjPcb
+[Project3]
+ProjectPath=..\..\..\..\Altium_Libraries\Downloaded_Libraries_Projects\RCLAMP3354S.TCT\RCLAMP3354S_TCT.LibPkg
