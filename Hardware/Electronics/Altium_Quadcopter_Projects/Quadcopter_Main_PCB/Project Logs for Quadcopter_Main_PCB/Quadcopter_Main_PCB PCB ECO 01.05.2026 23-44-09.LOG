@@ -1,0 +1,21 @@
+Removed Pin From Net: NetName=NetB3_44 Pin=D12-1
+Removed Pin From Net: NetName=NetB3_43 Pin=D12-3
+Removed Pin From Net: NetName=NetB3_41 Pin=D12-4
+Removed Pin From Net: NetName=NetB3_42 Pin=D12-5
+Removed Pin From Net: NetName=NetB3_44 Pin=P1-1
+Removed Pin From Net: NetName=NetB3_43 Pin=P1-2
+Removed Pin From Net: NetName=NetB3_42 Pin=P1-3
+Removed Pin From Net: NetName=NetB3_41 Pin=P1-4
+Removed Pin From Net: NetName=GND Pin=P1-6
+Added Pin To Net: NetName=NetB3_41 Pin=D12-1
+Added Pin To Net: NetName=NetB3_42 Pin=D12-3
+Added Pin To Net: NetName=NetB3_44 Pin=D12-4
+Added Pin To Net: NetName=NetB3_43 Pin=D12-5
+Added Pin To Net: NetName=GND Pin=P1-1
+Added Pin To Net: NetName=NetB3_41 Pin=P1-3
+Added Pin To Net: NetName=NetB3_42 Pin=P1-4
+Added Pin To Net: NetName=NetB3_43 Pin=P1-5
+Added Pin To Net: NetName=NetB3_44 Pin=P1-6
+Added Pin To Net: NetName=NetP1_2 Pin=P1-2
+Added Pin To Net: NetName=NetP1_2 Pin=R8-1
+Added Net: Name=NetP1_2
