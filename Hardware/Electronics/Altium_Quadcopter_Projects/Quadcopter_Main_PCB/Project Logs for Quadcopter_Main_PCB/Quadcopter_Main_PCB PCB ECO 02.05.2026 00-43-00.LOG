@@ -1,0 +1,40 @@
+Removed Member From Class: ClassName=U_Connectors Member=J?
+Change Component Comment : Designator=D10 Old Comment=AQ1205-01LTG New Comment=TVS
+Change Component Comment : Designator=D4 Old Comment=SMAJ12CA-HP6AT_13 New Comment=TVS
+Change Component Comment : Designator=D5 Old Comment=SMAJ12CA-HP6AT_13 New Comment=TVS
+Change Component Designator: OldDesignator=R? NewDesignator=R28
+Change Component Designator: OldDesignator=R? NewDesignator=R29
+Added Component: Designator=D13(SOT95P280X145-5N)
+Add component (AddParameter): Name = "Arrow Part Number"; Value = "RCLAMP3354S.TCT"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Arrow Price/Stock"; Value = "https://www.arrow.com/en/products/rclamp3354s.tct/semtech?utm_currency=USD&region=europe"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Link"; Value = "https://semtech.my.salesforce.com/sfc/p/#E0000000JelG/a/44000000MCrm/q3IJaquvh9BkANCL4E8HYT8vxS.k3jwPHRhsWr6XNsI"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Geometry.Height"; Value = "1.45mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "SEMTECH"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "RCLAMP3354S.TCT"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Part Number"; Value = "947-RCLAMP3354S.TCT"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.co.uk/ProductDetail/Semtech/RCLAMP3354S.TCT?qs=rBWM4%252BvDhIcjyMg1J9MbMw%3D%3D"; VariantName = "[No Variations]"
+Added Component: Designator=J6(532610671)
+Add component (AddParameter): Name = "Arrow Part Number"; Value = "53261-0671"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Arrow Price/Stock"; Value = "https://www.arrow.com/en/products/53261-0671/molex?region=nac"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Link"; Value = "https://www.molex.com/pdm_docs/sd/532610671_sd.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Geometry.Height"; Value = "3.6mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "Molex"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "53261-0671"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Part Number"; Value = "538-53261-0671"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.co.uk/ProductDetail/Molex/53261-0671?qs=%252B72YyncTwW9Wyr77z4J2cA%3D%3D"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=NetB3_50 Pin=D13-1
+Added Pin To Net: NetName=GND Pin=D13-2
+Added Pin To Net: NetName=NetB3_51 Pin=D13-3
+Added Pin To Net: NetName=NetB3_53 Pin=D13-4
+Added Pin To Net: NetName=NetB3_52 Pin=D13-5
+Added Pin To Net: NetName=3V3 Pin=J6-1
+Added Pin To Net: NetName=NetB3_50 Pin=J6-2
+Added Pin To Net: NetName=NetB3_51 Pin=J6-3
+Added Pin To Net: NetName=NetB3_52 Pin=J6-4
+Added Pin To Net: NetName=NetB3_53 Pin=J6-5
+Added Pin To Net: NetName=GND Pin=J6-6
+Change Net Name : Old Net Name=NetR?_1 New Net Name=NetR28_1
+Change Net Name : Old Net Name=NetR?_2 New Net Name=NetR29_2
+Added Member To Class: ClassName=U_Connectors Member=Component D13 RCLAMP3354S.TCT
+Added Member To Class: ClassName=U_Connectors Member=Component J6 53261-0671
+Added Member To Class: ClassName=U_Interface_STM32 Member=Component R28 220ohm

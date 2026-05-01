@@ -5,4 +5,4 @@ ProjectPath=Quadcopter_Main_PCB\Quadcopter_Main_PCB.PrjPcb
 [Project2]
 ProjectPath=..\..\..\..\UWB_Positioning_System\Hardware\Electronics\Altium_UWB_Beacon_Project\UWB_Beacon\UWB_Beacon.PrjPcb
 [Project3]
-ProjectPath=..\..\..\..\Altium_Libraries\Downloaded_Libraries_Projects\MOLEX_105450-0101\MOLEX_1054500101.LibPkg
+ProjectPath=..\..\..\..\Altium_Libraries\Downloaded_Libraries_Projects\53261-0671\53261-0671.LibPkg
