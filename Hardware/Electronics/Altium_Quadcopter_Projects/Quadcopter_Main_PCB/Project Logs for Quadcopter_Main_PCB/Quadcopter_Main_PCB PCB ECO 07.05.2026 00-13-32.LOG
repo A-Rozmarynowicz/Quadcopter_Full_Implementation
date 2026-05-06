@@ -1,0 +1,23 @@
+Removed Member From Class: ClassName=U_UWB_Positioning Member=C15
+Removed Member From Class: ClassName=U_Sensors Member=C21
+Removed Member From Class: ClassName=U_STM32 Member=C28
+Removed Member From Class: ClassName=U_STM32 Member=C29
+Removed Member From Class: ClassName=U_STM32 Member=R29
+Change Net Name : Old Net Name=NetB2_5 New Net Name=MAG_MISO
+Added Member To Class: ClassName=U_UWB_Positioning Member=Component C7 2.2uF
+Added Member To Class: ClassName=U_UWB_Positioning Member=Component C10 100nF
+Added Member To Class: ClassName=U_UWB_Positioning Member=Component C13 100nF
+Added Member To Class: ClassName=U_UWB_Positioning Member=Component C14 100nF
+Added Member To Class: ClassName=U_Sensors Member=Component C16 100nF
+Added Member To Class: ClassName=U_Sensors Member=Component C17 1uF
+Added Member To Class: ClassName=U_STM32 Member=Component C19 30pF
+Added Member To Class: ClassName=U_STM32 Member=Component C20 30pF
+Added Member To Class: ClassName=U_STM32 Member=Component C22 100nF
+Added Member To Class: ClassName=U_STM32 Member=Component C23 100nF
+Added Member To Class: ClassName=U_STM32 Member=Component C24 100nF
+Added Member To Class: ClassName=U_STM32 Member=Component C25 100nF
+Added Member To Class: ClassName=U_STM32 Member=Component C27 2.2uF
+Added Member To Class: ClassName=U_STM32 Member=Component R28 0R
+Added Member To Class: ClassName=U_Interface_STM32 Member=Component R29 10k
+Added Member To Class: ClassName=U_Interface_STM32 Member=Component R30 120R
+Added Member To Class: ClassName=U_Interface_STM32 Member=Component R31 220ohm
