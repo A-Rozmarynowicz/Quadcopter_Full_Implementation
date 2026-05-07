@@ -1,0 +1,5 @@
+Removed Pin From Net: NetName=ESC_P4 Pin=P2-1
+Removed Pin From Net: NetName=ESC_P3 Pin=P2-2
+Removed Pin From Net: NetName=ESC_P2 Pin=P2-3
+Removed Pin From Net: NetName=ESC_P1 Pin=P2-4
+Removed Member From Class: ClassName=U_Connectors Member=P2
