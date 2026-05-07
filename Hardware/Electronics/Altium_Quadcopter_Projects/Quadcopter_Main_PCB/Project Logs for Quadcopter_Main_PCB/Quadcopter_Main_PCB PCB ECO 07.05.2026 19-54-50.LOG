@@ -1,0 +1,16 @@
+Removed Member From Class: ClassName=U_STM32 Member=C30
+Removed Member From Class: ClassName=U_STM32 Member=C31
+Change Component Comment : Designator=C11 Old Comment=100nF New Comment=2.2uF
+Change component parameters: Designator = "C11" ("C11"); Footprint = "Cap_0603_Medium_Density"; UniqueID = "\DYJLZMCX\DJVFLOXT" ("\DYJLZMCX\DJVFLOXT")
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Online Store Link"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Part Number"; Value = "-"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "2.2uF"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Voltage"; Value = ""; VariantName = "[No Variations]"
+Added Member To Class: ClassName=U_STM32 Member=Component C24 100nF
+Added Member To Class: ClassName=U_STM32 Member=Component C25 100nF
+Added Member To Class: ClassName=U_STM32 Member=Component C27 100nF
+Added Member To Class: ClassName=U_STM32 Member=Component C28 100nF
+Added Member To Class: ClassName=U_STM32 Member=Component C29 2.2uF
