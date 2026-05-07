@@ -1,0 +1,10 @@
+Removed Pin From Net: NetName=GND Pin=C24-1
+Removed Pin From Net: NetName=3V3 Pin=C24-2
+Removed Member From Class: ClassName=U_STM32 Member=C29
+Change Component Designator: OldDesignator=C25 NewDesignator=C24
+Change Component Designator: OldDesignator=C26 NewDesignator=C25
+Change Component Designator: OldDesignator=C27 NewDesignator=C26
+Change Component Designator: OldDesignator=C28 NewDesignator=C27
+Change Component Designator: OldDesignator=C29 NewDesignator=C28
+Change Component Designator: OldDesignator=C30 NewDesignator=C29
+Change Component Designator: OldDesignator=C31 NewDesignator=C30
