@@ -1,0 +1,8 @@
+Removed Pin From Net: NetName=ESC_P1 Pin=B3-41
+Removed Pin From Net: NetName=ESC_P2 Pin=B3-42
+Removed Pin From Net: NetName=ESC_P3 Pin=B3-43
+Removed Pin From Net: NetName=ESC_P4 Pin=B3-44
+Added Pin To Net: NetName=ESC_P4 Pin=B3-41
+Added Pin To Net: NetName=ESC_P3 Pin=B3-42
+Added Pin To Net: NetName=ESC_P2 Pin=B3-43
+Added Pin To Net: NetName=ESC_P1 Pin=B3-44
