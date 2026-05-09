@@ -1,0 +1,2 @@
+Removed Pin From Net: NetName=STM_Status_Button Pin=B3-56
+Added Pin To Net: NetName=STM_Status_Button Pin=B3-9
