@@ -12,10 +12,18 @@
 
 My Bachelor's project's task is to build a quadcopter from scratch, implement control and trajectory planning algorithms, synthesize a mathematical model and develop an indoor positioning system. The expected outcome is a functional, maneuverable, and stable drone that is able to follow given trajectories.
 
+The project is also referred to as "Day One".
+
+<p align="center">
+<img src="./Graphics/Logos/Day_One_Logo.png" alt="./Graphics/Logos/Day_One_Logo.png" width="350"> <br>
+ </p>
+
+
 ## Table of contents
 * [General Information](#general-information)
 * [UWB Positioning System](#uwb-positioning-system)
 * [Current progress](#current-progress)
+* [Technologies Used](#technologies-used)
 
 ## General information
 ### Electronics
