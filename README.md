@@ -15,12 +15,10 @@ My Bachelor's project's task is to build a quadcopter from scratch, implement co
 The project is also referred to as "Day One".
 
 <p align="center">
-<img
-  src="Graphics/Logos/DayOne_Logo_Black_On_White.png#gh-light-mode-only"
-  width="450">
-<img
-  src="Graphics/Logos/DayOne_Logo_White_On_Github.png#gh-dark-mode-only"
-  width="450">
+<!-- Light mode -->
+<img src="Graphics/Logos/DayOne_Logo_Black_On_Transparent.png#gh-light-mode-only" width="450">
+<!-- Dark mode -->
+<img src="Graphics/Logos/DayOne_Logo_White_On_Github.png#gh-dark-mode-only" width="450">
 </p>
 
 ## Table of contents
