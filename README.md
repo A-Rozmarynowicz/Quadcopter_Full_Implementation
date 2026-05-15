@@ -13,6 +13,9 @@
 My Bachelor's project's task is to build a quadcopter from scratch, implement control and trajectory planning algorithms, synthesize a mathematical model and develop an indoor positioning system. The expected outcome is a functional, maneuverable, and stable drone that is able to follow given trajectories.
 
 ## Table of contents
+* [General Information](#general-information)
+* [UWB Positioning System](#uwb-positioning-system)
+* [Current progress](#current-progress)
 
 ## General information
 ### Electronics
@@ -43,7 +46,7 @@ My Bachelor's project's task is to build a quadcopter from scratch, implement co
     - battery slot.
 
 ## UWB Positioning System
-Part of the project is a custom positioning system that doesn't rely on a GPS signal. This is achieved by placing at least 4 UWB modules near the area of drone's operation. They measure their distance to the robot and estimate its relative position. This system is almost fully developed, and can be seen in this repository: [https://github.com/A-Rozmarynowicz/UWB_Positioning_System](https://github.com/A-Rozmarynowicz/UWB_Positioning_System).
+Part of the project is a custom positioning system that doesn't rely on a GPS signal. This is achieved by placing at least 4 Ultra-Wideband (UWB) modules near the area of drone's operation. They measure their distance to the robot and estimate its relative position. This system is almost fully developed, and can be seen in this repository: [https://github.com/A-Rozmarynowicz/UWB_Positioning_System](https://github.com/A-Rozmarynowicz/UWB_Positioning_System).
 
 <p align="center">
 <img src="./Graphics/Readme_Images/UWB_PCB_3D_Image.png" alt="./Graphics/Readme_Images/UWB_PCB_3D_Image.png" width="550"> <br>
@@ -51,8 +54,6 @@ Part of the project is a custom positioning system that doesn't rely on a GPS si
  </p>
 
 ## Current progress
-
-### Hardware
 
 So far, hardware has been the main focus of development. The main PCB, visible in figure 2, is designed and ordered. It will be soldered at the beggining of July.
 
@@ -65,6 +66,26 @@ The carbon frame is designed and manufactured. Holders for the PCBs and the batt
 
 <p align="center">
 <img src="./Graphics/Readme_Images/" alt="./Graphics/Readme_Images/" width="550"> <br>
-<em>Figure 3: model of the quadcopter's hardware.</em>
+<em>Figure 3: 3D model of the quadcopter's hardware.</em>
  </p>
 
+
+## Technologies Used
+- Ultra-Wideband radio technology
+- Multiple communication protocols: SPI, I2C, UART, ESP-NOW, DShot
+- Control engineering:
+    - cascade PID
+    - polynomial decoupled trajectory calculation
+    - Kalman filter
+
+- Programming languages:
+    - C
+    - C++
+    - MATLAB
+
+- Software used:
+    - STM32 Cube IDE
+    - Altium Designer
+    - Autodesk Fusion
+    - MATLAB
+    - PlatformIO
