@@ -18,15 +18,8 @@ The project is also referred to as "Day One".
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="./Graphics/Logos/DayOne_Logo_White_On_Github.png">
     <source media="(prefers-color-scheme: light)" srcset="./Graphics/Logos/DayOne_Logo_Black_On_Transparent.png">
-    <img alt="Logo" src="./Graphics/Logos/DayOne_Logo_White_On_Github.png" width="450">
+    <img alt="Logo" src="./Graphics/Logos/DayOne_Logo_White_On_Github.png" width="350">
   </picture>
-</p>
-
-<p align="center">
-<!-- Light mode -->
-<img src="Graphics/Logos/DayOne_Logo_Black_On_Transparent.png#gh-light-mode-only" width="450">
-<!-- Dark mode -->
-<img src="Graphics/Logos/DayOne_Logo_White_On_Github.png#gh-dark-mode-only" width="450">
 </p>
 
 ## Table of contents
