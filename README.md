@@ -15,7 +15,7 @@ My Bachelor's project's task is to build a quadcopter from scratch, implement co
 The project is also referred to as "Day One".
 
 <p align="center">
-<img src="./Graphics/Logos/Day_One_Logo.png" alt="./Graphics/Logos/Day_One_Logo.png" width="350"> <br>
+<img src="./Graphics/Logos/DayOne_Logo_White_On_Black.png" alt="./Graphics/Logos/DayOne_Logo_White_On_Black.png" width="350"> <br>
  </p>
 
 
