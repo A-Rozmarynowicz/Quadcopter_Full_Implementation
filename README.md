@@ -16,9 +16,9 @@ The project is also referred to as "Day One".
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./Graphics/Logos/DayOne_Logo_White_On_Github.png">
-    <source media="(prefers-color-scheme: light)" srcset="./Graphics/Logos/DayOne_Logo_Black_On_Transparent.png">
-    <img alt="Logo" src="./Graphics/Logos/DayOne_Logo_White_On_Github.png" width="350">
+    <source media="(prefers-color-scheme: dark)" srcset="Graphics\Logos\DayOne_Logo_White_on_Github.png">
+    <source media="(prefers-color-scheme: light)" srcset="Graphics\Logos\DayOne_Logo_Black_on_White.png">
+    <img alt="Logo" src="Graphics\Logos\DayOne_Logo_White_on_Github.png" width="350">
   </picture>
 </p>
 
