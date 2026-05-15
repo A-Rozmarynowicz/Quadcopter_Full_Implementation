@@ -23,8 +23,23 @@ My Bachelor's project's task is to build a quadcopter from scratch, implement co
 - Propellers are mounted on BLDC motors for high efficiency and power.
 - Onboard power converter steps the voltage down to 3.3V.
 - Safety measures are implemented to protect the device from overcurrent, overvoltage, reverse polarity and ESD events.
-- An off-the-shelf ESC drives the motors, commanded by the MCU.
+- An off-the-shelf ESC drives the motors, commanded by the MCU's DShot signals.
 
+### Control Engineering
+- Implementing a:
+    - cascade 4-loop PID controller,
+    - polynomial decoupled trajectory planning based on given setpoints,
+    - Kalman filter state estimator.
+- Utilizing quaternions for attitude representation, enabling more stable orientation control.
+- Enabling for manual override of the speed or attitude commands.
+- Leaving room for a camera to implement visual odometry and obstacle avoidance in the future.
+
+### Mechanics
+- Designing a custom:
+    - carbon base plate for the robot,
+    - housing for the PCBs,
+    - shielding frame around the propellers,
+    - battery slot.
 
 ## Current progress
 
