@@ -15,9 +15,12 @@ My Bachelor's project's task is to build a quadcopter from scratch, implement co
 The project is also referred to as "Day One".
 
 <p align="center">
-<img src="./Graphics/Logos/DayOne_Logo_White_on_Black.png" alt="./Graphics/Logos/DayOne_Logo_White_On_Black.png" width="450">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="Graphics\Logos\DayOne_Logo_White_On_Transparent.png">
+    <source media="(prefers-color-scheme: light)" srcset="Graphics\Logos\DayOne_Logo_Black_On_Transparent.png">
+    <img alt="Logo" src="Graphics\Logos\DayOne_Logo_Black_On_Transparent.png" width="450">
+  </picture>
 </p>
-
 
 ## Table of contents
 * [General Information](#general-information)
