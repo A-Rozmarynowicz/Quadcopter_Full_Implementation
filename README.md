@@ -10,7 +10,7 @@
 
 # Design and implementation of a quadrotor with a localization algorithm based on Ultra-Wideband beacons.
 
-The task is to build a quadcopter from scratch, implement control and trajectory planning algorithms, synthesize a mathematical model and develop an indoor positioning system. The expected outcome is a functional, maneuverable, and stable drone that is able to follow given trajectories.
+My Bachelor's project's task is to build a quadcopter from scratch, implement control and trajectory planning algorithms, synthesize a mathematical model and develop an indoor positioning system. The expected outcome is a functional, maneuverable, and stable drone that is able to follow given trajectories.
 
 ## Table of contents
 
@@ -20,11 +20,10 @@ The task is to build a quadcopter from scratch, implement control and trajectory
 - An ESP32 onboard provides communication with a ground station and a custom positioning system (described later).
 - IMU and a magnetometer support the positioning system in state estimation.
 - Power source is a 680mAh, 3S, LiHV, lightweight, and small battery.
+- Propellers are mounted on BLDC motors for high efficiency and power.
 - Onboard power converter steps the voltage down to 3.3V.
 - Safety measures are implemented to protect the device from overcurrent, overvoltage, reverse polarity and ESD events.
--
-
-
+- An off-the-shelf ESC drives the motors, commanded by the MCU.
 
 
 ## Current progress
