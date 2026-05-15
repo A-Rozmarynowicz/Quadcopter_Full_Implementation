@@ -31,6 +31,7 @@ My Bachelor's project's task is to build a quadcopter from scratch, implement co
     - polynomial decoupled trajectory planning based on given setpoints,
     - Kalman filter state estimator.
 - Utilizing quaternions for attitude representation, enabling more stable orientation control.
+- Synthesizing a mathematical model of the drone to enable tuning the algorithms in simulation.
 - Enabling for manual override of the speed or attitude commands.
 - Leaving room for a camera to implement visual odometry and obstacle avoidance in the future.
 
@@ -41,32 +42,29 @@ My Bachelor's project's task is to build a quadcopter from scratch, implement co
     - shielding frame around the propellers,
     - battery slot.
 
+## UWB Positioning System
+Part of the project is a custom positioning system that doesn't rely on a GPS signal. This is achieved by placing at least 4 UWB modules near the area of drone's operation. They measure their distance to the robot and estimate its relative position. This system is almost fully developed, and can be seen in this repository: [https://github.com/A-Rozmarynowicz/UWB_Positioning_System](https://github.com/A-Rozmarynowicz/UWB_Positioning_System).
+
+<p align="center">
+<img src="./Graphics/Readme_Images/UWB_PCB_3D_Image.png" alt="./Graphics/Readme_Images/UWB_PCB_3D_Image.png" width="550"> <br>
+<em>Figure 1: 3D view of the UWB anchor PCB.</em>
+ </p>
+
 ## Current progress
 
 ### Hardware
 
-- The UWB positioning system has been developed in almost a 100%, and the details can be found in this separate repository: [https://github.com/A-Rozmarynowicz/UWB_Positioning_System](https://github.com/A-Rozmarynowicz/UWB_Positioning_System)
+So far, hardware has been the main focus of development. The main PCB, visible in figure 2, is designed and ordered. It will be soldered at the beggining of July.
 
-<img src="./Images/UWB_PCB_3D_Image.png" alt="./Images/UWB_PCB_3D_Image.png" width="550"/>
+<p align="center">
+<img src="./Graphics/Readme_Images/" alt="./Graphics/Readme_Images/" width="550"> <br>
+<em>Figure 2: 3D view of the quadcopter main PCB.</em>
+ </p>
 
+The carbon frame is designed and manufactured. Holders for the PCBs and the battery are nearly designed, and are soon to be 3D-printed. The 3D model of the whole quadcopter is visible in figure 3.
 
----
-\
-\
-\
-\
-\- The drone's main carbon frame has been designed to a great extend.
-
----
-\
-\
-\
-\
-\- The 3D-printed supports and casings are being designed.
-
-### Sofware
-- Apart from the UWB system, the software development has not yet began.
-
-### Modeling
-- The research on drone modeling techniques is being done.
+<p align="center">
+<img src="./Graphics/Readme_Images/" alt="./Graphics/Readme_Images/" width="550"> <br>
+<em>Figure 3: model of the quadcopter's hardware.</em>
+ </p>
 
