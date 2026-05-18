@@ -73,7 +73,7 @@ So far, hardware has been the main focus of development. The main PCB, visible i
 <em>Figure 2: 3D view of the quadcopter main PCB.</em>
  </p>
 
-The carbon frame design has started, and will continue after the PCB is finished. The 3D model of the whole quadcopter is visible in Figure 3.
+The carbon frame design has started, and will continue after the PCB is finished. The current 3D model of the quadcopter is visible in Figure 3.
 
 <p align="center">
 <img src="./Graphics/Readme_Images/Quadcopter_Frame_View.png" alt="Frame view" width="550"> <br>
