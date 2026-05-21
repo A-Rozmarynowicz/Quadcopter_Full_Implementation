@@ -1,0 +1,6 @@
+Removed Parameter Accel Range:2/4/8/16g from Part U7
+Removed Parameter Arrow Part Number:MMC5983MA from Part U8
+Removed Parameter Arrow Price/Stock:https://www.arrow.com/en/products/mmc5983ma/memsic?utm_currency=USD&region=nac from Part U8
+Removed Parameter Automotive:No from Part U7
+Added Parameter Manufacturer_Name=STMicroelectronics to Part U7
+Added Parameter Manufacturer_Part_Number=LSM6DSOTR to Part U7
