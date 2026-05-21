@@ -206,6 +206,18 @@ DocumentUniqueId=LWYKLHIC
 DocumentPath=Project Outputs for Quadcopter_Main_PCB\Design Rule Check - Quadcopter_Main_PCB.html
 DItemRevisionGUID=
 
+[Parameter1]
+Name=
+Value=
+
+[Parameter2]
+Name=Author_Name
+Value=Arkadiusz Rozmarynowicz
+
+[Parameter3]
+Name=Project_Revision
+Value=v1.0
+
 [Configuration1]
 Name=Sources
 ParameterCount=0
@@ -1400,4 +1412,7 @@ ComparisonOptions5=Kind=Structure Class|MinPercent=75|MinMatch=3|ShowMatch=0|Use
 
 [SmartPDF]
 PageOptions=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=A4|PaperIndex=9
+
+[Parameter Manager Custom Column Order]
+<Schematic>=Value,Capacitance,Case/Package,Category,"Collector Emitter Breakdown Voltage","Collector Emitter Voltage (VCEO)",ComponentLink1Description,ComponentLink1URL,ComponentLink2Description,ComponentLink2URL,ComponentLink3Description,ComponentLink3URL,Copyright,"Current Rating","Datasheet Link","Datasheet URL","Datasheet Version","Device Class L1","Device Class L2","Device Class L3",Diameter,"Digikey Description","Dissipation Factor",Efficiency,ESR,"ESR (Equivalent Series Resistance)","Export Control Classification Number (ECCN) Code","Footprint Url",Frequency,Geometry.Height,"Gyro Range",Height,"Height - Seated (Max)",HelpURL,Impedance,Inductance,"Insulation Resistance","Lead Free","Leakage Current",Length,"Life (Hours)","Lifecycle Status","Load Capacitance CL","Logic Function",Manufacturer,"Manufacturer Lifecycle Status","Manufacturer URL",Manufacturer_Name,"Manufacturer Part Number",Manufacturer_Part_Number,PartNumber,"Part Number","Max Breakdown Voltage","Max Collector Current","Max DC Current","Max Input Voltage","Max Junction Temperature (Tj)","Max Operating Temperature","Max Output Current","Max Output Voltage","Max Power Dissipation","Max Supply Voltage","Military Standard","Min Input Voltage","Min Operating Temperature","Min Output Voltage","Min Supply Voltage",Mount,"Mounting Technology","Mouser Description","Mouser Part Number","Mouser Price/Stock","No of Positions","Number of Outputs","Number of Pins",Octopart,"Operating Supply Current","Operating Supply Voltage","Output Configuration","Output Current","Output Type","Output Voltage",Package,"Package Description","Package Quantity","Package Reference",PackageDescription,Packaging,Packing,Pitch,"Quiescent Current","Radiation Hardening","RAM Size","REACH SVHC",RefDes,"Ripple Current","Ripple Current (AC)",RoHS,"RoHS Compliant","Saturation Current","Self Resonant Frequency","Sensor Output","Sensor Type",Shielding,"Shunt Capacitance C0",Style/Orientation,Supplier,"Switching Frequency",Sync/Async,"Synchronous Rectifier",Temperature,"Temperature Range","Temperature Range High","Temperature Range Low",Termination,"Test Frequency",Tolerance,Topology,"Transition Frequency",Type,Voltage,"Voltage Rating","Voltage Rating (DC)",Weight,Width
 
