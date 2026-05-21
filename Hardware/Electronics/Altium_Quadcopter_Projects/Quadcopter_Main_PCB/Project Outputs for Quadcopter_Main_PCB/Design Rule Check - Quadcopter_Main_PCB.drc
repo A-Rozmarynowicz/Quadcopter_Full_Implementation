@@ -1,7 +1,7 @@
 Protel Design System Design Rule Check
 PCB File : C:\Users\arekr\OneDrive\Pulpit\Github\Quadcopter_Full_Implementation\Hardware\Electronics\Altium_Quadcopter_Projects\Quadcopter_Main_PCB\Quadcopter_Main_PCB.PcbDoc
 Date     : 21.05.2026
-Time     : 20:58:59
+Time     : 21:25:07
 
 Processing Rule : Clearance Constraint (Gap=0.2mm) (All),(All)
 Rule Violations :0
@@ -10,55 +10,7 @@ Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
 Rule Violations :0
 
 Processing Rule : Un-Routed Net Constraint ( (All) )
-   Violation between Un-Routed Net Constraint: Net GND Between Pad J3-6(44.75mm,5.25mm) on Top Layer [Unplated] And Pad C29-1(51.825mm,4mm) on Bottom Layer 
-   Violation between Un-Routed Net Constraint: Net GND Between Pad C29-1(51.825mm,4mm) on Bottom Layer And Pad R32-2(53.15mm,4mm) on Top Layer 
-   Violation between Un-Routed Net Constraint: Net 3V3 Between Pad C30-2(56.825mm,4mm) on Top Layer And Pad R33-1(58mm,1.5mm) on Bottom Layer 
-   Violation between Un-Routed Net Constraint: Net 3V3 Between Pad C3-1(44.3mm,43.7mm) on Top Layer And Via (46mm,43.1mm) from Top Layer to Bottom Layer 
-   Violation between Un-Routed Net Constraint: Net GND Between Pad C3-2(44.3mm,38.1mm) on Top Layer And Via (45.8mm,38.2mm) from Top Layer to Bottom Layer 
-   Violation between Un-Routed Net Constraint: Net GND Between Pad C4-1(59mm,50.075mm) on Top Layer And Pad U1-6(60.85mm,50.25mm) on Top Layer 
-   Violation between Un-Routed Net Constraint: Net GND Between Pad D10-2(62.75mm,8.25mm) on Bottom Layer [Unplated] And Pad P1-1(67.725mm,7mm) on Top Layer 
-   Violation between Un-Routed Net Constraint: Net GND Between Pad D10-2(62.75mm,8.25mm) on Bottom Layer [Unplated] And Pad R13-2(65mm,2.6mm) on Bottom Layer 
-   Violation between Un-Routed Net Constraint: Net GND Between Track (57.575mm,12.75mm)(57.575mm,12.8mm) on Top Layer And Pad D10-2(62.75mm,8.25mm) on Bottom Layer [Unplated] 
-   Violation between Un-Routed Net Constraint: Net GND Between Via (22.8mm,7.2mm) from Top Layer to Bottom Layer And Pad D12-1(27.25mm,9.5mm) on Top Layer [Unplated] 
-   Violation between Un-Routed Net Constraint: Net GND Between Pad J1-2(59.638mm,34.75mm) on Multi-Layer And Pad D5-1(65mm,35.2mm) on Bottom Layer [Unplated] 
-   Violation between Un-Routed Net Constraint: Net GND Between Pad J4-1(65mm,25mm) on Multi-Layer And Pad D5-1(65mm,35.2mm) on Bottom Layer [Unplated] 
-   Violation between Un-Routed Net Constraint: Net GND Between Track (34.925mm,2.05mm)(35.125mm,1.85mm) on Bottom Layer And Pad D6-2(40.55mm,2.4mm) on Bottom Layer [Unplated] 
-   Violation between Un-Routed Net Constraint: Net GND Between Pad J4-1(65mm,25mm) on Multi-Layer And Pad D7-2(69.25mm,24.35mm) on Bottom Layer [Unplated] 
-   Violation between Un-Routed Net Constraint: Net GND Between Pad P1-1(67.725mm,7mm) on Top Layer And Pad D8-2(70.6mm,8.55mm) on Bottom Layer [Unplated] 
-   Violation between Un-Routed Net Constraint: Net 3V3 Between Pad J2-1(24mm,5.25mm) on Top Layer [Unplated] And Via (31.9mm,13.1mm) from Top Layer to Bottom Layer 
-   Violation between Un-Routed Net Constraint: Net GND Between Pad J3-6(44.75mm,5.25mm) on Top Layer [Unplated] And Via (45.8mm,11.5mm) from Top Layer to Bottom Layer 
-   Violation between Un-Routed Net Constraint: Net GND Between Via (59mm,24mm) from Top Layer to Bottom Layer And Pad J4-1(65mm,25mm) on Multi-Layer 
-   Violation between Un-Routed Net Constraint: Net 3V3 Between Via (50.6mm,45.5mm) from Top Layer to Bottom Layer And Pad L1-2(51.25mm,47.38mm) on Top Layer 
-   Violation between Un-Routed Net Constraint: Net 3V3 Between Pad U2-8(37.2mm,6.25mm) on Bottom Layer [Unplated] And Pad R10-1(39.25mm,9.6mm) on Top Layer 
-   Violation between Un-Routed Net Constraint: Net 3V3 Between Pad R10-1(39.25mm,9.6mm) on Top Layer And Via (47.7mm,11.5mm) from Top Layer to Bottom Layer 
-   Violation between Un-Routed Net Constraint: Net 3V3 Between Pad R14-1(29.4mm,37.25mm) on Top Layer And Via (29.5mm,33.3mm) from Top Layer to Bottom Layer 
-   Violation between Un-Routed Net Constraint: Net GND Between Pad R16-2(22.45mm,15.5mm) on Bottom Layer And Pad U5-15(25.76mm,15.535mm) on Top Layer [Unplated] 
-   Violation between Un-Routed Net Constraint: Net GND Between Pad R28-2(41.9mm,18.1mm) on Bottom Layer And Pad U9-63(44.75mm,15.262mm) on Top Layer [Unplated] 
-   Violation between Un-Routed Net Constraint: Net 3V3 Between Pad R30-2(51.7mm,1.5mm) on Bottom Layer And Pad R33-1(58mm,1.5mm) on Bottom Layer 
-   Violation between Un-Routed Net Constraint: Net 3V3 Between Via (47.7mm,11.5mm) from Top Layer to Bottom Layer And Pad R30-2(51.7mm,1.5mm) on Bottom Layer 
-   Violation between Un-Routed Net Constraint: Net GND Between Via (28.8mm,29mm) from Top Layer to Bottom Layer And Pad R31-2(30.7mm,27.35mm) on Top Layer 
-   Violation between Un-Routed Net Constraint: Net GND Between Pad U2-5(34.3mm,7.25mm) on Bottom Layer [Unplated] And Pad R7-2(35.4mm,9mm) on Bottom Layer 
-   Violation between Un-Routed Net Constraint: Net GND Between Pad R8-2(29.612mm,14.122mm) on Bottom Layer And Via (32.1mm,17.425mm) from Top Layer to Bottom Layer 
-   Violation between Un-Routed Net Constraint: Net Programmer_MOSFET_Source Between Pad U2-1(34.3mm,5.25mm) on Bottom Layer [Unplated] And Track (35.1mm,3.5mm)(35.398mm,3.202mm) on Bottom Layer 
-   Violation between Un-Routed Net Constraint: Net 3V3 Between Pad U2-10(37.2mm,5.25mm) on Bottom Layer [Unplated] And Pad U2-9(37.2mm,5.75mm) on Bottom Layer [Unplated] 
-   Violation between Un-Routed Net Constraint: Net GND Between Pad U2-5(34.3mm,7.25mm) on Bottom Layer [Unplated] And Pad U2-11(35.75mm,6.25mm) on Bottom Layer [Unplated] 
-   Violation between Un-Routed Net Constraint: Net GND Between Via (31.5mm,4.7mm) from Top Layer to Bottom Layer And Pad U2-5(34.3mm,7.25mm) on Bottom Layer [Unplated] 
-   Violation between Un-Routed Net Constraint: Net 3V3 Between Pad U2-9(37.2mm,5.75mm) on Bottom Layer [Unplated] And Pad U2-8(37.2mm,6.25mm) on Bottom Layer [Unplated] 
-   Violation between Un-Routed Net Constraint: Net GND Between Via (6mm,35.6mm) from Top Layer to Bottom Layer And Pad U5-38(8mm,30mm) on Top Layer [Unplated] 
-   Violation between Un-Routed Net Constraint: Net GND Between Pad U5-46(14.32mm,19.75mm) on Top Layer [Unplated] And Pad U5-39(15.72mm,19.75mm) on Top Layer [Unplated] 
-   Violation between Un-Routed Net Constraint: Net GND Between Pad U5-40(15.72mm,18.35mm) on Top Layer [Unplated] And Pad U5-41(17.12mm,18.35mm) on Top Layer [Unplated] 
-   Violation between Un-Routed Net Constraint: Net GND Between Pad U5-47(14.32mm,18.35mm) on Top Layer [Unplated] And Pad U5-40(15.72mm,18.35mm) on Top Layer [Unplated] 
-   Violation between Un-Routed Net Constraint: Net GND Between Pad U5-41(17.12mm,18.35mm) on Top Layer [Unplated] And Via (21.3mm,15.5mm) from Top Layer to Bottom Layer 
-   Violation between Un-Routed Net Constraint: Net GND Between Pad U5-42(17.12mm,19.75mm) on Top Layer [Unplated] And Pad U5-43(17.12mm,21.15mm) on Top Layer [Unplated] 
-   Violation between Un-Routed Net Constraint: Net GND Between Pad U5-44(15.72mm,21.15mm) on Top Layer [Unplated] And Pad U5-43(17.12mm,21.15mm) on Top Layer [Unplated] 
-   Violation between Un-Routed Net Constraint: Net GND Between Pad U5-45(14.32mm,21.15mm) on Top Layer [Unplated] And Pad U5-44(15.72mm,21.15mm) on Top Layer [Unplated] 
-   Violation between Un-Routed Net Constraint: Net GND Between Pad U5-46(14.32mm,19.75mm) on Top Layer [Unplated] And Pad U5-45(14.32mm,21.15mm) on Top Layer [Unplated] 
-   Violation between Un-Routed Net Constraint: Net GND Between Pad U5-47(14.32mm,18.35mm) on Top Layer [Unplated] And Pad U5-46(14.32mm,19.75mm) on Top Layer [Unplated] 
-   Violation between Un-Routed Net Constraint: Net GND Between Track (36.368mm,31.042mm)(36.618mm,30.792mm) on Top Layer And Pad U7-6(37mm,35.975mm) on Top Layer 
-   Violation between Un-Routed Net Constraint: Net 3V3 Between Pad U7-8(35.837mm,35.813mm) on Top Layer And Track (37.575mm,35.513mm)(37.575mm,35.9mm) on Top Layer 
-   Violation between Un-Routed Net Constraint: Polygon  (NONET_L01_P016) on Top Layer Dead Copper - Net Not Assigned.
-   Violation between Un-Routed Net Constraint: Net 3V3 Between Track (36.44mm,41.442mm)(36.45mm,41.432mm) on Top Layer And Track (37.5mm,38.65mm)(37.5mm,38.65mm) on Top Layer 
-Rule Violations :48
+Rule Violations :0
 
 Processing Rule : Modified Polygon (Allow modified: No), (Allow shelved: No)
 Rule Violations :0
@@ -79,8 +31,7 @@ Processing Rule : Hole To Hole Clearance (Gap=0.254mm) (All),(All)
 Rule Violations :0
 
 Processing Rule : Minimum Solder Mask Sliver (Gap=0.14mm) (All),(All)
-   Violation between Minimum Solder Mask Sliver Constraint: (0.072mm < 0.14mm) Between Pad C27-1(50.875mm,17mm) on Top Layer And Via (51.9mm,17mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.072mm]
-Rule Violations :1
+Rule Violations :0
 
 Processing Rule : Silk To Solder Mask (Clearance=0.15mm) (IsPad),(All)
 Rule Violations :0
@@ -98,6 +49,6 @@ Processing Rule : Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (Al
 Rule Violations :0
 
 
-Violations Detected : 49
+Violations Detected : 0
 Waived Violations : 0
-Time Elapsed        : 00:00:00
+Time Elapsed        : 00:00:01
