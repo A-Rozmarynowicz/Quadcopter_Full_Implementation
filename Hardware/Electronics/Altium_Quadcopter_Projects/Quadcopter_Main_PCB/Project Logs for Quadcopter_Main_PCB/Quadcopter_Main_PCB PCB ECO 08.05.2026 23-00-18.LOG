@@ -1,3 +1,0 @@
-Removed Pin From Net: NetName=DWM_IRQ Pin=B1-9
-Added Pin To Net: NetName=DWM_IRQ Pin=B1-28
-Added Member To Class: ClassName=U_UWB_Positioning Member=Component MD1 DWM1000

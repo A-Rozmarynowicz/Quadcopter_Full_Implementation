@@ -1,4 +1,0 @@
-Removed Pin From Net: NetName=ESP_Button_1 Pin=B1-13
-Removed Pin From Net: NetName=ESP_I2C_Interrupt Pin=B1-33
-Added Pin To Net: NetName=ESP_I2C_Interrupt Pin=B1-13
-Added Pin To Net: NetName=ESP_Button_1 Pin=B1-33

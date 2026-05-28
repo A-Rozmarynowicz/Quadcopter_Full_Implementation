@@ -1,4 +1,0 @@
-Change Component Footprint: Designator=R? Old Footprint=Resistor_0805 New Footprint=Res_0603
-Added Component: Designator=R?(Res_0805)
-Add component (AddParameter): Name = "Value"; Value = "10k?"; VariantName = "[No Variations]"
-Added Member To Class: ClassName=Power Member=Component R? 10k?
