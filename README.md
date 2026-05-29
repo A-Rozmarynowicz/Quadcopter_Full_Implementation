@@ -77,7 +77,7 @@ The carbon frame design has started, and will continue after the PCB is finished
 
 <p align="center">
 <img src="./Graphics/Readme_Images/Quadcopter_Frame_View.png" alt="Frame view" width="550"> <br>
-<em>Figure 3: 3D model of the quadcopter's frame.</em>
+<em>Figure 3: 3D model of the quadcopter.</em>
  </p>
 
 
