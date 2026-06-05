@@ -66,7 +66,7 @@ Part of the project is a custom positioning system that doesn't rely on a GPS si
 
 ## Current progress
 
-So far, hardware has been the main focus of development. The main PCB, visible in Figure 2, is almost designed. It will be soldered and ready in July.
+So far, hardware has been the main focus of development. The main PCB, visible in Figure 2, is almost designed. It will be soldered and ready in July. The schematic document is available in this file: [.../Quadcopter_Main_PCB_Schematic.pdf](./Hardware/Electronics/Documents/Datasheets/Quadcopter_Main_PCB_Schematic.pdf).
 
 <p align="center">
 <img src="./Graphics/Readme_Images/Main_PCB_3D.png" alt="Main PCB" width="550"> <br>
