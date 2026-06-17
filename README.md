@@ -12,6 +12,8 @@
 
 My Bachelor's project's task is to build a quadcopter from scratch, implement control and trajectory planning algorithms, synthesize a mathematical model, and develop an indoor positioning system. The expected outcome is a functional, maneuverable, and stable drone that is able to follow given trajectories.
 
+Development time: from 01.2026 to 02.2027 (expected).
+
 The project is also referred to as "Day One".
 
 <p align="center">
