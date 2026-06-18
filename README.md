@@ -29,15 +29,6 @@ The project is also referred to as "Day One".
 * [Technologies Used](#technologies-used)
 
 ## General information
-### Electronics
-- An STM32F4 is used as the main MCU.
-- An ESP32 onboard provides communication with a ground station and a custom positioning system (described later).
-- IMU and a magnetometer support the positioning system in state estimation.
-- Power source is a 680mAh, 3S, LiHV, lightweight, and small battery.
-- Propellers are mounted on BLDC motors for high efficiency and power.
-- The onboard power converter steps the voltage down to 3.3V.
-- Safety measures are implemented to protect the device from overcurrent, overvoltage, reverse polarity, and ESD events.
-- An off-the-shelf ESC drives the motors, commanded by the MCU's DShot signals.
 
 ### Control Engineering
 - Implementing a:
@@ -48,6 +39,18 @@ The project is also referred to as "Day One".
 - Synthesizing a mathematical model of the drone to enable tuning the algorithms in simulation.
 - Enabling manual override of the speed or attitude commands.
 - Leaving room for a camera to implement visual odometry and obstacle avoidance in the future.
+
+
+### Electronics
+- An STM32F4 is used as the main MCU.
+- An ESP32 onboard provides communication with a ground station and a custom positioning system (described later).
+- IMU and a magnetometer support the positioning system in state estimation.
+- Power source is a 680mAh, 3S, LiHV, lightweight, and small battery.
+- Propellers are mounted on BLDC motors for high efficiency and power.
+- The onboard power converter steps the voltage down to 3.3V.
+- Safety measures are implemented to protect the device from overcurrent, overvoltage, reverse polarity, and ESD events.
+- An off-the-shelf ESC drives the motors, commanded by the MCU's DShot signals.
+
 
 ### Mechanics
 - Designing a custom:

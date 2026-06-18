@@ -4,5 +4,3 @@ Version=1.0
 ProjectPath=Quadcopter_Main_PCB\Quadcopter_Main_PCB.PrjPcb
 [Project2]
 ProjectPath=..\..\..\..\UWB_Positioning_System\Hardware\Electronics\Altium_UWB_Beacon_Project\UWB_Beacon\UWB_Beacon.PrjPcb
-[Project3]
-ProjectPath=..\..\..\..\..\TUREK_Schemat\TUREK_Schemat.PrjPcb
