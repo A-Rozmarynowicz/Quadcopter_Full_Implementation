@@ -1,0 +1,18 @@
+----------------------------------------------------------------------------------------------------------------------------------
+NCDrill File Report For: Quadcopter_Main_PCB.PcbDoc   27.06.2026  19:50:42
+----------------------------------------------------------------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII RoundHoles File : Quadcopter_Main_PCB.TXT
+
+Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
+----------------------------------------------------------------------------------------------------------------------------------
+T1      0.3mm (12mil)                                             Round             231       PTH        869.67mm (34.24inch)
+T2      0.4mm (16mil)                                             Round             1         PTH        0.00mm (0.00inch)
+T3      1mm (39mil)                                               Round             4         PTH        25.77mm (1.01inch)
+T4      1.7mm (67mil)                                             Round             4         PTH        21.13mm (0.83inch)
+T5      2.8mm (110mil)                                            Round             4         NPTH       213.79mm (8.42inch)
+----------------------------------------------------------------------------------------------------------------------------------
+Totals                                                                              244
+
+Total Processing Time (hh:mm:ss) : 00:00:00
