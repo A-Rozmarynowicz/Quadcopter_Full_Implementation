@@ -25,10 +25,27 @@ The project is also referred to as "Day One".
 </p>
 
 ## Table of contents
+* [Current progress](#current-progress)
 * [General Information](#general-information)
 * [UWB Positioning System](#uwb-positioning-system)
-* [Current progress](#current-progress)
 * [Technologies Used](#technologies-used)
+
+
+## Current progress
+
+So far, hardware has been the main focus of development. The main PCB, visible in Figure 2, is designed. It will be soldered and ready in by 21st August. The schematic document is available in this file: [.../Quadcopter_Main_PCB_Schematic.pdf](./Hardware/Electronics/Documents/Datasheets/Quadcopter_Main_PCB_Schematic.pdf).
+
+<p align="center">
+<img src="./Graphics/Readme_Images/Main_PCB_3D.png" alt="Main PCB" width="550"> <br>
+<em>Figure 2: 3D view of the quadcopter main PCB.</em>
+ </p>
+
+The current 3D model of the quadcopter is visible in Figure 3.
+
+<p align="center">
+<img src="./Graphics/Readme_Images/Quadcopter_Assembly.png" alt="Quadcopter Render" width="550"> <br>
+<em>Figure 3: 3D model of the quadcopter.</em>
+ </p>
 
 ## General information
 
@@ -69,21 +86,6 @@ Part of the project is a custom positioning system that doesn't rely on a GPS si
 <em>Figure 1: 3D view of the UWB anchor PCB.</em>
  </p>
 
-## Current progress
-
-So far, hardware has been the main focus of development. The main PCB, visible in Figure 2, is almost designed. It will be soldered and ready in July. The schematic document is available in this file: [.../Quadcopter_Main_PCB_Schematic.pdf](./Hardware/Electronics/Documents/Datasheets/Quadcopter_Main_PCB_Schematic.pdf).
-
-<p align="center">
-<img src="./Graphics/Readme_Images/Main_PCB_3D.png" alt="Main PCB" width="550"> <br>
-<em>Figure 2: 3D view of the quadcopter main PCB.</em>
- </p>
-
-The current 3D model of the quadcopter is visible in Figure 3.
-
-<p align="center">
-<img src="./Graphics/Readme_Images/Quadcopter_Assembly.png" alt="Quadcopter Render" width="550"> <br>
-<em>Figure 3: 3D model of the quadcopter.</em>
- </p>
 
 
 ## Technologies Used
