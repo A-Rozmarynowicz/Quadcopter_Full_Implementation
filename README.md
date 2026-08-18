@@ -55,7 +55,7 @@ The current 3D model of the quadcopter is visible in Figure 3.
     - polynomial decoupled trajectory planning based on given setpoints,
     - Kalman filter state estimator.
 - Utilizing quaternions for attitude representation enabling more stable orientation control.
-- Synthesizing a mathematical model of the drone to enable tuning the algorithms in simulation.
+- If time allows: synthesizing a mathematical model of the drone to enable tuning the algorithms in simulation.
 - Enabling manual override of the speed or attitude commands.
 - Leaving room for a camera to implement visual odometry and obstacle avoidance in the future.
 
