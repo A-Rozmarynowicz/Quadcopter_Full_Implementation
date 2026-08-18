@@ -77,6 +77,7 @@ The current 3D model of the quadcopter is visible in Figure 3.
     - housing for the PCBs,
     - shielding frame around the propellers,
     - battery slot.
+- Estimated total weight is below 220 grams, which easily fits within the constraints set by the propellers' thrust.
 
 ## UWB Positioning System
 Part of the project is a custom positioning system that doesn't rely on a GPS signal. This is achieved by placing at least 4 Ultra-Wideband (UWB) modules near the area of the drone's operation. They measure their distance to the robot and estimate its relative position. This system is almost fully developed, and can be seen in this repository: [https://github.com/A-Rozmarynowicz/UWB_Positioning_System](https://github.com/A-Rozmarynowicz/UWB_Positioning_System).
