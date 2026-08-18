@@ -33,7 +33,7 @@ The project is also referred to as "Day One".
 
 ## Current progress
 
-So far, hardware has been the main focus of development. The main PCB, visible in Figure 2, is designed. It will be soldered and ready in by 21st August. The schematic document is available in this file: [.../Quadcopter_Main_PCB_Schematic.pdf](./Hardware/Electronics/Documents/Datasheets/Quadcopter_Main_PCB_Schematic.pdf).
+So far, hardware has been the main focus of development. The main PCB, visible in Figure 2, is designed. It will be soldered and ready by 24th August. The schematic document is available in this file: [.../Quadcopter_Main_PCB_Schematic.pdf](./Hardware/Electronics/Documents/Datasheets/Quadcopter_Main_PCB_Schematic.pdf).
 
 <p align="center">
 <img src="./Graphics/Readme_Images/Main_PCB_3D.png" alt="Main PCB" width="550"> <br>
