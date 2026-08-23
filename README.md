@@ -33,7 +33,7 @@ The project is also referred to as "Day One".
 
 ## Current progress
 
-So far, hardware has been the main focus of development. The main PCB, visible in Figure 2, is designed. It will be soldered and ready in by 21st August. The schematic document is available in this file: [.../Quadcopter_Main_PCB_Schematic.pdf](./Hardware/Electronics/Documents/Datasheets/Quadcopter_Main_PCB_Schematic.pdf).
+So far, hardware has been the main focus of development. The main PCB, visible in Figure 2, is designed. It will be soldered and ready by 24th August. The schematic document is available in this file: [.../Quadcopter_Main_PCB_Schematic.pdf](./Hardware/Electronics/Documents/Datasheets/Quadcopter_Main_PCB_Schematic.pdf).
 
 <p align="center">
 <img src="./Graphics/Readme_Images/Main_PCB_3D.png" alt="Main PCB" width="550"> <br>
@@ -55,7 +55,7 @@ The current 3D model of the quadcopter is visible in Figure 3.
     - polynomial decoupled trajectory planning based on given setpoints,
     - Kalman filter state estimator.
 - Utilizing quaternions for attitude representation enabling more stable orientation control.
-- Synthesizing a mathematical model of the drone to enable tuning the algorithms in simulation.
+- If time allows: synthesizing a mathematical model of the drone to enable tuning the algorithms in simulation.
 - Enabling manual override of the speed or attitude commands.
 - Leaving room for a camera to implement visual odometry and obstacle avoidance in the future.
 
@@ -77,6 +77,7 @@ The current 3D model of the quadcopter is visible in Figure 3.
     - housing for the PCBs,
     - shielding frame around the propellers,
     - battery slot.
+- Estimated total weight is below 220 grams, which easily fits within the constraints set by the propellers' thrust.
 
 ## UWB Positioning System
 Part of the project is a custom positioning system that doesn't rely on a GPS signal. This is achieved by placing at least 4 Ultra-Wideband (UWB) modules near the area of the drone's operation. They measure their distance to the robot and estimate its relative position. This system is almost fully developed, and can be seen in this repository: [https://github.com/A-Rozmarynowicz/UWB_Positioning_System](https://github.com/A-Rozmarynowicz/UWB_Positioning_System).
