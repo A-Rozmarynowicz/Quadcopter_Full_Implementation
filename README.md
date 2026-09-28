@@ -33,7 +33,19 @@ The project is also referred to as "Day One".
 
 ## Current progress
 
-So far, hardware has been the main focus of development. The main PCB, visible in Figure 2, is soldered and tested. The schematic document is available in this file: [.../Quadcopter_Main_PCB_Schematic.pdf](./Hardware/Electronics/Documents/Datasheets/Quadcopter_Main_PCB_Schematic.pdf).
+The quadcopter has been assembled and it passed all the necessary hardware tests. That means the motors work, all chips are soldered correctly, and nothing is overheating. It lifts at around 35% motor power, and the battery lasts around 5 minutes in that setting. The machine is visible below.
+
+
+<p align="center">
+<img src="./Graphics/Readme_Images/Q_home.jpg" alt="Main PCB" width="550"> <br>
+<img src="./Graphics/Readme_Images/Q_red.jpg" alt="Main PCB" width="300">
+<img src="./Graphics/Readme_Images/Q_top.jpg" alt="Main PCB" width="300"> <br>
+<img src="./Graphics/Readme_Images/Q_front_prop.jpg" alt="Main PCB" width="550"> <br>
+<em>Figure 1: Quadcopter in real life.</em>
+ </p>
+
+
+The main PCB, visible in Figure 2, is soldered and tested. The schematic document is available in this file: [.../Quadcopter_Main_PCB_Schematic.pdf](./Hardware/Electronics/Documents/Datasheets/Quadcopter_Main_PCB_Schematic.pdf).
 
 <p align="center">
 <img src="./Graphics/Readme_Images/Soldered_PCB.jpg" alt="Main PCB" width="550"> <br>
@@ -54,12 +66,11 @@ The current 3D model of the quadcopter is visible in Figure 3.
 ### Control Engineering
 - Implementing a:
     - cascade 4-loop PID controller,
-    - polynomial decoupled trajectory planning based on given setpoints,
     - Kalman filter state estimator.
+    - If time allows: polynomial decoupled trajectory planning based on given setpoints,
 - Utilizing quaternions for attitude representation enabling more stable orientation control.
 - If time allows: synthesizing a mathematical model of the drone to enable tuning the algorithms in simulation.
 - Enabling manual override of the speed or attitude commands.
-- Leaving room for a camera to implement visual odometry and obstacle avoidance in the future.
 
 
 ### Electronics
@@ -79,14 +90,14 @@ The current 3D model of the quadcopter is visible in Figure 3.
     - housing for the PCBs,
     - shielding frame around the propellers,
     - battery slot.
-- Estimated total weight is below 220 grams, which easily fits within the constraints set by the propellers' thrust.
+- Total weight turned out to be 242 grams, which fits within the constraints set by the propellers' thrust: the drone lifts at around 35% motor power.
 
 ## UWB Positioning System
 Part of the project is a custom positioning system that doesn't rely on a GPS signal. This is achieved by placing at least 4 Ultra-Wideband (UWB) modules near the area of the drone's operation. They measure their distance to the robot and estimate its relative position. This system is almost fully developed, and can be seen in this repository: [https://github.com/A-Rozmarynowicz/UWB_Positioning_System](https://github.com/A-Rozmarynowicz/UWB_Positioning_System).
 
 <p align="center">
 <img src="./Graphics/Readme_Images/UWB_PCB_3D_Image.png" alt="./Graphics/Readme_Images/UWB_PCB_3D_Image.png" width="550"> <br>
-<em>Figure 1: 3D view of the UWB anchor PCB.</em>
+<em>Figure 4: 3D view of the UWB anchor PCB.</em>
  </p>
 
 
