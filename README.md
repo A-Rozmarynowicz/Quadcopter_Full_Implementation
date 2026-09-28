@@ -96,8 +96,9 @@ The current 3D model of the quadcopter is visible in Figure 3.
 Part of the project is a custom positioning system that doesn't rely on a GPS signal. This is achieved by placing at least 4 Ultra-Wideband (UWB) modules near the area of the drone's operation. They measure their distance to the robot and estimate its relative position. This system is almost fully developed, and can be seen in this repository: [https://github.com/A-Rozmarynowicz/UWB_Positioning_System](https://github.com/A-Rozmarynowicz/UWB_Positioning_System).
 
 <p align="center">
+<img src="./Graphics/Readme_Images/UWB_rl.jpg" alt="./Graphics/Readme_Images/UWB_PCB_3D_Image.png" width="550">
 <img src="./Graphics/Readme_Images/UWB_PCB_3D_Image.png" alt="./Graphics/Readme_Images/UWB_PCB_3D_Image.png" width="550"> <br>
-<em>Figure 4: 3D view of the UWB anchor PCB.</em>
+<em>Figure 4: UWB anchor.</em>
  </p>
 
 
