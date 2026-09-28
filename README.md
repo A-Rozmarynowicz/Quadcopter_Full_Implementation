@@ -45,7 +45,7 @@ The quadcopter has been assembled and it passed all the necessary hardware tests
  </p>
 
 
-The main PCB, visible in Figure 2, is soldered and tested. The schematic document is available in this file: [.../Quadcopter_Main_PCB_Schematic.pdf](./Hardware/Electronics/Documents/Datasheets/Quadcopter_Main_PCB_Schematic.pdf).
+The main PCB, visible in Figure 2, has been soldered manually and tested. The schematic document is available in this file: [.../Quadcopter_Main_PCB_Schematic.pdf](./Hardware/Electronics/Documents/Datasheets/Quadcopter_Main_PCB_Schematic.pdf).
 
 <p align="center">
 <img src="./Graphics/Readme_Images/Soldered_PCB.jpg" alt="Main PCB" width="550"> <br>
