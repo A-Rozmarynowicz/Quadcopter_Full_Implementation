@@ -37,10 +37,11 @@ The quadcopter has been assembled and it passed all the necessary hardware tests
 
 
 <p align="center">
-<img src="./Graphics/Readme_Images/Q_home.jpg" alt="Main PCB" width="550"> <br>
-<img src="./Graphics/Readme_Images/Q_red.jpg" alt="Main PCB" width="300">
-<img src="./Graphics/Readme_Images/Q_top.jpg" alt="Main PCB" width="300"> <br>
-<img src="./Graphics/Readme_Images/Q_front_prop.jpg" alt="Main PCB" width="550"> <br>
+<img src="./Graphics/Readme_Images/Q_home.jpg" alt="Quadcopter" width="550"> <br>
+<img src="./Graphics/Readme_Images/Q_red.jpg" alt="Quadcopter" width="300">
+<img src="./Graphics/Readme_Images/Q_top.jpg" alt="Quadcopter" width="300"> <br>
+<img src="./Graphics/Readme_Images/Q_front_prop.jpg" alt="Quadcopter" width="550"> <br>
+<img src="./Graphics/Readme_Images/Q_side.jpg" alt="Quadcopter" width="550"> <br>
 <em>Figure 1: Quadcopter in real life.</em>
  </p>
 
