@@ -3,10 +3,10 @@
 
 #include "Configuration.h"
 
+#define DRONE_ID 171
 #define DATA_SIZE 20
 const uint8_t BROADCAST_RECEIVER_ID = 255;
 const uint8_t ACK_MESSAGE_COUNT = 5;
-const 
 
 enum Data_Commands {
   READY_FOR_OBSERVER = 24,
@@ -26,6 +26,20 @@ enum Data_Setup {
   QUAD_3 = 16,
 };
 
+enum Communication_Errors {
+  PROTOCOL_INIT_FAIL,
+  MESSAGE_SEND_FAIL,
+  DELIVERY_FAIL,
+  ACK_FAIL,
+};
+
 extern uint8_t transmit_buffer[DATA_SIZE];
+
+void Initialize_Communication();
+
+void _send_esp();
+void _receive_callback(const uint8_t* macAddr, const uint8_t* data, int dataLen);
+void _sent_callback(const uint8_t *macAddr, esp_now_send_status_t status);
+void _communication_error(Communication_Errors error);
 
 #endif
