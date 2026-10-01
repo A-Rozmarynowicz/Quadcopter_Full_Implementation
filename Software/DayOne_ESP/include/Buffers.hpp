@@ -8,7 +8,7 @@ class Buffer
 {
 public:
     T& operator[](std::size_t i);
-
+    constexpr std::size_t capacity() const;
 private:
     std::array<T, N> buffer;
 };

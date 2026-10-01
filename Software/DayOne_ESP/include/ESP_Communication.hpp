@@ -1,10 +1,12 @@
-#ifndef ESPCOMMUNICATION_H
-#define ESPCOMMUNICATION_H
+#pragma once
 
 #include "Configuration.hpp"
+#include "Buffers.hpp"
 
 #define DRONE_ID 171
 #define DATA_SIZE 20
+#define RECEIVE_QUEUE_SIZE 33
+
 const uint8_t BROADCAST_RECEIVER_ID = 255;
 const uint8_t ACK_MESSAGE_COUNT = 5;
 
@@ -41,7 +43,14 @@ namespace ESP_MESSAGES
 
 };
 
+struct Receive_Packet
+{
+    uint8_t data[DATA_SIZE];
+    uint16_t length;
+};
+
 extern uint8_t transmit_buffer[DATA_SIZE];
+extern Queue<Receive_Packet, RECEIVE_QUEUE_SIZE> receive_queue;
 
 void initialize_communication();
 
@@ -49,5 +58,3 @@ void _send_esp();
 void _receive_callback(const uint8_t* macAddr, const uint8_t* data, int dataLen);
 void _sent_callback(const uint8_t *macAddr, esp_now_send_status_t status);
 void _communication_error(Communication_Errors error);
-
-#endif

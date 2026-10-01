@@ -40,10 +40,16 @@ void _send_esp()
 void _receive_callback(const uint8_t* macAddr, const uint8_t* data, int dataLen)
 {
   uint8_t receiver_id = data[RECEIVER_ID];
-  if ((receiver_id != DRONE_ID) & (receiver_id != BROADCAST_RECEIVER_ID))
+  if ((receiver_id != DRONE_ID) && (receiver_id != BROADCAST_RECEIVER_ID))
   {
     return;
   }
+   Receive_Packet packet;
+   packet.length = dataLen;
+
+   std::copy(data, data + dataLen, packet.data);
+
+   receive_queue.push(packet);
 //   State_ReceiveCallback(data);
 };
 

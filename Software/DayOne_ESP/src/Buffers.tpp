@@ -6,6 +6,13 @@ T& Buffer<T, N>::operator[](std::size_t i)
 {
     return buffer[i];
 }
+
+template <typename T, std::size_t N>
+constexpr std::size_t Buffer<T, N>::capacity() const
+{
+    return N;
+}
+
 #pragma endregion
 
 #pragma region Queue
@@ -70,7 +77,6 @@ constexpr std::size_t Queue<T, N>::capacity() const
 }
 
 #pragma endregion
-
 
 #pragma region Double_Queue
 
