@@ -1,14 +1,16 @@
-#include "ESP_Communication.h"
+#include "ESP_Communication.hpp"
 
-void Initialize_Communication(){
+void initialize_communication(){
   WiFi.mode(WIFI_STA);
   WiFi.disconnect();
 
-  if (esp_now_init() == ESP_OK) {
+  if (esp_now_init() == ESP_OK)
+  {
     esp_now_register_recv_cb(_receive_callback);
     esp_now_register_send_cb(_sent_callback);
   }
-  else {
+  else
+  {
     _communication_error(Communication_Errors::PROTOCOL_INIT_FAIL);
   }
   transmit_buffer[Data_Setup::TRANSMITTER_ID] = DRONE_ID;
@@ -21,13 +23,15 @@ void _send_esp()
   uint8_t broadcastAddress[] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
   esp_now_peer_info_t peerInfo = {};
   memcpy(&peerInfo.peer_addr, broadcastAddress, 6);
-  if (!esp_now_is_peer_exist(broadcastAddress)) {
+  if (!esp_now_is_peer_exist(broadcastAddress))
+  {
     esp_now_add_peer(&peerInfo);
   }
 
   esp_err_t result = esp_now_send(broadcastAddress, transmit_buffer, DATA_SIZE);
   if (result == ESP_OK) {}
-  else {
+  else
+  {
     _communication_error(Communication_Errors::MESSAGE_SEND_FAIL);
   }
 };
@@ -36,19 +40,22 @@ void _send_esp()
 void _receive_callback(const uint8_t* macAddr, const uint8_t* data, int dataLen)
 {
   uint8_t receiver_id = data[RECEIVER_ID];
-  if ((receiver_id != DRONE_ID) & (receiver_id != BROADCAST_RECEIVER_ID)){
+  if ((receiver_id != DRONE_ID) & (receiver_id != BROADCAST_RECEIVER_ID))
+  {
     return;
   }
-//   State_ReceiveCallback(data, dataLen);
+//   State_ReceiveCallback(data);
 };
 
 
 void _sent_callback(const uint8_t *macAddr, esp_now_send_status_t status)
 {
-  if (status == ESP_NOW_SEND_SUCCESS){
+  if (status == ESP_NOW_SEND_SUCCESS)
+  {
     // State_SentCallback();
   }
-  else{
+  else
+  {
     _communication_error(Communication_Errors::DELIVERY_FAIL);
   }
 };

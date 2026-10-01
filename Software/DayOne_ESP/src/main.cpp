@@ -1,4 +1,4 @@
-#include "Configuration.h"
+#include "Configuration.hpp"
 
 void setup() {
 }

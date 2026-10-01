@@ -1,21 +1,23 @@
 #ifndef ESPCOMMUNICATION_H
 #define ESPCOMMUNICATION_H
 
-#include "Configuration.h"
+#include "Configuration.hpp"
 
 #define DRONE_ID 171
 #define DATA_SIZE 20
 const uint8_t BROADCAST_RECEIVER_ID = 255;
 const uint8_t ACK_MESSAGE_COUNT = 5;
 
-enum Data_Commands {
+enum Data_Commands
+{
   READY_FOR_OBSERVER = 24,
   OBSERVER_QUERY_POSITION,
   OBSERVER_RESPONSE_POSITION,
   OBSERVER_WAKEUP_RECKON,
 };
 
-enum Data_Setup {
+enum Data_Setup
+{
   RECEIVER_ID = 0,
   TRANSMITTER_ID = 1,
   COMMAND = 2,
@@ -26,20 +28,22 @@ enum Data_Setup {
   QUAD_3 = 16,
 };
 
-enum Communication_Errors {
+enum Communication_Errors
+{
   PROTOCOL_INIT_FAIL,
   MESSAGE_SEND_FAIL,
   DELIVERY_FAIL,
   ACK_FAIL,
 };
 
-namespace MESSAGES {
-  
-}
+namespace ESP_MESSAGES
+{
+
+};
 
 extern uint8_t transmit_buffer[DATA_SIZE];
 
-void Initialize_Communication();
+void initialize_communication();
 
 void _send_esp();
 void _receive_callback(const uint8_t* macAddr, const uint8_t* data, int dataLen);
