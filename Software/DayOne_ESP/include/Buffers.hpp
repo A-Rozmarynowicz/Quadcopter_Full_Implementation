@@ -23,6 +23,7 @@ public:
     T& operator[](std::size_t i);
     bool empty() const;
     bool full() const;
+    void flush();
     std::size_t size() const;
     constexpr std::size_t capacity() const;
 private:

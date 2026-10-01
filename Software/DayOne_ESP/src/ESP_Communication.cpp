@@ -1,5 +1,8 @@
 #include "ESP_Communication.hpp"
 
+Queue<Packet, RECEIVE_QUEUE_SIZE> receive_queue;
+Queue<Packet, TRANSMIT_QUEUE_SIZE> transmit_queue;
+
 
 void initialize_esp_communication(){
   WiFi.mode(WIFI_STA);

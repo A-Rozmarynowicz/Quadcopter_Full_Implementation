@@ -13,8 +13,9 @@ const uint8_t uwb_addresses_from_LGH[NUMBER_OF_LIGHTHOUSES][UWB_ADDRESS_LENGTH] 
     {0x3C, 0x9A, 0x44, 0x10, 0xFE, 0x02, 0x8D, 0x6F}
 };
 
-extern const uint8_t drone_address[UWB_ADDRESS_LENGTH] =
-    {0x12, 0x34, 0x56, 0x78, 0x9A, 0xBC, 0xDE, 0xF1};
+extern const uint8_t drone_address[UWB_ADDRESS_LENGTH] = {0x12, 0x34, 0x56, 0x78, 0x9A, 0xBC, 0xDE, 0xF1};
+
+Queue<UWB_Measurement, UWB_MEASUREMENT_QUEUE_SIZE> uwb_measurement_queues[NUMBER_OF_LIGHTHOUSES];
 
 void Initialize_UWB()
 {
@@ -104,19 +105,22 @@ void _new_range()
     float rx_power = DW1000Ranging.getDistantDevice()->getRXPower();
     int8_t lgh_index = Get_LGH_From_Short_Address(device);
 
+    if (lgh_index < 0 || lgh_index > NUMBER_OF_LIGHTHOUSES - 1)
+    {
+        return; // @todo: error
+    }
+
     UWB_Measurement uwb_measurement;
     uwb_measurement.lgh_index = lgh_index;
     uwb_measurement.range = range;
 
-    uwb_measurement_queue.push(uwb_measurement);
+    uwb_measurement_queues[lgh_index].push(uwb_measurement);
     // State_UWB_New_Range(device, range, rx_power);
 }
 
 void _new_device(DW1000Device* device) {}
 
-
 void _inactive_device(DW1000Device* device) {}
-
 
 #pragma endregion
 

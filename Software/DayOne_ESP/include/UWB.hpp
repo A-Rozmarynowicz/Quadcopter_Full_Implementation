@@ -33,7 +33,7 @@ struct UWB_Measurement
     uint8_t lgh_index;
 };
 
-Queue<UWB_Measurement, UWB_MEASUREMENT_QUEUE_SIZE> uwb_measurement_queue;
+extern Queue<UWB_Measurement, UWB_MEASUREMENT_QUEUE_SIZE> uwb_measurement_queues[NUMBER_OF_LIGHTHOUSES];
 
 void Initialize_UWB();
 void Update_UWB();

@@ -51,8 +51,8 @@ struct Packet
     uint8_t data[DATA_SIZE];
 };
 
-Queue<Packet, RECEIVE_QUEUE_SIZE> receive_queue;
-Queue<Packet, TRANSMIT_QUEUE_SIZE> transmit_queue;
+extern Queue<Packet, RECEIVE_QUEUE_SIZE> receive_queue;
+extern Queue<Packet, TRANSMIT_QUEUE_SIZE> transmit_queue;
 
 void initialize_esp_communication();
 

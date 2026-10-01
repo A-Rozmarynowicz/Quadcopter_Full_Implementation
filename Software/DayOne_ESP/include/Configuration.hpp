@@ -9,5 +9,4 @@
 #define NUMBER_OF_LIGHTHOUSES (uint8_t) 4
 
 
-
 #endif
