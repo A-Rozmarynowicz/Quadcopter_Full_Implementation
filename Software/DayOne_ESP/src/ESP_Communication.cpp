@@ -13,3 +13,47 @@ void Initialize_Communication(){
   }
   transmit_buffer[Data_Setup::TRANSMITTER_ID] = DRONE_ID;
 };
+
+
+#pragma region ESP_NOW
+void _send_esp()
+{
+  uint8_t broadcastAddress[] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
+  esp_now_peer_info_t peerInfo = {};
+  memcpy(&peerInfo.peer_addr, broadcastAddress, 6);
+  if (!esp_now_is_peer_exist(broadcastAddress)) {
+    esp_now_add_peer(&peerInfo);
+  }
+
+  esp_err_t result = esp_now_send(broadcastAddress, transmit_buffer, DATA_SIZE);
+  if (result == ESP_OK) {}
+  else {
+    _communication_error(Communication_Errors::MESSAGE_SEND_FAIL);
+  }
+};
+
+
+void _receive_callback(const uint8_t* macAddr, const uint8_t* data, int dataLen)
+{
+  uint8_t receiver_id = data[RECEIVER_ID];
+  if ((receiver_id != DRONE_ID) & (receiver_id != BROADCAST_RECEIVER_ID)){
+    return;
+  }
+//   State_ReceiveCallback(data, dataLen);
+};
+
+
+void _sent_callback(const uint8_t *macAddr, esp_now_send_status_t status)
+{
+  if (status == ESP_NOW_SEND_SUCCESS){
+    // State_SentCallback();
+  }
+  else{
+    _communication_error(Communication_Errors::DELIVERY_FAIL);
+  }
+};
+
+void _communication_error(Communication_Errors error)
+{};
+
+#pragma endregion

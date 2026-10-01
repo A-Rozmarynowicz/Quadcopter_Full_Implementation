@@ -33,6 +33,10 @@ enum Communication_Errors {
   ACK_FAIL,
 };
 
+namespace MESSAGES {
+  
+}
+
 extern uint8_t transmit_buffer[DATA_SIZE];
 
 void Initialize_Communication();
