@@ -1,57 +1,54 @@
 #pragma once
 
 #include "esp32-hal-timer.h"
-
-class Timer
-{
-public:
-    using Callback = void (*)(void*);
-
-    Timer(uint16_t t_period_ms, Callback callback, void* context)
-        : period_ms(t_period_ms),
-          callback(callback),
-          context(context),
-          timer(nullptr)
-    {}
-
-    bool Initialize();
-
-private:
-    const uint16_t period_ms;
-    hw_timer_t* timer;
-
-    Callback callback;
-    void* context;
-
-    static void IRAM_ATTR TimerCallback(void* arg);
-};
-
+#include <stddef.h>
 
 class Timer_Handler
 {
 public:
-    Timer_Handler(uint16_t period_ms)
-        : timer(period_ms, &Timer_Handler::TimerCallback, this)
-    {}
+    using Callback = void (*)();
 
-    bool Initialize()
+    struct Timer_Config
     {
-        return timer.Initialize();
-    }
+        uint32_t period_ms;
+        Callback callback;
+    };
+
+    static constexpr size_t MAX_TIMERS = 16;
+
+    Timer_Handler(
+        uint8_t hardware_timer_number,
+        const Timer_Config* configs,
+        size_t count
+    );
+
+    bool Initialize();
+
+    void Update();
 
 private:
-    Timer timer;
-
-    static void IRAM_ATTR TimerCallback(void* arg)
+    struct Software_Timer
     {
-        auto* handler = static_cast<Timer_Handler*>(arg);
-        handler->OnTimer();
-    }
+        uint32_t period_ms;
+        uint32_t elapsed_ms;
 
-    void OnTimer()
-    {
-        // Your Timer_Handler code
-    }
+        Callback callback;
+
+        volatile bool pending;
+    };
+
+    hw_timer_t* timer;
+
+    uint8_t timer_number;
+
+    Software_Timer timers[MAX_TIMERS];
+    size_t timer_count;
+
+    static Timer_Handler* instance;
+
+    static void IRAM_ATTR TimerISR();
+
+    void IRAM_ATTR OnTimerInterrupt();
 };
 
 #include "Timing.tpp"
