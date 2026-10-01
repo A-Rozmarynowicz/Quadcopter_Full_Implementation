@@ -54,7 +54,7 @@ struct Packet
 Queue<Packet, RECEIVE_QUEUE_SIZE> receive_queue;
 Queue<Packet, TRANSMIT_QUEUE_SIZE> transmit_queue;
 
-void initialize_communication();
+void initialize_esp_communication();
 
 void _send_esp();
 void _receive_callback(const uint8_t* macAddr, const uint8_t* data, int dataLen);

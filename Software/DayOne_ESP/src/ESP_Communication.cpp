@@ -1,7 +1,7 @@
 #include "ESP_Communication.hpp"
 
 
-void initialize_communication(){
+void initialize_esp_communication(){
   WiFi.mode(WIFI_STA);
   WiFi.disconnect();
 
@@ -27,7 +27,7 @@ bool ESP_MESSAGES::send_ready(uint8_t receiver)
     packet.data[Data_Setup::RECEIVER_ID] = receiver;
     packet.data[Data_Setup::TRANSMITTER_ID] = DRONE_ID;
     packet.data[Data_Setup::COMMAND] = OBSERVER_READY;
-    
+
     return transmit_queue.push(packet);
 }
 
