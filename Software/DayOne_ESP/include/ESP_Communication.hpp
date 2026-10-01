@@ -17,6 +17,8 @@ enum Data_Commands
   OBSERVER_QUERY_POSITION,
   OBSERVER_RESPONSE_POSITION,
   OBSERVER_WAKEUP_RECKON,
+  OBSERVER_READY,
+
 };
 
 enum Data_Setup
@@ -41,7 +43,7 @@ enum Communication_Errors
 
 namespace ESP_MESSAGES
 {
-
+  bool send_ready(uint8_t receiver);
 };
 
 struct Packet

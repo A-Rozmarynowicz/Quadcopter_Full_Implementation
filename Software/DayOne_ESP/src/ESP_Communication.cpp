@@ -18,6 +18,21 @@ void initialize_communication(){
 };
 
 
+#pragma region Messages
+
+bool ESP_MESSAGES::send_ready(uint8_t receiver)
+{
+    Packet packet{};
+
+    packet.data[Data_Setup::RECEIVER_ID] = receiver;
+    packet.data[Data_Setup::TRANSMITTER_ID] = DRONE_ID;
+    packet.data[Data_Setup::COMMAND] = OBSERVER_READY;
+    
+    return transmit_queue.push(packet);
+}
+
+#pragma endregion
+
 #pragma region ESP_NOW
 void _send_esp()
 {
