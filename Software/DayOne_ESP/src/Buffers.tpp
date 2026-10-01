@@ -1,12 +1,14 @@
 #include "Buffers.hpp"
 
+#pragma region Buffer
 template <typename T, std::size_t N>
 T& Buffer<T, N>::operator[](std::size_t i)
 {
     return buffer[i];
 }
+#pragma endregion
 
-
+#pragma region Queue
 template <typename T, std::size_t N>
 bool Queue<T, N>::push(const T& value)
 {
@@ -60,3 +62,83 @@ std::size_t Queue<T, N>::size() const
 {
     return count;
 }
+
+template <typename T, std::size_t N>
+constexpr std::size_t Queue<T, N>::capacity() const
+{
+    return N;
+}
+
+#pragma endregion
+
+
+#pragma region Double_Queue
+
+template <typename T1, typename T2, std::size_t N>
+bool Double_Queue<T1, T2, N>::pop(T1& v1, T2& v2)
+{
+    if (!validate() || empty())
+    {
+        return false;
+    }
+    bool b1 = queue_1.pop(v1);
+    bool b2 = queue_2.pop(v2);
+    return b1 && b2;
+}
+
+template <typename T1, typename T2, std::size_t N>
+bool Double_Queue<T1, T2, N>::push(const T1& v1, const T2& v2)
+{
+    if (!validate() || full())
+    {
+        return false;
+    }
+    bool b1 = queue_1.push(v1);
+    bool b2 = queue_2.push(v2);
+    return b1 && b2;
+}
+
+template <typename T1, typename T2, std::size_t N>
+bool Double_Queue<T1, T2, N>::empty() const
+{
+    bool e1 = queue_1.empty();
+    bool e2 = queue_2.empty();
+    return e1 && e2;
+}
+
+template <typename T1, typename T2, std::size_t N>
+bool Double_Queue<T1, T2, N>::full() const
+{
+    bool f1 = queue_1.full();
+    bool f2 = queue_2.full();
+    return f1 && f2;
+}
+
+template <typename T1, typename T2, std::size_t N>
+bool Double_Queue<T1, T2, N>::validate() const
+{
+    return queue_1.size() == queue_2.size();
+}
+
+template <typename T1, typename T2, std::size_t N>
+std::size_t Double_Queue<T1, T2, N>::size() const
+{
+    std::size_t n1 = queue_1.size();
+    std::size_t n2 = queue_2.size();
+    if (n1 == n2)
+    {
+        return n1;
+    }
+    else
+    {
+        return N;
+    }
+}
+
+template <typename T1, typename T2, std::size_t N>
+constexpr std::size_t Double_Queue<T1, T2, N>::capacity() const
+{
+    return N;
+}
+
+#pragma endregion
