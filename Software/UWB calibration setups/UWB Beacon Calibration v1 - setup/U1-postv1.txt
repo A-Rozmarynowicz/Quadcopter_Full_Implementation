@@ -1,0 +1,22 @@
+100 próbek na eksperyment
+
+od PLA do PLA (bez wybrzuszenia)
+
+v1 to odelgłość 1 (4.571m), v2 to 4m, itd
+
+p1 to pozycja czołem do czoła
+p2 to pozycja czołem do pleców
+p3 to pozycja czołem, drugi leży na płask, głową w kierunku drugiego
+dla każdej pozycji inne offsety (5cm, ...)
+
+U1:
+4.570,
+4.051,
+3.536,
+3.028,
+2.523,
+2.016,
+1.511,
+1.010,
+0.509,
+0.100,

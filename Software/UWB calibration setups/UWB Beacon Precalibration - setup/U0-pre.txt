@@ -1,0 +1,78 @@
+
+400 próbek na eksperyment.
+Dystanse mierzono od ścianki PLA do ścianki PLA (bez wybrzuszenia)
+---
+Temperatura anchorów początek: około 23 stopnie
+
+Temperatura taga początek: około 23 stopnie
+Temperatura taga koniec: około 26 stopni
+---
+Default antenna delay: 16350
+MODE_SHORTDATA_FAST_ACCURACY;
+channel 5
+smart power: false
+tx power: 0x26486A6A
+---
+
+EKSPERYMENT 1: ---------------------------------------------------------------------------------------------
+TAG: U0
+
+V1:
+Dystans: 4.557m
+U1:  5.8772m 
+U2:  5.6284m 
+U3:  5.8859m 
+
+V2:
+Dystans: 4.035m
+U1:  5.3800m
+U2:  5.2678m 
+U3:  5.4290m
+
+V3:
+Dystans: 3.519
+U1:  4.7754m
+U2:  4.6470m  
+U3:  4.7874m 
+
+V4:
+Dystans: 3.014m
+U1:  4.2707m
+U2:  4.1728m 
+U3:  4.3196m
+
+V5:
+Dystans: 2.508m
+U1:  3.7384m
+U2:  3.6280m 
+U3:  3.7577m
+
+V6:
+Dystans: 2.001m
+U1:  3.2144m
+U2:  3.1127m 
+U3:  3.2421m 
+
+V7:
+Dystans: 1.499m
+U1:  2.6885m
+U2:  2.5912m
+U3:  2.7094m 
+
+V8:
+Dystans: 1.000m
+U1:  2.1896m 
+U2:  2.0898m 
+U3:  2.1966m 
+
+V9:
+Dystans: 0.497m
+U1:  1.6564m 
+U2:  1.5386m
+U3:  1.6745m 
+
+V10:
+Dystans: 0.100m
+U1:  1.2127m 
+U2:  1.1197m
+U3:  1.2302m 

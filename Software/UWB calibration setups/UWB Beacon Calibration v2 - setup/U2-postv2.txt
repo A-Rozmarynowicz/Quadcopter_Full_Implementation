@@ -1,0 +1,25 @@
+WERSJA 2 - POPRAWIONA KALIBRACJA
+
+100 próbek na eksperyment
+
+od PLA do PLA (bez wybrzuszenia)
+
+v1 to odelgłość 1 (4.571m), v2 to 4m, itd
+
+p1 to pozycja czołem do czoła
+p2 to pozycja czołem do pleców
+dla każdej pozycji inne offsety (5cm, ...)
+
+U2:
+4.572,
+4.053,
+3.538,
+3.029,
+2.523,
+2.019,
+1.517,
+1.014,
+0.511,
+0.100,
+
+

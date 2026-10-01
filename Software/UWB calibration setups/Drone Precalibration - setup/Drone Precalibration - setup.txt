@@ -1,0 +1,28 @@
+WERSJA 1 - KALIBRACJA DRON
+
+100 próbek na eksperyment
+
+
+ANTENNA_DELAY_VALUE = 16350
+
+
+od PLA do krańca rotor guards
+
+v1 to odelgłość 1 (4.571m), v2 to 4m, itd
+
+p1 to pozycja, jak UWB patrzy na nadajnik (złącza molex po przeciwnej stronie)
+p2 to pozycja, jak UWB jest z prawej (molex po lewe, złącza zasilania po przeciwnej stronie)
+dla każdej pozycji inne offsety
+
+DRON:
+4.571,
+4.051,
+3.535,
+3.030,
+2.521,
+2.018,
+1.517,
+1.016,
+0.509,
+0.100,
+
