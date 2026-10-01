@@ -6,6 +6,7 @@
 #define DRONE_ID 171
 #define DATA_SIZE 20
 #define RECEIVE_QUEUE_SIZE 33
+#define TRANSMIT_QUEUE_SIZE 33
 
 const uint8_t BROADCAST_RECEIVER_ID = 255;
 const uint8_t ACK_MESSAGE_COUNT = 5;
@@ -43,14 +44,13 @@ namespace ESP_MESSAGES
 
 };
 
-struct Receive_Packet
+struct Packet
 {
     uint8_t data[DATA_SIZE];
-    uint16_t length;
 };
 
-extern uint8_t transmit_buffer[DATA_SIZE];
-extern Queue<Receive_Packet, RECEIVE_QUEUE_SIZE> receive_queue;
+Queue<Packet, RECEIVE_QUEUE_SIZE> receive_queue;
+Queue<Packet, TRANSMIT_QUEUE_SIZE> transmit_queue;
 
 void initialize_communication();
 

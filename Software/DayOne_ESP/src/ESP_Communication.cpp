@@ -1,5 +1,6 @@
 #include "ESP_Communication.hpp"
 
+
 void initialize_communication(){
   WiFi.mode(WIFI_STA);
   WiFi.disconnect();
@@ -13,27 +14,37 @@ void initialize_communication(){
   {
     _communication_error(Communication_Errors::PROTOCOL_INIT_FAIL);
   }
-  transmit_buffer[Data_Setup::TRANSMITTER_ID] = DRONE_ID;
+//   transmit_buffer[Data_Setup::TRANSMITTER_ID] = DRONE_ID; <-------------------
 };
 
 
 #pragma region ESP_NOW
 void _send_esp()
 {
-  uint8_t broadcastAddress[] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
-  esp_now_peer_info_t peerInfo = {};
-  memcpy(&peerInfo.peer_addr, broadcastAddress, 6);
-  if (!esp_now_is_peer_exist(broadcastAddress))
-  {
-    esp_now_add_peer(&peerInfo);
-  }
+    if (transmit_queue.empty())
+    {
+        return;
+    }
+    uint8_t broadcastAddress[] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
+    esp_now_peer_info_t peerInfo = {};
+    memcpy(&peerInfo.peer_addr, broadcastAddress, 6);
+    if (!esp_now_is_peer_exist(broadcastAddress))
+    {
+        esp_now_add_peer(&peerInfo);
+    }
 
-  esp_err_t result = esp_now_send(broadcastAddress, transmit_buffer, DATA_SIZE);
-  if (result == ESP_OK) {}
-  else
-  {
-    _communication_error(Communication_Errors::MESSAGE_SEND_FAIL);
-  }
+    Packet transmit_packet;
+    if (!transmit_queue.pop(transmit_packet))
+    {
+        return;
+    }
+
+    esp_err_t result = esp_now_send(broadcastAddress, transmit_packet.data, DATA_SIZE);
+    if (result == ESP_OK) {}
+    else
+    {
+        _communication_error(Communication_Errors::MESSAGE_SEND_FAIL);
+    }
 };
 
 
@@ -44,8 +55,7 @@ void _receive_callback(const uint8_t* macAddr, const uint8_t* data, int dataLen)
   {
     return;
   }
-   Receive_Packet packet;
-   packet.length = dataLen;
+   Packet packet;
 
    std::copy(data, data + dataLen, packet.data);
 
