@@ -102,9 +102,15 @@ void _new_range()
     float range = DW1000Ranging.getDistantDevice()->getRange();
     range = Get_Biased_Range_Value(range);
     float rx_power = DW1000Ranging.getDistantDevice()->getRXPower();
-    State_UWB_New_Range(device, range, rx_power);
-}
+    int8_t lgh_index = Get_LGH_From_Short_Address(device);
 
+    UWB_Measurement uwb_measurement;
+    uwb_measurement.lgh_index = lgh_index;
+    uwb_measurement.range = range;
+
+    uwb_measurement_queue.push(uwb_measurement);
+    // State_UWB_New_Range(device, range, rx_power);
+}
 
 void _new_device(DW1000Device* device) {}
 

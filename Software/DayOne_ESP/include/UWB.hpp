@@ -3,12 +3,14 @@
 #include "Configuration.hpp"
 #include <SPI.h>
 #include "DW1000Ranging.h"
+#include "Buffers.hpp"
 
 #define UWB_ADDRESS_LENGTH 8
+#define UWB_MEASUREMENT_QUEUE_SIZE 256
 
 const uint16_t BASE_ANTENNA_DELAY_VALUE = 16350;
 const float error_compensation_parameter_a = 0.9539;
-const float error_compensation_parameter_b = -0.5259; // Dron
+const float error_compensation_parameter_b = -0.5259;
 
 const int8_t PIN_RST = 22;  // reset pin
 const int8_t PIN_IRQ = 17;   // irq pin
@@ -24,6 +26,14 @@ extern const uint8_t drone_address[UWB_ADDRESS_LENGTH];
 extern bool uwb_enable;
 const byte CHANNEL = DW1000.CHANNEL_5;
 extern const byte* UWB_TRANSMIT_MODE;
+
+struct UWB_Measurement
+{
+    float range;
+    uint8_t lgh_index;
+};
+
+Queue<UWB_Measurement, UWB_MEASUREMENT_QUEUE_SIZE> uwb_measurement_queue;
 
 void Initialize_UWB();
 void Update_UWB();
