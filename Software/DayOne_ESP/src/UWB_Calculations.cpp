@@ -14,6 +14,14 @@ bool Calculate_Position(Queue<UWB_Measurement, UWB_MEASUREMENT_QUEUE_SIZE> (&uwb
     }
 
     float range_accumulator[NUMBER_OF_LIGHTHOUSES] = {0.0f};
+    _get_average_ranges(uwb_queues, range_accumulator);
+
+    return true;
+}
+
+void _get_average_ranges(Queue<UWB_Measurement, UWB_MEASUREMENT_QUEUE_SIZE> (&uwb_queues)[NUMBER_OF_LIGHTHOUSES],
+    float* range_accumulator)
+{
     uint8_t count_accumulator[NUMBER_OF_LIGHTHOUSES] = {0};
     for (uint8_t i=0; i<NUMBER_OF_LIGHTHOUSES; i++)
     {
@@ -32,5 +40,4 @@ bool Calculate_Position(Queue<UWB_Measurement, UWB_MEASUREMENT_QUEUE_SIZE> (&uwb
         range_accumulator[i] = range_accumulator[i] / count_accumulator[i];
     };
 
-    return true;
 }

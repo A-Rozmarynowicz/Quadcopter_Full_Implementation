@@ -15,4 +15,7 @@ struct Position
 extern Position current_calculated_position;
 
 
-bool Calculate_Position(Queue<UWB_Measurement, UWB_MEASUREMENT_QUEUE_SIZE>(&queues)[NUMBER_OF_LIGHTHOUSES]);
+bool Calculate_Position(Queue<UWB_Measurement, UWB_MEASUREMENT_QUEUE_SIZE>(&uwb_queues)[NUMBER_OF_LIGHTHOUSES]);
+
+void _get_average_ranges(Queue<UWB_Measurement, UWB_MEASUREMENT_QUEUE_SIZE>(&uwb_queues)[NUMBER_OF_LIGHTHOUSES],
+    float* range_accumulator);
