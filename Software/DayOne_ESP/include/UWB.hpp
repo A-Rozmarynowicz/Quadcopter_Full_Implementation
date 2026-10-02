@@ -57,6 +57,7 @@ uint16_t Get_Short_Address_From_Long(const uint8_t* address);
 int8_t Get_LGH_From_Short_Address(const uint16_t short_address);
 int8_t Get_LGH_From_Address(const uint8_t* address);
 bool Are_Addresses_Equal(uint8_t* first, uint8_t* second);
+void Update_LGH_Position(Position &position, uint8_t index);
 
 float Get_Biased_Range_Value(float range);
 

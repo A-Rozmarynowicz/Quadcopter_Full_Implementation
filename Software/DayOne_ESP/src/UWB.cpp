@@ -85,6 +85,12 @@ void _reset_DW1000()
 
 #pragma region Calculations
 
+void Update_LGH_Position(Position &position, uint8_t index)
+{
+    lighthouse_positions_by_indices[index] = position;
+}
+
+
 float Get_Biased_Range_Value(float range)
 {
     float result = range*ERROR_COMPENSATION_PARAMETER_A + ERROR_COMPENSATION_PARAMETER_B;
@@ -220,4 +226,3 @@ void _format_drone_address_to_string(char address_str[24])
     );
 }
 #pragma endregion
-
