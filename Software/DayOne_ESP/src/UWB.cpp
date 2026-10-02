@@ -86,7 +86,16 @@ void _reset_DW1000()
 
 float Get_Biased_Range_Value(float range)
 {
-    return range*error_compensation_parameter_a + error_compensation_parameter_b;
+    float result = range*ERROR_COMPENSATION_PARAMETER_A + ERROR_COMPENSATION_PARAMETER_B;
+    if (result < MINIMUM_RANGE)
+    {
+        return MINIMUM_RANGE;
+    }
+    else if (result > MAXIMUM_RANGE)
+    {
+        return MAXIMUM_RANGE;
+    }
+    return result;
 }
 
 #pragma endregion

@@ -9,8 +9,10 @@
 #define UWB_MEASUREMENT_STACK_SIZE 256
 
 const uint16_t BASE_ANTENNA_DELAY_VALUE = 16350;
-const float error_compensation_parameter_a = 0.9539;
-const float error_compensation_parameter_b = -0.5259;
+const float ERROR_COMPENSATION_PARAMETER_A = 0.9539;
+const float ERROR_COMPENSATION_PARAMETER_B = -0.5259;
+const float MINIMUM_RANGE = 0.05;
+const float MAXIMUM_RANGE = 100.0;
 
 const int8_t PIN_RST = 22;  // reset pin
 const int8_t PIN_IRQ = 17;   // irq pin
@@ -29,8 +31,8 @@ extern const byte* UWB_TRANSMIT_MODE;
 
 struct UWB_Measurement
 {
-    float range;
-    uint8_t lgh_index;
+    float range = 0.0f;
+    uint8_t lgh_index = 0;
 };
 
 extern Stack<UWB_Measurement, UWB_MEASUREMENT_STACK_SIZE> uwb_measurement_stacks[NUMBER_OF_LIGHTHOUSES];
