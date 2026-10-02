@@ -9,7 +9,28 @@ float ALGEBRA_4LGHS::B_vector[NUMBER_OF_LIGHTHOUSES-1] = {0};
 float ALGEBRA_4LGHS::ATB_vector[3] = {0};
 
 
-void _build_a_matrix(Position (&lghs_positions)[3]){
+bool ALGEBRA_4LGHS::Build_Constant_Matrices(Position (&lghs_positions)[3])
+{
+    ALGEBRA_4LGHS::_build_a_matrix(lghs_positions);
+    ALGEBRA_4LGHS::_build_at_matrix();
+    ALGEBRA_4LGHS::_build_ata_matrix();
+    if (ALGEBRA_4LGHS::_build_ata_inv_matrix() == 1){
+        return false;
+    }
+    ALGEBRA_4LGHS::_build_b_vector_constants(lghs_positions);
+    return true;
+}
+
+void ALGEBRA_4LGHS::Estimate_Position(UWB_Measurement (&distances_to_lghs)[4], Position &position)
+{
+    _build_b_vector(distances_to_lghs);
+    _calculate_atb_vector();
+    _calculate_solution(position);
+}
+
+#pragma region Calculations
+
+void ALGEBRA_4LGHS::_build_a_matrix(Position (&lghs_positions)[3]){
     float x1 = lghs_positions[0].x, y1 = lghs_positions[0].y, z1 = lghs_positions[0].z;
     for (uint8_t row=0; row<NUMBER_OF_LIGHTHOUSES-1; row++){
         float xj = lghs_positions[row+1].x, yj = lghs_positions[row+1].y, zj = lghs_positions[row+1].z;
@@ -20,7 +41,7 @@ void _build_a_matrix(Position (&lghs_positions)[3]){
 }
 
 
-void _build_at_matrix(){
+void ALGEBRA_4LGHS::_build_at_matrix(){
     for (uint8_t row=0; row<NUMBER_OF_LIGHTHOUSES-1; row++){
         for (uint8_t column=0; column<3; column++){
             ALGEBRA_4LGHS::AT_matrix[column][row] = ALGEBRA_4LGHS::A_matrix[row][column];
@@ -29,7 +50,7 @@ void _build_at_matrix(){
 }
 
 
-void _build_ata_matrix(){
+void ALGEBRA_4LGHS::_build_ata_matrix(){
     for (uint8_t i = 0; i < 3; i++) {
         for (uint8_t j = 0; j < 3; j++) {
             ALGEBRA_4LGHS::ATA_matrix[i][j] = 0.0;
@@ -42,8 +63,7 @@ void _build_ata_matrix(){
 }
 
 
-uint8_t _build_ata_inv_matrix() {
-    // Nie ma sensu tego rozbijać na oddzielne funkcje.
+uint8_t ALGEBRA_4LGHS::_build_ata_inv_matrix() {
     uint8_t i, j, k;
     float ratio;
 
@@ -87,7 +107,7 @@ uint8_t _build_ata_inv_matrix() {
 }
 
 
-void _build_b_vector_constants(Position (&lghs_positions)[3]){
+void ALGEBRA_4LGHS::_build_b_vector_constants(Position (&lghs_positions)[3]){
     for (uint8_t j=0; j<NUMBER_OF_LIGHTHOUSES; j++){
         ALGEBRA_4LGHS::B_vector_constants[j] = -(lghs_positions[j].x)*(lghs_positions[j].x)
                             - (lghs_positions[j].y)*(lghs_positions[j].y) - (lghs_positions[j].z)*(lghs_positions[j].z);
@@ -95,7 +115,7 @@ void _build_b_vector_constants(Position (&lghs_positions)[3]){
 }
 
 
-void _build_b_vector(UWB_Measurement (&distances_to_lghs)[4]){
+void ALGEBRA_4LGHS::_build_b_vector(UWB_Measurement (&distances_to_lghs)[4]){
     for (uint8_t j=0; j<NUMBER_OF_LIGHTHOUSES-1; j++){
         ALGEBRA_4LGHS::B_vector[j] = (distances_to_lghs[j+1].range)*(distances_to_lghs[j+1].range)
          - (distances_to_lghs[0].range)*(distances_to_lghs[0].range)
@@ -105,7 +125,7 @@ void _build_b_vector(UWB_Measurement (&distances_to_lghs)[4]){
 }
 
 
-void _calculate_atb_vector(){
+void ALGEBRA_4LGHS::_calculate_atb_vector(){
     uint8_t i, j;
     for (i = 0; i < 3; i++) {
         ALGEBRA_4LGHS::ATB_vector[i] = 0.0;
@@ -116,7 +136,7 @@ void _calculate_atb_vector(){
 }
 
 
-void _calculate_solution(Position &position){
+void ALGEBRA_4LGHS::_calculate_solution(Position &position){
     float solution_vector[3];
     uint8_t i, j;
     for (i = 0; i < 3; i++) {
@@ -129,3 +149,5 @@ void _calculate_solution(Position &position){
     position.y = solution_vector[1];
     position.z = solution_vector[2];
 }
+
+#pragma endregion
