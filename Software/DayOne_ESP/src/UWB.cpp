@@ -16,6 +16,7 @@ const uint8_t uwb_addresses_from_LGH[NUMBER_OF_LIGHTHOUSES][UWB_ADDRESS_LENGTH] 
 extern const uint8_t drone_address[UWB_ADDRESS_LENGTH] = {0x12, 0x34, 0x56, 0x78, 0x9A, 0xBC, 0xDE, 0xF1};
 
 Stack<UWB_Measurement, UWB_MEASUREMENT_STACK_SIZE> uwb_measurement_stacks[NUMBER_OF_LIGHTHOUSES];
+Position lighthouse_positions_by_indices[NUMBER_OF_LIGHTHOUSES];
 
 void Initialize_UWB()
 {
@@ -117,12 +118,18 @@ void _new_range()
         return; // @todo: error
     }
 
+    _add_range(range, lgh_index);
+    // State_UWB_New_Range(device, range, rx_power);
+}
+
+
+void _add_range(float range, uint8_t lgh_index)
+{
     UWB_Measurement uwb_measurement;
     uwb_measurement.lgh_index = lgh_index;
     uwb_measurement.range = range;
 
     uwb_measurement_stacks[lgh_index].push(uwb_measurement);
-    // State_UWB_New_Range(device, range, rx_power);
 }
 
 void _new_device(DW1000Device* device) {}
@@ -213,3 +220,4 @@ void _format_drone_address_to_string(char address_str[24])
     );
 }
 #pragma endregion
+

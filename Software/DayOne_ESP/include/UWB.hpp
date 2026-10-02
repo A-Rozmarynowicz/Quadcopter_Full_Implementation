@@ -25,6 +25,8 @@ const int8_t PIN_SCK = 18;
 extern const uint8_t uwb_addresses_from_LGH[NUMBER_OF_LIGHTHOUSES][UWB_ADDRESS_LENGTH];
 extern const uint8_t drone_address[UWB_ADDRESS_LENGTH];
 
+extern Position lighthouse_positions_by_indices[NUMBER_OF_LIGHTHOUSES];
+
 extern bool uwb_enable;
 const byte CHANNEL = DW1000.CHANNEL_5;
 extern const byte* UWB_TRANSMIT_MODE;
@@ -34,6 +36,12 @@ struct UWB_Measurement
     float range = 0.0f;
     uint8_t lgh_index = 0;
 };
+
+struct Position
+{
+    float x, y, z;
+};
+
 
 extern Stack<UWB_Measurement, UWB_MEASUREMENT_STACK_SIZE> uwb_measurement_stacks[NUMBER_OF_LIGHTHOUSES];
 
@@ -53,6 +61,7 @@ bool Are_Addresses_Equal(uint8_t* first, uint8_t* second);
 float Get_Biased_Range_Value(float range);
 
 void _new_range();
+void _add_range(float range, uint8_t lgh_index);
 void _new_blink(DW1000Device* device);
 void _new_device(DW1000Device* device);
 void _inactive_device(DW1000Device* device);

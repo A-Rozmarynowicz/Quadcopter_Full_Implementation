@@ -5,9 +5,10 @@ Position current_calculated_position;
 uint8_t Calculate_Position(Queue<UWB_Measurement, UWB_MEASUREMENT_STACK_SIZE> (&uwb_stacks)[NUMBER_OF_LIGHTHOUSES])
 {
     uint8_t present_lighthouses = Get_Number_Of_Present_Lighthouses(uwb_stacks);
+    uint8_t missing_lghs_penalty = _get_penalty_from_missing_lighthouses(present_lighthouses);
     if (present_lighthouses < NUMBER_OF_LIGHTHOUSES - 1)
     {
-        return _get_penalty_from_missing_lighthouses(present_lighthouses);
+        return missing_lghs_penalty;
     }
 
     float range_accumulator[NUMBER_OF_LIGHTHOUSES] = {0.0f};
@@ -20,7 +21,14 @@ uint8_t Calculate_Position(Queue<UWB_Measurement, UWB_MEASUREMENT_STACK_SIZE> (&
         average_distances[i].lgh_index = i;
     }
 
-    return true;
+    Position estimated_position;
+    bool success = _estimate_position_from_average_ranges(average_distances, estimated_position);
+    if (success)
+    {
+        current_calculated_position = estimated_position;
+        return missing_lghs_penalty;
+    }
+    return 255;
 }
 
 uint8_t Get_Number_Of_Present_Lighthouses(Queue<UWB_Measurement, UWB_MEASUREMENT_STACK_SIZE>(&uwb_stacks)[NUMBER_OF_LIGHTHOUSES])
@@ -82,4 +90,23 @@ void _get_average_ranges(Queue<UWB_Measurement, UWB_MEASUREMENT_STACK_SIZE> (&uw
         range_accumulator[i] = range_accumulator[i] / count_accumulator[i];
     };
 
+}
+
+
+bool _estimate_position_from_average_ranges(UWB_Measurement (&measurements)[NUMBER_OF_LIGHTHOUSES], Position& position)
+{
+    position.x = 69;
+    position.y = 67;
+    position.z = 420;
+    return true;
+}
+
+bool _estimate_position_from_4_measurements(UWB_Measurement (&measurements)[NUMBER_OF_LIGHTHOUSES], Position& position)
+{
+    return true;
+}
+
+bool _estimate_position_from_3_measurements(UWB_Measurement (&measurements)[NUMBER_OF_LIGHTHOUSES], Position& position)
+{
+    return false;
 }
