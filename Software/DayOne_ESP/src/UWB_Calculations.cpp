@@ -1,6 +1,7 @@
 #include "UWB_Calculations.hpp"
 
 Position current_calculated_position;
+float last_averaged_ranges[NUMBER_OF_LIGHTHOUSES] = {0.0f};
 
 uint8_t Calculate_Position(Stack<UWB_Measurement, UWB_MEASUREMENT_STACK_SIZE> (&uwb_stacks)[NUMBER_OF_LIGHTHOUSES])
 {
@@ -19,11 +20,12 @@ uint8_t Calculate_Position(Stack<UWB_Measurement, UWB_MEASUREMENT_STACK_SIZE> (&
     {
         average_distances[i].range = range_accumulator[i];
         average_distances[i].lgh_index = i;
+        last_averaged_ranges[i] = range_accumulator[i];
         Serial.printf("Range to %d = %0.2f \n", i, range_accumulator[i]);
     }
 
     Position estimated_position;
-    bool success = _estimate_position_from_average_ranges(average_distances, estimated_position);
+    bool success = _estimate_position_from_average_ranges(average_distances, estimated_position, present_lighthouses);
     if (success)
     {
         current_calculated_position = estimated_position;
@@ -85,7 +87,7 @@ void _get_average_ranges(Stack<UWB_Measurement, UWB_MEASUREMENT_STACK_SIZE> (&uw
         uwb_stacks[i].flush(); // @todo: for sure?
         if (count_accumulator[i] == 0)
         {
-            range_accumulator[i] = 0.0f;
+            range_accumulator[i] = last_averaged_ranges[i];
             continue;
         }
         range_accumulator[i] = range_accumulator[i] / count_accumulator[i];
@@ -94,13 +96,14 @@ void _get_average_ranges(Stack<UWB_Measurement, UWB_MEASUREMENT_STACK_SIZE> (&uw
 }
 
 
-bool _estimate_position_from_average_ranges(UWB_Measurement (&measurements)[NUMBER_OF_LIGHTHOUSES], Position& position)
+bool _estimate_position_from_average_ranges(UWB_Measurement (&measurements)[NUMBER_OF_LIGHTHOUSES], Position& position, uint8_t present_lighthouses)
 {
-    return true;
+    return _estimate_position_from_4_measurements(measurements, position);
 }
 
 bool _estimate_position_from_4_measurements(UWB_Measurement (&measurements)[NUMBER_OF_LIGHTHOUSES], Position& position)
 {
+    ALGEBRA_4LGHS::Estimate_Position(measurements, position);
     return true;
 }
 
