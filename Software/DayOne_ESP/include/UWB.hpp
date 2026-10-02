@@ -6,7 +6,7 @@
 #include "Buffers.hpp"
 
 #define UWB_ADDRESS_LENGTH 8
-#define UWB_MEASUREMENT_STACK_SIZE 256
+#define UWB_MEASUREMENT_STACK_SIZE 128
 
 const uint16_t BASE_ANTENNA_DELAY_VALUE = 16350;
 const float ERROR_COMPENSATION_PARAMETER_A = 0.9539;
@@ -25,7 +25,6 @@ const int8_t PIN_SCK = 18;
 extern const uint8_t uwb_addresses_from_LGH[NUMBER_OF_LIGHTHOUSES][UWB_ADDRESS_LENGTH];
 extern const uint8_t drone_address[UWB_ADDRESS_LENGTH];
 
-extern Position lighthouse_positions_by_indices[NUMBER_OF_LIGHTHOUSES];
 
 extern bool uwb_enable;
 const byte CHANNEL = DW1000.CHANNEL_5;
@@ -42,6 +41,7 @@ struct Position
     float x, y, z;
 };
 
+extern Position lighthouse_positions_by_indices[NUMBER_OF_LIGHTHOUSES];
 
 extern Stack<UWB_Measurement, UWB_MEASUREMENT_STACK_SIZE> uwb_measurement_stacks[NUMBER_OF_LIGHTHOUSES];
 
