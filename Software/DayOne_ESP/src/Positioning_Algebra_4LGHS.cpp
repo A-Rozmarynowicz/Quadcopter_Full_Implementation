@@ -1,8 +1,15 @@
 #include "Positioning_Algebra_4LGHS.hpp"
 
-// using namespace ALGEBRA_4LGHS;
+float ALGEBRA_4LGHS::B_vector_constants[NUMBER_OF_LIGHTHOUSES] = {0};
+float ALGEBRA_4LGHS::A_matrix[NUMBER_OF_LIGHTHOUSES-1][3] = {0};
+float ALGEBRA_4LGHS::AT_matrix[3][NUMBER_OF_LIGHTHOUSES-1] = {0};
+float ALGEBRA_4LGHS::ATA_matrix[3][3] = {0};
+float ALGEBRA_4LGHS::ATA_inv_matrix[3][3] = {0};
+float ALGEBRA_4LGHS::B_vector[NUMBER_OF_LIGHTHOUSES-1] = {0};
+float ALGEBRA_4LGHS::ATB_vector[3] = {0};
 
-void _build_a_matrix(){
+
+void _build_a_matrix(Position (&lghs_positions)[3]){
     float x1 = lghs_positions[0].x, y1 = lghs_positions[0].y, z1 = lghs_positions[0].z;
     for (uint8_t row=0; row<NUMBER_OF_LIGHTHOUSES-1; row++){
         float xj = lghs_positions[row+1].x, yj = lghs_positions[row+1].y, zj = lghs_positions[row+1].z;
@@ -80,7 +87,7 @@ uint8_t _build_ata_inv_matrix() {
 }
 
 
-void _build_b_vector_constants(){
+void _build_b_vector_constants(Position (&lghs_positions)[3]){
     for (uint8_t j=0; j<NUMBER_OF_LIGHTHOUSES; j++){
         ALGEBRA_4LGHS::B_vector_constants[j] = -(lghs_positions[j].x)*(lghs_positions[j].x)
                             - (lghs_positions[j].y)*(lghs_positions[j].y) - (lghs_positions[j].z)*(lghs_positions[j].z);
@@ -88,10 +95,10 @@ void _build_b_vector_constants(){
 }
 
 
-void _build_b_vector(){
+void _build_b_vector(UWB_Measurement (&distances_to_lghs)[4]){
     for (uint8_t j=0; j<NUMBER_OF_LIGHTHOUSES-1; j++){
-        ALGEBRA_4LGHS::B_vector[j] = (distances_to_lghs[j+1])*(distances_to_lghs[j+1])
-         - (distances_to_lghs[0])*(distances_to_lghs[0])
+        ALGEBRA_4LGHS::B_vector[j] = (distances_to_lghs[j+1].range)*(distances_to_lghs[j+1].range)
+         - (distances_to_lghs[0].range)*(distances_to_lghs[0].range)
          + ALGEBRA_4LGHS::B_vector_constants[j+1] - ALGEBRA_4LGHS::B_vector_constants[0];
 
         }
@@ -109,7 +116,8 @@ void _calculate_atb_vector(){
 }
 
 
-void _calculate_solution(){
+void _calculate_solution(Position &position){
+    float solution_vector[3];
     uint8_t i, j;
     for (i = 0; i < 3; i++) {
         solution_vector[i] = 0.0;
@@ -117,7 +125,7 @@ void _calculate_solution(){
             solution_vector[i] += ALGEBRA_4LGHS::ATA_inv_matrix[i][j] * ALGEBRA_4LGHS::ATB_vector[j];
         }
     }
-    current_position.x = solution_vector[0];
-    current_position.y = solution_vector[1];
-    current_position.z = solution_vector[2];
+    position.x = solution_vector[0];
+    position.y = solution_vector[1];
+    position.z = solution_vector[2];
 }
