@@ -49,4 +49,27 @@ private:
     Queue<T2, N> queue_2;
 };
 
+
+template <typename T, std::size_t N>
+class Stack
+{
+public:
+    bool push(const T& value);
+    bool pop(T& value);
+
+    T& operator[](std::size_t i);
+
+    bool empty() const;
+    bool full() const;
+
+    void flush();
+
+    std::size_t size() const;
+    constexpr std::size_t capacity() const;
+
+private:
+    T buffer[N];
+    std::size_t count = 0;
+};
+
 #include "Buffers.tpp"

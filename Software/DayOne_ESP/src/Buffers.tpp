@@ -155,3 +155,72 @@ constexpr std::size_t Double_Queue<T1, T2, N>::capacity() const
 }
 
 #pragma endregion
+
+
+#pragma region Stack
+
+template <typename T, std::size_t N>
+bool Stack<T, N>::push(const T& value)
+{
+    if (full())
+    {
+        return false;
+    }
+
+    buffer[count] = value;
+    count++;
+
+    return true;
+}
+
+template <typename T, std::size_t N>
+bool Stack<T, N>::pop(T& value)
+{
+    if (empty())
+    {
+        return false;
+    }
+
+    count--;
+    value = buffer[count];
+
+    return true;
+}
+
+template <typename T, std::size_t N>
+T& Stack<T, N>::operator[](std::size_t i)
+{
+    return buffer[i];
+}
+
+template <typename T, std::size_t N>
+bool Stack<T, N>::empty() const
+{
+    return count == 0;
+}
+
+template <typename T, std::size_t N>
+bool Stack<T, N>::full() const
+{
+    return count == N;
+}
+
+template <typename T, std::size_t N>
+void Stack<T, N>::flush()
+{
+    count = 0;
+}
+
+template <typename T, std::size_t N>
+std::size_t Stack<T, N>::size() const
+{
+    return count;
+}
+
+template <typename T, std::size_t N>
+constexpr std::size_t Stack<T, N>::capacity() const
+{
+    return N;
+}
+
+#pragma endregion
