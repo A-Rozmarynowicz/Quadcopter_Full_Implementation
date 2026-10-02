@@ -6,7 +6,7 @@
 #include "Buffers.hpp"
 
 #define UWB_ADDRESS_LENGTH 8
-#define UWB_MEASUREMENT_QUEUE_SIZE 256
+#define UWB_MEASUREMENT_STACK_SIZE 256
 
 const uint16_t BASE_ANTENNA_DELAY_VALUE = 16350;
 const float error_compensation_parameter_a = 0.9539;
@@ -33,7 +33,7 @@ struct UWB_Measurement
     uint8_t lgh_index;
 };
 
-extern Queue<UWB_Measurement, UWB_MEASUREMENT_QUEUE_SIZE> uwb_measurement_queues[NUMBER_OF_LIGHTHOUSES];
+extern Stack<UWB_Measurement, UWB_MEASUREMENT_STACK_SIZE> uwb_measurement_stacks[NUMBER_OF_LIGHTHOUSES];
 
 void Initialize_UWB();
 void Update_UWB();

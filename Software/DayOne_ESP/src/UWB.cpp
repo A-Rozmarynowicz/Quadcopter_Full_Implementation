@@ -15,7 +15,7 @@ const uint8_t uwb_addresses_from_LGH[NUMBER_OF_LIGHTHOUSES][UWB_ADDRESS_LENGTH] 
 
 extern const uint8_t drone_address[UWB_ADDRESS_LENGTH] = {0x12, 0x34, 0x56, 0x78, 0x9A, 0xBC, 0xDE, 0xF1};
 
-Queue<UWB_Measurement, UWB_MEASUREMENT_QUEUE_SIZE> uwb_measurement_queues[NUMBER_OF_LIGHTHOUSES];
+Stack<UWB_Measurement, UWB_MEASUREMENT_STACK_SIZE> uwb_measurement_stacks[NUMBER_OF_LIGHTHOUSES];
 
 void Initialize_UWB()
 {
@@ -62,7 +62,6 @@ void Restart_UWB_As_Tag()
     DW1000.commitConfiguration();
 }
 
-
 void Disable_UWB()
 {
     uwb_enable = false;
@@ -72,7 +71,6 @@ void Enable_UWB()
 {
     uwb_enable = true;
 }
-
 
 void _reset_DW1000()
 {
@@ -114,7 +112,7 @@ void _new_range()
     uwb_measurement.lgh_index = lgh_index;
     uwb_measurement.range = range;
 
-    uwb_measurement_queues[lgh_index].push(uwb_measurement);
+    uwb_measurement_stacks[lgh_index].push(uwb_measurement);
     // State_UWB_New_Range(device, range, rx_power);
 }
 
