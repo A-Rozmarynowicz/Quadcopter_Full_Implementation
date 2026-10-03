@@ -3,25 +3,24 @@
 #include "Configuration.hpp"
 #include "Buffers.hpp"
 
-#define DRONE_ID 171
-#define DATA_SIZE 20
-#define RECEIVE_QUEUE_SIZE 33
-#define TRANSMIT_QUEUE_SIZE 33
+#define DRONE_ESP_ID 171
+#define ESP_DATA_SIZE 20
+#define ESP_RECEIVE_QUEUE_SIZE 33
+#define ESP_TRANSMIT_QUEUE_SIZE 33
 
 const uint8_t BROADCAST_RECEIVER_ID = 255;
 const uint8_t ACK_MESSAGE_COUNT = 5;
 
-enum Data_Commands
+enum ESP_Data_Commands
 {
   READY_FOR_OBSERVER = 24,
   OBSERVER_QUERY_POSITION,
   OBSERVER_RESPONSE_POSITION,
   OBSERVER_WAKEUP_RECKON,
   OBSERVER_READY,
-
 };
 
-enum Data_Setup
+enum ESP_Data_Setup
 {
   RECEIVER_ID = 0,
   TRANSMITTER_ID = 1,
@@ -33,7 +32,7 @@ enum Data_Setup
   QUAD_3 = 16,
 };
 
-enum Communication_Errors
+enum ESP_Communication_Errors
 {
   PROTOCOL_INIT_FAIL,
   MESSAGE_SEND_FAIL,
@@ -48,17 +47,17 @@ namespace ESP_MESSAGES
   bool Send_Ready(uint8_t receiver);
 };
 
-struct Packet
+struct ESP_Packet
 {
-    uint8_t data[DATA_SIZE];
+    uint8_t data[ESP_DATA_SIZE];
 };
 
-extern Queue<Packet, RECEIVE_QUEUE_SIZE> receive_queue;
-extern Queue<Packet, TRANSMIT_QUEUE_SIZE> transmit_queue;
+extern Queue<ESP_Packet, ESP_RECEIVE_QUEUE_SIZE> esp_receive_queue;
+extern Queue<ESP_Packet, ESP_TRANSMIT_QUEUE_SIZE> esp_transmit_queue;
 
 void initialize_esp_communication();
 
 void _send_esp();
 void _receive_callback(const uint8_t* macAddr, const uint8_t* data, int dataLen);
 void _sent_callback(const uint8_t *macAddr, esp_now_send_status_t status);
-void _communication_error(Communication_Errors error);
+void _communication_error(ESP_Communication_Errors error);

@@ -1,7 +1,7 @@
 #include "ESP_Communication.hpp"
 
-Queue<Packet, RECEIVE_QUEUE_SIZE> receive_queue;
-Queue<Packet, TRANSMIT_QUEUE_SIZE> transmit_queue;
+Queue<ESP_Packet, ESP_RECEIVE_QUEUE_SIZE> esp_receive_queue;
+Queue<ESP_Packet, ESP_TRANSMIT_QUEUE_SIZE> esp_transmit_queue;
 
 
 void initialize_esp_communication(){
@@ -15,7 +15,7 @@ void initialize_esp_communication(){
   }
   else
   {
-    _communication_error(Communication_Errors::PROTOCOL_INIT_FAIL);
+    _communication_error(ESP_Communication_Errors::PROTOCOL_INIT_FAIL);
   }
 //   transmit_buffer[Data_Setup::TRANSMITTER_ID] = DRONE_ID; <-------------------
 };
@@ -25,35 +25,35 @@ void initialize_esp_communication(){
 
 bool ESP_MESSAGES::Send_Query_Position(uint8_t receiver)
 {
-  Packet packet{};
+  ESP_Packet packet{};
 
-  packet.data[Data_Setup::RECEIVER_ID] = receiver;
-  packet.data[Data_Setup::TRANSMITTER_ID] = DRONE_ID;
-  packet.data[Data_Setup::COMMAND] = Data_Commands::OBSERVER_QUERY_POSITION;
+  packet.data[ESP_Data_Setup::RECEIVER_ID] = receiver;
+  packet.data[ESP_Data_Setup::TRANSMITTER_ID] = DRONE_ESP_ID;
+  packet.data[ESP_Data_Setup::COMMAND] = ESP_Data_Commands::OBSERVER_QUERY_POSITION;
 
-  return transmit_queue.push(packet);
+  return esp_transmit_queue.push(packet);
 }
 
 bool ESP_MESSAGES::Send_Wakeup_Reckon(uint8_t receiver)
 {
-  Packet packet{};
+  ESP_Packet packet{};
 
-  packet.data[Data_Setup::RECEIVER_ID] = receiver;
-  packet.data[Data_Setup::TRANSMITTER_ID] = DRONE_ID;
-  packet.data[Data_Setup::COMMAND] = Data_Commands::OBSERVER_WAKEUP_RECKON;
+  packet.data[ESP_Data_Setup::RECEIVER_ID] = receiver;
+  packet.data[ESP_Data_Setup::TRANSMITTER_ID] = DRONE_ESP_ID;
+  packet.data[ESP_Data_Setup::COMMAND] = ESP_Data_Commands::OBSERVER_WAKEUP_RECKON;
 
-  return transmit_queue.push(packet);
+  return esp_transmit_queue.push(packet);
 }
 
 bool ESP_MESSAGES::Send_Ready(uint8_t receiver)
 {
-  Packet packet{};
+  ESP_Packet packet{};
 
-  packet.data[Data_Setup::RECEIVER_ID] = receiver;
-  packet.data[Data_Setup::TRANSMITTER_ID] = DRONE_ID;
-  packet.data[Data_Setup::COMMAND] = Data_Commands::OBSERVER_READY;
+  packet.data[ESP_Data_Setup::RECEIVER_ID] = receiver;
+  packet.data[ESP_Data_Setup::TRANSMITTER_ID] = DRONE_ESP_ID;
+  packet.data[ESP_Data_Setup::COMMAND] = ESP_Data_Commands::OBSERVER_READY;
 
-  return transmit_queue.push(packet);
+  return esp_transmit_queue.push(packet);
 }
 
 #pragma endregion
@@ -61,7 +61,7 @@ bool ESP_MESSAGES::Send_Ready(uint8_t receiver)
 #pragma region ESP_NOW
 void _send_esp()
 {
-  if (transmit_queue.empty())
+  if (esp_transmit_queue.empty())
   {
       return;
   }
@@ -73,17 +73,17 @@ void _send_esp()
       esp_now_add_peer(&peerInfo);
   }
 
-  Packet transmit_packet;
-  if (!transmit_queue.pop(transmit_packet))
+  ESP_Packet transmit_packet;
+  if (!esp_transmit_queue.pop(transmit_packet))
   {
       return;
   }
 
-  esp_err_t result = esp_now_send(broadcastAddress, transmit_packet.data, DATA_SIZE);
+  esp_err_t result = esp_now_send(broadcastAddress, transmit_packet.data, ESP_DATA_SIZE);
   if (result == ESP_OK) {}
   else
   {
-      _communication_error(Communication_Errors::MESSAGE_SEND_FAIL);
+      _communication_error(ESP_Communication_Errors::MESSAGE_SEND_FAIL);
   }
 };
 
@@ -91,15 +91,15 @@ void _send_esp()
 void _receive_callback(const uint8_t* macAddr, const uint8_t* data, int dataLen)
 {
   uint8_t receiver_id = data[RECEIVER_ID];
-  if ((receiver_id != DRONE_ID) && (receiver_id != BROADCAST_RECEIVER_ID))
+  if ((receiver_id != DRONE_ESP_ID) && (receiver_id != BROADCAST_RECEIVER_ID))
   {
     return;
   }
-   Packet packet;
+   ESP_Packet packet;
 
    std::copy(data, data + dataLen, packet.data);
 
-   receive_queue.push(packet);
+   esp_receive_queue.push(packet);
 //   State_ReceiveCallback(data);
 };
 
@@ -112,11 +112,11 @@ void _sent_callback(const uint8_t *macAddr, esp_now_send_status_t status)
   }
   else
   {
-    _communication_error(Communication_Errors::DELIVERY_FAIL);
+    _communication_error(ESP_Communication_Errors::DELIVERY_FAIL);
   }
 };
 
-void _communication_error(Communication_Errors error)
+void _communication_error(ESP_Communication_Errors error)
 {};
 
 #pragma endregion
