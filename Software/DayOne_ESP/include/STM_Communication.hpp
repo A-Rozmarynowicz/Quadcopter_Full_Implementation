@@ -3,6 +3,7 @@
 #include "Configuration.hpp"
 #include <Wire.h>
 #include "Buffers.hpp"
+#include "UWB.hpp"
 
 #define STM_I2C_ADDRESS 0x77
 #define ESP_I2C_ADDRESS 0x12
@@ -16,7 +17,8 @@
 
 enum I2C_Data_Commands
 {
-    UWB_Ready,
+    UWB_READY,
+    CURRENT_POSITION_TRANSFER,
 };
 
 enum I2C_Data_Setup
@@ -46,5 +48,6 @@ bool Send_I2C();
 namespace I2C_MESSAGES
 {
     bool Send_UWB_Ready();
+    bool Send_Current_Position(Position &position);
 };
 
