@@ -43,7 +43,9 @@ enum Communication_Errors
 
 namespace ESP_MESSAGES
 {
-  bool send_ready(uint8_t receiver);
+  bool Send_Query_Position(uint8_t receiver);
+  bool Send_Wakeup_Reckon(uint8_t receiver);
+  bool Send_Ready(uint8_t receiver);
 };
 
 struct Packet

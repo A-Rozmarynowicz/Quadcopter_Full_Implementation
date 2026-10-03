@@ -12,7 +12,7 @@ const uint16_t BASE_ANTENNA_DELAY_VALUE = 16350;
 const float ERROR_COMPENSATION_PARAMETER_A = 0.9539;
 const float ERROR_COMPENSATION_PARAMETER_B = -0.5259;
 const float MINIMUM_RANGE = 0.05;
-const float MAXIMUM_RANGE = 100.0;
+const float MAXIMUM_RANGE = 20.0;
 
 const int8_t PIN_RST = 22;  // reset pin
 const int8_t PIN_IRQ = 17;   // irq pin

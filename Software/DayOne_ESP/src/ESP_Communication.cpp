@@ -23,15 +23,37 @@ void initialize_esp_communication(){
 
 #pragma region Messages
 
-bool ESP_MESSAGES::send_ready(uint8_t receiver)
+bool ESP_MESSAGES::Send_Query_Position(uint8_t receiver)
 {
-    Packet packet{};
+  Packet packet{};
 
-    packet.data[Data_Setup::RECEIVER_ID] = receiver;
-    packet.data[Data_Setup::TRANSMITTER_ID] = DRONE_ID;
-    packet.data[Data_Setup::COMMAND] = OBSERVER_READY;
+  packet.data[Data_Setup::RECEIVER_ID] = receiver;
+  packet.data[Data_Setup::TRANSMITTER_ID] = DRONE_ID;
+  packet.data[Data_Setup::COMMAND] = Data_Commands::OBSERVER_QUERY_POSITION;
 
-    return transmit_queue.push(packet);
+  return transmit_queue.push(packet);
+}
+
+bool ESP_MESSAGES::Send_Wakeup_Reckon(uint8_t receiver)
+{
+  Packet packet{};
+
+  packet.data[Data_Setup::RECEIVER_ID] = receiver;
+  packet.data[Data_Setup::TRANSMITTER_ID] = DRONE_ID;
+  packet.data[Data_Setup::COMMAND] = Data_Commands::OBSERVER_WAKEUP_RECKON;
+
+  return transmit_queue.push(packet);
+}
+
+bool ESP_MESSAGES::Send_Ready(uint8_t receiver)
+{
+  Packet packet{};
+
+  packet.data[Data_Setup::RECEIVER_ID] = receiver;
+  packet.data[Data_Setup::TRANSMITTER_ID] = DRONE_ID;
+  packet.data[Data_Setup::COMMAND] = Data_Commands::OBSERVER_READY;
+
+  return transmit_queue.push(packet);
 }
 
 #pragma endregion
@@ -39,30 +61,30 @@ bool ESP_MESSAGES::send_ready(uint8_t receiver)
 #pragma region ESP_NOW
 void _send_esp()
 {
-    if (transmit_queue.empty())
-    {
-        return;
-    }
-    uint8_t broadcastAddress[] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
-    esp_now_peer_info_t peerInfo = {};
-    memcpy(&peerInfo.peer_addr, broadcastAddress, 6);
-    if (!esp_now_is_peer_exist(broadcastAddress))
-    {
-        esp_now_add_peer(&peerInfo);
-    }
+  if (transmit_queue.empty())
+  {
+      return;
+  }
+  uint8_t broadcastAddress[] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
+  esp_now_peer_info_t peerInfo = {};
+  memcpy(&peerInfo.peer_addr, broadcastAddress, 6);
+  if (!esp_now_is_peer_exist(broadcastAddress))
+  {
+      esp_now_add_peer(&peerInfo);
+  }
 
-    Packet transmit_packet;
-    if (!transmit_queue.pop(transmit_packet))
-    {
-        return;
-    }
+  Packet transmit_packet;
+  if (!transmit_queue.pop(transmit_packet))
+  {
+      return;
+  }
 
-    esp_err_t result = esp_now_send(broadcastAddress, transmit_packet.data, DATA_SIZE);
-    if (result == ESP_OK) {}
-    else
-    {
-        _communication_error(Communication_Errors::MESSAGE_SEND_FAIL);
-    }
+  esp_err_t result = esp_now_send(broadcastAddress, transmit_packet.data, DATA_SIZE);
+  if (result == ESP_OK) {}
+  else
+  {
+      _communication_error(Communication_Errors::MESSAGE_SEND_FAIL);
+  }
 };
 
 

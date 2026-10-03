@@ -5,7 +5,7 @@
 
 namespace ALGEBRA_4LGHS {
 
-extern float B_vector_constants[NUMBER_OF_LIGHTHOUSES];
+extern float B_vector_constants[4];
 extern float A_matrix[3][3];
 extern float AT_matrix[3][3];
 extern float ATA_matrix[3][3];
@@ -24,4 +24,5 @@ void _build_b_vector_constants(Position (&lghs_positions)[3]);
 void _build_b_vector(UWB_Measurement (&distances_to_lghs)[4]);
 void _calculate_atb_vector();
 void _calculate_solution(Position &position);
+
 }

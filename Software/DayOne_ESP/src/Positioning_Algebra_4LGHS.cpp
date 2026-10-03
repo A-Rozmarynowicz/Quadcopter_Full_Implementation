@@ -1,11 +1,11 @@
 #include "Positioning_Algebra_4LGHS.hpp"
 
-float ALGEBRA_4LGHS::B_vector_constants[NUMBER_OF_LIGHTHOUSES] = {0};
-float ALGEBRA_4LGHS::A_matrix[NUMBER_OF_LIGHTHOUSES-1][3] = {0};
-float ALGEBRA_4LGHS::AT_matrix[3][NUMBER_OF_LIGHTHOUSES-1] = {0};
+float ALGEBRA_4LGHS::B_vector_constants[4] = {0};
+float ALGEBRA_4LGHS::A_matrix[3][3] = {0};
+float ALGEBRA_4LGHS::AT_matrix[3][3] = {0};
 float ALGEBRA_4LGHS::ATA_matrix[3][3] = {0};
 float ALGEBRA_4LGHS::ATA_inv_matrix[3][3] = {0};
-float ALGEBRA_4LGHS::B_vector[NUMBER_OF_LIGHTHOUSES-1] = {0};
+float ALGEBRA_4LGHS::B_vector[3] = {0};
 float ALGEBRA_4LGHS::ATB_vector[3] = {0};
 
 
