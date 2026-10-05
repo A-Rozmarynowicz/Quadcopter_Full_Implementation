@@ -10,6 +10,8 @@ enum class STATES
 {
     INITIAL_STATE,
     REQUEST_LGHS_POSITIONS_STATE,
+    POSITION_ZERO_STATE,
+    FLIGHT_STATE,
 
     NONE_STATE,
 };
@@ -68,7 +70,7 @@ private:
 
 class Request_LGHS_Positions_State : public State
 {
-    public:
+public:
     STATES Get_State() const override
     {
         return STATES::REQUEST_LGHS_POSITIONS_STATE;
@@ -83,14 +85,52 @@ class Request_LGHS_Positions_State : public State
     void Task_100ms() override;
     void Task_1000ms() override;
 
-    private:
+private:
     uint8_t current_request_lgh_index = 0;
-    
+
     bool Check_For_Position_Response();
     void Handle_Increment_Next_LGH_Query();
 };
 
 
+class Position_Zero_State : public State
+{
+public:
+    STATES Get_State() const override
+    {
+        return STATES::POSITION_ZERO_STATE;
+    }
+
+    void Enter() override;
+    void Exit() override;
+
+    void Task_1ms() override;
+    void Task_5ms() override;
+    void Task_20ms() override;
+    void Task_100ms() override;
+    void Task_1000ms() override;
+};
+
+class Flight_State : public State
+{
+public:
+    STATES Get_State() const override
+    {
+        return STATES::FLIGHT_STATE;
+    }
+
+    void Enter() override;
+    void Exit() override;
+
+    void Task_1ms() override;
+    void Task_5ms() override;
+    void Task_20ms() override;
+    void Task_100ms() override;
+    void Task_1000ms() override;
+};
+
 #include "States/Base_State.tpp"
 #include "States/Initial_State.tpp"
 #include "States/Request_LGHS_Positions_State.tpp"
+#include "States/Flight_State.tpp"
+#include "States/Position_Zero_State.tpp"
