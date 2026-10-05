@@ -3,7 +3,6 @@
 #include "Configuration.hpp"
 
 
-#define NUMBER_OF_STATES 3-1
 enum class STATES
 {
     INITIAL_STATE,
@@ -22,7 +21,7 @@ class State
 private:
     STATES next_state = STATES::NONE_STATE;
 protected:
-    void Reset_State();
+    void Reset_Requested_State();
     void Request_Change_State(STATES new_state);
 public:
     STATES Get_Requested_State();
@@ -78,4 +77,4 @@ public:
 };
 
 
-#include "States.tpp"
+#include "States/Base_State.tpp"
