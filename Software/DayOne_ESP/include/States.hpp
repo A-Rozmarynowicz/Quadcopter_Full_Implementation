@@ -26,6 +26,8 @@ private:
 protected:
     void Reset_Requested_State();
     void Request_Change_State(STATES new_state);
+    uint8_t Get_Receive_Queue_Search_Depth();
+    bool Search_For_ESP_Command(ESP_Packet &packet, ESP_Data_Commands command);
 public:
     STATES Get_Requested_State();
 
@@ -59,11 +61,14 @@ public:
     void Task_20ms() override;
     void Task_100ms() override;
     void Task_1000ms() override;
+
+private:
+    void Check_For_Wakeup_Response();
 };
 
 class Request_LGHS_Positions_State : public State
 {
-public:
+    public:
     STATES Get_State() const override
     {
         return STATES::REQUEST_LGHS_POSITIONS_STATE;
@@ -77,6 +82,12 @@ public:
     void Task_20ms() override;
     void Task_100ms() override;
     void Task_1000ms() override;
+
+    private:
+    uint8_t current_request_lgh_index = 0;
+    
+    bool Check_For_Position_Response();
+    void Handle_Increment_Next_LGH_Query();
 };
 
 

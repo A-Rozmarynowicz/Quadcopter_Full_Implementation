@@ -52,7 +52,7 @@ struct ESP_Packet
 {
     uint8_t data[ESP_DATA_SIZE];
     uint8_t flush_value;
-    const uint8_t max_flush_value = 16;
+    static constexpr uint8_t max_flush_value = 16;
     void Mark_To_Flush(){flush_value=max_flush_value;}
     void Increase_Flush_Value()
       {if (flush_value >= max_flush_value){return;}

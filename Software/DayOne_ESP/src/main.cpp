@@ -30,7 +30,7 @@ Timer_Handler timer_handler(
 void setup() {
     Serial.begin(115200);
     timer_handler.Initialize();
-    initialize_esp_communication();
+    Initialize_ESP_Communication();
 
     Serial.println("Initialization complete\n");
 }
@@ -61,5 +61,5 @@ void Task_100ms()
 
 void Task_1000ms()
 {
-    // Serial.println("1 second");
+    Flush_Unused_ESP_Received_Packets();
 }
