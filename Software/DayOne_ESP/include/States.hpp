@@ -2,21 +2,34 @@
 
 #include "Configuration.hpp"
 
+
+#define NUMBER_OF_STATES 3-1
 enum class STATES
 {
-    NONE_STATE,
     INITIAL_STATE,
     REQUEST_LGHS_POSITIONS_STATE,
+
+    NONE_STATE,
 };
+
+constexpr size_t State_To_Index(STATES state)
+{
+    return static_cast<size_t>(state);
+}
 
 class State
 {
-protected:
+private:
     STATES next_state = STATES::NONE_STATE;
+protected:
+    void Reset_State();
+    void Request_Change_State(STATES new_state);
 public:
+    STATES Get_Requested_State();
+
     virtual ~State() = default;
 
-    virtual STATES GetState() const = 0;
+    virtual STATES Get_State() const = 0;
 
     virtual void Enter() = 0;
     virtual void Exit() = 0;
@@ -31,9 +44,27 @@ public:
 class Initial_State : public State
 {
 public:
-    STATES GetState() const override
+    STATES Get_State() const override
     {
         return STATES::INITIAL_STATE;
+    }
+
+    void Enter() override;
+    void Exit() override;
+
+    void Task_1ms() override;
+    void Task_5ms() override;
+    void Task_20ms() override;
+    void Task_100ms() override;
+    void Task_1000ms() override;
+};
+
+class Request_LGHS_Positions_State : public State
+{
+public:
+    STATES Get_State() const override
+    {
+        return STATES::REQUEST_LGHS_POSITIONS_STATE;
     }
 
     void Enter() override;
