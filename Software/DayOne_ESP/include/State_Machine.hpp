@@ -9,6 +9,8 @@ class State_Machine
 private:
     Initial_State initial_state;
     Request_LGHS_Positions_State request_lghs_positions_state;
+    Position_Zero_State position_zero_state;
+    Flight_State flight_state;
 
     State* current_state;
 

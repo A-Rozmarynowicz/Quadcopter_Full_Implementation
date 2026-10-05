@@ -27,6 +27,12 @@ void State_Machine::Handle_State_Change_Request()
     case STATES::REQUEST_LGHS_POSITIONS_STATE:
         change_state(request_lghs_positions_state);
         break;
+    case STATES::POSITION_ZERO_STATE:
+        change_state(position_zero_state);
+        break;
+    case STATES::FLIGHT_STATE:
+        change_state(flight_state);
+        break;
     default:
         break;
     }
