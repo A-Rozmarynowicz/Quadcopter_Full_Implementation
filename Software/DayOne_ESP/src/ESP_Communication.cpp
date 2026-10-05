@@ -17,7 +17,6 @@ void initialize_esp_communication(){
   {
     _communication_error(ESP_Communication_Errors::PROTOCOL_INIT_FAIL);
   }
-//   transmit_buffer[Data_Setup::TRANSMITTER_ID] = DRONE_ID; <-------------------
 };
 
 

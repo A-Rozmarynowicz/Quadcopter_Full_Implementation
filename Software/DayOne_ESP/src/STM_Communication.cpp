@@ -5,7 +5,7 @@ Queue<I2C_Packet, I2C_TRANSMIT_QUEUE_SIZE> i2c_transmit_queue;
 
 bool Initialize_I2C()
 {
-    return Wire.begin(SDA_PIN, SCL_PIN);
+    return Wire.begin(SDA_PIN, SCL_PIN, 100000UL);
 }
 
 bool Send_I2C()
@@ -36,7 +36,7 @@ bool I2C_MESSAGES::Send_UWB_Ready()
     return i2c_transmit_queue.push(packet);
 }
 
-bool Send_Current_Position(Position &position)
+bool I2C_MESSAGES::Send_Current_Position(Position &position)
 {
     I2C_Packet packet{};
 

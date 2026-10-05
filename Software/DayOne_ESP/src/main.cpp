@@ -8,7 +8,7 @@ void Task_1ms();
 void Task_5ms();
 void Task_20ms();
 void Task_100ms();
-void Task_1s();
+void Task_1000ms();
 
 
 Timer_Handler::Timer_Config configs[] =
@@ -17,7 +17,7 @@ Timer_Handler::Timer_Config configs[] =
     { 5,    Task_5ms   },
     { 20,   Task_20ms  },
     { 100,  Task_100ms },
-    { 1000, Task_1s    }
+    { 1000, Task_1000ms    }
 };
 
 Timer_Handler timer_handler(
@@ -59,7 +59,7 @@ void Task_100ms()
     // Serial.println("100ms");
 }
 
-void Task_1s()
+void Task_1000ms()
 {
     // Serial.println("1 second");
 }
