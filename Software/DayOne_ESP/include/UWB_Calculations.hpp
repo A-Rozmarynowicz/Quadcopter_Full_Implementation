@@ -8,6 +8,7 @@
 #define MAX_NUMBER_OF_RANGES_PER_LIGHTHOUSE 16
 
 extern Position current_calculated_position;
+extern Position position_zero;
 extern float last_averaged_ranges[NUMBER_OF_LIGHTHOUSES];
 
 uint8_t Calculate_Position(Stack<UWB_Measurement, UWB_MEASUREMENT_STACK_SIZE>(&uwb_stacks)[NUMBER_OF_LIGHTHOUSES]);

@@ -1,6 +1,7 @@
 #include "UWB_Calculations.hpp"
 
 Position current_calculated_position;
+Position position_zero;
 float last_averaged_ranges[NUMBER_OF_LIGHTHOUSES] = {0.0f};
 
 uint8_t Calculate_Position(Stack<UWB_Measurement, UWB_MEASUREMENT_STACK_SIZE> (&uwb_stacks)[NUMBER_OF_LIGHTHOUSES])

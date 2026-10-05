@@ -59,7 +59,7 @@ void Request_LGHS_Positions_State::Handle_Increment_Next_LGH_Query()
 {
     if (current_request_lgh_index >= NUMBER_OF_LIGHTHOUSES-1)
     {
-        // Request_Change_State()
+        Request_Change_State(STATES::POSITION_ZERO_STATE);
         return;
     }
 

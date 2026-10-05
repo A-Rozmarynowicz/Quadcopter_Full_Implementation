@@ -37,6 +37,7 @@ void setup() {
 
 void loop() {
     timer_handler.Update();
+    Update_UWB();
 }
 
 void Task_1ms()

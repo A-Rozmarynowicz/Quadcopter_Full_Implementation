@@ -26,6 +26,7 @@ void Initialize_UWB()
 
 void Update_UWB()
 {
+    if (!uwb_enable){return;}
     DW1000Ranging.loop();
 }
 
