@@ -11,7 +11,7 @@ extern Position current_calculated_position;
 extern Position position_zero;
 extern float last_averaged_ranges[NUMBER_OF_LIGHTHOUSES];
 
-uint8_t Calculate_Position(Stack<UWB_Measurement, UWB_MEASUREMENT_STACK_SIZE>(&uwb_stacks)[NUMBER_OF_LIGHTHOUSES]);
+uint8_t Calculate_Position(Stack<UWB_Measurement, UWB_MEASUREMENT_STACK_SIZE>(&uwb_stacks)[NUMBER_OF_LIGHTHOUSES], Position &position);
 uint8_t Get_Number_Of_Present_Lighthouses(Stack<UWB_Measurement, UWB_MEASUREMENT_STACK_SIZE>(&uwb_stacks)[NUMBER_OF_LIGHTHOUSES]);
 
 uint8_t _get_penalty_from_missing_lighthouses(uint8_t present_lighthouses);
