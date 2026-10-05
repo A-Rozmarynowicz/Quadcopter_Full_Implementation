@@ -4,6 +4,7 @@
 #include "ESP_Communication.hpp"
 #include "STM_Communication.hpp"
 
+#define STATE_MAX_QUEUE_SEARCH_DEPTH 16
 
 enum class STATES
 {
