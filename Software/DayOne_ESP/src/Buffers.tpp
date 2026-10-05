@@ -83,6 +83,12 @@ constexpr std::size_t Queue<T, N>::capacity() const
     return N;
 }
 
+template <typename T, std::size_t N>
+std::size_t Queue<T, N>::get_head_offset_index(std::size_t offset) const
+{
+    return (head + offset) % N;
+}
+
 #pragma endregion
 
 #pragma region Double_Queue

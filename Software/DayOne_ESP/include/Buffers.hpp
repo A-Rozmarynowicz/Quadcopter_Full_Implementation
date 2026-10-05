@@ -26,6 +26,7 @@ public:
     void flush();
     std::size_t size() const;
     constexpr std::size_t capacity() const;
+    std::size_t get_head_offset_index(std::size_t offset) const;
 private:
     Buffer<T, N> buffer;
     std::size_t head = 0;

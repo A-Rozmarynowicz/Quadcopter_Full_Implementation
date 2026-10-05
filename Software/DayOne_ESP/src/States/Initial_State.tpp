@@ -4,6 +4,7 @@
 void Initial_State::Enter()
 {
     Reset_Requested_State();
+    ESP_MESSAGES::Send_Wakeup_Reckon(BROADCAST_RECEIVER_ID);
 };
 
 void Initial_State::Exit()

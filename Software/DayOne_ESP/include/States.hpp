@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Configuration.hpp"
+#include "ESP_Communication.hpp"
+#include "STM_Communication.hpp"
 
 
 enum class STATES
@@ -78,3 +80,5 @@ public:
 
 
 #include "States/Base_State.tpp"
+#include "States/Initial_State.tpp"
+#include "States/Request_LGHS_Positions_State.tpp"
