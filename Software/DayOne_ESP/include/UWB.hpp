@@ -39,6 +39,14 @@ struct UWB_Measurement
 struct Position
 {
     float x, y, z;
+    Position operator-(const Position& p2) const
+    {
+        return {
+            x - p2.x,
+            y - p2.y,
+            z - p2.z
+        };
+    }
 };
 
 extern Position lighthouse_positions_by_indices[NUMBER_OF_LIGHTHOUSES];
