@@ -45,17 +45,27 @@ namespace ESP_MESSAGES
   bool Send_Query_Position(uint8_t receiver);
   bool Send_Wakeup_Reckon(uint8_t receiver);
   bool Send_Ready(uint8_t receiver);
+  bool Send_Query_Position(uint8_t receiver);
 };
 
 struct ESP_Packet
 {
     uint8_t data[ESP_DATA_SIZE];
+    uint8_t flush_value;
+    const uint8_t max_flush_value = 16;
+    void Mark_To_Flush(){flush_value=max_flush_value;}
+    void Increase_Flush_Value()
+      {if (flush_value >= max_flush_value){return;}
+      flush_value++;}
+    uint8_t Get_Flush_Value(){return flush_value;}
+    bool Is_For_Flush(){return flush_value>=max_flush_value;}
 };
 
 extern Queue<ESP_Packet, ESP_RECEIVE_QUEUE_SIZE> esp_receive_queue;
 extern Queue<ESP_Packet, ESP_TRANSMIT_QUEUE_SIZE> esp_transmit_queue;
 
-void initialize_esp_communication();
+void Initialize_ESP_Communication();
+void Flush_Unused_ESP_Received_Packets();
 
 void _send_esp();
 void _receive_callback(const uint8_t* macAddr, const uint8_t* data, int dataLen);

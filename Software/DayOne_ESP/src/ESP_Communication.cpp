@@ -4,7 +4,8 @@ Queue<ESP_Packet, ESP_RECEIVE_QUEUE_SIZE> esp_receive_queue;
 Queue<ESP_Packet, ESP_TRANSMIT_QUEUE_SIZE> esp_transmit_queue;
 
 
-void initialize_esp_communication(){
+void Initialize_ESP_Communication()
+{
   WiFi.mode(WIFI_STA);
   WiFi.disconnect();
 
@@ -17,8 +18,23 @@ void initialize_esp_communication(){
   {
     _communication_error(ESP_Communication_Errors::PROTOCOL_INIT_FAIL);
   }
-};
+}
 
+void Flush_Unused_ESP_Received_Packets()
+{
+  for (uint8_t i = 0; i<esp_receive_queue.size(); i++)
+  {
+    if (esp_receive_queue[esp_receive_queue.get_head_offset_index(i)].Is_For_Flush())
+    {
+      ESP_Packet proxy;
+      esp_receive_queue.pop(proxy);
+    }
+    else
+    {
+      break;
+    }
+  }
+};
 
 #pragma region Messages
 
@@ -36,7 +52,6 @@ bool ESP_MESSAGES::Send_Query_Position(uint8_t receiver)
 bool ESP_MESSAGES::Send_Wakeup_Reckon(uint8_t receiver)
 {
   ESP_Packet packet{};
-
   packet.data[ESP_Data_Setup::RECEIVER_ID] = receiver;
   packet.data[ESP_Data_Setup::TRANSMITTER_ID] = DRONE_ESP_ID;
   packet.data[ESP_Data_Setup::COMMAND] = ESP_Data_Commands::OBSERVER_WAKEUP_RECKON;
@@ -47,10 +62,19 @@ bool ESP_MESSAGES::Send_Wakeup_Reckon(uint8_t receiver)
 bool ESP_MESSAGES::Send_Ready(uint8_t receiver)
 {
   ESP_Packet packet{};
-
   packet.data[ESP_Data_Setup::RECEIVER_ID] = receiver;
   packet.data[ESP_Data_Setup::TRANSMITTER_ID] = DRONE_ESP_ID;
   packet.data[ESP_Data_Setup::COMMAND] = ESP_Data_Commands::OBSERVER_READY;
+
+  return esp_transmit_queue.push(packet);
+}
+
+bool ESP_MESSAGES::Send_Query_Position(uint8_t receiver)
+{
+  ESP_Packet packet{};
+  packet.data[ESP_Data_Setup::RECEIVER_ID] = receiver;
+  packet.data[ESP_Data_Setup::TRANSMITTER_ID] = DRONE_ESP_ID;
+  packet.data[ESP_Data_Setup::COMMAND] = ESP_Data_Commands::OBSERVER_QUERY_POSITION;
 
   return esp_transmit_queue.push(packet);
 }
