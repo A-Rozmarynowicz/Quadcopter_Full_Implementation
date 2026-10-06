@@ -31,6 +31,7 @@ void setup() {
     Serial.begin(115200);
     timer_handler.Initialize();
     Initialize_ESP_Communication();
+    Initialize_UWB();
 
     Serial.println("Initialization complete\n");
 }

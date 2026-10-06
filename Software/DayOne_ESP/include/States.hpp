@@ -127,6 +127,8 @@ public:
     void Task_20ms() override;
     void Task_100ms() override;
     void Task_1000ms() override;
+private:
+    bool Check_If_Enough_Measurements_Made();
 };
 
 #include "States/Base_State.tpp"

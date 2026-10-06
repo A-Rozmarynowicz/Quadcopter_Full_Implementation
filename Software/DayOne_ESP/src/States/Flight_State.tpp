@@ -34,3 +34,8 @@ void Flight_State::Task_1000ms()
 {
 
 }
+
+inline bool Flight_State::Check_If_Enough_Measurements_Made()
+{
+    return false;
+}

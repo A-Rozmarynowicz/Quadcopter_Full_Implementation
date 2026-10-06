@@ -4,6 +4,7 @@
 void Position_Zero_State::Enter()
 {
     Reset_Requested_State();
+    Restart_UWB_As_Tag();
 };
 
 void Position_Zero_State::Exit()
