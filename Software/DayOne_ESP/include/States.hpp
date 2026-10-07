@@ -93,24 +93,6 @@ private:
 };
 
 
-class Position_Zero_State : public State
-{
-public:
-    STATES Get_State() const override
-    {
-        return STATES::POSITION_ZERO_STATE;
-    }
-
-    void Enter() override;
-    void Exit() override;
-
-    void Task_1ms() override;
-    void Task_5ms() override;
-    void Task_20ms() override;
-    void Task_100ms() override;
-    void Task_1000ms() override;
-};
-
 class Flight_State : public State
 {
 public:
@@ -135,4 +117,3 @@ private:
 #include "States/Initial_State.tpp"
 #include "States/Request_LGHS_Positions_State.tpp"
 #include "States/Flight_State.tpp"
-#include "States/Position_Zero_State.tpp"
