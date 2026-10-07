@@ -62,7 +62,7 @@ void Restart_UWB_As_Tag(){
 
     // CRITICAL SPEED FIX 2: Manually override the global library reply delay
     // down from 7000us to 1500us before starting the state machine
-    DW1000Ranging.setReplyTime(1500);
+    DW1000Ranging.setReplyTime(UWB_RESPONSE_DELAY_TIME);
 
     DW1000Ranging.startAsTag(
         address_str,
