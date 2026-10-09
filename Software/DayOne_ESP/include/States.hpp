@@ -112,7 +112,8 @@ private:
     uint16_t total_penalty = 0;
     uint8_t half_periods_passed = 0;
 
-    uint8_t Update_Measurements();
+    void Handle_Ready_Measurements();
+    uint8_t Parse_Measurements();
 };
 
 #include "States/Base_State.tpp"
