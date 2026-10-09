@@ -1,5 +1,5 @@
 #include "States.hpp"
-
+#include "Positioning_Algebra_4LGHS.hpp"
 
 void Request_LGHS_Positions_State::Enter()
 {
@@ -59,7 +59,8 @@ void Request_LGHS_Positions_State::Handle_Increment_Next_LGH_Query()
 {
     if (current_request_lgh_index >= NUMBER_OF_LIGHTHOUSES-1)
     {
-        Request_Change_State(STATES::POSITION_ZERO_STATE);
+        ALGEBRA_4LGHS::Build_Constant_Matrices(lighthouse_positions_by_indices);
+        Request_Change_State(STATES::FLIGHT_STATE);
         return;
     }
 

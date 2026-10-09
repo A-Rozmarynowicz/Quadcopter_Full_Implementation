@@ -7,6 +7,8 @@
 
 #define MAX_NUMBER_OF_RANGES_PER_LIGHTHOUSE 16
 
+const uint8_t MAX_MISSING_LGHS_PENALTY = 255;
+
 extern Position current_calculated_position;
 extern Position position_zero;
 extern float last_averaged_ranges[NUMBER_OF_LIGHTHOUSES];

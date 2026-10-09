@@ -10,7 +10,6 @@ enum class STATES
 {
     INITIAL_STATE,
     REQUEST_LGHS_POSITIONS_STATE,
-    POSITION_ZERO_STATE,
     FLIGHT_STATE,
 
     NONE_STATE,
@@ -110,7 +109,10 @@ public:
     void Task_100ms() override;
     void Task_1000ms() override;
 private:
-    bool Check_If_Enough_Measurements_Made();
+    uint16_t total_penalty = 0;
+    uint8_t half_periods_passed = 0;
+
+    uint8_t Update_Measurements();
 };
 
 #include "States/Base_State.tpp"
