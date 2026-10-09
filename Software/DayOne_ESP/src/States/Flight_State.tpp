@@ -41,7 +41,8 @@ void Flight_State::Handle_Ready_Measurements()
     if (Get_Number_Of_Present_Lighthouses(uwb_measurement_stacks) == NUMBER_OF_LIGHTHOUSES)
     {
         uint8_t penalty = Parse_Measurements();
-        if (penalty == 0) {
+        if (penalty == 0)
+        {
             total_penalty = 0;
         }
         half_periods_passed = 0;

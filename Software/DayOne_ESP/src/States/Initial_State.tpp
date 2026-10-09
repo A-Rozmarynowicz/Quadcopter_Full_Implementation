@@ -34,7 +34,7 @@ void Initial_State::Task_100ms()
 
 void Initial_State::Task_1000ms()
 {
-
+    ESP_MESSAGES::Send_Wakeup_Reckon(BROADCAST_RECEIVER_ID);
 }
 
 void Initial_State::Check_For_Wakeup_Response()

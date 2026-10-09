@@ -36,7 +36,12 @@ void Request_LGHS_Positions_State::Task_100ms()
 
 void Request_LGHS_Positions_State::Task_1000ms()
 {
-
+    missed_responses_counter++;
+    if (missed_responses_counter >= 2)
+    {
+        ESP_MESSAGES::Send_Query_Position(current_request_lgh_index);
+        missed_responses_counter = 0;
+    }
 }
 
 bool Request_LGHS_Positions_State::Check_For_Position_Response()
@@ -45,7 +50,9 @@ bool Request_LGHS_Positions_State::Check_For_Position_Response()
     ESP_Packet position_packet;
     if (!Search_For_ESP_Command(position_packet, ESP_Data_Commands::OBSERVER_RESPONSE_POSITION))
     { return; }
-
+    if (position_packet.data[ESP_Data_Setup::TRANSMITTER_ID] != current_request_lgh_index)
+    { return; }
+    missed_responses_counter = 0;
     Position position;
     memcpy(&position.x, &position_packet.data[QUAD_0], sizeof(float));
     memcpy(&position.y, &position_packet.data[QUAD_1], sizeof(float));

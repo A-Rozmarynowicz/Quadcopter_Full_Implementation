@@ -85,6 +85,7 @@ public:
     void Task_1000ms() override;
 
 private:
+    uint8_t missed_responses_counter = 0;
     uint8_t current_request_lgh_index = 0;
 
     bool Check_For_Position_Response();
