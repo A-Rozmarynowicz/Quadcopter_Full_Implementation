@@ -33,6 +33,7 @@ bool State::Search_For_ESP_Command(ESP_Packet &packet, ESP_Data_Commands command
     for (uint8_t i=0; i < upper_index_limit; i++)
     {
         ESP_Packet receive = esp_receive_queue[esp_receive_queue.get_head_offset_index(i)];
+        esp_receive_queue[esp_receive_queue.get_head_offset_index(i)].Increase_Flush_Value();
         if (receive.data[ESP_Data_Setup::COMMAND] == command)
         {
             packet = receive;
@@ -42,10 +43,6 @@ bool State::Search_For_ESP_Command(ESP_Packet &packet, ESP_Data_Commands command
                 esp_receive_queue.pop(proxy);
             }
             return true;
-        }
-        else
-        {
-            receive.Increase_Flush_Value();
         }
     }
     return false;
