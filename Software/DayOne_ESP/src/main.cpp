@@ -47,26 +47,33 @@ void loop() {
 
 void Task_1ms()
 {
+    state_machine.Task_1ms();
     state_machine.Handle_State_Change_Request();
+
     // Serial.println("1ms");
 }
 
 void Task_5ms()
 {
+    state_machine.Task_5ms();
+    _send_esp();
     // Serial.println("5ms");
 }
 
 void Task_20ms()
 {
+    state_machine.Task_20ms();
     // Serial.println("20ms");
 }
 
 void Task_100ms()
 {
+    state_machine.Task_100ms();
     // Serial.println("100ms");
 }
 
 void Task_1000ms()
 {
+    state_machine.Task_1000ms();
     Flush_Unused_ESP_Received_Packets();
 }

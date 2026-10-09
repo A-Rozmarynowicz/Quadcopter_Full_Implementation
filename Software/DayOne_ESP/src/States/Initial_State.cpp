@@ -39,6 +39,7 @@ void Initial_State::Task_1000ms()
 void Initial_State::Check_For_Wakeup_Response()
 {
     ESP_Packet proxy;
+    Serial.printf("ESP rec stack Size: %d\n", esp_receive_queue.size());
     if (Search_For_ESP_Command(proxy, ESP_Data_Commands::READY_FOR_OBSERVER))
     {
         Request_Change_State(STATES::REQUEST_LGHS_POSITIONS_STATE);
