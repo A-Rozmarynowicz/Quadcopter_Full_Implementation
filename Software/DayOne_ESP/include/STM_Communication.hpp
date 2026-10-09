@@ -4,6 +4,8 @@
 
 #include "Configuration.hpp"
 #include <Wire.h>
+#include "UWB.hpp"
+#include "Buffers.hpp"
 
 #define STM_I2C_ADDRESS 0x77
 #define ESP_I2C_ADDRESS 0x12

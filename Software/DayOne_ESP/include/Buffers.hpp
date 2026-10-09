@@ -1,7 +1,7 @@
 #ifndef BUFFERS_HPP
 #define BUFFERS_HPP
 
-#include "Configuration.hpp"
+#include <cstddef>
 #include <array>
 
 template <typename T, std::size_t N>

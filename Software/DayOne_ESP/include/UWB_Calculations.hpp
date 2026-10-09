@@ -2,6 +2,9 @@
 #define UWB_CALCULATIONS_HPP
 
 #include "Configuration.hpp"
+#include "UWB.hpp"
+#include "Buffers.hpp"
+
 
 
 #define MAX_NUMBER_OF_RANGES_PER_LIGHTHOUSE 16

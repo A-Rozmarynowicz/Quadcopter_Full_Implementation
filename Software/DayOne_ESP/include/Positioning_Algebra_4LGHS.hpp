@@ -2,6 +2,7 @@
 #define POSITIONING_ALGEBRA_4LGHS_HPP
 
 #include "Configuration.hpp"
+#include "UWB.hpp"
 
 namespace ALGEBRA_4LGHS {
 

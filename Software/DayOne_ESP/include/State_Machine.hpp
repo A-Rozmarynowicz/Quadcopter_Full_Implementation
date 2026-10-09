@@ -2,6 +2,7 @@
 #define STATE_MACHINE_HPP
 
 #include "Configuration.hpp"
+#include "States.hpp"
 
 class State_Machine
 {

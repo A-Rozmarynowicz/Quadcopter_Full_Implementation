@@ -4,6 +4,7 @@
 #include "Configuration.hpp"
 #include <SPI.h>
 #include "DW1000Ranging.h"
+#include "Buffers.hpp"
 
 #define UWB_ADDRESS_LENGTH 8
 #define UWB_RESPONSE_DELAY_TIME 750

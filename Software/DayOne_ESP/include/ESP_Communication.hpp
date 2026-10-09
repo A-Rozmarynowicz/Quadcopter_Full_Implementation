@@ -2,6 +2,7 @@
 #define ESP_COMMUNICATION_HPP
 
 #include "Configuration.hpp"
+#include "Buffers.hpp"
 
 #define DRONE_ESP_ID 171
 #define ESP_DATA_SIZE 20

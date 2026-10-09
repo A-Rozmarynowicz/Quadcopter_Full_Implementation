@@ -1,5 +1,9 @@
 #include "Configuration.hpp"
-
+#include "Timing.hpp"
+#include "State_Machine.hpp"
+#include "UWB.hpp"
+#include "ESP_Communication.hpp"
+#include "STM_Communication.hpp"
 
 void Task_1ms();
 void Task_5ms();
@@ -23,15 +27,16 @@ Timer_Handler timer_handler(
     sizeof(configs) / sizeof(configs[0])
 );
 
-// State_Machine state_machine;
+State_Machine state_machine;
 
 
 void setup() {
     Serial.begin(115200);
     timer_handler.Initialize();
     Initialize_ESP_Communication();
+    Initialize_I2C();
     Initialize_UWB();
-    // state_machine.State_Machine_Initialize();
+    state_machine.State_Machine_Initialize();
     Serial.println("Initialization complete\n");
 }
 
@@ -42,7 +47,7 @@ void loop() {
 
 void Task_1ms()
 {
-    // state_machine.Handle_State_Change_Request();
+    state_machine.Handle_State_Change_Request();
     // Serial.println("1ms");
 }
 
