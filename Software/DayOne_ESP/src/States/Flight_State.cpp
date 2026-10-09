@@ -6,6 +6,7 @@
 void Flight_State::Enter()
 {
     Reset_Requested_State();
+    Enable_UWB();
 };
 
 void Flight_State::Exit()
@@ -40,6 +41,7 @@ void Flight_State::Task_1000ms()
 
 void Flight_State::Handle_Ready_Measurements()
 {
+    Serial.printf("Present lighthouses: %d\n", Get_Number_Of_Present_Lighthouses(uwb_measurement_stacks));
     if (Get_Number_Of_Present_Lighthouses(uwb_measurement_stacks) == NUMBER_OF_LIGHTHOUSES)
     {
         uint8_t penalty = Parse_Measurements();
