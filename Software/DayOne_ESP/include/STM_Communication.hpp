@@ -1,9 +1,9 @@
-#pragma once
+#ifndef STM_COMMUNICATION_HPP
+#define STM_COMMUNICATION_HPP
+
 
 #include "Configuration.hpp"
 #include <Wire.h>
-#include "Buffers.hpp"
-#include "UWB.hpp"
 
 #define STM_I2C_ADDRESS 0x77
 #define ESP_I2C_ADDRESS 0x12
@@ -21,7 +21,7 @@ enum I2C_Data_Commands
     CURRENT_POSITION_TRANSFER,
 };
 
-enum I2C_Data_Setup
+enum class I2C_Data_Setup
 {
     COMMAND = 0,
     SINGLE_0 = 1,
@@ -51,3 +51,5 @@ namespace I2C_MESSAGES
     bool Send_Current_Position(Position &position);
 };
 
+
+#endif

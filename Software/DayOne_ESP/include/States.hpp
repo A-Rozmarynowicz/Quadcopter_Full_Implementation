@@ -1,8 +1,7 @@
-#pragma once
+#ifndef STATES_HPP
+#define STATES_HPP
 
 #include "Configuration.hpp"
-#include "ESP_Communication.hpp"
-#include "STM_Communication.hpp"
 
 #define STATE_MAX_QUEUE_SEARCH_DEPTH 16
 
@@ -121,3 +120,6 @@ private:
 #include "States/Initial_State.tpp"
 #include "States/Request_LGHS_Positions_State.tpp"
 #include "States/Flight_State.tpp"
+
+
+#endif

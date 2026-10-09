@@ -1,11 +1,11 @@
 #include "States.hpp"
-#include "Positioning_Algebra_4LGHS.hpp"
 
 void Request_LGHS_Positions_State::Enter()
 {
     Reset_Requested_State();
     current_request_lgh_index = 0;
     ESP_MESSAGES::Send_Query_Position(current_request_lgh_index);
+    Restart_UWB_As_Tag();
 };
 
 void Request_LGHS_Positions_State::Exit()
@@ -46,12 +46,12 @@ void Request_LGHS_Positions_State::Task_1000ms()
 
 bool Request_LGHS_Positions_State::Check_For_Position_Response()
 {
-    if (Get_Requested_State() != STATES::NONE_STATE){return;}
+    if (Get_Requested_State() != STATES::NONE_STATE){return false;}
     ESP_Packet position_packet;
     if (!Search_For_ESP_Command(position_packet, ESP_Data_Commands::OBSERVER_RESPONSE_POSITION))
-    { return; }
+    { return false; }
     if (position_packet.data[ESP_Data_Setup::TRANSMITTER_ID] != current_request_lgh_index)
-    { return; }
+    { return false; }
     missed_responses_counter = 0;
     Position position;
     memcpy(&position.x, &position_packet.data[QUAD_0], sizeof(float));
@@ -60,6 +60,7 @@ bool Request_LGHS_Positions_State::Check_For_Position_Response()
     Update_LGH_Position(position, current_request_lgh_index);
 
     Handle_Increment_Next_LGH_Query();
+    return true;
 }
 
 void Request_LGHS_Positions_State::Handle_Increment_Next_LGH_Query()

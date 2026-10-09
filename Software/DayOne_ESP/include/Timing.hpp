@@ -1,4 +1,5 @@
-#pragma once
+#ifndef TIMING_HPP
+#define TIMING_HPP
 
 #include "esp32-hal-timer.h"
 #include <stddef.h>
@@ -52,3 +53,5 @@ private:
 };
 
 #include "Timing.tpp"
+
+#endif

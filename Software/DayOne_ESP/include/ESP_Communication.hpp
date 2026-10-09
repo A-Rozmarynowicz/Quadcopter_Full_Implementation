@@ -1,7 +1,7 @@
-#pragma once
+#ifndef ESP_COMMUNICATION_HPP
+#define ESP_COMMUNICATION_HPP
 
 #include "Configuration.hpp"
-#include "Buffers.hpp"
 
 #define DRONE_ESP_ID 171
 #define ESP_DATA_SIZE 20
@@ -71,3 +71,6 @@ void _send_esp();
 void _receive_callback(const uint8_t* macAddr, const uint8_t* data, int dataLen);
 void _sent_callback(const uint8_t *macAddr, esp_now_send_status_t status);
 void _communication_error(ESP_Communication_Errors error);
+
+
+#endif

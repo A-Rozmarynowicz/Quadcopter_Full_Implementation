@@ -1,7 +1,7 @@
-#pragma once
+#ifndef POSITIONING_ALGEBRA_4LGHS_HPP
+#define POSITIONING_ALGEBRA_4LGHS_HPP
 
 #include "Configuration.hpp"
-#include "UWB.hpp"
 
 namespace ALGEBRA_4LGHS {
 
@@ -26,3 +26,6 @@ void _calculate_atb_vector();
 void _calculate_solution(Position &position);
 
 }
+
+
+#endif

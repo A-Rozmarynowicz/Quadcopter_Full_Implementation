@@ -1,9 +1,9 @@
-#pragma once
+#ifndef UWB_HPP
+#define UWB_HPP
 
 #include "Configuration.hpp"
 #include <SPI.h>
 #include "DW1000Ranging.h"
-#include "Buffers.hpp"
 
 #define UWB_ADDRESS_LENGTH 8
 #define UWB_RESPONSE_DELAY_TIME 750
@@ -80,3 +80,4 @@ void _reset_DW1000();
 void _format_lgh_address_to_string(uint8_t lgh_index, char address_str[24]);
 void _format_drone_address_to_string(char address_str[24]);
 
+#endif

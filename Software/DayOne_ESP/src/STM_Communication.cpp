@@ -30,7 +30,7 @@ bool I2C_MESSAGES::Send_UWB_Ready()
 {
     I2C_Packet packet{};
 
-    packet.data[I2C_Data_Setup::COMMAND] = I2C_Data_Commands::UWB_READY;
+    packet.data[static_cast<std::size_t>(I2C_Data_Setup::COMMAND)] = I2C_Data_Commands::UWB_READY;
     packet.length = 1;
 
     return i2c_transmit_queue.push(packet);
@@ -40,10 +40,10 @@ bool I2C_MESSAGES::Send_Current_Position(Position &position)
 {
     I2C_Packet packet{};
 
-    packet.data[I2C_Data_Setup::COMMAND] = I2C_Data_Commands::CURRENT_POSITION_TRANSFER;
-    memcpy(&packet.data[QUAD_0], &(position.x), sizeof(float));
-    memcpy(&packet.data[QUAD_1], &(position.y), sizeof(float));
-    memcpy(&packet.data[QUAD_2], &(position.z), sizeof(float));
+    packet.data[static_cast<std::size_t>(I2C_Data_Setup::COMMAND)] = I2C_Data_Commands::CURRENT_POSITION_TRANSFER;
+    memcpy(&packet.data[static_cast<std::size_t>(I2C_Data_Setup::QUAD_0)], &(position.x), sizeof(float));
+    memcpy(&packet.data[static_cast<std::size_t>(I2C_Data_Setup::QUAD_1)], &(position.y), sizeof(float));
+    memcpy(&packet.data[static_cast<std::size_t>(I2C_Data_Setup::QUAD_2)], &(position.z), sizeof(float));
     packet.length = 16;
 
     return i2c_transmit_queue.push(packet);

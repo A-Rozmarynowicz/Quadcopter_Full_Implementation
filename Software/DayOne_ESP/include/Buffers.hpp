@@ -1,4 +1,5 @@
-#pragma once
+#ifndef BUFFERS_HPP
+#define BUFFERS_HPP
 
 #include "Configuration.hpp"
 #include <array>
@@ -74,3 +75,5 @@ private:
 };
 
 #include "Buffers.tpp"
+
+#endif

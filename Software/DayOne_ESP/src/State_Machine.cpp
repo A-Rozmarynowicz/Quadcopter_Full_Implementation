@@ -12,6 +12,7 @@ void State_Machine::change_state(State &new_state)
 {
     current_state->Exit();
     current_state = &new_state;
+    Serial.printf("NEW STATE: %d \n --------------------------------------- \n", new_state.Get_State());
     current_state->Enter();
 }
 
@@ -26,9 +27,6 @@ void State_Machine::Handle_State_Change_Request()
         break;
     case STATES::REQUEST_LGHS_POSITIONS_STATE:
         change_state(request_lghs_positions_state);
-        break;
-    case STATES::POSITION_ZERO_STATE:
-        change_state(position_zero_state);
         break;
     case STATES::FLIGHT_STATE:
         change_state(flight_state);
