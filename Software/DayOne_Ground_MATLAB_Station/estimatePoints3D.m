@@ -1,6 +1,4 @@
 function [P, dFit, residuals, rmse] = estimatePoints3D(d)
-%ESTIMATEPOINTS3D Estimate 4 points in 3D from 6 pairwise distances.
-%
 % INPUT:
 %   d       6-element vector of measured distances, ordered as:
 %           [d12; d13; d14; d23; d24; d34]
@@ -10,16 +8,7 @@ function [P, dFit, residuals, rmse] = estimatePoints3D(d)
 %   dFit      6x1 vector of fitted distances
 %   residuals 6x1 vector (fitted - measured)
 %   rmse      Root mean square distance residual
-%
-% Requires Optimization Toolbox (lsqnonlin).
-%
-% Coordinate convention:
-%   P1 = (0,0,0)
-%   P2 = (x2,0,0)
-%   P3 = (x3,y3,0)
-%   P4 = (x4,y4,z4)
 
-    % Validate input
     validateattributes(d, {'numeric'}, ...
         {'real','finite','vector','numel',6,'nonnegative'});
 
@@ -40,7 +29,6 @@ function [P, dFit, residuals, rmse] = estimatePoints3D(d)
              2 4;
              3 4];
 
-    % Unknowns: [x2, x3, y3, x4, y4, z4]
     lb = [1e-9; -Inf; 1e-9; -Inf; -Inf; -Inf];
     ub = Inf(6,1);
 
@@ -49,7 +37,6 @@ function [P, dFit, residuals, rmse] = estimatePoints3D(d)
         'MaxFunctionEvaluations',10000, ...
         'MaxIterations',2000);
 
-    % Multiple starting points
     rng(42);
     bestTheta = [];
     bestCost = Inf;
@@ -72,7 +59,6 @@ function [P, dFit, residuals, rmse] = estimatePoints3D(d)
         end
     end
 
-    % Reconstruct coordinates
     t = bestTheta;
 
     P = [0,     0,     0;
@@ -80,7 +66,6 @@ function [P, dFit, residuals, rmse] = estimatePoints3D(d)
          t(2),  t(3),  0;
          t(4),  t(5),  t(6)];
 
-    % Compute fitted distances
     dFit = zeros(6,1);
 
     for k = 1:6
