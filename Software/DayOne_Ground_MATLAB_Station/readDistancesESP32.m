@@ -1,21 +1,5 @@
-function d = readDistancesESP32(port, baudRate)
+function d = readDistancesESP32(s)
 %   d : [d12; d13; d14; d23; d24; d34]
-
-
-    arguments
-        port {mustBeTextScalar}
-        baudRate (1,1) double {mustBePositive} = 115200
-    end
-
-    s = serialport(port, baudRate);
-    configureTerminator(s, "LF");
-    s.Timeout = 30;
-
-    flush(s);
-
-    fprintf('Waiting for distances from ESP32 on %s...\n', port);
-
-    cleanupObj = onCleanup(@() delete(s));
 
     while true
         line = strtrim(readline(s));

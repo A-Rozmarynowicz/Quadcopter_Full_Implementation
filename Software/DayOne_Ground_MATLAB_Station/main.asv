@@ -1,6 +1,23 @@
 port = "COM7";
 baudrate = 115200;
-    
+
+s = serialport(port, baudRate);
+configureTerminator(s, "LF");
+s.Timeout = 30;
+
+flush(s);
+
+fprintf('Waiting for distances from ESP32 on %s...\n', port);
+
+cleanupObj = onCleanup(@() delete(s));
+
+classdef Color < int32
+    enumeration
+        Red   (1)
+        Blue  (2)
+        Green (3)
+    end
+end
 
 while true
     line = strtrim(readline(s));
@@ -14,18 +31,13 @@ while true
     if numel(values) == 7 && all(isfinite(values)) ...
             && all(values > 0)
 
+        d = values(:);
         command = d(1);
 
-        x = 6;
         switch command
             case Commands.RELAY
-                x = 0;
-            case Commands.SEND_MEASUREMENTS
-                d = values()
-            case Commands.SEND_POSITIONS
-                x = 0;
-            otherwise
-                continue;
+                x = 0
+            case Commands.SE
         end
 
         fprintf('Received averaged distances:\n');
