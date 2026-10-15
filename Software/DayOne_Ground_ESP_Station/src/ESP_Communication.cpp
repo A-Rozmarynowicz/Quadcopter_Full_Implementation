@@ -1,6 +1,5 @@
 #include "ESP_Communication.hpp"
 
-Queue<ESP_Packet, ESP_RECEIVE_QUEUE_SIZE> esp_receive_queue;
 Queue<ESP_Packet, ESP_TRANSMIT_QUEUE_SIZE> esp_transmit_queue;
 
 
@@ -20,34 +19,8 @@ void Initialize_ESP_Communication()
   }
 }
 
-void Flush_Unused_ESP_Received_Packets()
-{
-  for (uint8_t i = 0; i<esp_receive_queue.size(); i++)
-  {
-    if (esp_receive_queue[esp_receive_queue.get_head_offset_index(i)].Is_For_Flush())
-    {
-      ESP_Packet proxy;
-      esp_receive_queue.pop(proxy);
-    }
-    else
-    {
-      break;
-    }
-  }
-};
 
 #pragma region Messages
-
-// bool ESP_MESSAGES::Send_Query_Position(uint8_t receiver)
-// {
-//   ESP_Packet packet{};
-//   // Serial.printf("Sendind query to %d ------------------------------------------- \n", receiver);
-//   packet.data[ESP_Data_Setup::RECEIVER_ID] = receiver;
-//   packet.data[ESP_Data_Setup::TRANSMITTER_ID] = DRONE_ESP_ID;
-//   packet.data[ESP_Data_Setup::COMMAND] = ESP_Data_Commands::OBSERVER_QUERY_POSITION;
-
-//   return esp_transmit_queue.push(packet);
-// }
 
 
 #pragma endregion
@@ -91,12 +64,11 @@ void _receive_callback(const uint8_t* macAddr, const uint8_t* data, int dataLen)
     return;
   }
   Serial.printf("TRANSMITTTER: %d\n", data[ESP_Data_Setup::TRANSMITTER_ID]);
-   ESP_Packet packet;
+  ESP_Packet packet;
 
-   std::copy(data, data + dataLen, packet.data);
+  std::copy(data, data + dataLen, packet.data);
 
-   esp_receive_queue.push(packet);
-//   State_ReceiveCallback(data);
+  State_Receive_Callback(packet);
 };
 
 
@@ -104,7 +76,6 @@ void _sent_callback(const uint8_t *macAddr, esp_now_send_status_t status)
 {
   if (status == ESP_NOW_SEND_SUCCESS)
   {
-    // State_SentCallback();
   }
   else
   {
