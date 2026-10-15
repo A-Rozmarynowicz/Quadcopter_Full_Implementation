@@ -5,6 +5,10 @@ classdef Commands < int32
         SEND_POSITIONS (3)
         ACK_RECEIVED_POSITIONS (4)
         SEND_DISTANCES (5)
+        MATLAB_TRANSMISSION_CORRECT (6)
+        MATLAB_TRANSMISSION_WRONG (7)
+        ENABLE_ESP_REQUEST_DISTANCES (8)
+        ENABLE_ESP_SEND_POSITIONS (9)
 
         ERROR (99)
     end

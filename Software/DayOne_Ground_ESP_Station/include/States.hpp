@@ -115,5 +115,21 @@ private:
     void Handle_Serial_Message(uint8_t command, const float (&values)[MAX_NUMBER_OF_VALUES_IN_TRANSFER], uint8_t value_count) override;
 };
 
+class Manual_Operation_State : public State
+{
+    public:
+    STATES Get_State() const override
+    {
+        return STATES::SEND_POSITIONS_STATE;
+    }
+
+    void Enter() override;
+    void Exit() override;
+
+    void Receive_Callback(ESP_Packet& esp_packet) override;
+private:
+    void Handle_Serial_Message(uint8_t command, const float (&values)[MAX_NUMBER_OF_VALUES_IN_TRANSFER], uint8_t value_count) override;
+};
+
 
 #endif

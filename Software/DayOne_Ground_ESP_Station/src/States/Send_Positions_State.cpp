@@ -9,7 +9,7 @@ void Send_Positions_State::Enter()
 
 void Send_Positions_State::Exit()
 {
-
+    
 }
 
 void Send_Positions_State::Receive_Callback(ESP_Packet& esp_packet)
