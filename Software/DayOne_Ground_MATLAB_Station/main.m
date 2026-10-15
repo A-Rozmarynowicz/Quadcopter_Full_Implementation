@@ -1,48 +1,6 @@
 port = "COM7";
 baudrate = 115200;
     
-
-while true
-    line = strtrim(readline(s));
-
-    if isempty(line)
-        continue;
-    end
-
-    values = sscanf(line, '%d,%d,%d,%f,%f,%f,%f,%f,%f');
-
-    if numel(values) == 7 && all(isfinite(values)) ...
-            && all(values > 0)
-
-        command = d(1);
-
-        x = 6;
-        switch command
-            case Commands.RELAY
-                x = 0;
-            case Commands.SEND_MEASUREMENTS
-                d = values()
-            case Commands.SEND_POSITIONS
-                x = 0;
-            otherwise
-                continue;
-        end
-
-        fprintf('Received averaged distances:\n');
-        fprintf('d12 = %.4f\n', d(1));
-        fprintf('d13 = %.4f\n', d(2));
-        fprintf('d14 = %.4f\n', d(3));
-        fprintf('d23 = %.4f\n', d(4));
-        fprintf('d24 = %.4f\n', d(5));
-        fprintf('d34 = %.4f\n', d(6));
-
-        return;
-    else
-        fprintf('Ignoring invalid line: %s\n', line);
-    end
-end
-
-
 d = readDistancesESP32("COM5", 115200);
 
 [P, dFit, residuals, rmse] = estimatePoints3D(d);

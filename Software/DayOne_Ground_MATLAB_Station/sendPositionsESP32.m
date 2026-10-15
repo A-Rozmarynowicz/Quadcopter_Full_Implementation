@@ -9,7 +9,8 @@ function sendPositionsESP32(P, s)
     values = reshape(P.', 1, []);
 
     % Format and transmit
-    tx = sprintf('%.6f,', values);
+    tx = sprintf('%d,', int32(Commands.SEND_POSITIONS));
+    tx = [tx, sprintf('%.2f,', values(1:12))];
     tx(end) = [];
 
     writeline(s, tx);

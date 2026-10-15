@@ -1,6 +1,13 @@
 function d = readDistancesESP32(s)
 %   d : [d12; d13; d14; d23; d24; d34]
 
+    tx = sprintf('%d', Commands.SEND_POSITIONS);
+    tx(end) = [];
+
+    writeline(s, tx);
+
+    
+
     while true
         line = strtrim(readline(s));
 
@@ -16,12 +23,12 @@ function d = readDistancesESP32(s)
             d = values(:);
 
             fprintf('Received averaged distances:\n');
-            fprintf('d12 = %.4f\n', d(1));
-            fprintf('d13 = %.4f\n', d(2));
-            fprintf('d14 = %.4f\n', d(3));
-            fprintf('d23 = %.4f\n', d(4));
-            fprintf('d24 = %.4f\n', d(5));
-            fprintf('d34 = %.4f\n', d(6));
+            fprintf('d01 = %.4f\n', d(1));
+            fprintf('d02 = %.4f\n', d(2));
+            fprintf('d03 = %.4f\n', d(3));
+            fprintf('d12 = %.4f\n', d(4));
+            fprintf('d13 = %.4f\n', d(5));
+            fprintf('d23 = %.4f\n', d(6));
 
             return;
         else
