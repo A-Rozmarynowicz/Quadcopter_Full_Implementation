@@ -18,13 +18,7 @@ enum SERIAL_COMMANDS
 };
 
 bool Update_Serial(uint8_t& command, float (&values)[MAX_NUMBER_OF_VALUES_IN_TRANSFER], uint8_t& value_count);
-bool Parse_Message(const String& message, int& command, float values[MAX_NUMBER_OF_VALUES_IN_TRANSFER]);
-void Handle_Message(uint8_t command, float (&values)[MAX_NUMBER_OF_VALUES_IN_TRANSFER]);
+bool Parse_Message(const String& message, uint8_t& command, float (&values)[MAX_NUMBER_OF_VALUES_IN_TRANSFER], uint8_t& value_count);
 
-
-void Send_Distances();
-void Relay_Message();
-
-void Handle_Position_Transfer(float (&values)[12]);
 
 #endif

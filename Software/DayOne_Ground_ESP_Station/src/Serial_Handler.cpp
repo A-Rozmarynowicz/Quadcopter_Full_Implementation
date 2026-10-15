@@ -1,24 +1,18 @@
 #include "Serial_Handler.hpp"
 
-#include <stdlib.h>
-#include <math.h>
-#include <string.h>
-
-// Include the headers that define:
-// SERIAL_COMMANDS, LGHS_Distances, LGHS_Positions,
-// and Store_LGHS_Position().
+#include <Arduino.h>
 
 bool Update_Serial(uint8_t& command, float (&values)[MAX_NUMBER_OF_VALUES_IN_TRANSFER], uint8_t& value_count)
 {
     if (!Serial.available()) {
-        return;
+        return false;
     }
 
     String message = Serial.readStringUntil('\n');
     message.trim();
 
     if (message.length() == 0) {
-        return;
+        return false;
     }
 
     Serial.print("Received: ");

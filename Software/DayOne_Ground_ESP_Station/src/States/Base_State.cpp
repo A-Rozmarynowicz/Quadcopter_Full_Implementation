@@ -23,6 +23,7 @@ void State::Update()
     uint8_t value_count;
     if (Update_Serial(command, values, value_count))
     {
-        Handle_Message(command, values);
+        Handle_Serial_Message(command, values, value_count);
+        Serial.printf("YES YES\n");
     }
 }

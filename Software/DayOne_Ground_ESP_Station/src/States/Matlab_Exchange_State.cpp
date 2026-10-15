@@ -2,7 +2,7 @@
 
 void Matlab_Exchange_State::Enter()
 {
-
+    Serial.print("MATLAB state ready\n");
 }
 
 void Matlab_Exchange_State::Exit()
@@ -26,7 +26,7 @@ void Matlab_Exchange_State::Handle_Serial_Message(uint8_t command, const float (
 
         case static_cast<uint8_t>(SERIAL_COMMANDS::REQUEST_MEASUREMENTS):
             if (value_count == 0) {
-                Send_Distances();
+                Send_Serial_Distances();
             }
             break;
 

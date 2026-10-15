@@ -2,15 +2,10 @@
 
 void Initial_State::Enter()
 {
-
+    Request_Change_State(STATES::MATLAB_EXCHANGE_STATE);
 }
 
 void Initial_State::Exit()
-{
-
-}
-
-void Initial_State::Receive_Callback(ESP_Packet& esp_packet)
 {
 
 }

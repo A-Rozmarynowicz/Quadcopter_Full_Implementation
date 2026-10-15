@@ -68,7 +68,7 @@ void _receive_callback(const uint8_t* macAddr, const uint8_t* data, int dataLen)
 
   std::copy(data, data + dataLen, packet.data);
 
-  State_Receive_Callback(packet);
+  state_machine.State_Receive_Callback(packet);
 };
 
 

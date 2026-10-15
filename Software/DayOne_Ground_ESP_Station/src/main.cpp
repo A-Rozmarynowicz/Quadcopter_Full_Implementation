@@ -1,18 +1,18 @@
 #include <Arduino.h>
 
-// put function declarations here:
-int myFunction(int, int);
+#include "State_Machine.hpp"
+#include "ESP_Communication.hpp"
+
+State_Machine state_machine;
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  Serial.begin(115200);
+  Initialize_ESP_Communication();
+  state_machine.State_Machine_Initialize();
+  Serial.print("Initialization complete\n");
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
-
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+  state_machine.State_Update();
+  state_machine.Handle_State_Change_Request();
 }
