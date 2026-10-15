@@ -15,24 +15,28 @@ function d = readDistancesESP32(s)
             continue;
         end
 
-        values = sscanf(line, '%f,%f,%f,%f,%f,%f');
+        values = sscanf(line, '%d,%f,%f,%f,%f,%f,%f');
 
-        if numel(values) == 6 && all(isfinite(values)) ...
-                && all(values > 0)
-
-            d = values(:);
-
-            fprintf('Received averaged distances:\n');
-            fprintf('d01 = %.4f\n', d(1));
-            fprintf('d02 = %.4f\n', d(2));
-            fprintf('d03 = %.4f\n', d(3));
-            fprintf('d12 = %.4f\n', d(4));
-            fprintf('d13 = %.4f\n', d(5));
-            fprintf('d23 = %.4f\n', d(6));
-
-            return;
+        if numel(values) == 7 && all(isfinite(values)) ...
+                && all(values >= 0)
+            
+            if values(1) ~= Commands.SEND_DISTANCES
+                fprintf("Wrong command received in -SEND DISTANCES- format")
+            else
+                d = values(2:7);
+    
+                fprintf('Received averaged distances:\n');
+                fprintf('d01 = %.4f\n', d(1));
+                fprintf('d02 = %.4f\n', d(2));
+                fprintf('d03 = %.4f\n', d(3));
+                fprintf('d12 = %.4f\n', d(4));
+                fprintf('d13 = %.4f\n', d(5));
+                fprintf('d23 = %.4f\n', d(6));
+    
+                return;
+            end
         else
-            fprintf('Ignoring invalid line: %s\n', line);
+            fprintf('Message received: %s\n', line);
         end
     end
 end

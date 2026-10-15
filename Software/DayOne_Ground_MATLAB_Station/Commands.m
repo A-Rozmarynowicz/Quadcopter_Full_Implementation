@@ -4,6 +4,7 @@ classdef Commands < int32
         REQUEST_MEASUREMENTS (2)
         SEND_POSITIONS (3)
         ACK_RECEIVED_POSITIONS (4)
+        SEND_DISTANCES (5)
 
         ERROR (99)
     end
