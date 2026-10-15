@@ -5,7 +5,8 @@
 #include "Buffers.hpp"
 
 #define DRONE_ESP_ID 171
-#define ESP_DATA_SIZE 20
+#define GROUND_STATION_ID 169
+#define ESP_DATA_SIZE 28
 #define ESP_RECEIVE_QUEUE_SIZE 33
 #define ESP_TRANSMIT_QUEUE_SIZE 33
 
@@ -21,8 +22,7 @@ enum ESP_Data_Commands
   OBSERVER_READY,
 };
 
-enum ESP_Data_Setup
-{
+enum ESP_Data_Setup {
   RECEIVER_ID = 0,
   TRANSMITTER_ID = 1,
   COMMAND = 2,
@@ -31,6 +31,8 @@ enum ESP_Data_Setup
   QUAD_1 = 8,
   QUAD_2 = 12,
   QUAD_3 = 16,
+  QUAD_4 = 20,
+  QUAD_5 = 24,
 };
 
 enum ESP_Communication_Errors
