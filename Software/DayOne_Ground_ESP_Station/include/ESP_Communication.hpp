@@ -7,6 +7,7 @@
 #include "Buffers.hpp"
 #include "State_Machine.hpp"
 #include "ESP_Structures.hpp"
+#include "Measurements.hpp"
 
 #define DRONE_ESP_ID 171
 #define GROUND_STATION_ID 169
@@ -23,9 +24,12 @@ enum ESP_Communication_Errors
 
 namespace ESP_MESSAGES
 {
-  bool Send_Query_Distances();
-  bool Send_Position(uint8_t lghs_id);
+  bool Send_Ground_Station_Query_Distances();
+  bool Send_Ground_Station_Update_Position(uint8_t lghs_id, Position& position);
+  bool Send_Ground_Station_Position_Transfer_Done();
 };
+
+
 
 extern Queue<ESP_Packet, ESP_TRANSMIT_QUEUE_SIZE> esp_transmit_queue;
 

@@ -30,6 +30,18 @@ void Matlab_Exchange_State::Handle_Serial_Message(uint8_t command, const float (
             }
             break;
 
+        case static_cast<uint8_t>(SERIAL_COMMANDS::MATLAB_TRANSMISSION_CORRECT):
+            if (value_count == 0) {
+                Request_Change_State(STATES::SEND_POSITIONS_STATE);
+            }
+            break;
+
+            case static_cast<uint8_t>(SERIAL_COMMANDS::MATLAB_TRANSMISSION_WRONG):
+            if (value_count == 0) {
+                Request_Change_State(STATES::MATLAB_EXCHANGE_STATE);
+            }
+            break;
+
         default:
             Serial.println("Unknown command");
             break;

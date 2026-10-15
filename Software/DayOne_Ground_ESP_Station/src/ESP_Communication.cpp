@@ -3,6 +3,49 @@
 Queue<ESP_Packet, ESP_TRANSMIT_QUEUE_SIZE> esp_transmit_queue;
 
 
+#pragma region Messages
+bool ESP_MESSAGES::Send_Ground_Station_Query_Distances()
+{
+  ESP_Packet packet{};
+  packet.data[ESP_Data_Setup::RECEIVER_ID] = 0;
+  packet.data[ESP_Data_Setup::TRANSMITTER_ID] = GROUND_STATION_ID;
+  packet.data[ESP_Data_Setup::COMMAND] = ESP_Data_Commands::GROUND_STATION_QUERY_DISTANCES;
+
+  return esp_transmit_queue.push(packet);
+
+}
+
+bool ESP_MESSAGES::Send_Ground_Station_Update_Position(uint8_t lghs_id, Position& position)
+{
+  ESP_Packet packet{};
+  packet.data[ESP_Data_Setup::RECEIVER_ID] = 0;
+  packet.data[ESP_Data_Setup::TRANSMITTER_ID] = GROUND_STATION_ID;
+  packet.data[ESP_Data_Setup::COMMAND] = ESP_Data_Commands::GROUND_STATION_UPDATE_POSITION;
+  packet.data[ESP_Data_Setup::SINGLE_0] = lghs_id;
+
+  memcpy(&(packet.data[ESP_Data_Setup::QUAD_0]), &(position.x), sizeof(float));
+  memcpy(&(packet.data[ESP_Data_Setup::QUAD_1]), &(position.y), sizeof(float));
+  memcpy(&(packet.data[ESP_Data_Setup::QUAD_2]), &(position.z), sizeof(float));
+
+  return esp_transmit_queue.push(packet);
+
+}
+
+bool ESP_MESSAGES::Send_Ground_Station_Position_Transfer_Done()
+{
+  ESP_Packet packet{};
+  packet.data[ESP_Data_Setup::RECEIVER_ID] = 0;
+  packet.data[ESP_Data_Setup::TRANSMITTER_ID] = GROUND_STATION_ID;
+  packet.data[ESP_Data_Setup::COMMAND] = ESP_Data_Commands::GROUND_STATION_POSITION_TRANSFER_DONE;
+
+  return esp_transmit_queue.push(packet);
+}
+
+
+#pragma endregion
+
+#pragma region ESP_NOW
+
 void Initialize_ESP_Communication()
 {
   WiFi.mode(WIFI_STA);
@@ -19,13 +62,6 @@ void Initialize_ESP_Communication()
   }
 }
 
-
-#pragma region Messages
-
-
-#pragma endregion
-
-#pragma region ESP_NOW
 void _send_esp()
 {
   if (esp_transmit_queue.empty())

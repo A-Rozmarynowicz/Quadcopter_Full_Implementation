@@ -2,7 +2,7 @@
 
 void Initial_State::Enter()
 {
-    Request_Change_State(STATES::MATLAB_EXCHANGE_STATE);
+    Request_Change_State(STATES::REQUEST_DISTANCES_STATE);
 }
 
 void Initial_State::Exit()

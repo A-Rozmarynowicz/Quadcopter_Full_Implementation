@@ -5,6 +5,7 @@
 #include "ESP_Structures.hpp"
 #include "Serial_Handler.hpp"
 #include "Measurements.hpp"
+#include "ESP_Communication.hpp"
 
 
 enum class STATES
@@ -75,6 +76,7 @@ public:
     void Receive_Callback(ESP_Packet& esp_packet) override;
 private:
     void Handle_Serial_Message(uint8_t command, const float (&values)[MAX_NUMBER_OF_VALUES_IN_TRANSFER], uint8_t value_count) override;
+    void Update_Distances(ESP_Packet& packet);
 };
 
 class Matlab_Exchange_State : public State
