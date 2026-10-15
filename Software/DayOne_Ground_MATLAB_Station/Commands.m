@@ -3,5 +3,8 @@ classdef Commands < int32
         RELAY   (1)
         REQUEST_MEASUREMENTS (2)
         SEND_POSITIONS (3)
+        ACK_RECEIVED_POSITIONS (4)
+
+        ERROR (99)
     end
 end

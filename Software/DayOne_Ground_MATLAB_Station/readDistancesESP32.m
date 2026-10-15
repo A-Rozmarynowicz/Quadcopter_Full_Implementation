@@ -1,12 +1,12 @@
 function d = readDistancesESP32(s)
 %   d : [d12; d13; d14; d23; d24; d34]
 
-    tx = sprintf('%d', Commands.SEND_POSITIONS);
+    tx = sprintf('%d,', Commands.REQUEST_MEASUREMENTS);
     tx(end) = [];
 
     writeline(s, tx);
 
-    
+    fprintf('Requested measurements:\n%s\n', tx);
 
     while true
         line = strtrim(readline(s));

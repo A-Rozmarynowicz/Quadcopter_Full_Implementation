@@ -4,7 +4,6 @@ function sendPositionsESP32(P, s)
     validateattributes(P, {'numeric'}, ...
         {'real','finite','size',[4,3]});
 
-
     % Flatten coordinates row by row
     values = reshape(P.', 1, []);
 
@@ -16,4 +15,28 @@ function sendPositionsESP32(P, s)
     writeline(s, tx);
 
     fprintf('Positions sent to ESP32:\n%s\n', tx);
+
+    while true
+        line = strtrim(readline(s));
+
+        if isempty(line)
+            continue;
+        end
+
+        values = sscanf(line, '%d');
+
+        if isscalar(values) && all(isfinite(values)) ...
+                && all(values > 0)
+
+            if values == Commands.ACK_RECEIVED_POSITIONS
+                display("Received acknowledgement of position transfer\n");
+            else
+                fprintf('ERROR: Acknowledgement of position transfer went wrong: %d\n', values);
+            end
+
+            return;
+        else
+            fprintf('Ignoring invalid line: %s\n', line);
+        end
+    end
 end
