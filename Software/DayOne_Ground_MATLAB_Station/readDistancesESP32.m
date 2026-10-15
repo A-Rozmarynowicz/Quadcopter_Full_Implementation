@@ -1,5 +1,5 @@
 function d = readDistancesESP32(s)
-%   d : [d12; d13; d14; d23; d24; d34]
+%   d : [d01; d02; d03; d12; d13; d23]
 
     tx = sprintf('%d,', Commands.REQUEST_MEASUREMENTS);
     tx(end) = [];

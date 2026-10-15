@@ -29,7 +29,7 @@ function sendPositionsESP32(P, s)
                 && all(values > 0)
 
             if values == Commands.ACK_RECEIVED_POSITIONS
-                display("Received acknowledgement of position transfer\n");
+                fprintf("Received acknowledgement of position transfer\n");
             else
                 fprintf('ERROR: Acknowledgement of position transfer went wrong: %d\n', values);
             end
