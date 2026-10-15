@@ -14,3 +14,15 @@ STATES State::Get_Requested_State()
 {
     return next_state;
 }
+
+
+void State::Update()
+{
+    uint8_t command;
+    float values[MAX_NUMBER_OF_VALUES_IN_TRANSFER];
+    uint8_t value_count;
+    if (Update_Serial(command, values, value_count))
+    {
+        Handle_Message(command, values);
+    }
+}

@@ -3,6 +3,9 @@
 
 #include <Arduino.h>
 #include "ESP_Structures.hpp"
+#include "Serial_Handler.hpp"
+#include "Measurements.hpp"
+
 
 enum class STATES
 {
@@ -33,6 +36,8 @@ public:
 
     virtual STATES Get_State() const = 0;
 
+    void Update();
+    virtual void Handle_Serial_Message(uint8_t command, const float (&values)[MAX_NUMBER_OF_VALUES_IN_TRANSFER], uint8_t value_count) = 0;
     virtual void Enter() = 0;
     virtual void Exit() = 0;
     virtual void Receive_Callback(ESP_Packet& esp_packet) = 0;
@@ -51,6 +56,8 @@ public:
     void Exit() override;
 
     void Receive_Callback(ESP_Packet& esp_packet) override;
+private:
+    void Handle_Serial_Message(uint8_t command, const float (&values)[MAX_NUMBER_OF_VALUES_IN_TRANSFER], uint8_t value_count) override;
 };
 
 
@@ -66,6 +73,8 @@ public:
     void Exit() override;
 
     void Receive_Callback(ESP_Packet& esp_packet) override;
+private:
+    void Handle_Serial_Message(uint8_t command, const float (&values)[MAX_NUMBER_OF_VALUES_IN_TRANSFER], uint8_t value_count) override;
 };
 
 class Matlab_Exchange_State : public State
@@ -80,6 +89,10 @@ public:
     void Exit() override;
 
     void Receive_Callback(ESP_Packet& esp_packet) override;
+private:
+    void Handle_Serial_Message(uint8_t command, const float (&values)[MAX_NUMBER_OF_VALUES_IN_TRANSFER], uint8_t value_count) override;
+    void Handle_Serial_Position_Transfer(const float (&values)[MAX_NUMBER_OF_VALUES_IN_TRANSFER]);
+    void Send_Serial_Distances();
 };
 
 
@@ -95,9 +108,15 @@ public:
     void Exit() override;
 
     void Receive_Callback(ESP_Packet& esp_packet) override;
+private:
+    void Handle_Serial_Message(uint8_t command, const float (&values)[MAX_NUMBER_OF_VALUES_IN_TRANSFER], uint8_t value_count) override;
 };
 
 
+#include "States/Base_State.tpp"
 #include "States/Initial_State.tpp"
+#include "States/Matlab_Exchange_State.tpp"
+#include "States/Request_Distances_State.tpp"
+#include "States/Send_Positions_State.tpp"
 
 #endif

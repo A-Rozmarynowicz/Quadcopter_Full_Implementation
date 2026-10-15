@@ -17,7 +17,7 @@ enum SERIAL_COMMANDS
     ERROR = 99,
 };
 
-void Update_Serial();
+bool Update_Serial(uint8_t& command, float (&values)[MAX_NUMBER_OF_VALUES_IN_TRANSFER], uint8_t& value_count);
 bool Parse_Message(const String& message, int& command, float values[MAX_NUMBER_OF_VALUES_IN_TRANSFER]);
 void Handle_Message(uint8_t command, float (&values)[MAX_NUMBER_OF_VALUES_IN_TRANSFER]);
 

@@ -8,4 +8,6 @@
 
 void State_Receive_Callback(ESP_Packet& esp_packet);
 
+void Update();
+
 #endif

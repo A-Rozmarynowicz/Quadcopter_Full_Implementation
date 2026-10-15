@@ -1,16 +1,26 @@
 #include "States.hpp"
 
-void State::Enter()
+void Initial_State::Enter()
 {
 
 }
 
-void State::Exit()
+void Initial_State::Exit()
 {
 
 }
 
-void State::Receive_Callback(ESP_Packet& esp_packet)
+void Initial_State::Receive_Callback(ESP_Packet& esp_packet)
 {
-    
+
+}
+
+void Initial_State::Receive_Callback(ESP_Packet& esp_packet)
+{
+
+}
+
+void Initial_State::Handle_Serial_Message(uint8_t command, const float (&values)[MAX_NUMBER_OF_VALUES_IN_TRANSFER], uint8_t value_count)
+{
+
 }

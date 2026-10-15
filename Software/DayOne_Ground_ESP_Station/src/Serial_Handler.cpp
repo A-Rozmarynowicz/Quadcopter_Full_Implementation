@@ -8,7 +8,7 @@
 // SERIAL_COMMANDS, LGHS_Distances, LGHS_Positions,
 // and Store_LGHS_Position().
 
-bool Update_Serial(uint8_t& command, float (&values)[MAX_NUMBER_OF_VALUES_IN_TRANSFER], uint8_t value_count)
+bool Update_Serial(uint8_t& command, float (&values)[MAX_NUMBER_OF_VALUES_IN_TRANSFER], uint8_t& value_count)
 {
     if (!Serial.available()) {
         return;
@@ -26,8 +26,9 @@ bool Update_Serial(uint8_t& command, float (&values)[MAX_NUMBER_OF_VALUES_IN_TRA
 
     if (!Parse_Message(message, command, values, value_count)) {
         Serial.println("Invalid message");
-        return;
+        return false;
     }
+    return true;
 }
 
 bool Parse_Message(
@@ -105,73 +106,4 @@ bool Parse_Message(
     }
 
     return true;
-}
-
-void Handle_Message(
-    uint8_t command,
-    const float (&values)[MAX_NUMBER_OF_VALUES_IN_TRANSFER],
-    uint8_t value_count)
-{
-    switch (command) {
-        case static_cast<uint8_t>(SERIAL_COMMANDS::SEND_POSITIONS):
-            if (value_count == 12) {
-                Handle_Position_Transfer(values);
-            }
-            break;
-
-        case static_cast<uint8_t>(SERIAL_COMMANDS::REQUEST_MEASUREMENTS):
-            if (value_count == 0) {
-                Send_Distances();
-            }
-            break;
-
-        default:
-            Serial.println("Unknown command");
-            break;
-    }
-}
-
-void Handle_Position_Transfer(
-    const float (&values)[MAX_NUMBER_OF_VALUES_IN_TRANSFER])
-{
-    for (size_t i = 0; i < 4; ++i) {
-        Store_LGHS_Position(
-            i,
-            values[i * 3],
-            values[i * 3 + 1],
-            values[i * 3 + 2]
-        );
-    }
-
-    Serial.println("Received positions:");
-
-    for (size_t i = 0; i < 4; ++i) {
-        Serial.printf(
-            "P%u: %.2f, %.2f, %.2f\n",
-            static_cast<unsigned>(i + 1),
-            LGHS_Positions[i].x,
-            LGHS_Positions[i].y,
-            LGHS_Positions[i].z
-        );
-    }
-}
-
-void Send_Distances()
-{
-    // Replace SEND_DISTANCES if your enum uses another name.
-    Serial.printf("%d", static_cast<int>(
-        SERIAL_COMMANDS::SEND_DISTANCES));
-
-    for (size_t i = 0; i < 3; ++i) {
-        for (size_t j = i + 1; j < 4; ++j) {
-            Serial.printf(",%.2f", LGHS_Distances[i][j]);
-        }
-    }
-
-    Serial.println();
-}
-
-void Relay_Message()
-{
-    // Implement when required.
 }
