@@ -111,6 +111,7 @@ public:
 
     void Receive_Callback(ESP_Packet& esp_packet) override;
 private:
+    uint8_t current_lgh_index = 0;
     void Handle_Serial_Message(uint8_t command, const float (&values)[MAX_NUMBER_OF_VALUES_IN_TRANSFER], uint8_t value_count) override;
 };
 
