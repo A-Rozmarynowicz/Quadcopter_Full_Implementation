@@ -14,6 +14,7 @@ enum class STATES
     REQUEST_DISTANCES_STATE,
     MATLAB_EXCHANGE_STATE,
     SEND_POSITIONS_STATE,
+    MANUAL_OPERATION_STATE,
 
     NONE_STATE,
 };
@@ -120,7 +121,7 @@ class Manual_Operation_State : public State
     public:
     STATES Get_State() const override
     {
-        return STATES::SEND_POSITIONS_STATE;
+        return STATES::MANUAL_OPERATION_STATE;
     }
 
     void Enter() override;

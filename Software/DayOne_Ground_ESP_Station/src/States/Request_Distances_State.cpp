@@ -28,6 +28,12 @@ void Request_Distances_State::Handle_Serial_Message(uint8_t command, const float
             }
             break;
 
+        case static_cast<uint8_t>(SERIAL_COMMANDS::CHANGE_TO_MANUAL_OPERATION_STATE):
+            if (value_count == 0) {
+                Request_Change_State(STATES::MANUAL_OPERATION_STATE);
+            }
+            break;
+
         default:
             Serial.println("Unknown command");
             break;
