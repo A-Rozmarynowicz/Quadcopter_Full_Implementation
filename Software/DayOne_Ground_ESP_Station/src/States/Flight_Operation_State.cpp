@@ -28,7 +28,15 @@ void Flight_Operation_State::Handle_Serial_Message(uint8_t command, const float 
         case static_cast<uint8_t>(SERIAL_COMMANDS::QUADCOPTER_INIT):
             if (value_count == 0) {
                 ESP_MESSAGES::Send_Ground_Station_Quadcopter_Init();
-                Serial.printf("Init quadcopter\n");
+                Serial.printf("Quadcopter INIT\n");
+            }
+            break;
+
+        case static_cast<uint8_t>(SERIAL_COMMANDS::QUADCOPTER_HOVER):
+            if (value_count == 1) {
+                float height = static_cast<float>(values[0]);
+                ESP_MESSAGES::Send_Ground_Station_Quadcopter_Hover(height);
+                Serial.printf("Quadcopter HOVER\n");
             }
             break;
 

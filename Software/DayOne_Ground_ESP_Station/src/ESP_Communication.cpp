@@ -71,12 +71,13 @@ bool ESP_MESSAGES::Send_Ground_Station_Quadcopter_Init()
   return esp_transmit_queue.push(packet);
 }
 
-bool ESP_MESSAGES::Send_Ground_Station_Quadcopter_Hover()
+bool ESP_MESSAGES::Send_Ground_Station_Quadcopter_Hover(float height)
 {
   ESP_Packet packet{};
   packet.data[ESP_Data_Setup::RECEIVER_ID] = DRONE_ESP_ID;
   packet.data[ESP_Data_Setup::TRANSMITTER_ID] = GROUND_STATION_ID;
   packet.data[ESP_Data_Setup::COMMAND] = ESP_Data_Commands::GROUND_STATION_QUADCOPTER_HOVER;
+  memcpy(&(packet.data[ESP_Data_Setup::QUAD_0]), &(height), sizeof(float));
 
   return esp_transmit_queue.push(packet);
 }

@@ -30,7 +30,7 @@ namespace ESP_MESSAGES
   bool Send_Ground_Station_Heartbeat();
 
   bool Send_Ground_Station_Quadcopter_Init();
-  bool Send_Ground_Station_Quadcopter_Hover();
+  bool Send_Ground_Station_Quadcopter_Hover(float height);
 };
 
 
