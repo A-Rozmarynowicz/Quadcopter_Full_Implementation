@@ -1,6 +1,7 @@
 #include "States.hpp"
 #include "UWB.hpp"
 #include "Positioning_Algebra_4LGHS.hpp"
+#include "Positioning_Algebra_5LGHS.hpp"
 
 void Request_LGHS_Positions_State::Enter()
 {
@@ -74,12 +75,23 @@ bool Request_LGHS_Positions_State::Check_For_Position_Response()
 
 void Request_LGHS_Positions_State::Handle_Increment_Next_LGH_Query()
 {
-    if (current_request_lgh_index >= NUMBER_OF_LIGHTHOUSES-1)
-    {
-        ALGEBRA_4LGHS::Build_Constant_Matrices(lighthouse_positions_by_indices);
+    if (current_request_lgh_index >= NUMBER_OF_LIGHTHOUSES - 1)
+        {
+        #if NUMBER_OF_LIGHTHOUSES == 4
+                ALGEBRA_4LGHS::Build_Constant_Matrices(
+                    lighthouse_positions_by_indices
+                );
+        #elif NUMBER_OF_LIGHTHOUSES == 5
+                ALGEBRA_5LGHS::Build_Constant_Matrices(
+                    lighthouse_positions_by_indices
+                );
+        #else
+            #error "Unsupported NUMBER_OF_LIGHTHOUSES configuration"
+        #endif
+
         Request_Change_State(STATES::FLIGHT_STATE);
         return;
-    }
+        }
 
     current_request_lgh_index++;
     ESP_MESSAGES::Send_Query_Position(current_request_lgh_index);

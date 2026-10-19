@@ -1,7 +1,7 @@
 #ifndef CONFIGURATION_HPP
 #define CONFIGURATION_HPP
 
-#define NUMBER_OF_LIGHTHOUSES (uint8_t) 4
+#define NUMBER_OF_LIGHTHOUSES 4
 
 #include <Arduino.h>
 #include <WiFi.h>
