@@ -3,14 +3,13 @@
 
 #include <Arduino.h>
 
-#define ESP_DATA_SIZE 28
+#define ESP_DATA_SIZE 44
 
 
 struct ESP_Packet
 {
     uint8_t data[ESP_DATA_SIZE];
 };
-
 
 enum ESP_Data_Setup {
   RECEIVER_ID = 0,
@@ -23,6 +22,10 @@ enum ESP_Data_Setup {
   QUAD_3 = 16,
   QUAD_4 = 20,
   QUAD_5 = 24,
+  QUAD_6 = 28,
+  QUAD_7 = 32,
+  QUAD_8 = 36,
+  QUAD_9 = 40,
 };
 
 enum ESP_Data_Commands {

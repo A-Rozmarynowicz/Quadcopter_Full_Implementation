@@ -12,6 +12,7 @@ private:
     Request_Distances_State request_distances_state;
     Matlab_Exchange_State matlab_exchange_state;
     Send_Positions_State send_positions_state;
+    Manual_Operation_State manual_operation_state;
 
     State* current_state;
 

@@ -24,6 +24,5 @@ void State::Update()
     if (Update_Serial(command, values, value_count))
     {
         Handle_Serial_Message(command, values, value_count);
-        Serial.printf("YES YES\n");
     }
 }

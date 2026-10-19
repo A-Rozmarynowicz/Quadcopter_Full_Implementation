@@ -33,6 +33,10 @@ void State_Machine::Handle_State_Change_Request()
     case STATES::SEND_POSITIONS_STATE:
         change_state(send_positions_state);
         break;
+    case STATES::MANUAL_OPERATION_STATE:
+        change_state(manual_operation_state);
+        break;
+
     default:
         break;
     }

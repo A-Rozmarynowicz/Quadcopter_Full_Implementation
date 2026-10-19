@@ -20,6 +20,7 @@ void Send_Positions_State::Receive_Callback(ESP_Packet& esp_packet)
         if (current_lgh_index == NUMBER_OF_LIGHTHOUSES)
         {
             Serial.print("All positions updated\n");
+            ESP_MESSAGES::Send_Ground_Station_Position_Transfer_Done();
             Request_Change_State(STATES::MANUAL_OPERATION_STATE);
         }
         else

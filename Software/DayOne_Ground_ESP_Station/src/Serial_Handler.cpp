@@ -58,20 +58,10 @@ bool Parse_Message(
     value_count = 0;
 
     // Determine the expected number of values for this command.
-    size_t expectedCount;
+    uint8_t expectedCount;
 
-    switch (command) {
-        case static_cast<uint8_t>(SERIAL_COMMANDS::SEND_POSITIONS):
-            expectedCount = 12;
-            break;
-
-        case static_cast<uint8_t>(SERIAL_COMMANDS::REQUEST_MEASUREMENTS):
-            expectedCount = 0;
-            break;
-
-        default:
-            // Unknown commands are rejected.
-            return false;
+    if (!Get_Expected_Count(command, expectedCount)) {
+        return false;
     }
 
     // Parse exactly the expected number of values.
@@ -100,4 +90,18 @@ bool Parse_Message(
     }
 
     return true;
+}
+
+
+bool Get_Expected_Count(uint8_t command, uint8_t& expectedCount)
+{
+    for (const auto& entry : commandTable) {
+        if (static_cast<uint8_t>(entry.command) == command) {
+            expectedCount = entry.expectedCount;
+            return true;
+        }
+    }
+
+    // Unknown command
+    return false;
 }

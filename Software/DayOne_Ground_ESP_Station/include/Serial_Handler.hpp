@@ -4,7 +4,7 @@
 #include <Arduino.h>
 #include "Measurements.hpp"
 
-#define MAX_NUMBER_OF_VALUES_IN_TRANSFER 12
+#define MAX_NUMBER_OF_VALUES_IN_TRANSFER POSITION_TRANSFER_DATA_LENGTH
 
 enum SERIAL_COMMANDS
 {
@@ -23,8 +23,27 @@ enum SERIAL_COMMANDS
     ERROR = 99,
 };
 
+struct CommandInfo {
+    SERIAL_COMMANDS command;
+    uint8_t expectedCount;
+};
+
+constexpr std::array<CommandInfo, 11> commandTable {{
+    {SERIAL_COMMANDS::RELAY,                          0},
+    {SERIAL_COMMANDS::REQUEST_MEASUREMENTS,           0},
+    {SERIAL_COMMANDS::SEND_POSITIONS,                POSITION_TRANSFER_DATA_LENGTH},
+    {SERIAL_COMMANDS::ACK_RECEIVED_POSITIONS,         0},
+    {SERIAL_COMMANDS::SEND_DISTANCES,                DISTANCES_TRANSFER_DATA_LENGTH},
+    {SERIAL_COMMANDS::MATLAB_TRANSMISSION_CORRECT,    0},
+    {SERIAL_COMMANDS::MATLAB_TRANSMISSION_WRONG,      0},
+    {SERIAL_COMMANDS::ENABLE_ESP_REQUEST_DISTANCES,   0},
+    {SERIAL_COMMANDS::ENABLE_ESP_SEND_POSITIONS,      0},
+    {SERIAL_COMMANDS::REQUEST_CURRENT_LGH_STATE,      1},
+    {SERIAL_COMMANDS::CHANGE_TO_MANUAL_OPERATION_STATE, 0},
+}};
+
 bool Update_Serial(uint8_t& command, float (&values)[MAX_NUMBER_OF_VALUES_IN_TRANSFER], uint8_t& value_count);
 bool Parse_Message(const String& message, uint8_t& command, float (&values)[MAX_NUMBER_OF_VALUES_IN_TRANSFER], uint8_t& value_count);
-
+bool Get_Expected_Count(uint8_t command, uint8_t& expectedCount);
 
 #endif

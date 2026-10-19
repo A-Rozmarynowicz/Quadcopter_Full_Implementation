@@ -2,7 +2,7 @@
 
 void Manual_Operation_State::Enter()
 {
-    Serial.print("Entered manual operation state");
+    Serial.print("Entered manual operation state\n");
 }
 
 void Manual_Operation_State::Exit()
