@@ -27,6 +27,7 @@ namespace ESP_MESSAGES
   bool Send_Ground_Station_Update_Position(uint8_t lghs_id, Position& position);
   bool Send_Ground_Station_Position_Transfer_Done();
   bool Send_Ground_Station_Request_Current_State(uint8_t id);
+  bool Send_Ground_Station_Heartbeat();
 };
 
 
