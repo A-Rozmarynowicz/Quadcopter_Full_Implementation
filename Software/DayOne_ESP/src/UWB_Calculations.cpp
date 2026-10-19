@@ -1,5 +1,6 @@
 #include "UWB_Calculations.hpp"
 #include "Positioning_Algebra_4LGHS.hpp"
+#include "Positioning_Algebra_5LGHS.hpp"
 
 Position current_calculated_position;
 Position position_zero;
@@ -100,12 +101,29 @@ void _get_average_ranges(Stack<UWB_Measurement, UWB_MEASUREMENT_STACK_SIZE> (&uw
 
 bool _estimate_position_from_average_ranges(UWB_Measurement (&measurements)[NUMBER_OF_LIGHTHOUSES], Position& position, uint8_t present_lighthouses)
 {
-    return _estimate_position_from_4_measurements(measurements, position);
+    if (NUMBER_OF_LIGHTHOUSES == 5)
+    {
+        return _estimate_position_from_5_measurements(measurements, position);
+    }
+    else if (NUMBER_OF_LIGHTHOUSES == 4)
+    {
+        return _estimate_position_from_4_measurements(measurements, position);
+    }
+}
+
+bool _estimate_position_from_5_measurements(UWB_Measurement (&measurements)[NUMBER_OF_LIGHTHOUSES], Position &position)
+{
+    #if (NUMBER_OF_LIGHTHOUSES == 5)
+        ALGEBRA_5LGHS::Estimate_Position(measurements, position);
+    #endif
+    return true;
 }
 
 bool _estimate_position_from_4_measurements(UWB_Measurement (&measurements)[NUMBER_OF_LIGHTHOUSES], Position& position)
 {
-    ALGEBRA_4LGHS::Estimate_Position(measurements, position);
+    #if (NUMBER_OF_LIGHTHOUSES == 4)
+        ALGEBRA_4LGHS::Estimate_Position(measurements, position);
+    #endif
     return true;
 }
 
