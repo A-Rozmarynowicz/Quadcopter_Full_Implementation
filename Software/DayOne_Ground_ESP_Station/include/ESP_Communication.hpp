@@ -29,7 +29,8 @@ namespace ESP_MESSAGES
   bool Send_Ground_Station_Request_Current_State(uint8_t id);
   bool Send_Ground_Station_Heartbeat();
 
-  bool Send_Ground_Station_Init_Quadcopter();
+  bool Send_Ground_Station_Quadcopter_Init();
+  bool Send_Ground_Station_Quadcopter_Hover();
 };
 
 
