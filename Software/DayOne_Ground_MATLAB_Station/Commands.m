@@ -13,7 +13,8 @@ classdef Commands < int32
         CHANGE_TO_MANUAL_OPERATION_STATE (11)
 
         HEARTBEAT (12)
-        INIT_QUADCOPTER (13)
+        QUADCOPTER_INIT (13)
+        QUADCOPTER_HOVER (14)
 
         ERROR (99)
     end

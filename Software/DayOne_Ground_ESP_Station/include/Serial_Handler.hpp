@@ -19,9 +19,10 @@ enum SERIAL_COMMANDS
     ENABLE_ESP_SEND_POSITIONS,
     REQUEST_CURRENT_LGH_STATE,
     CHANGE_TO_MANUAL_OPERATION_STATE,
-    
+
     HEARTBEAT,
-    INIT_QUADCOPTER,
+    QUADCOPTER_INIT,
+    QUADCOPTER_HOVER,
 
     ERROR = 99,
 };
@@ -31,7 +32,7 @@ struct CommandInfo {
     uint8_t expectedCount;
 };
 
-constexpr std::array<CommandInfo, 13> commandTable {{
+constexpr std::array<CommandInfo, 14> commandTable {{
     {SERIAL_COMMANDS::RELAY,                          0},
     {SERIAL_COMMANDS::REQUEST_MEASUREMENTS,           0},
     {SERIAL_COMMANDS::SEND_POSITIONS,                POSITION_TRANSFER_DATA_LENGTH},
@@ -44,7 +45,8 @@ constexpr std::array<CommandInfo, 13> commandTable {{
     {SERIAL_COMMANDS::REQUEST_CURRENT_LGH_STATE,      1},
     {SERIAL_COMMANDS::CHANGE_TO_MANUAL_OPERATION_STATE, 0},
     {SERIAL_COMMANDS::HEARTBEAT, 0},
-    {SERIAL_COMMANDS::INIT_QUADCOPTER, 0},
+    {SERIAL_COMMANDS::QUADCOPTER_INIT, 0},
+    {SERIAL_COMMANDS::QUADCOPTER_HOVER, 1},
 }};
 
 bool Update_Serial(uint8_t& command, float (&values)[MAX_NUMBER_OF_VALUES_IN_TRANSFER], uint8_t& value_count);

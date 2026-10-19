@@ -25,7 +25,7 @@ void Flight_Operation_State::Handle_Serial_Message(uint8_t command, const float 
             }
             break;
 
-        case static_cast<uint8_t>(SERIAL_COMMANDS::INIT_QUADCOPTER):
+        case static_cast<uint8_t>(SERIAL_COMMANDS::QUADCOPTER_INIT):
             if (value_count == 0) {
                 ESP_MESSAGES::Send_Ground_Station_Init_Quadcopter();
                 Serial.printf("Init quadcopter\n");
