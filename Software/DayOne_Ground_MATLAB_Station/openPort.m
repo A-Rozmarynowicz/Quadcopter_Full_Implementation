@@ -6,5 +6,5 @@ function s = openPort(port, baudrate)
     
     flush(s);
     
-    cleanupObj = onCleanup(@() delete(s));
+    % cleanupObj = onCleanup(@() delete(s));
 end

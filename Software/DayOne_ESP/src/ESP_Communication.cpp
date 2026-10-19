@@ -1,4 +1,5 @@
 #include "ESP_Communication.hpp"
+#include "ESP_Communication.hpp"
 
 Queue<ESP_Packet, ESP_RECEIVE_QUEUE_SIZE> esp_receive_queue;
 Queue<ESP_Packet, ESP_TRANSMIT_QUEUE_SIZE> esp_transmit_queue;

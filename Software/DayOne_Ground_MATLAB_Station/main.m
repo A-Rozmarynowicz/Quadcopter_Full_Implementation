@@ -2,8 +2,8 @@ clear;
 
 port = "COM8";
 baudrate = 115200;
-s = serialport(port, baudrate);
-s.Timeout = 10;
+
+s = openPort(port, baudrate);
 
 pause(1);
 

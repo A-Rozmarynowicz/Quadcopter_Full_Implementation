@@ -2,7 +2,6 @@
 
 void Request_Distances_State::Enter()
 {
-    ESP_MESSAGES::Send_Ground_Station_Query_Distances();
 }
 
 void Request_Distances_State::Exit()

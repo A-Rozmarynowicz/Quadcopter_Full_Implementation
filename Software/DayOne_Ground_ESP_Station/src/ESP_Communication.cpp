@@ -110,11 +110,10 @@ void _receive_callback(const uint8_t* macAddr, const uint8_t* data, int dataLen)
 {
   uint8_t receiver_id = data[ESP_Data_Setup::RECEIVER_ID];
 
-  if ((receiver_id != DRONE_ESP_ID) && (receiver_id != BROADCAST_RECEIVER_ID))
+  if ((receiver_id != GROUND_STATION_ID) && (receiver_id != BROADCAST_RECEIVER_ID))
   {
     return;
   }
-  Serial.printf("TRANSMITTTER: %d\n", data[ESP_Data_Setup::TRANSMITTER_ID]);
   ESP_Packet packet;
 
   std::copy(data, data + dataLen, packet.data);
