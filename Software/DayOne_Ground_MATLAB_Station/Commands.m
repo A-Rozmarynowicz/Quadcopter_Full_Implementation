@@ -12,6 +12,8 @@ classdef Commands < int32
         REQUEST_CURRENT_LGH_STATE (10)
         CHANGE_TO_MANUAL_OPERATION_STATE (11)
 
+        INIT_QUADCOPTER (12)
+
         ERROR (99)
     end
 end
