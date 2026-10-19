@@ -1,6 +1,16 @@
-function d = readDistancesESP32(s)
-%   d : [d01; d02; d03; d12; d13; d23]
+function d = readDistancesESP32(s, N)
+% d : vector of pairwise distances, ordered as:
+%     d01, d02, ..., d0(N-1), d12, ..., d(N-2)(N-1)
+%
+% Number of measurements: N*(N-1)/2
 
+    if N < 2 || N ~= floor(N)
+        error('N must be an integer >= 2.');
+    end
+
+    numDistances = N * (N - 1) / 2;
+
+    % Request measurements
     tx = sprintf('%d,', Commands.REQUEST_MEASUREMENTS);
     tx(end) = [];
 
@@ -15,26 +25,33 @@ function d = readDistancesESP32(s)
             continue;
         end
 
-        values = sscanf(line, '%d,%f,%f,%f,%f,%f,%f');
+        % Parse command ID and all distance values
+        values = sscanf(line, '%f,').';
 
-        if numel(values) == 7 && all(isfinite(values)) ...
+        if numel(values) == numDistances + 1 ...
+                && all(isfinite(values)) ...
                 && all(values >= 0)
-            
+
             if values(1) ~= Commands.SEND_DISTANCES
-                fprintf("Wrong command received in -SEND DISTANCES- format")
-            else
-                d = values(2:7);
-    
-                fprintf('Received averaged distances:\n');
-                fprintf('d01 = %.4f\n', d(1));
-                fprintf('d02 = %.4f\n', d(2));
-                fprintf('d03 = %.4f\n', d(3));
-                fprintf('d12 = %.4f\n', d(4));
-                fprintf('d13 = %.4f\n', d(5));
-                fprintf('d23 = %.4f\n', d(6));
-    
-                return;
+                fprintf('Wrong command received in SEND_DISTANCES format.\n');
+                continue;
             end
+
+            d = values(2:end).';
+
+            % Display distances in the expected order
+            fprintf('Received averaged distances:\n');
+
+            k = 1;
+            for i = 0:N-2
+                for j = i+1:N-1
+                    fprintf('d%d%d = %.4f\n', i, j, d(k));
+                    k = k + 1;
+                end
+            end
+
+            return;
+
         else
             fprintf('Message received: %s\n', line);
         end
