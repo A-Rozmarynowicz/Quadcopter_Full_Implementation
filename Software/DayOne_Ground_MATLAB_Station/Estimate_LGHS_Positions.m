@@ -1,4 +1,4 @@
-function [P, dFit, residuals, rmse] = estimatePoints3D(d)
+function [P, dFit, residuals, rmse] = Estimate_LGHS_Positions(d)
 % INPUT:
 %   d       6-element vector of measured distances, ordered as:
 %           [d12; d13; d14; d23; d24; d34]

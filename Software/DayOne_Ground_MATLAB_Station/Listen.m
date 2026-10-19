@@ -1,4 +1,4 @@
-function listen(s)
+function Listen(s)
 
     fprintf("Start listening...\n");
     while true

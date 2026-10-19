@@ -1,4 +1,4 @@
-function sendPositionsESP32(P, s, N)
+function Send_Positions_ESP32(P, s, N)
 % Send 4 points (4x3 matrix) to ESP32 over UART.
 
     validateattributes(P, {'numeric'}, ...

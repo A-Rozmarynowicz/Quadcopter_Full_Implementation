@@ -1,4 +1,4 @@
-function d = readDistancesESP32(s, N)
+function d = Read_Distances_ESP32(s, N)
 % d : vector of pairwise distances, ordered as:
 %     d01, d02, ..., d0(N-1), d12, ..., d(N-2)(N-1)
 %

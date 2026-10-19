@@ -1,4 +1,4 @@
-function sendCommand(c, s, values)
+function Send_Command(c, s, values)
     tx = sprintf('%d,', int32(c));
     if (~isempty(values))
         tx = [tx, sprintf('%0.2f,', values(:))];

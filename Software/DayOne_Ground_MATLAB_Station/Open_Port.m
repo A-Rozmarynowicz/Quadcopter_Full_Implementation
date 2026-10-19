@@ -1,4 +1,4 @@
-function s = openPort(port, baudrate)
+function s = Open_Port(port, baudrate)
 
     s = serialport(port, baudrate);
     configureTerminator(s, "LF");
