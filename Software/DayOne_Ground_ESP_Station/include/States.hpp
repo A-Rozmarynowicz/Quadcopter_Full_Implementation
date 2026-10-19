@@ -15,6 +15,7 @@ enum class STATES
     MATLAB_EXCHANGE_STATE,
     SEND_POSITIONS_STATE,
     MANUAL_OPERATION_STATE,
+    FLIGHT_OPERATION_STATE,
 
     NONE_STATE,
 };
@@ -134,5 +135,20 @@ private:
     void Handle_Serial_Message(uint8_t command, const float (&values)[MAX_NUMBER_OF_VALUES_IN_TRANSFER], uint8_t value_count) override;
 };
 
+class Flight_Operation_State : public State
+{
+    public:
+    STATES Get_State() const override
+    {
+        return STATES::FLIGHT_OPERATION_STATE;
+    }
+
+    void Enter() override;
+    void Exit() override;
+
+    void Receive_Callback(ESP_Packet& esp_packet) override;
+private:
+    void Handle_Serial_Message(uint8_t command, const float (&values)[MAX_NUMBER_OF_VALUES_IN_TRANSFER], uint8_t value_count) override;
+};
 
 #endif
