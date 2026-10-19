@@ -56,7 +56,7 @@ void Matlab_Exchange_State::Handle_Serial_Message(uint8_t command, const float (
 
 void Matlab_Exchange_State::Handle_Serial_Position_Transfer(const float (&values)[MAX_NUMBER_OF_VALUES_IN_TRANSFER])
 {
-    for (size_t i = 0; i < 4; ++i) {
+    for (size_t i = 0; i < NUMBER_OF_LIGHTHOUSES; ++i) {
         Store_LGHS_Position(
             i,
             values[i * 3],
@@ -67,7 +67,7 @@ void Matlab_Exchange_State::Handle_Serial_Position_Transfer(const float (&values
 
     Serial.println("Received positions:");
 
-    for (size_t i = 0; i < 4; ++i) {
+    for (size_t i = 0; i < NUMBER_OF_LIGHTHOUSES; ++i) {
         Serial.printf(
             "P%u: %.2f, %.2f, %.2f\n",
             static_cast<unsigned>(i + 1),
@@ -84,7 +84,7 @@ void Matlab_Exchange_State::Send_Serial_Distances()
         SERIAL_COMMANDS::SEND_DISTANCES));
 
     for (size_t i = 0; i < 3; ++i) {
-        for (size_t j = i + 1; j < 4; ++j) {
+        for (size_t j = i + 1; j < NUMBER_OF_LIGHTHOUSES; ++j) {
             Serial.printf(",%.2f", LGHS_Distances[i][j]);
         }
     }

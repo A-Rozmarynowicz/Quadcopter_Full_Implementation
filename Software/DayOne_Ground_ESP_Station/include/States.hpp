@@ -78,6 +78,8 @@ public:
 private:
     void Handle_Serial_Message(uint8_t command, const float (&values)[MAX_NUMBER_OF_VALUES_IN_TRANSFER], uint8_t value_count) override;
     void Update_Distances(ESP_Packet& packet);
+    void _update_distances_4LGHS(ESP_Packet& packet);
+    void _update_distances_5LGHS(ESP_Packet& packet);
 };
 
 class Matlab_Exchange_State : public State

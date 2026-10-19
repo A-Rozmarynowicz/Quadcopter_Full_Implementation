@@ -42,6 +42,11 @@ void Request_Distances_State::Handle_Serial_Message(uint8_t command, const float
 
 void Request_Distances_State::Update_Distances(ESP_Packet& packet)
 {
+
+}
+
+void Request_Distances_State::_update_distances_4LGHS(ESP_Packet& packet)
+{
     float d01, d02, d03, d12, d13, d23;
     memcpy(&d01, &(packet.data[ESP_Data_Setup::QUAD_0]), sizeof(float));
     memcpy(&d02, &(packet.data[ESP_Data_Setup::QUAD_1]), sizeof(float));
@@ -55,4 +60,29 @@ void Request_Distances_State::Update_Distances(ESP_Packet& packet)
     Store_LGHS_Distance(1, 2, d12);
     Store_LGHS_Distance(1, 3, d13);
     Store_LGHS_Distance(2, 3, d23);
+}
+
+void Request_Distances_State::_update_distances_5LGHS(ESP_Packet& packet)
+{
+    float d01, d02, d03, d04, d12, d13, d14, d23, d24, d34;
+    memcpy(&d01, &(packet.data[ESP_Data_Setup::QUAD_0]), sizeof(float));
+    memcpy(&d02, &(packet.data[ESP_Data_Setup::QUAD_1]), sizeof(float));
+    memcpy(&d03, &(packet.data[ESP_Data_Setup::QUAD_2]), sizeof(float));
+    memcpy(&d04, &(packet.data[ESP_Data_Setup::QUAD_3]), sizeof(float));
+    memcpy(&d12, &(packet.data[ESP_Data_Setup::QUAD_4]), sizeof(float));
+    memcpy(&d13, &(packet.data[ESP_Data_Setup::QUAD_5]), sizeof(float));
+    memcpy(&d14, &(packet.data[ESP_Data_Setup::QUAD_6]), sizeof(float));
+    memcpy(&d23, &(packet.data[ESP_Data_Setup::QUAD_7]), sizeof(float));
+    memcpy(&d24, &(packet.data[ESP_Data_Setup::QUAD_8]), sizeof(float));
+    memcpy(&d34, &(packet.data[ESP_Data_Setup::QUAD_9]), sizeof(float));
+    Store_LGHS_Distance(0, 1, d01);
+    Store_LGHS_Distance(0, 2, d02);
+    Store_LGHS_Distance(0, 3, d03);
+    Store_LGHS_Distance(0, 4, d04);
+    Store_LGHS_Distance(1, 2, d12);
+    Store_LGHS_Distance(1, 3, d13);
+    Store_LGHS_Distance(1, 4, d14);
+    Store_LGHS_Distance(2, 3, d23);
+    Store_LGHS_Distance(2, 4, d24);
+    Store_LGHS_Distance(3, 4, d34);
 }
