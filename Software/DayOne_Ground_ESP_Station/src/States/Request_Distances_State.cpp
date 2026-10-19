@@ -2,7 +2,7 @@
 
 void Request_Distances_State::Enter()
 {
-
+    ESP_MESSAGES::Send_Ground_Station_Query_Distances();
 }
 
 void Request_Distances_State::Exit()
@@ -14,6 +14,7 @@ void Request_Distances_State::Receive_Callback(ESP_Packet& esp_packet)
 {
     if (esp_packet.data[ESP_Data_Setup::COMMAND] == ESP_Data_Commands::GROUND_STATION_ANSWER_DISTANCES) {
         Update_Distances(esp_packet);
+        Serial.println("Received distances from master LGHS\n");
         Request_Change_State(STATES::MATLAB_EXCHANGE_STATE);
     }
 }
@@ -42,7 +43,14 @@ void Request_Distances_State::Handle_Serial_Message(uint8_t command, const float
 
 void Request_Distances_State::Update_Distances(ESP_Packet& packet)
 {
-
+    if (NUMBER_OF_LIGHTHOUSES == 4)
+    {
+        _update_distances_4LGHS(packet);
+    }
+    else if (NUMBER_OF_LIGHTHOUSES == 5)
+    {
+        _update_distances_5LGHS(packet);
+    }
 }
 
 void Request_Distances_State::_update_distances_4LGHS(ESP_Packet& packet)

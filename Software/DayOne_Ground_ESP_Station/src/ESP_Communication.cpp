@@ -72,6 +72,11 @@ void Initialize_ESP_Communication()
   }
 }
 
+void ESP_Transmit()
+{
+  _send_esp();
+}
+
 void _send_esp()
 {
   if (esp_transmit_queue.empty())

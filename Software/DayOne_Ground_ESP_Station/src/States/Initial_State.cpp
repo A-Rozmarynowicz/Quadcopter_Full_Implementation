@@ -2,7 +2,7 @@
 
 void Initial_State::Enter()
 {
-    // Request_Change_State(STATES::REQUEST_DISTANCES_STATE);
+    Request_Change_State(STATES::REQUEST_DISTANCES_STATE);
 }
 
 void Initial_State::Exit()
@@ -26,7 +26,7 @@ void Initial_State::Handle_Serial_Message(uint8_t command, const float (&values)
             break;
 
         default:
-            Serial.println("Unknown command");
+            Serial.println("Unknown command. Currently in Initial state.");
             break;
     }
 

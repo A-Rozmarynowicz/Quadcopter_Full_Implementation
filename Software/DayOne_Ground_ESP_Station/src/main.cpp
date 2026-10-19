@@ -15,4 +15,5 @@ void setup() {
 void loop() {
   state_machine.State_Update();
   state_machine.Handle_State_Change_Request();
+  ESP_Transmit();
 }

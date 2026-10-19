@@ -34,6 +34,7 @@ namespace ESP_MESSAGES
 extern Queue<ESP_Packet, ESP_TRANSMIT_QUEUE_SIZE> esp_transmit_queue;
 
 void Initialize_ESP_Communication();
+void ESP_Transmit();
 
 void _send_esp();
 void _receive_callback(const uint8_t* macAddr, const uint8_t* data, int dataLen);
