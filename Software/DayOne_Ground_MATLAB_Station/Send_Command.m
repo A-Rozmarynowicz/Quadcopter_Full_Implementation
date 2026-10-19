@@ -5,8 +5,11 @@ function Send_Command(c, s, values)
     end
     tx(end) = [];
 
-    writeline(s, tx);
-
-    fprintf('Send command:\n%s\n', tx);
-
+    if ~isempty(s) && isvalid(s)
+        writeline(s, tx);
+        fprintf('Send command:\n%s\n', tx);
+    else
+        fprintf('Serial not avaiable');
+    end
+   
 end

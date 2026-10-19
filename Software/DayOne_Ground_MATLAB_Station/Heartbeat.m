@@ -1,5 +1,3 @@
 function Heartbeat(s)
-    if ~isempty(s) && isvalid(s)
-        writeline(s, "HEARTBEAT");
-    end
+    Send_Command(Commands.HEARTBEAT, s, []);
 end
