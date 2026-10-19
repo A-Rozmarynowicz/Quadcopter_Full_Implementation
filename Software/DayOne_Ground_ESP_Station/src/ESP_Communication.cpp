@@ -61,7 +61,7 @@ bool ESP_MESSAGES::Send_Ground_Station_Heartbeat()
   return esp_transmit_queue.push(packet);
 }
 
-bool ESP_MESSAGES::Send_Init_Quadcopter()
+bool ESP_MESSAGES::Send_Ground_Station_Init_Quadcopter()
 {
   ESP_Packet packet{};
   packet.data[ESP_Data_Setup::RECEIVER_ID] = DRONE_ESP_ID;
