@@ -8,8 +8,7 @@ float last_averaged_ranges[NUMBER_OF_LIGHTHOUSES] = {0.0f};
 
 uint8_t Get_Averaged_Results(
     Stack<UWB_Measurement, UWB_MEASUREMENT_STACK_SIZE> (&uwb_stacks)[NUMBER_OF_LIGHTHOUSES],
-    UWB_Measurement (&average_distances)[NUMBER_OF_LIGHTHOUSES],
-    float (&past_average_ranges)[NUMBER_OF_LIGHTHOUSES]
+    UWB_Measurement (&average_distances)[NUMBER_OF_LIGHTHOUSES]
 )
 {
     uint8_t present_lighthouses = Get_Number_Of_Present_Lighthouses(uwb_stacks);
@@ -22,7 +21,7 @@ uint8_t Get_Averaged_Results(
     {
         average_distances[i].range = range_accumulator[i];
         average_distances[i].lgh_index = i;
-        past_average_ranges[i] = range_accumulator[i];
+        last_averaged_ranges[i] = range_accumulator[i];
         Serial.printf("Range to %d = %0.2f \n", i, range_accumulator[i]);
     }
 
@@ -75,8 +74,7 @@ uint8_t _get_penalty_from_missing_lighthouses(uint8_t present_lighthouses)
 
 void _get_average_ranges(
     Stack<UWB_Measurement, UWB_MEASUREMENT_STACK_SIZE> (&uwb_stacks)[NUMBER_OF_LIGHTHOUSES],
-    float* range_accumulator,
-    float (&past_average_ranges)[NUMBER_OF_LIGHTHOUSES]
+    float* range_accumulator
 )
 {
     uint8_t count_accumulator[NUMBER_OF_LIGHTHOUSES] = {0};
@@ -99,7 +97,7 @@ void _get_average_ranges(
         uwb_stacks[i].flush(); // @todo: for sure?
         if (count_accumulator[i] == 0)
         {
-            range_accumulator[i] = past_average_ranges[i];
+            range_accumulator[i] = last_averaged_ranges[i];
             continue;
         }
         range_accumulator[i] = range_accumulator[i] / count_accumulator[i];

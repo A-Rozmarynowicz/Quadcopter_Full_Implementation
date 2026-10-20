@@ -6,8 +6,8 @@
 #include "Buffers.hpp"
 
 
-
 #define MAX_NUMBER_OF_RANGES_PER_LIGHTHOUSE 16
+#define HISTORY_RANGES_QUEUE_SIZE 8
 
 const uint8_t MAX_MISSING_LGHS_PENALTY = 255;
 
@@ -15,10 +15,10 @@ extern Position current_calculated_position;
 extern Position position_zero;
 extern float last_averaged_ranges[NUMBER_OF_LIGHTHOUSES];
 
+
 uint8_t Get_Averaged_Results(
     Stack<UWB_Measurement, UWB_MEASUREMENT_STACK_SIZE> (&uwb_stacks)[NUMBER_OF_LIGHTHOUSES],
-    UWB_Measurement (&average_distances)[NUMBER_OF_LIGHTHOUSES],
-    float (&past_average_ranges)[NUMBER_OF_LIGHTHOUSES]
+    UWB_Measurement (&average_distances)[NUMBER_OF_LIGHTHOUSES]
 );
 bool Estimate_Position_Initial_Point(
     const UWB_Measurement (&average_distances)[NUMBER_OF_LIGHTHOUSES],
