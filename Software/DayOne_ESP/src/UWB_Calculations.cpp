@@ -6,29 +6,35 @@ Position current_calculated_position;
 Position position_zero;
 float last_averaged_ranges[NUMBER_OF_LIGHTHOUSES] = {0.0f};
 
-uint8_t Calculate_Position(Stack<UWB_Measurement, UWB_MEASUREMENT_STACK_SIZE> (&uwb_stacks)[NUMBER_OF_LIGHTHOUSES], Position &position)
+uint8_t Get_Averaged_Results(
+    Stack<UWB_Measurement, UWB_MEASUREMENT_STACK_SIZE> (&uwb_stacks)[NUMBER_OF_LIGHTHOUSES],
+    UWB_Measurement (&average_distances)[NUMBER_OF_LIGHTHOUSES],
+    float (&past_average_ranges)[NUMBER_OF_LIGHTHOUSES]
+)
 {
     uint8_t present_lighthouses = Get_Number_Of_Present_Lighthouses(uwb_stacks);
     uint8_t missing_lghs_penalty = _get_penalty_from_missing_lighthouses(present_lighthouses);
-    if (present_lighthouses < NUMBER_OF_LIGHTHOUSES - 1)
-    {
-        return missing_lghs_penalty;
-    }
 
     float range_accumulator[NUMBER_OF_LIGHTHOUSES] = {0.0f};
     _get_average_ranges(uwb_stacks, range_accumulator);
-    UWB_Measurement average_distances[NUMBER_OF_LIGHTHOUSES] = {};
 
     for (uint8_t i=0; i<NUMBER_OF_LIGHTHOUSES; i++)
     {
         average_distances[i].range = range_accumulator[i];
         average_distances[i].lgh_index = i;
-        last_averaged_ranges[i] = range_accumulator[i];
+        past_average_ranges[i] = range_accumulator[i];
         Serial.printf("Range to %d = %0.2f \n", i, range_accumulator[i]);
     }
 
+    return missing_lghs_penalty;
+}
+
+uint8_t Estimate_Position_Initial_Point(UWB_Measurement (&average_distances)[NUMBER_OF_LIGHTHOUSES], Position &estimated_position)
+{
+
+
     Position estimated_position;
-    bool success = _estimate_position_from_average_ranges(average_distances, estimated_position, present_lighthouses);
+    bool success = _estimate_position_from_average_ranges(average_distances, estimated_position);
     if (success)
     {
         position = estimated_position;
@@ -60,15 +66,18 @@ uint8_t _get_penalty_from_missing_lighthouses(uint8_t present_lighthouses)
         case 1:
             return 10;
         case 2:
-            return 255;
+            return 200;
         case 3:
             return 255;
     }
     return 255;
 }
 
-void _get_average_ranges(Stack<UWB_Measurement, UWB_MEASUREMENT_STACK_SIZE> (&uwb_stacks)[NUMBER_OF_LIGHTHOUSES],
-    float* range_accumulator)
+void _get_average_ranges(
+    Stack<UWB_Measurement, UWB_MEASUREMENT_STACK_SIZE> (&uwb_stacks)[NUMBER_OF_LIGHTHOUSES],
+    float* range_accumulator,
+    float (&past_average_ranges)[NUMBER_OF_LIGHTHOUSES]
+)
 {
     uint8_t count_accumulator[NUMBER_OF_LIGHTHOUSES] = {0};
     for (uint8_t i=0; i<NUMBER_OF_LIGHTHOUSES; i++)
@@ -90,7 +99,7 @@ void _get_average_ranges(Stack<UWB_Measurement, UWB_MEASUREMENT_STACK_SIZE> (&uw
         uwb_stacks[i].flush(); // @todo: for sure?
         if (count_accumulator[i] == 0)
         {
-            range_accumulator[i] = last_averaged_ranges[i];
+            range_accumulator[i] = past_average_ranges[i];
             continue;
         }
         range_accumulator[i] = range_accumulator[i] / count_accumulator[i];
