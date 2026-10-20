@@ -26,7 +26,10 @@ void Flight_State::Task_5ms()
 
 void Flight_State::Task_10ms()
 {
-
+    if (full_telemetry_requests_enabled)
+    {
+        Parse_STM_Telemetry();
+    }
 }
 
 void Flight_State::Task_20ms()
@@ -37,6 +40,10 @@ void Flight_State::Task_20ms()
 void Flight_State::Task_100ms()
 {
     Handle_Ready_Measurements();
+    if (full_telemetry_requests_enabled)
+    {
+        I2C_MESSAGES::Request_Full_Telemetry();
+    }
 }
 
 void Flight_State::Task_1000ms()
