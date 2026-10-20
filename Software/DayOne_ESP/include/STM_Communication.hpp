@@ -13,7 +13,6 @@
 #define STM_I2C_ADDRESS 0x77
 #define ESP_I2C_ADDRESS 0x12
 
-// Complete packet: command + 3 single bytes + 6 floats.
 #define I2C_DATA_SIZE 28
 #define I2C_TELEMETRY_SIZE I2C_DATA_SIZE
 
@@ -25,7 +24,7 @@
 
 #define STM_GPIO_PIN 14
 
-constexpr uint16_t I2C_TIMEOUT_MS = 10;
+constexpr uint16_t I2C_TIMEOUT_MS = 4;
 
 enum I2C_Data_Commands
 {
@@ -85,6 +84,7 @@ namespace I2C_MESSAGES
     bool Request_Full_Telemetry();
 }
 
+bool _read_I2C_full_telemetry();
 
 void Task_1ms();
 void Task_5ms();

@@ -9,7 +9,7 @@ Queue<I2C_Packet, I2C_TRANSMIT_QUEUE_SIZE> i2c_transmit_queue;
 
 bool Initialize_I2C()
 {
-    if (!Wire.begin(SDA_PIN, SCL_PIN, 100000UL))
+    if (!Wire.begin(SDA_PIN, SCL_PIN, 400000UL))
     {
         return false;
     }
@@ -54,13 +54,18 @@ bool Send_I2C()
         return false;
     }
 
-
-    if (command != REQUEST_FULL_TELEMETRY)
+    switch (command)
     {
-        return true;
+    case REQUEST_FULL_TELEMETRY:
+        return _read_I2C_full_telemetry();
     }
 
-    // Here we only handle receiving answers.
+    return true;
+}
+
+
+bool _read_I2C_full_telemetry()
+{
     const size_t received = Wire.requestFrom(
         static_cast<uint8_t>(STM_I2C_ADDRESS),
         static_cast<size_t>(I2C_TELEMETRY_SIZE)
@@ -103,9 +108,7 @@ bool Send_I2C()
 }
 
 
-// =============================================================
-// Outgoing message helpers
-// =============================================================
+#pragma region I2C Messages
 
 bool I2C_MESSAGES::Send_UWB_Ready()
 {
@@ -228,11 +231,6 @@ bool I2C_MESSAGES::Send_Land()
     return i2c_transmit_queue.push(packet);
 }
 
-
-// =============================================================
-// Telemetry request
-// =============================================================
-
 bool I2C_MESSAGES::Request_Full_Telemetry()
 {
     I2C_Packet packet{};
@@ -241,9 +239,9 @@ bool I2C_MESSAGES::Request_Full_Telemetry()
         static_cast<std::size_t>(I2C_Data_Setup::COMMAND)
     ] = REQUEST_FULL_TELEMETRY;
 
-    // The command is one byte. Send_I2C() recognizes it and
-    // follows the write with a read of the complete 28-byte reply.
     packet.length = 1;
 
     return i2c_transmit_queue.push(packet);
 }
+
+#pragma endregion
