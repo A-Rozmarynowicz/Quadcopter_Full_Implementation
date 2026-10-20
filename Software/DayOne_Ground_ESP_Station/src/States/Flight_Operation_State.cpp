@@ -36,7 +36,7 @@ void Flight_Operation_State::Handle_Serial_Message(uint8_t command, const float 
             if (value_count == 1) {
                 float height = static_cast<float>(values[0]);
                 ESP_MESSAGES::Send_Quadcopter_Hover(height);
-                Serial.printf("Quadcopter HOVER\n");
+                Serial.printf("Quadcopter HOVER at %0.2fm\n", height);
             }
             break;
 
