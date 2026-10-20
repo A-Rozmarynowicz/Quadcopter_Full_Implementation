@@ -19,10 +19,15 @@
 
 #define STM_GPIO_PIN 14
 
-enum class I2C_Data_Commands
+enum I2C_Data_Commands
 {
     UWB_READY,
     CURRENT_POSITION_TRANSFER,
+    HEARTBEAT,
+    EMERGENCY_TOTAL_STOP,
+    EMERGENCY_LANDING,
+    HOVER,
+    LAND,
 };
 
 enum class I2C_Data_Setup
@@ -53,6 +58,11 @@ namespace I2C_MESSAGES
 {
     bool Send_UWB_Ready();
     bool Send_Current_Position(Position &position);
+    bool Send_Heartbeat();
+    bool Send_Emergency_Total_Stop();
+    bool Send_Emergency_Landing();
+    bool Send_Hover(float height);
+    bool Send_Land();
 };
 
 

@@ -23,6 +23,11 @@ bool Send_I2C()
 
     uint8_t error = Wire.endTransmission();
 
+    if (error != 0)
+    {
+        i2c_transmit_queue.push(packet);
+    }
+
     return error == 0;
 }
 
@@ -45,6 +50,58 @@ bool I2C_MESSAGES::Send_Current_Position(Position &position)
     memcpy(&packet.data[static_cast<std::size_t>(I2C_Data_Setup::QUAD_1)], &(position.y), sizeof(float));
     memcpy(&packet.data[static_cast<std::size_t>(I2C_Data_Setup::QUAD_2)], &(position.z), sizeof(float));
     packet.length = 16;
+
+    return i2c_transmit_queue.push(packet);
+}
+
+
+bool I2C_MESSAGES::Send_Heartbeat()
+{
+    I2C_Packet packet{};
+
+    packet.data[static_cast<std::size_t>(I2C_Data_Setup::COMMAND)] = I2C_Data_Commands::HEARTBEAT;
+    packet.length = 1;
+
+    return i2c_transmit_queue.push(packet);
+}
+
+bool I2C_MESSAGES::Send_Emergency_Total_Stop()
+{
+    I2C_Packet packet{};
+
+    packet.data[static_cast<std::size_t>(I2C_Data_Setup::COMMAND)] = I2C_Data_Commands::EMERGENCY_TOTAL_STOP;
+    packet.length = 1;
+
+    return i2c_transmit_queue.push(packet);
+}
+
+bool I2C_MESSAGES::Send_Emergency_Landing()
+{
+    I2C_Packet packet{};
+
+    packet.data[static_cast<std::size_t>(I2C_Data_Setup::COMMAND)] = I2C_Data_Commands::EMERGENCY_LANDING;
+    packet.length = 1;
+
+    return i2c_transmit_queue.push(packet);
+}
+
+bool I2C_MESSAGES::Send_Hover(float height)
+{
+    I2C_Packet packet{};
+
+    packet.data[static_cast<std::size_t>(I2C_Data_Setup::COMMAND)] = I2C_Data_Commands::HOVER;
+    memcpy(&packet.data[static_cast<std::size_t>(I2C_Data_Setup::QUAD_0)], &(height), sizeof(float));
+    packet.length = 8;
+
+    return i2c_transmit_queue.push(packet);
+}
+
+bool I2C_MESSAGES::Send_Land()
+{
+    I2C_Packet packet{};
+
+    packet.data[static_cast<std::size_t>(I2C_Data_Setup::COMMAND)] = I2C_Data_Commands::LAND;
+    packet.length = 1;
 
     return i2c_transmit_queue.push(packet);
 }
