@@ -1,5 +1,5 @@
 #include "ESP_Communication.hpp"
-#include "ESP_Communication.hpp"
+#include "STM_Communication.hpp"
 
 Queue<ESP_Packet, ESP_RECEIVE_QUEUE_SIZE> esp_receive_queue;
 Queue<ESP_Packet, ESP_TRANSMIT_QUEUE_SIZE> esp_transmit_queue;
@@ -106,7 +106,7 @@ void _receive_callback(const uint8_t* macAddr, const uint8_t* data, int dataLen)
 
   std::copy(data, data + dataLen, packet.data);
 
-  if (_handle_urgent_message(packet))
+  if (_handle_urgent_esp_message(packet))
   {
     return;
   }
@@ -129,14 +129,19 @@ void _sent_callback(const uint8_t *macAddr, esp_now_send_status_t status)
 void _communication_error(ESP_Communication_Errors error)
 {};
 
-bool _handle_urgent_message(ESP_Packet &packet)
+bool _handle_urgent_esp_message(ESP_Packet &packet)
 {
   switch (packet.data[ESP_Data_Setup::COMMAND])
   {
   case ESP_Data_Commands::GROUND_STATION_HEARTBEAT:
-    /* code */
-    break;
-
+    I2C_MESSAGES::Send_Heartbeat();
+    return true;
+  case ESP_Data_Commands::QUADCOPTER_EMERGENCY_TOTAL_STOP:
+    I2C_MESSAGES::Send_Emergency_Total_Stop();
+    return true;
+  case ESP_Data_Commands::QUADCOPTER_EMERGENCY_LANDING:
+    I2C_MESSAGES::Send_Emergency_Landing();
+    return true;
   default:
     break;
   }
