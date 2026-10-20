@@ -38,6 +38,8 @@ enum I2C_Data_Commands
 
     REQUEST_FULL_TELEMETRY,
     ANSWER_FULL_TELEMETRY,
+
+    RESET_STM,
 };
 
 enum class I2C_Data_Setup
@@ -92,6 +94,7 @@ namespace I2C_MESSAGES
     bool Send_Land();
 
     bool Request_Full_Telemetry();
+    bool Send_Reset_STM();
 }
 
 bool _read_I2C_full_telemetry();

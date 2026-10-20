@@ -166,6 +166,9 @@ bool _handle_urgent_esp_message(ESP_Packet &packet)
     Serial.println("Received message: RESET ESP");
     ESP.restart();
     return true;
+  case ESP_Data_Commands::QUADCOPTER_RESET_STM:
+    I2C_MESSAGES::Send_Reset_STM();
+    return true;
   default:
     break;
   }

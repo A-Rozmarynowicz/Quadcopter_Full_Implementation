@@ -131,7 +131,7 @@ bool I2C_MESSAGES::Send_UWB_Ready()
 
     packet.data[
         static_cast<std::size_t>(I2C_Data_Setup::COMMAND)
-    ] = UWB_READY;
+    ] = I2C_Data_Commands::UWB_READY;
 
     packet.length = 1;
 
@@ -145,7 +145,7 @@ bool I2C_MESSAGES::Send_Current_Position(Position &position)
 
     packet.data[
         static_cast<std::size_t>(I2C_Data_Setup::COMMAND)
-    ] = CURRENT_POSITION_TRANSFER;
+    ] = I2C_Data_Commands::CURRENT_POSITION_TRANSFER;
 
     std::memcpy(
         &packet.data[static_cast<std::size_t>(I2C_Data_Setup::QUAD_0)],
@@ -177,7 +177,7 @@ bool I2C_MESSAGES::Send_Heartbeat()
 
     packet.data[
         static_cast<std::size_t>(I2C_Data_Setup::COMMAND)
-    ] = HEARTBEAT;
+    ] = I2C_Data_Commands::HEARTBEAT;
 
     packet.length = 1;
 
@@ -191,7 +191,7 @@ bool I2C_MESSAGES::Send_Emergency_Total_Stop()
 
     packet.data[
         static_cast<std::size_t>(I2C_Data_Setup::COMMAND)
-    ] = EMERGENCY_TOTAL_STOP;
+    ] = I2C_Data_Commands::EMERGENCY_TOTAL_STOP;
 
     packet.length = 1;
 
@@ -205,7 +205,7 @@ bool I2C_MESSAGES::Send_Emergency_Landing()
 
     packet.data[
         static_cast<std::size_t>(I2C_Data_Setup::COMMAND)
-    ] = EMERGENCY_LANDING;
+    ] = I2C_Data_Commands::EMERGENCY_LANDING;
 
     packet.length = 1;
 
@@ -219,7 +219,7 @@ bool I2C_MESSAGES::Send_Hover(float height)
 
     packet.data[
         static_cast<std::size_t>(I2C_Data_Setup::COMMAND)
-    ] = HOVER;
+    ] = I2C_Data_Commands::HOVER;
 
     std::memcpy(
         &packet.data[static_cast<std::size_t>(I2C_Data_Setup::QUAD_0)],
@@ -239,7 +239,7 @@ bool I2C_MESSAGES::Send_Land()
 
     packet.data[
         static_cast<std::size_t>(I2C_Data_Setup::COMMAND)
-    ] = LAND;
+    ] = I2C_Data_Commands::LAND;
 
     packet.length = 1;
 
@@ -252,7 +252,20 @@ bool I2C_MESSAGES::Request_Full_Telemetry()
 
     packet.data[
         static_cast<std::size_t>(I2C_Data_Setup::COMMAND)
-    ] = REQUEST_FULL_TELEMETRY;
+    ] = I2C_Data_Commands::REQUEST_FULL_TELEMETRY;
+
+    packet.length = 1;
+
+    return i2c_transmit_queue.push(packet);
+}
+
+bool I2C_MESSAGES::Send_Reset_STM()
+{
+    I2C_Packet packet{};
+
+    packet.data[
+        static_cast<std::size_t>(I2C_Data_Setup::COMMAND)
+    ] = I2C_Data_Commands::RESET_STM;
 
     packet.length = 1;
 
