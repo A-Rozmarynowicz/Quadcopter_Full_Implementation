@@ -21,7 +21,7 @@ bool ALGEBRA_4LGHS::Build_Constant_Matrices(Position (&lghs_positions)[4])
     return true;
 }
 
-void ALGEBRA_4LGHS::Estimate_Position(UWB_Measurement (&distances_to_lghs)[4], Position &position)
+void ALGEBRA_4LGHS::Estimate_Position(const UWB_Measurement (&distances_to_lghs)[4], Position &position)
 {
     _build_b_vector(distances_to_lghs);
     _calculate_atb_vector();
@@ -115,7 +115,7 @@ void ALGEBRA_4LGHS::_build_b_vector_constants(Position (&lghs_positions)[4]){
 }
 
 
-void ALGEBRA_4LGHS::_build_b_vector(UWB_Measurement (&distances_to_lghs)[4]){
+void ALGEBRA_4LGHS::_build_b_vector(const UWB_Measurement (&distances_to_lghs)[4]){
     for (uint8_t j=0; j<NUMBER_OF_LIGHTHOUSES-1; j++){
         ALGEBRA_4LGHS::B_vector[j] = (distances_to_lghs[j+1].range)*(distances_to_lghs[j+1].range)
          - (distances_to_lghs[0].range)*(distances_to_lghs[0].range)

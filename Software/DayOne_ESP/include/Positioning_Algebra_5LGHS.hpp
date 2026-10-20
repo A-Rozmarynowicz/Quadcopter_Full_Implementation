@@ -18,7 +18,7 @@ extern float ATB_vector[3];
 bool Build_Constant_Matrices(Position (&lghs_positions)[5]);
 
 void Estimate_Position(
-    UWB_Measurement (&distances_to_lghs)[5],
+    const UWB_Measurement (&distances_to_lghs)[5],
     Position &position
 );
 
@@ -27,7 +27,7 @@ void _build_at_matrix();
 void _build_ata_matrix();
 uint8_t _build_ata_inv_matrix();
 void _build_b_vector_constants(Position (&lghs_positions)[5]);
-void _build_b_vector(UWB_Measurement (&distances_to_lghs)[5]);
+void _build_b_vector(const UWB_Measurement (&distances_to_lghs)[5]);
 void _calculate_atb_vector();
 void _calculate_solution(Position &position);
 

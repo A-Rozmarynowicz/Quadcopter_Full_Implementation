@@ -29,21 +29,21 @@ uint8_t Get_Averaged_Results(
     return missing_lghs_penalty;
 }
 
-uint8_t Estimate_Position_Initial_Point(UWB_Measurement (&average_distances)[NUMBER_OF_LIGHTHOUSES], Position &estimated_position)
+bool Estimate_Position_Initial_Point(
+    const UWB_Measurement (&average_distances)[NUMBER_OF_LIGHTHOUSES],
+    Position &estimated_position)
 {
-
-
     Position estimated_position;
     bool success = _estimate_position_from_average_ranges(average_distances, estimated_position);
     if (success)
     {
-        position = estimated_position;
-        return missing_lghs_penalty;
+        estimated_position = estimated_position;
+        return true;
     }
-    return 255;
+    return false;
 }
 
-uint8_t Get_Number_Of_Present_Lighthouses(Stack<UWB_Measurement, UWB_MEASUREMENT_STACK_SIZE>(&uwb_stacks)[NUMBER_OF_LIGHTHOUSES])
+uint8_t Get_Number_Of_Present_Lighthouses(const Stack<UWB_Measurement, UWB_MEASUREMENT_STACK_SIZE>(&uwb_stacks)[NUMBER_OF_LIGHTHOUSES])
 {
     uint8_t present_lighthouses = 0;
     for (uint8_t i=0; i<NUMBER_OF_LIGHTHOUSES; i++)
@@ -108,7 +108,7 @@ void _get_average_ranges(
 }
 
 
-bool _estimate_position_from_average_ranges(UWB_Measurement (&measurements)[NUMBER_OF_LIGHTHOUSES], Position& position, uint8_t present_lighthouses)
+bool _estimate_position_from_average_ranges(const UWB_Measurement (&measurements)[NUMBER_OF_LIGHTHOUSES], Position& position)
 {
     if (NUMBER_OF_LIGHTHOUSES == 5)
     {
@@ -120,7 +120,7 @@ bool _estimate_position_from_average_ranges(UWB_Measurement (&measurements)[NUMB
     }
 }
 
-bool _estimate_position_from_5_measurements(UWB_Measurement (&measurements)[NUMBER_OF_LIGHTHOUSES], Position &position)
+bool _estimate_position_from_5_measurements(const UWB_Measurement (&measurements)[NUMBER_OF_LIGHTHOUSES], Position &position)
 {
     #if (NUMBER_OF_LIGHTHOUSES == 5)
         ALGEBRA_5LGHS::Estimate_Position(measurements, position);
@@ -128,7 +128,7 @@ bool _estimate_position_from_5_measurements(UWB_Measurement (&measurements)[NUMB
     return true;
 }
 
-bool _estimate_position_from_4_measurements(UWB_Measurement (&measurements)[NUMBER_OF_LIGHTHOUSES], Position& position)
+bool _estimate_position_from_4_measurements(const UWB_Measurement (&measurements)[NUMBER_OF_LIGHTHOUSES], Position& position)
 {
     #if (NUMBER_OF_LIGHTHOUSES == 4)
         ALGEBRA_4LGHS::Estimate_Position(measurements, position);
@@ -136,7 +136,7 @@ bool _estimate_position_from_4_measurements(UWB_Measurement (&measurements)[NUMB
     return true;
 }
 
-bool _estimate_position_from_3_measurements(UWB_Measurement (&measurements)[NUMBER_OF_LIGHTHOUSES], Position& position)
+bool _estimate_position_from_3_measurements(const UWB_Measurement (&measurements)[NUMBER_OF_LIGHTHOUSES], Position& position)
 {
     return false;
 }

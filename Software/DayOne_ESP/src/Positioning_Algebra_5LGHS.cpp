@@ -28,7 +28,7 @@ bool ALGEBRA_5LGHS::Build_Constant_Matrices(
 
 
 void ALGEBRA_5LGHS::Estimate_Position(
-    UWB_Measurement (&distances_to_lghs)[5],
+    const UWB_Measurement (&distances_to_lghs)[5],
     Position &position)
 {
     _build_b_vector(distances_to_lghs);
@@ -175,7 +175,7 @@ void ALGEBRA_5LGHS::_build_b_vector_constants(
 
 
 void ALGEBRA_5LGHS::_build_b_vector(
-    UWB_Measurement (&distances_to_lghs)[5])
+    const UWB_Measurement (&distances_to_lghs)[5])
 {
     float r1 = distances_to_lghs[0].range;
 
