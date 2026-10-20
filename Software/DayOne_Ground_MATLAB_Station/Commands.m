@@ -15,7 +15,10 @@ classdef Commands < int32
         HEARTBEAT (12)
         QUADCOPTER_INIT (13)
         QUADCOPTER_HOVER (14)
-
+        QUADCOPTER_LAND (15)
+        QUADCOPTER_EMERGENCY_TOTAL_STOP (16)
+        QUADCOPTER_EMERGENCY_LANDING (17)
+        
         ERROR (99)
     end
 end
