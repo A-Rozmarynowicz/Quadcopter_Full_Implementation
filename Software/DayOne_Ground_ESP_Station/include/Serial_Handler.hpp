@@ -36,7 +36,7 @@ struct CommandInfo {
     uint8_t expectedCount;
 };
 
-constexpr std::array<CommandInfo, 14> commandTable {{
+constexpr std::array<CommandInfo, 17> commandTable {{
     {SERIAL_COMMANDS::RELAY,                          0},
     {SERIAL_COMMANDS::REQUEST_MEASUREMENTS,           0},
     {SERIAL_COMMANDS::SEND_POSITIONS,                POSITION_TRANSFER_DATA_LENGTH},

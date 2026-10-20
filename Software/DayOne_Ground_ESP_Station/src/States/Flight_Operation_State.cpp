@@ -40,6 +40,27 @@ void Flight_Operation_State::Handle_Serial_Message(uint8_t command, const float 
             }
             break;
 
+        case static_cast<uint8_t>(SERIAL_COMMANDS::QUADCOPTER_LAND):
+            if (value_count == 0) {
+                ESP_MESSAGES::Send_Quadcopter_Land();
+                Serial.printf("Quadcopter LAND\n");
+            }
+            break;
+
+        case static_cast<uint8_t>(SERIAL_COMMANDS::QUADCOPTER_EMERGENCY_TOTAL_STOP):
+            if (value_count == 0) {
+                ESP_MESSAGES::Send_Quadcopter_Emergency_Total_Stop();
+                Serial.printf("Quadcopter EMERGENCY TOTAL STOP\n");
+            }
+            break;
+
+        case static_cast<uint8_t>(SERIAL_COMMANDS::QUADCOPTER_EMERGENCY_LANDING):
+            if (value_count == 0) {
+                ESP_MESSAGES::Send_Quadcopter_Emergency_Landing();
+                Serial.printf("Quadcopter EMERGENCY LANDING\n");
+            }
+            break;
+
         default:
             Serial.println("Unknown command");
             break;
