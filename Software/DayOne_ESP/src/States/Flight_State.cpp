@@ -76,12 +76,32 @@ uint8_t Flight_State::Parse_Measurements()
 void Flight_State::Parse_ESP_Messages()
 {
     if (esp_receive_queue.empty()) {return;}
-    ESP_Packet position_packet;
+    ESP_Packet packet;
     ESP_Data_Commands command = static_cast<ESP_Data_Commands>
                         (esp_receive_queue[esp_receive_queue.get_head_offset_index(0)].data[ESP_Data_Setup::COMMAND]);
-    if (command == ESP_Data_Commands::QUADCOPTER_EMERGENCY_TOTAL_STOP)
+
+    switch (command)
     {
+    case ESP_Data_Commands::QUADCOPTER_EMERGENCY_TOTAL_STOP:
+        esp_receive_queue.pop(packet);
         Request_Change_State(STATES::EMERGENCY_STATE);
+        break;
+
+    case ESP_Data_Commands::QUADCOPTER_HOVER:
+        esp_receive_queue.pop(packet);
+        float height;
+        memcpy(&height, &(packet.data[ESP_Data_Setup::QUAD_0]), sizeof(float));
+        I2C_MESSAGES::Send_Hover(height);
+        break;
+
+    case ESP_Data_Commands::QUADCOPTER_LAND:
+        esp_receive_queue.pop(packet);
+        I2C_MESSAGES::Send_Land();
+        break;
+
+    default:
+        esp_receive_queue[esp_receive_queue.get_head_offset_index(0)].Increase_Flush_Value();
     }
+
     return;
 }
