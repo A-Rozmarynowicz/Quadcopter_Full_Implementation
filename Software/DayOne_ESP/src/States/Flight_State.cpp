@@ -1,5 +1,4 @@
 #include "States.hpp"
-#include "STM_Communication.hpp"
 #include "UWB.hpp"
 #include "UWB_Calculations.hpp"
 
@@ -148,7 +147,7 @@ void Flight_State::Parse_STM_Telemetry()
     }
 }
 
-void _handle_full_telemetry_packet(I2C_Packet& packet)
+void Flight_State::_handle_full_telemetry_packet(I2C_Packet& packet)
 {
      if (packet.length != I2C_TELEMETRY_SIZE)
     {

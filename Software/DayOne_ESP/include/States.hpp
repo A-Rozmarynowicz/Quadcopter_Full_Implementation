@@ -3,6 +3,7 @@
 
 #include "Configuration.hpp"
 #include "ESP_Communication.hpp"
+#include "STM_Communication.hpp"
 
 #define STATE_MAX_QUEUE_SEARCH_DEPTH 16
 
@@ -122,6 +123,7 @@ private:
     uint8_t Parse_Measurements();
     void Parse_ESP_Messages();
     void Parse_STM_Telemetry();
+    void _handle_full_telemetry_packet(I2C_Packet& packet);
 };
 
 class Emergency_State : public State

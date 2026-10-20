@@ -52,7 +52,6 @@ void Task_1ms()
 {
     state_machine.Task_1ms();
     state_machine.Handle_State_Change_Request();
-    // Serial.println("1ms");
 }
 
 void Task_5ms()
@@ -70,14 +69,12 @@ void Task_10ms()
 void Task_20ms()
 {
     state_machine.Task_20ms();
-    // Serial.println("20ms");
 }
 
 void Task_100ms()
 {
     state_machine.Task_100ms();
     LED_Blink_Task();
-    // Serial.println("100ms");
 }
 
 void Task_1000ms()
