@@ -30,7 +30,7 @@ void LED_Blink()
 }
 
 
-void Blink_Task()
+void LED_Blink_Task()
 {
     if (blinking)
     {

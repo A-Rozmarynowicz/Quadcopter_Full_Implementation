@@ -11,6 +11,6 @@ void LED_Off();
 void LED_Toggle();
 void LED_Blink();
 
-void Blink_Task();
+void LED_Blink_Task();
 
 #endif
