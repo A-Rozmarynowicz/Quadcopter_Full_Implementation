@@ -17,7 +17,9 @@
 #define SDA_PIN 25
 #define SCL_PIN 26
 
-enum I2C_Data_Commands
+#define STM_GPIO_PIN 14
+
+enum class I2C_Data_Commands
 {
     UWB_READY,
     CURRENT_POSITION_TRANSFER,

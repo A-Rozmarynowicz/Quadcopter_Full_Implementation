@@ -49,7 +49,7 @@ void Task_1ms()
 {
     state_machine.Task_1ms();
     state_machine.Handle_State_Change_Request();
-
+    Send_I2C();
     // Serial.println("1ms");
 }
 

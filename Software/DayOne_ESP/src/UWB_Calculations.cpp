@@ -27,10 +27,7 @@ bool Estimate_Position_Initial_Point(
     const UWB_Measurement (&average_distances)[NUMBER_OF_LIGHTHOUSES],
     Position &estimated_position)
 {
-    Position estimated_position;
-    bool success = _estimate_position_from_average_ranges(average_distances, estimated_position);
-    estimated_position = estimated_position;
-    return success;
+    return _estimate_position_from_average_ranges(average_distances, estimated_position);
 }
 
 
