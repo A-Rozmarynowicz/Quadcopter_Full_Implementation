@@ -98,7 +98,7 @@ void Flight_State::Parse_ESP_Messages()
 
     case ESP_Data_Commands::GROUND_STATION_ENABLE_FULL_TELEMETRY_REQUESTS:
         esp_receive_queue.pop(packet);
-        full_telemetry_requests_enabled = true;
+        full_telemetry_requests_enabled = static_cast<bool>(packet.data[ESP_Data_Setup::SINGLE_0]);
         break;
 
     default:
@@ -110,6 +110,11 @@ void Flight_State::Parse_ESP_Messages()
 
 void Flight_State::Parse_STM_Telemetry()
 {
+    if (i2c_receive_queue.empty())
+    {
+        return;
+    }
+
     I2C_Packet response;
     if (!i2c_receive_queue.pop(response))
     {
@@ -119,6 +124,8 @@ void Flight_State::Parse_STM_Telemetry()
     {
         return;
     }
+
+    I2C_Data_Commands command = static_cast<I2C_Data_Commands>(response.data[static_cast<uint8_t>(I2C_Data_Setup::COMMAND)]);
 
     uint8_t single[3];
 
