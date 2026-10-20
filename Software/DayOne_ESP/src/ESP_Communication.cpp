@@ -162,6 +162,10 @@ bool _handle_urgent_esp_message(ESP_Packet &packet)
   case ESP_Data_Commands::QUADCOPTER_EMERGENCY_LANDING:
     I2C_MESSAGES::Send_Emergency_Landing();
     return true;
+  case ESP_Data_Commands::QUADCOPTER_RESET_ESP:
+    Serial.println("Received message: RESET ESP");
+    ESP.restart();
+    return true;
   default:
     break;
   }
