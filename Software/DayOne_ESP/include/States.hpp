@@ -116,6 +116,7 @@ private:
 
     void Handle_Ready_Measurements();
     uint8_t Parse_Measurements();
+    void Parse_ESP_Messages();
 };
 
 class Emergency_State : public State

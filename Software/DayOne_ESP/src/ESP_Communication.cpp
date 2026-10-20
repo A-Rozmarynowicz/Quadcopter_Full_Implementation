@@ -138,7 +138,7 @@ bool _handle_urgent_esp_message(ESP_Packet &packet)
     return true;
   case ESP_Data_Commands::QUADCOPTER_EMERGENCY_TOTAL_STOP:
     I2C_MESSAGES::Send_Emergency_Total_Stop();
-    return true;
+    return false;
   case ESP_Data_Commands::QUADCOPTER_EMERGENCY_LANDING:
     I2C_MESSAGES::Send_Emergency_Landing();
     return true;

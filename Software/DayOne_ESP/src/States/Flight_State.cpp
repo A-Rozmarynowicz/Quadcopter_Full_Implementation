@@ -71,3 +71,17 @@ uint8_t Flight_State::Parse_Measurements()
     }
     return penalty;
 }
+
+
+void Flight_State::Parse_ESP_Messages()
+{
+    if (esp_receive_queue.empty()) {return;}
+    ESP_Packet position_packet;
+    ESP_Data_Commands command = static_cast<ESP_Data_Commands>
+                        (esp_receive_queue[esp_receive_queue.get_head_offset_index(0)].data[ESP_Data_Setup::COMMAND]);
+    if (command == ESP_Data_Commands::QUADCOPTER_EMERGENCY_TOTAL_STOP)
+    {
+        Request_Change_State(STATES::EMERGENCY_STATE);
+    }
+    return;
+}
