@@ -96,9 +96,52 @@ void Flight_State::Parse_ESP_Messages()
         I2C_MESSAGES::Send_Land();
         break;
 
+    case ESP_Data_Commands::GROUND_STATION_ENABLE_FULL_TELEMETRY_REQUESTS:
+        esp_receive_queue.pop(packet);
+        full_telemetry_requests_enabled = true;
+        break;
+
     default:
         esp_receive_queue[esp_receive_queue.get_head_offset_index(0)].Increase_Flush_Value();
     }
 
     return;
 }
+
+void Flight_State::Parse_STM_Telemetry()
+{
+    I2C_Packet response;
+    if (!i2c_receive_queue.pop(response))
+    {
+        return;
+    }
+    if (response.length != I2C_TELEMETRY_SIZE)
+    {
+        return;
+    }
+
+    uint8_t single[3];
+
+    float telemetry[6];
+
+    // Extract three singles.
+    for (std::size_t i = 0; i < 3; ++i)
+    {
+        const std::size_t offset =
+            static_cast<std::size_t>(I2C_Data_Setup::SINGLE_0) + i;
+
+        single[i] = response.data[offset];
+    }
+
+    // Extract six floats.
+    for (std::size_t i = 0; i < 6; ++i)
+    {
+        const std::size_t offset =
+            static_cast<std::size_t>(I2C_Data_Setup::QUAD_0)
+            + i * sizeof(float);
+
+        memcpy(&telemetry[i], &response.data[offset], sizeof(float));
+    }
+}
+
+

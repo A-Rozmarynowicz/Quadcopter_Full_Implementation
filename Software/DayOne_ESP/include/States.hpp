@@ -121,6 +121,7 @@ private:
     void Handle_Ready_Measurements();
     uint8_t Parse_Measurements();
     void Parse_ESP_Messages();
+    void Parse_STM_Telemetry();
 };
 
 class Emergency_State : public State
