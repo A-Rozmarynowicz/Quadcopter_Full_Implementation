@@ -51,6 +51,9 @@ constexpr std::array<CommandInfo, 14> commandTable {{
     {SERIAL_COMMANDS::HEARTBEAT, 0},
     {SERIAL_COMMANDS::QUADCOPTER_INIT, 0},
     {SERIAL_COMMANDS::QUADCOPTER_HOVER, 1},
+    {SERIAL_COMMANDS::QUADCOPTER_LAND, 0},
+    {SERIAL_COMMANDS::QUADCOPTER_EMERGENCY_TOTAL_STOP, 0},
+    {SERIAL_COMMANDS::QUADCOPTER_EMERGENCY_LANDING, 0},
 }};
 
 bool Update_Serial(uint8_t& command, float (&values)[MAX_NUMBER_OF_VALUES_IN_TRANSFER], uint8_t& value_count);
