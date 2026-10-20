@@ -102,12 +102,15 @@ void _receive_callback(const uint8_t* macAddr, const uint8_t* data, int dataLen)
     return;
   }
   Serial.printf("TRANSMITTTER: %d\n", data[ESP_Data_Setup::TRANSMITTER_ID]);
-   ESP_Packet packet;
+  ESP_Packet packet;
 
-   std::copy(data, data + dataLen, packet.data);
+  std::copy(data, data + dataLen, packet.data);
 
-   esp_receive_queue.push(packet);
-//   State_ReceiveCallback(data);
+  if (_handle_urgent_message(packet))
+  {
+    return;
+  }
+  esp_receive_queue.push(packet);
 };
 
 
@@ -125,5 +128,20 @@ void _sent_callback(const uint8_t *macAddr, esp_now_send_status_t status)
 
 void _communication_error(ESP_Communication_Errors error)
 {};
+
+bool _handle_urgent_message(ESP_Packet &packet)
+{
+  switch (packet.data[ESP_Data_Setup::COMMAND])
+  {
+  case ESP_Data_Commands::GROUND_STATION_HEARTBEAT:
+    /* code */
+    break;
+
+  default:
+    break;
+  }
+
+  return false;
+}
 
 #pragma endregion

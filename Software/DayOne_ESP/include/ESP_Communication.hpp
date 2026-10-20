@@ -87,6 +87,6 @@ void _send_esp();
 void _receive_callback(const uint8_t* macAddr, const uint8_t* data, int dataLen);
 void _sent_callback(const uint8_t *macAddr, esp_now_send_status_t status);
 void _communication_error(ESP_Communication_Errors error);
-
+bool _handle_urgent_message(ESP_Packet &packet);
 
 #endif
