@@ -1,10 +1,38 @@
 #include "UWB_Calculations.hpp"
 #include "Positioning_Algebra_4LGHS.hpp"
 #include "Positioning_Algebra_5LGHS.hpp"
+#include "Position_Optimizer.hpp"
 
 Position current_calculated_position;
 Position position_zero;
 float last_averaged_ranges[NUMBER_OF_LIGHTHOUSES] = {0.0f};
+
+uint8_t Calculate_Position(
+    Stack<UWB_Measurement, UWB_MEASUREMENT_STACK_SIZE> (&uwb_stacks)[NUMBER_OF_LIGHTHOUSES],
+    Position &position
+)
+{
+    Position estimated_position;
+    UWB_Measurement average_distances[NUMBER_OF_LIGHTHOUSES] = {};
+    float weights[NUMBER_OF_LIGHTHOUSES] = {};
+
+    uint8_t missing_lghs_penalty = Get_Averaged_Results(uwb_stacks, average_distances);
+    Estimate_Position_Initial_Point(average_distances, estimated_position);
+    Optimize_Position(average_distances, lighthouse_positions_by_indices, weights, estimated_position, position);
+    return missing_lghs_penalty;
+}
+
+
+bool Estimate_Position_Initial_Point(
+    const UWB_Measurement (&average_distances)[NUMBER_OF_LIGHTHOUSES],
+    Position &estimated_position)
+{
+    Position estimated_position;
+    bool success = _estimate_position_from_average_ranges(average_distances, estimated_position);
+    estimated_position = estimated_position;
+    return success;
+}
+
 
 uint8_t Get_Averaged_Results(
     Stack<UWB_Measurement, UWB_MEASUREMENT_STACK_SIZE> (&uwb_stacks)[NUMBER_OF_LIGHTHOUSES],
@@ -26,20 +54,6 @@ uint8_t Get_Averaged_Results(
     }
 
     return missing_lghs_penalty;
-}
-
-bool Estimate_Position_Initial_Point(
-    const UWB_Measurement (&average_distances)[NUMBER_OF_LIGHTHOUSES],
-    Position &estimated_position)
-{
-    Position estimated_position;
-    bool success = _estimate_position_from_average_ranges(average_distances, estimated_position);
-    if (success)
-    {
-        estimated_position = estimated_position;
-        return true;
-    }
-    return false;
 }
 
 uint8_t Get_Number_Of_Present_Lighthouses(const Stack<UWB_Measurement, UWB_MEASUREMENT_STACK_SIZE>(&uwb_stacks)[NUMBER_OF_LIGHTHOUSES])
