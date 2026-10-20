@@ -50,13 +50,13 @@ void Task_1ms()
 {
     state_machine.Task_1ms();
     state_machine.Handle_State_Change_Request();
-    Send_I2C();
     // Serial.println("1ms");
 }
 
 void Task_5ms()
 {
     state_machine.Task_5ms();
+    Send_I2C();
     _send_esp();
     // Serial.println("5ms");
 }
