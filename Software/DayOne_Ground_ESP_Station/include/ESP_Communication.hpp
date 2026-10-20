@@ -30,7 +30,11 @@ namespace ESP_MESSAGES
   bool Send_Ground_Station_Heartbeat();
 
   bool Send_Ground_Station_Quadcopter_Init();
-  bool Send_Ground_Station_Quadcopter_Hover(float height);
+
+  bool Send_Quadcopter_Hover(float height);
+  bool Send_Quadcopter_Land();
+  bool Send_Quadcopter_Emergency_Total_Stop();
+  bool Send_Quadcopter_Emergency_Landing();
 };
 
 
@@ -40,7 +44,7 @@ extern Queue<ESP_Packet, ESP_TRANSMIT_QUEUE_SIZE> esp_transmit_queue;
 void Initialize_ESP_Communication();
 void ESP_Transmit();
 
-void _send_esp();
+void _send_esp(ESP_Packet &transmit_packet);
 void _receive_callback(const uint8_t* macAddr, const uint8_t* data, int dataLen);
 void _sent_callback(const uint8_t *macAddr, esp_now_send_status_t status);
 void _communication_error(ESP_Communication_Errors error);

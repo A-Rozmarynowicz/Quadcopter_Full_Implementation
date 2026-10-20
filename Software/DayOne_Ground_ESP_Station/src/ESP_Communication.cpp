@@ -71,16 +71,47 @@ bool ESP_MESSAGES::Send_Ground_Station_Quadcopter_Init()
   return esp_transmit_queue.push(packet);
 }
 
-bool ESP_MESSAGES::Send_Ground_Station_Quadcopter_Hover(float height)
+bool ESP_MESSAGES::Send_Quadcopter_Hover(float height)
 {
   ESP_Packet packet{};
   packet.data[ESP_Data_Setup::RECEIVER_ID] = DRONE_ESP_ID;
   packet.data[ESP_Data_Setup::TRANSMITTER_ID] = GROUND_STATION_ID;
-  packet.data[ESP_Data_Setup::COMMAND] = ESP_Data_Commands::GROUND_STATION_QUADCOPTER_HOVER;
+  packet.data[ESP_Data_Setup::COMMAND] = ESP_Data_Commands::QUADCOPTER_HOVER;
   memcpy(&(packet.data[ESP_Data_Setup::QUAD_0]), &(height), sizeof(float));
 
   return esp_transmit_queue.push(packet);
 }
+
+bool Send_Quadcopter_Land()
+{
+  ESP_Packet packet{};
+  packet.data[ESP_Data_Setup::RECEIVER_ID] = DRONE_ESP_ID;
+  packet.data[ESP_Data_Setup::TRANSMITTER_ID] = GROUND_STATION_ID;
+  packet.data[ESP_Data_Setup::COMMAND] = ESP_Data_Commands::QUADCOPTER_LAND;
+
+  return esp_transmit_queue.push(packet);
+}
+
+bool Send_Quadcopter_Emergency_Total_Stop()
+{
+  ESP_Packet packet{};
+  packet.data[ESP_Data_Setup::RECEIVER_ID] = DRONE_ESP_ID;
+  packet.data[ESP_Data_Setup::TRANSMITTER_ID] = GROUND_STATION_ID;
+  packet.data[ESP_Data_Setup::COMMAND] = ESP_Data_Commands::QUADCOPTER_EMERGENCY_TOTAL_STOP;
+
+  return esp_transmit_queue.push(packet);
+}
+
+bool Send_Quadcopter_Emergency_Landing()
+{
+  ESP_Packet packet{};
+  packet.data[ESP_Data_Setup::RECEIVER_ID] = DRONE_ESP_ID;
+  packet.data[ESP_Data_Setup::TRANSMITTER_ID] = GROUND_STATION_ID;
+  packet.data[ESP_Data_Setup::COMMAND] = ESP_Data_Commands::QUADCOPTER_EMERGENCY_LANDING;
+
+  return esp_transmit_queue.push(packet);
+}
+
 
 #pragma endregion
 
@@ -104,27 +135,26 @@ void Initialize_ESP_Communication()
 
 void ESP_Transmit()
 {
-  _send_esp();
-}
-
-void _send_esp()
-{
   if (esp_transmit_queue.empty())
   {
       return;
   }
+  ESP_Packet transmit_packet;
+  if (!esp_transmit_queue.pop(transmit_packet))
+  {
+      return;
+  }
+  _send_esp(transmit_packet);
+}
+
+void _send_esp(ESP_Packet &transmit_packet)
+{
   uint8_t broadcastAddress[] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
   esp_now_peer_info_t peerInfo = {};
   memcpy(&peerInfo.peer_addr, broadcastAddress, 6);
   if (!esp_now_is_peer_exist(broadcastAddress))
   {
       esp_now_add_peer(&peerInfo);
-  }
-
-  ESP_Packet transmit_packet;
-  if (!esp_transmit_queue.pop(transmit_packet))
-  {
-      return;
   }
 
   esp_err_t result = esp_now_send(broadcastAddress, transmit_packet.data, ESP_DATA_SIZE);
