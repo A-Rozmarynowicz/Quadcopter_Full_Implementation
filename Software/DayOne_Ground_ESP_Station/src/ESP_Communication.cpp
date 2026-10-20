@@ -99,6 +99,7 @@ bool Send_Quadcopter_Emergency_Total_Stop()
   packet.data[ESP_Data_Setup::TRANSMITTER_ID] = GROUND_STATION_ID;
   packet.data[ESP_Data_Setup::COMMAND] = ESP_Data_Commands::QUADCOPTER_EMERGENCY_TOTAL_STOP;
 
+  _send_esp(packet);
   return esp_transmit_queue.push(packet);
 }
 
@@ -109,6 +110,7 @@ bool Send_Quadcopter_Emergency_Landing()
   packet.data[ESP_Data_Setup::TRANSMITTER_ID] = GROUND_STATION_ID;
   packet.data[ESP_Data_Setup::COMMAND] = ESP_Data_Commands::QUADCOPTER_EMERGENCY_LANDING;
 
+  _send_esp(packet);
   return esp_transmit_queue.push(packet);
 }
 
