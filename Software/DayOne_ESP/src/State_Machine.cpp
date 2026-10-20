@@ -50,6 +50,11 @@ void State_Machine::Task_5ms()
     current_state->Task_5ms();
 }
 
+void State_Machine::Task_10ms()
+{
+    current_state->Task_10ms();
+}
+
 void State_Machine::Task_20ms()
 {
     current_state->Task_20ms();

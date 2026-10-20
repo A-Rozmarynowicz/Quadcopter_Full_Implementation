@@ -20,6 +20,7 @@ public:
 
     void Task_1ms();
     void Task_5ms();
+    void Task_10ms();
     void Task_20ms();
     void Task_100ms();
     void Task_1000ms();
