@@ -60,6 +60,26 @@ bool ESP_MESSAGES::Send_Wakeup_Reckon(uint8_t receiver)
   return esp_transmit_queue.push(packet);
 }
 
+bool ESP_MESSAGES::Send_Full_Telemetry(float (&float_telemetry)[6], uint8_t (&int_telemetry)[3])
+{
+  ESP_Packet packet{};
+  packet.data[ESP_Data_Setup::RECEIVER_ID] = GROUND_STATION_ID;
+  packet.data[ESP_Data_Setup::TRANSMITTER_ID] = DRONE_ESP_ID;
+  packet.data[ESP_Data_Setup::COMMAND] = ESP_Data_Commands::GROUND_STATION_FULL_TELEMETRY_TRANSFER;
+
+  packet.data[ESP_Data_Setup::SINGLE_0] = int_telemetry[0];
+  packet.data[ESP_Data_Setup::SINGLE_1] = int_telemetry[1];
+  packet.data[ESP_Data_Setup::SINGLE_2] = int_telemetry[2];
+
+  memcpy(&(packet.data[ESP_Data_Setup::QUAD_0]), &(float_telemetry[0]), sizeof(float));
+  memcpy(&(packet.data[ESP_Data_Setup::QUAD_1]), &(float_telemetry[1]), sizeof(float));
+  memcpy(&(packet.data[ESP_Data_Setup::QUAD_2]), &(float_telemetry[2]), sizeof(float));
+  memcpy(&(packet.data[ESP_Data_Setup::QUAD_3]), &(float_telemetry[3]), sizeof(float));
+  memcpy(&(packet.data[ESP_Data_Setup::QUAD_4]), &(float_telemetry[4]), sizeof(float));
+  memcpy(&(packet.data[ESP_Data_Setup::QUAD_5]), &(float_telemetry[5]), sizeof(float));
+
+  return esp_transmit_queue.push(packet);
+}
 
 #pragma endregion
 
