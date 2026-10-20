@@ -116,7 +116,7 @@ public:
     void Task_1000ms() override;
 private:
     uint16_t total_penalty = 0;
-    uint8_t half_periods_passed = 0;
+    bool full_telemetry_requests_enabled = false;
 
     void Handle_Ready_Measurements();
     uint8_t Parse_Measurements();

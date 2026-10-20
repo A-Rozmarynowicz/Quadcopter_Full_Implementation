@@ -47,23 +47,15 @@ void Flight_State::Task_1000ms()
 void Flight_State::Handle_Ready_Measurements()
 {
     Serial.printf("Present lighthouses: %d\n", Get_Number_Of_Present_Lighthouses(uwb_measurement_stacks));
-    if (Get_Number_Of_Present_Lighthouses(uwb_measurement_stacks) == NUMBER_OF_LIGHTHOUSES)
+    uint8_t penalty = Parse_Measurements();
+    if (penalty == 0)
     {
-        uint8_t penalty = Parse_Measurements();
-        if (penalty == 0)
-        {
-            total_penalty = 0;
-        }
-        half_periods_passed = 0;
-        return;
+        total_penalty = 0;
     }
-
-    if (half_periods_passed >= 1)
+    else
     {
-        total_penalty += Parse_Measurements();
+        total_penalty += penalty;
     }
-
-    half_periods_passed++;
 }
 
 uint8_t Flight_State::Parse_Measurements()
