@@ -42,6 +42,7 @@ public:
 
     virtual void Task_1ms() = 0;
     virtual void Task_5ms() = 0;
+    virtual void Task_10ms() = 0;
     virtual void Task_20ms() = 0;
     virtual void Task_100ms() = 0;
     virtual void Task_1000ms() = 0;
@@ -60,6 +61,7 @@ public:
 
     void Task_1ms() override;
     void Task_5ms() override;
+    void Task_10ms() override;
     void Task_20ms() override;
     void Task_100ms() override;
     void Task_1000ms() override;
@@ -81,6 +83,7 @@ public:
 
     void Task_1ms() override;
     void Task_5ms() override;
+    void Task_10ms() override;
     void Task_20ms() override;
     void Task_100ms() override;
     void Task_1000ms() override;
@@ -107,6 +110,7 @@ public:
 
     void Task_1ms() override;
     void Task_5ms() override;
+    void Task_10ms() override;
     void Task_20ms() override;
     void Task_100ms() override;
     void Task_1000ms() override;
@@ -132,6 +136,7 @@ public:
 
     void Task_1ms() override;
     void Task_5ms() override;
+    void Task_10ms() override;
     void Task_20ms() override;
     void Task_100ms() override;
     void Task_1000ms() override;

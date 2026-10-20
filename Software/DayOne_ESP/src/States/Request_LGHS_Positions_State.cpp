@@ -29,6 +29,11 @@ void Request_LGHS_Positions_State::Task_5ms()
 
 }
 
+void Request_LGHS_Positions_State::Task_10ms()
+{
+
+}
+
 void Request_LGHS_Positions_State::Task_20ms()
 {
 

@@ -21,6 +21,11 @@ void Initial_State::Task_5ms()
 
 }
 
+void Initial_State::Task_10ms()
+{
+
+}
+
 void Initial_State::Task_20ms()
 {
 

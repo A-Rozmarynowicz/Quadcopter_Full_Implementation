@@ -24,6 +24,11 @@ void Flight_State::Task_5ms()
 
 }
 
+void Flight_State::Task_10ms()
+{
+
+}
+
 void Flight_State::Task_20ms()
 {
 
