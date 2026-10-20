@@ -60,6 +60,14 @@ struct I2C_Packet
 {
     uint8_t data[I2C_DATA_SIZE];
     uint8_t length = 0;
+    uint8_t flush_value;
+    static constexpr uint8_t max_flush_value = 8;
+    void Mark_To_Flush(){flush_value=max_flush_value;}
+    void Increase_Flush_Value()
+      {if (flush_value >= max_flush_value){return;}
+      flush_value++;}
+    uint8_t Get_Flush_Value(){return flush_value;}
+    bool Is_For_Flush(){return flush_value>=max_flush_value;}
 };
 
 extern Queue<I2C_Packet, I2C_RECEIVE_QUEUE_SIZE>
@@ -71,6 +79,7 @@ extern Queue<I2C_Packet, I2C_TRANSMIT_QUEUE_SIZE>
 bool Initialize_I2C();
 
 bool Send_I2C();
+void Flush_Unused_STM_Received_Packets();
 
 namespace I2C_MESSAGES
 {

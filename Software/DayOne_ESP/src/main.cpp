@@ -84,4 +84,5 @@ void Task_1000ms()
 {
     state_machine.Task_1000ms();
     Flush_Unused_ESP_Received_Packets();
+    Flush_Unused_STM_Received_Packets();
 }

@@ -19,6 +19,21 @@ bool Initialize_I2C()
     return true;
 }
 
+void Flush_Unused_STM_Received_Packets()
+{
+  for (uint8_t i = 0; i<i2c_receive_queue.size(); i++)
+  {
+    if (i2c_receive_queue[i2c_receive_queue.get_head_offset_index(i)].Is_For_Flush())
+    {
+      I2C_Packet proxy;
+      i2c_receive_queue.pop(proxy);
+    }
+    else
+    {
+      break;
+    }
+  }
+};
 
 bool Send_I2C()
 {

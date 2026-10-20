@@ -122,6 +122,8 @@ void Flight_State::Parse_STM_Telemetry()
         return;
     }
 
+    i2c_receive_queue[i2c_receive_queue.get_head_offset_index(0)].Increase_Flush_Value();
+
     if (i2c_receive_queue[i2c_receive_queue.get_head_offset_index(0)].length <= 0)
     {
         return;
