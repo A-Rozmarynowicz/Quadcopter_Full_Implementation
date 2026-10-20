@@ -17,6 +17,7 @@ Timer_Handler::Timer_Config configs[] =
 {
     { 1,    Task_1ms   },
     { 5,    Task_5ms   },
+    { 10,   Task_10ms   },
     { 20,   Task_20ms  },
     { 100,  Task_100ms },
     { 1000, Task_1000ms    }
@@ -57,8 +58,12 @@ void Task_5ms()
 {
     state_machine.Task_5ms();
     Send_I2C();
+}
+
+void Task_10ms()
+{
+    state_machine.Task_10ms();
     _send_esp();
-    // Serial.println("5ms");
 }
 
 void Task_20ms()
