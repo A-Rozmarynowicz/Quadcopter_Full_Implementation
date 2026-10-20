@@ -115,20 +115,38 @@ void Flight_State::Parse_STM_Telemetry()
         return;
     }
 
-    I2C_Packet response;
-    if (!i2c_receive_queue.pop(response))
-    {
-        return;
-    }
-    if (response.length != I2C_TELEMETRY_SIZE)
+    if (i2c_receive_queue[i2c_receive_queue.get_head_offset_index(0)].length <= 0)
     {
         return;
     }
 
-    I2C_Data_Commands command = static_cast<I2C_Data_Commands>(response.data[static_cast<uint8_t>(I2C_Data_Setup::COMMAND)]);
+    I2C_Data_Commands command = static_cast<I2C_Data_Commands>
+        (i2c_receive_queue[i2c_receive_queue.get_head_offset_index(0)].data[static_cast<uint8_t>(I2C_Data_Setup::COMMAND)]);
+
+    I2C_Packet response;
+
+    switch (command)
+    {
+    case I2C_Data_Commands::ANSWER_FULL_TELEMETRY:
+        if (!i2c_receive_queue.pop(response))
+        {
+            _handle_full_telemetry_packet(response);
+        }
+        break;
+
+    default:
+        break;
+    }
+}
+
+void _handle_full_telemetry_packet(I2C_Packet& packet)
+{
+     if (packet.length != I2C_TELEMETRY_SIZE)
+    {
+        return;
+    }
 
     uint8_t single[3];
-
     float telemetry[6];
 
     // Extract three singles.
@@ -137,7 +155,7 @@ void Flight_State::Parse_STM_Telemetry()
         const std::size_t offset =
             static_cast<std::size_t>(I2C_Data_Setup::SINGLE_0) + i;
 
-        single[i] = response.data[offset];
+        single[i] = packet.data[offset];
     }
 
     // Extract six floats.
@@ -147,8 +165,10 @@ void Flight_State::Parse_STM_Telemetry()
             static_cast<std::size_t>(I2C_Data_Setup::QUAD_0)
             + i * sizeof(float);
 
-        memcpy(&telemetry[i], &response.data[offset], sizeof(float));
+        memcpy(&telemetry[i], &(packet.data[offset]), sizeof(float));
     }
+
+    ESP_MESSAGES::Send_Full_Telemetry(telemetry, single);
 }
 
 

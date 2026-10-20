@@ -37,6 +37,7 @@ enum I2C_Data_Commands
     LAND,
 
     REQUEST_FULL_TELEMETRY,
+    ANSWER_FULL_TELEMETRY,
 };
 
 enum class I2C_Data_Setup
@@ -57,7 +58,7 @@ enum class I2C_Data_Setup
 
 struct I2C_Packet
 {
-    uint8_t data[I2C_DATA_SIZE]{};
+    uint8_t data[I2C_DATA_SIZE];
     uint8_t length = 0;
 };
 
