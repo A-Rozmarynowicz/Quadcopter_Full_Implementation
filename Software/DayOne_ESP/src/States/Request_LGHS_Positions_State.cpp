@@ -2,6 +2,7 @@
 #include "UWB.hpp"
 #include "Positioning_Algebra_4LGHS.hpp"
 #include "Positioning_Algebra_5LGHS.hpp"
+#include "Interface.hpp"
 
 void Request_LGHS_Positions_State::Enter()
 {
@@ -9,6 +10,7 @@ void Request_LGHS_Positions_State::Enter()
     current_request_lgh_index = 0;
     ESP_MESSAGES::Send_Query_Position(current_request_lgh_index);
     Restart_UWB_As_Tag();
+    LED_Blink();
 };
 
 void Request_LGHS_Positions_State::Exit()
