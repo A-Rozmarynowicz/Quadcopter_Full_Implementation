@@ -5,6 +5,7 @@
 Position current_calculated_position;
 Position position_zero;
 float last_averaged_ranges[NUMBER_OF_LIGHTHOUSES] = {0.0f};
+Queue<float, HISTORY_RANGES_QUEUE_SIZE> history_ranges[NUMBER_OF_LIGHTHOUSES] = {};
 
 uint8_t Get_Averaged_Results(
     Stack<UWB_Measurement, UWB_MEASUREMENT_STACK_SIZE> (&uwb_stacks)[NUMBER_OF_LIGHTHOUSES],

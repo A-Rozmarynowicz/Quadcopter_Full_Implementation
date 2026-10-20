@@ -14,6 +14,7 @@ const uint8_t MAX_MISSING_LGHS_PENALTY = 255;
 extern Position current_calculated_position;
 extern Position position_zero;
 extern float last_averaged_ranges[NUMBER_OF_LIGHTHOUSES];
+extern Queue<float, HISTORY_RANGES_QUEUE_SIZE> history_ranges[NUMBER_OF_LIGHTHOUSES];
 
 
 uint8_t Get_Averaged_Results(
