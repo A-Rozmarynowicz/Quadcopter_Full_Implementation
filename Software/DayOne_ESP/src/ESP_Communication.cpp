@@ -42,7 +42,7 @@ void Flush_Unused_ESP_Received_Packets()
 bool ESP_MESSAGES::Send_Query_Position(uint8_t receiver)
 {
   ESP_Packet packet{};
-  // Serial.printf("Sendind query to %d ------------------------------------------- \n", receiver);
+  // Serial.printf("Sending query to %d ------------------------------------------- \n", receiver);
   packet.data[ESP_Data_Setup::RECEIVER_ID] = receiver;
   packet.data[ESP_Data_Setup::TRANSMITTER_ID] = DRONE_ESP_ID;
   packet.data[ESP_Data_Setup::COMMAND] = ESP_Data_Commands::OBSERVER_QUERY_POSITION;

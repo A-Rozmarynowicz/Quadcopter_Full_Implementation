@@ -32,7 +32,7 @@ void ALGEBRA_4LGHS::Estimate_Position(const UWB_Measurement (&distances_to_lghs)
 
 void ALGEBRA_4LGHS::_build_a_matrix(Position (&lghs_positions)[4]){
     float x1 = lghs_positions[0].x, y1 = lghs_positions[0].y, z1 = lghs_positions[0].z;
-    for (uint8_t row=0; row<NUMBER_OF_LIGHTHOUSES-1; row++){
+    for (uint8_t row=0; row<4-1; row++){
         float xj = lghs_positions[row+1].x, yj = lghs_positions[row+1].y, zj = lghs_positions[row+1].z;
         ALGEBRA_4LGHS::A_matrix[row][0] = -2.0 * xj + 2.0 * x1;
         ALGEBRA_4LGHS::A_matrix[row][1] = -2.0 * yj + 2.0 * y1;
@@ -42,7 +42,7 @@ void ALGEBRA_4LGHS::_build_a_matrix(Position (&lghs_positions)[4]){
 
 
 void ALGEBRA_4LGHS::_build_at_matrix(){
-    for (uint8_t row=0; row<NUMBER_OF_LIGHTHOUSES-1; row++){
+    for (uint8_t row=0; row<4-1; row++){
         for (uint8_t column=0; column<3; column++){
             ALGEBRA_4LGHS::AT_matrix[column][row] = ALGEBRA_4LGHS::A_matrix[row][column];
         }
@@ -55,7 +55,7 @@ void ALGEBRA_4LGHS::_build_ata_matrix(){
         for (uint8_t j = 0; j < 3; j++) {
             ALGEBRA_4LGHS::ATA_matrix[i][j] = 0.0;
 
-            for (uint8_t k = 0; k < NUMBER_OF_LIGHTHOUSES-1; k++) {
+            for (uint8_t k = 0; k < 4-1; k++) {
                 ALGEBRA_4LGHS::ATA_matrix[i][j] += ALGEBRA_4LGHS::AT_matrix[i][k] * ALGEBRA_4LGHS::A_matrix[k][j];
             }
         }
@@ -108,7 +108,7 @@ uint8_t ALGEBRA_4LGHS::_build_ata_inv_matrix() {
 
 
 void ALGEBRA_4LGHS::_build_b_vector_constants(Position (&lghs_positions)[4]){
-    for (uint8_t j=0; j<NUMBER_OF_LIGHTHOUSES; j++){
+    for (uint8_t j=0; j<4; j++){
         ALGEBRA_4LGHS::B_vector_constants[j] = -(lghs_positions[j].x)*(lghs_positions[j].x)
                             - (lghs_positions[j].y)*(lghs_positions[j].y) - (lghs_positions[j].z)*(lghs_positions[j].z);
     }
@@ -116,7 +116,7 @@ void ALGEBRA_4LGHS::_build_b_vector_constants(Position (&lghs_positions)[4]){
 
 
 void ALGEBRA_4LGHS::_build_b_vector(const UWB_Measurement (&distances_to_lghs)[4]){
-    for (uint8_t j=0; j<NUMBER_OF_LIGHTHOUSES-1; j++){
+    for (uint8_t j=0; j<4-1; j++){
         ALGEBRA_4LGHS::B_vector[j] = (distances_to_lghs[j+1].range)*(distances_to_lghs[j+1].range)
          - (distances_to_lghs[0].range)*(distances_to_lghs[0].range)
          + ALGEBRA_4LGHS::B_vector_constants[j+1] - ALGEBRA_4LGHS::B_vector_constants[0];
@@ -129,7 +129,7 @@ void ALGEBRA_4LGHS::_calculate_atb_vector(){
     uint8_t i, j;
     for (i = 0; i < 3; i++) {
         ALGEBRA_4LGHS::ATB_vector[i] = 0.0;
-        for (j = 0; j < NUMBER_OF_LIGHTHOUSES-1; j++) {
+        for (j = 0; j < 4-1; j++) {
             ALGEBRA_4LGHS::ATB_vector[i] += ALGEBRA_4LGHS::AT_matrix[i][j] * ALGEBRA_4LGHS::B_vector[j];
         }
     }

@@ -68,8 +68,6 @@ namespace ESP_MESSAGES
 {
   bool Send_Query_Position(uint8_t receiver);
   bool Send_Wakeup_Reckon(uint8_t receiver);
-  bool Send_Ready(uint8_t receiver);
-  bool Send_Query_Position(uint8_t receiver);
 };
 
 struct ESP_Packet
