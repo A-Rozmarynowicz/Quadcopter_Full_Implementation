@@ -11,6 +11,7 @@ enum class STATES
     INITIAL_STATE,
     REQUEST_LGHS_POSITIONS_STATE,
     FLIGHT_STATE,
+    EMERGENCY_STATE,
 
     NONE_STATE,
 };
@@ -115,6 +116,24 @@ private:
 
     void Handle_Ready_Measurements();
     uint8_t Parse_Measurements();
+};
+
+class Emergency_State : public State
+{
+public:
+    STATES Get_State() const override
+    {
+        return STATES::EMERGENCY_STATE;
+    }
+
+    void Enter() override;
+    void Exit() override;
+
+    void Task_1ms() override;
+    void Task_5ms() override;
+    void Task_20ms() override;
+    void Task_100ms() override;
+    void Task_1000ms() override;
 };
 
 
