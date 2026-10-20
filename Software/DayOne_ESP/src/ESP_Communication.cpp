@@ -60,16 +60,6 @@ bool ESP_MESSAGES::Send_Wakeup_Reckon(uint8_t receiver)
   return esp_transmit_queue.push(packet);
 }
 
-bool ESP_MESSAGES::Send_Ready(uint8_t receiver)
-{
-  ESP_Packet packet{};
-  packet.data[ESP_Data_Setup::RECEIVER_ID] = receiver;
-  packet.data[ESP_Data_Setup::TRANSMITTER_ID] = DRONE_ESP_ID;
-  packet.data[ESP_Data_Setup::COMMAND] = ESP_Data_Commands::OBSERVER_READY;
-
-  return esp_transmit_queue.push(packet);
-}
-
 
 #pragma endregion
 
