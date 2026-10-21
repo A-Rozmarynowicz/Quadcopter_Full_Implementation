@@ -30,11 +30,14 @@ namespace ESP_MESSAGES
   bool Send_Ground_Station_Heartbeat();
 
   bool Send_Ground_Station_Quadcopter_Init();
+  bool Send_Ground_Station_Enable_Full_Telemetry_Requests(bool enable);
 
   bool Send_Quadcopter_Hover(float height);
   bool Send_Quadcopter_Land();
   bool Send_Quadcopter_Emergency_Total_Stop();
   bool Send_Quadcopter_Emergency_Landing();
+  bool Send_Quadcopter_ESP_Reset();
+  bool Send_Quadcopter_STM_Reset();
 };
 
 
