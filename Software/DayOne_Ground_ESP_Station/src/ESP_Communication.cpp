@@ -71,6 +71,17 @@ bool ESP_MESSAGES::Send_Ground_Station_Quadcopter_Init()
   return esp_transmit_queue.push(packet);
 }
 
+bool ESP_MESSAGES::Send_Ground_Station_Enable_Full_Telemetry_Requests(bool enable)
+{
+  ESP_Packet packet{};
+  packet.data[ESP_Data_Setup::RECEIVER_ID] = DRONE_ESP_ID;
+  packet.data[ESP_Data_Setup::TRANSMITTER_ID] = GROUND_STATION_ID;
+  packet.data[ESP_Data_Setup::COMMAND] = ESP_Data_Commands::GROUND_STATION_ENABLE_FULL_TELEMETRY_REQUESTS;
+  packet.data[ESP_Data_Setup::SINGLE_0] = enable;
+
+  return esp_transmit_queue.push(packet);
+}
+
 bool ESP_MESSAGES::Send_Quadcopter_Hover(float height)
 {
   ESP_Packet packet{};
@@ -82,7 +93,7 @@ bool ESP_MESSAGES::Send_Quadcopter_Hover(float height)
   return esp_transmit_queue.push(packet);
 }
 
-bool Send_Quadcopter_Land()
+bool ESP_MESSAGES::Send_Quadcopter_Land()
 {
   ESP_Packet packet{};
   packet.data[ESP_Data_Setup::RECEIVER_ID] = DRONE_ESP_ID;
@@ -92,7 +103,7 @@ bool Send_Quadcopter_Land()
   return esp_transmit_queue.push(packet);
 }
 
-bool Send_Quadcopter_Emergency_Total_Stop()
+bool ESP_MESSAGES::Send_Quadcopter_Emergency_Total_Stop()
 {
   ESP_Packet packet{};
   packet.data[ESP_Data_Setup::RECEIVER_ID] = DRONE_ESP_ID;
@@ -103,7 +114,7 @@ bool Send_Quadcopter_Emergency_Total_Stop()
   return esp_transmit_queue.push(packet);
 }
 
-bool Send_Quadcopter_Emergency_Landing()
+bool ESP_MESSAGES::Send_Quadcopter_Emergency_Landing()
 {
   ESP_Packet packet{};
   packet.data[ESP_Data_Setup::RECEIVER_ID] = DRONE_ESP_ID;
@@ -111,6 +122,27 @@ bool Send_Quadcopter_Emergency_Landing()
   packet.data[ESP_Data_Setup::COMMAND] = ESP_Data_Commands::QUADCOPTER_EMERGENCY_LANDING;
 
   _send_esp(packet);
+  return esp_transmit_queue.push(packet);
+}
+
+
+bool ESP_MESSAGES::Send_Quadcopter_ESP_Reset()
+{
+  ESP_Packet packet{};
+  packet.data[ESP_Data_Setup::RECEIVER_ID] = DRONE_ESP_ID;
+  packet.data[ESP_Data_Setup::TRANSMITTER_ID] = GROUND_STATION_ID;
+  packet.data[ESP_Data_Setup::COMMAND] = ESP_Data_Commands::QUADCOPTER_RESET_ESP;
+
+  return esp_transmit_queue.push(packet);
+}
+
+bool ESP_MESSAGES::Send_Quadcopter_STM_Reset()
+{
+  ESP_Packet packet{};
+  packet.data[ESP_Data_Setup::RECEIVER_ID] = DRONE_ESP_ID;
+  packet.data[ESP_Data_Setup::TRANSMITTER_ID] = GROUND_STATION_ID;
+  packet.data[ESP_Data_Setup::COMMAND] = ESP_Data_Commands::QUADCOPTER_RESET_STM;
+
   return esp_transmit_queue.push(packet);
 }
 
