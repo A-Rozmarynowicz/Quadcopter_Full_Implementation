@@ -32,6 +32,14 @@ void Flight_Operation_State::Handle_Serial_Message(uint8_t command, const float 
             }
             break;
 
+        case static_cast<uint8_t>(SERIAL_COMMANDS::QUADCOPTER_ENABLE_FULL_TELEMETRY_REQUESTS):
+            if (value_count == 1) {
+                bool enable = static_cast<bool>(values[0]);
+                ESP_MESSAGES::Send_Ground_Station_Enable_Full_Telemetry_Requests(enable);
+                Serial.printf("Quadcopter TELEMETRY: %d\n", enable);
+            }
+            break;
+
         case static_cast<uint8_t>(SERIAL_COMMANDS::QUADCOPTER_HOVER):
             if (value_count == 1) {
                 float height = static_cast<float>(values[0]);
@@ -58,6 +66,20 @@ void Flight_Operation_State::Handle_Serial_Message(uint8_t command, const float 
             if (value_count == 0) {
                 ESP_MESSAGES::Send_Quadcopter_Emergency_Landing();
                 Serial.printf("Quadcopter EMERGENCY LANDING\n");
+            }
+            break;
+
+        case static_cast<uint8_t>(SERIAL_COMMANDS::QUADCOPTER_ESP_RESET):
+            if (value_count == 0) {
+                ESP_MESSAGES::Send_Quadcopter_ESP_Reset();
+                Serial.printf("Quadcopter RESET ESP\n");
+            }
+            break;
+
+        case static_cast<uint8_t>(SERIAL_COMMANDS::QUADCOPTER_STM_RESET):
+            if (value_count == 0) {
+                ESP_MESSAGES::Send_Quadcopter_Emergency_Landing();
+                Serial.printf("Quadcopter RESET STM\n");
             }
             break;
 
