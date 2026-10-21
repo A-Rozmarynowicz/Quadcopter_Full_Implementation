@@ -125,13 +125,13 @@ bool _read_I2C_full_telemetry()
 
 #pragma region I2C Messages
 
-bool I2C_MESSAGES::Send_UWB_Ready()
+bool I2C_MESSAGES::Send_Quadcopter_Init()
 {
     I2C_Packet packet{};
 
     packet.data[
         static_cast<std::size_t>(I2C_Data_Setup::COMMAND)
-    ] = I2C_Data_Commands::UWB_READY;
+    ] = I2C_Data_Commands::QUADCOPTER_INIT;
 
     packet.length = 1;
 

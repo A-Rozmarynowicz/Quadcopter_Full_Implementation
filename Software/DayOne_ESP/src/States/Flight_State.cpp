@@ -85,6 +85,11 @@ void Flight_State::Parse_ESP_Messages()
 
     switch (command)
     {
+    case ESP_Data_Commands::GROUND_STATION_QUADCOPTER_INIT:
+        esp_receive_queue.pop(packet);
+        I2C_MESSAGES::Send_Quadcopter_Init();
+        break;
+
     case ESP_Data_Commands::QUADCOPTER_EMERGENCY_TOTAL_STOP:
         esp_receive_queue.pop(packet);
         Request_Change_State(STATES::EMERGENCY_STATE);

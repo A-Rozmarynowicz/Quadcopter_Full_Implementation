@@ -28,7 +28,7 @@ constexpr uint16_t I2C_TIMEOUT_MS = 4;
 
 enum I2C_Data_Commands
 {
-    UWB_READY,
+    QUADCOPTER_INIT,
     CURRENT_POSITION_TRANSFER,
     HEARTBEAT,
     EMERGENCY_TOTAL_STOP,
@@ -85,7 +85,7 @@ void Flush_Unused_STM_Received_Packets();
 
 namespace I2C_MESSAGES
 {
-    bool Send_UWB_Ready();
+    bool Send_Quadcopter_Init();
     bool Send_Current_Position(Position &position);
     bool Send_Heartbeat();
     bool Send_Emergency_Total_Stop();
