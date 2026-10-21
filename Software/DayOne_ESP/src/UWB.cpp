@@ -174,7 +174,6 @@ void _new_range()
     }
 
     _add_range(range, lgh_index);
-    LED_Blink();
 }
 
 

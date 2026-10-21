@@ -1,6 +1,7 @@
 #include "States.hpp"
 #include "UWB.hpp"
 #include "UWB_Calculations.hpp"
+#include "Interface.hpp"
 
 void Flight_State::Enter()
 {
@@ -57,6 +58,7 @@ void Flight_State::Handle_Ready_Measurements()
     if (penalty == 0)
     {
         total_penalty = 0;
+        LED_Toggle();
     }
     else
     {
