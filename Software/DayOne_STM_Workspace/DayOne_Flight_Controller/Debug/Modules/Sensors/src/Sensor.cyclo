@@ -1,3 +1,0 @@
-../Modules/Sensors/src/Sensor.cpp:5:1:Sensor::Sensor()	1
-../Modules/Sensors/src/Sensor.cpp:7:6:void Sensor::Setup(SPI_HandleTypeDef*, GPIO_TypeDef*, uint16_t)	1
-../Modules/Sensors/src/Sensor.cpp:14:20:SPI_HandleTypeDef* Sensor::Get_SPI()	1

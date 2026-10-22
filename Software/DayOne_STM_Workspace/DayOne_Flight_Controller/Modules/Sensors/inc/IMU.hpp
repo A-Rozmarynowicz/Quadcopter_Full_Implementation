@@ -24,7 +24,7 @@ enum class IMU_GYRO_SCALE
 };
 
 
-class IMU : public Sensor
+class IMU : public Sensor<13>
 {
 private:
 	IMU_UPDATE_RATES update_rate;
@@ -32,15 +32,18 @@ private:
 	IMU_GYRO_SCALE gyro_scale;
 	void Handle_Acc_Control_Registers();
 	void Handle_Gyro_Control_Registers();
+protected:
+	void Read_ID_Register() override;
 public:
 	void Initialize(IMU_UPDATE_RATES p_update_rate,
 			IMU_ACC_SCALE p_acc_scale,
-			IMU_GYRO_SCALE p_gyro_scale) override;
+			IMU_GYRO_SCALE p_gyro_scale);
 
 	void DMA_TxRxCompleteCallback() override;
 	void DMA_ErrorCallback() override;
 
-	void Read_Data() override;
+	void Measurement_Cycle_Finished() override;
+	void Task_Perform_Transaction() override;
 };
 
 #endif

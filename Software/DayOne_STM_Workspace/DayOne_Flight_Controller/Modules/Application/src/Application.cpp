@@ -7,9 +7,9 @@ Magnetometer magnetometer;
 extern "C" void App_Init(SPI_HandleTypeDef* hspi1, SPI_HandleTypeDef* hspi2)
 {
     imu.Setup(hspi1, IMU_CS_GPIO_Port, IMU_CS_Pin);
-    imu.Read_Data();
+//    imu.Read_Data();
 	magnetometer.Setup(hspi2, MAGNETOMETER_CS_GPIO_Port, MAGNETOMETER_CS_Pin);
-	magnetometer.Read_Data();
+//	magnetometer.Read_Data();
 }
 
 extern "C" void App_Process(void)

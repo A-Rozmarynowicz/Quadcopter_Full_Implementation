@@ -5,7 +5,7 @@
 #include "Sensor.hpp"
 #include <cstdint>
 
-class Magnetometer : public Sensor
+class Magnetometer : public Sensor<7>
 {
 public:
 	void Initialize() override;

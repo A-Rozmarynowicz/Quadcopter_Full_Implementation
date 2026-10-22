@@ -1,23 +1,28 @@
 #include "Sensors/inc/Sensor.hpp"
 
 
-
-Sensor::Sensor(){}
-
-void Sensor::Setup(SPI_HandleTypeDef* hspi, GPIO_TypeDef* cs_port_spi, uint16_t cs_pin_spi)
+template <size_t BUFFER_SIZE>
+void Sensor<BUFFER_SIZE>::Setup(SPI_HandleTypeDef* hspi, GPIO_TypeDef* cs_port_spi, uint16_t cs_pin_spi)
 {
 	spi = hspi;
 	cs_port = cs_port_spi;
 	cs_pin = cs_pin_spi;
 }
 
-SPI_HandleTypeDef* Sensor::Get_SPI()
-{
-	return spi;
-}
-
-bool Sensor::Is_Data_Ready()
+template <size_t BUFFER_SIZE>
+bool Sensor<BUFFER_SIZE>::Is_Data_Ready()
 {
 	return data_ready;
 }
 
+template <size_t BUFFER_SIZE>
+uint8_t Sensor<BUFFER_SIZE>::Get_Write_Command(uint8_t message)
+{
+	return message & 0x7F;
+}
+
+template <size_t BUFFER_SIZE>
+uint8_t Sensor<BUFFER_SIZE>::Get_Read_Command(uint8_t message)
+{
+	return message | 0x80;
+}

@@ -1,8 +1,8 @@
-../Modules/Sensors/src/IMU.cpp:4:6:virtual void IMU::Initialize()	1
-../Modules/Sensors/src/IMU.cpp:9:6:virtual void IMU::DMA_TxRxCompleteCallback()	1
-../Modules/Sensors/src/IMU.cpp:15:6:virtual void IMU::DMA_ErrorCallback()	1
-../Modules/Sensors/src/IMU.cpp:20:6:virtual void IMU::Read_Data()	2
-C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/inc/Sensor.hpp:18:10:Sensor::~Sensor()	1
-C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/inc/Sensor.hpp:18:10:virtual Sensor::~Sensor()	1
-C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/inc/IMU.hpp:9:7:IMU::~IMU()	1
-C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/inc/IMU.hpp:9:7:virtual IMU::~IMU()	1
+../Modules/Sensors/src/IMU.cpp:7:6:void IMU::Initialize(IMU_UPDATE_RATES, IMU_ACC_SCALE, IMU_GYRO_SCALE)	1
+../Modules/Sensors/src/IMU.cpp:21:6:virtual void IMU::DMA_TxRxCompleteCallback()	1
+../Modules/Sensors/src/IMU.cpp:26:6:virtual void IMU::DMA_ErrorCallback()	1
+../Modules/Sensors/src/IMU.cpp:31:6:void IMU::Handle_Acc_Control_Registers()	1
+../Modules/Sensors/src/IMU.cpp:36:6:void Read_ID_Register()	1
+../Modules/Sensors/src/IMU.cpp:40:6:void IMU::Handle_Gyro_Control_Registers()	1
+../Modules/Sensors/src/IMU.cpp:43:6:virtual void IMU::Measurement_Cycle_Finished()	1
+../Modules/Sensors/src/IMU.cpp:47:6:virtual void IMU::Task_Perform_Transaction()	1
