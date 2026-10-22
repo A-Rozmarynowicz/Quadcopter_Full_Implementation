@@ -1,0 +1,14 @@
+#ifndef SENSOR_HPP
+#define SENSOR_HPP
+
+#include <cstdint>
+//
+//uint8_t cipka = 8;
+
+//class Sensor
+//{
+// uint8_t dupka = 1;
+//};
+
+
+#endif

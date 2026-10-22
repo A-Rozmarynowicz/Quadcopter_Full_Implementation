@@ -1,0 +1,12 @@
+#ifndef SENSOR_H
+#define SENSOR_H
+
+uint8_t cipka = 8;
+
+class Sensor
+{
+ uint8_t dupka = 1;
+};
+
+
+#endif
