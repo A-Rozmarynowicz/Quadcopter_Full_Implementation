@@ -15,8 +15,8 @@ private:
 	uint8_t rx_buffer;
 public:
 	Sensor(SPI_HandleTypeDef& hspi,
-	           GPIO_TypeDef* port,
-	           uint16_t pin);
+	           GPIO_TypeDef* cs_port_spi,
+	           uint16_t cs_pin_spi);
 	virtual ~Sensor() = default;
 
 	virtual void Initialize() = 0;
