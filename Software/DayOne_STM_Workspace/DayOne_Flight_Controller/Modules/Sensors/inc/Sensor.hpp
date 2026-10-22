@@ -16,6 +16,10 @@ protected:
 	uint8_t rx_buffer[2];
 
 	bool data_ready = false;
+
+	virtual void Read_ID_Register() = 0;
+	virtual uint8_t Get_Write_Command(uint8_t message);
+	virtual uint8_t Get_Read_Command(uint8_t message);
 public:
 	Sensor();
 	virtual ~Sensor() = default;
@@ -26,7 +30,6 @@ public:
 	virtual void DMA_TxRxCompleteCallback() = 0;
 	virtual void DMA_ErrorCallback() = 0;
 
-	virtual void Read_ID_Register() = 0;
 	virtual void Read_Data() = 0;
 	SPI_HandleTypeDef* Get_SPI();
 
