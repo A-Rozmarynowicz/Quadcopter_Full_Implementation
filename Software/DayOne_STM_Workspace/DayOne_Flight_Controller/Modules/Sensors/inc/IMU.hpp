@@ -28,10 +28,14 @@ class IMU : public Sensor
 {
 private:
 	IMU_UPDATE_RATES update_rate;
-	IMU_SCALE scale
-	void Select_Update_Rate(IMU_UPDATE_RATES rate);
+	IMU_ACC_SCALE acc_scale;
+	IMU_GYRO_SCALE gyro_scale;
+	void Handle_Acc_Control_Registers();
+	void Handle_Gyro_Control_Registers();
 public:
-	void Initialize(IMU_UPDATE_RATES update_rate) override;
+	void Initialize(IMU_UPDATE_RATES p_update_rate,
+			IMU_ACC_SCALE p_acc_scale,
+			IMU_GYRO_SCALE p_gyro_scale) override;
 
 	void DMA_TxRxCompleteCallback() override;
 	void DMA_ErrorCallback() override;

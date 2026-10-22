@@ -20,6 +20,16 @@ void IMU::DMA_ErrorCallback()
 	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
 }
 
+void IMU::Handle_Acc_Control_Registers() {
+}
+
+void IMU::Handle_Gyro_Control_Registers() {
+}
+
+void IMU::Initialize(IMU_UPDATE_RATES p_update_rate, IMU_ACC_SCALE p_acc_scale,
+		IMU_GYRO_SCALE p_gyro_scale) {
+}
+
 void IMU::Read_Data()
 {
 	tx_buffer[0] = 0x8F;

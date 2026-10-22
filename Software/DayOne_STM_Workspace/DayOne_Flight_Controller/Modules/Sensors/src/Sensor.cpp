@@ -16,3 +16,8 @@ SPI_HandleTypeDef* Sensor::Get_SPI()
 	return spi;
 }
 
+bool Sensor::Is_Data_Ready()
+{
+	return data_ready;
+}
+

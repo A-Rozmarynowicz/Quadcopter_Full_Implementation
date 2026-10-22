@@ -1,0 +1,32 @@
+#ifndef SENSOR_HPP
+#define SENSOR_HPP
+
+#include <cstdint>
+#include "stm32f4xx_hal.h"
+
+class Sensor
+{
+protected:
+	SPI_HandleTypeDef* spi;
+	GPIO_TypeDef* cs_port;
+	uint16_t cs_pin;
+
+	uint8_t tx_buffer[2];
+	uint8_t rx_buffer[2];
+public:
+	Sensor();
+	virtual ~Sensor() = default;
+
+	void Setup(SPI_HandleTypeDef* hspi, GPIO_TypeDef* cs_port_spi, uint16_t cs_pin_spi);
+	virtual void Initialize() = 0;
+
+	virtual void DMA_TxRxCompleteCallback() = 0;
+	virtual void DMA_ErrorCallback() = 0;
+
+	virtual void Read_ID_Register() = 0;
+	virtual void Read_Data() = 0;
+	SPI_HandleTypeDef* Get_SPI();
+};
+
+
+#endif

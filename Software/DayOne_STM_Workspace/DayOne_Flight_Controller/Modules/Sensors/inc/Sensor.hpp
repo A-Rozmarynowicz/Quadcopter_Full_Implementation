@@ -4,6 +4,7 @@
 #include <cstdint>
 #include "stm32f4xx_hal.h"
 
+
 class Sensor
 {
 protected:
@@ -13,6 +14,8 @@ protected:
 
 	uint8_t tx_buffer[2];
 	uint8_t rx_buffer[2];
+
+	bool data_ready = false;
 public:
 	Sensor();
 	virtual ~Sensor() = default;
@@ -26,6 +29,8 @@ public:
 	virtual void Read_ID_Register() = 0;
 	virtual void Read_Data() = 0;
 	SPI_HandleTypeDef* Get_SPI();
+
+	virtual bool Is_Data_Ready();
 };
 
 
