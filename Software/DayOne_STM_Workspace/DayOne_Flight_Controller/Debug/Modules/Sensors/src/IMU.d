@@ -26,6 +26,8 @@ Modules/Sensors/src/IMU.o: ../Modules/Sensors/src/IMU.cpp \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h \
+ ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
+ ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/inc/Sensor.hpp
 C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/inc/IMU.hpp:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
@@ -54,4 +56,6 @@ C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/Da
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
 C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/inc/Sensor.hpp:
