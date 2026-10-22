@@ -1,0 +1,28 @@
+#ifndef IMU_HPP
+#define IMU_HPP
+
+#include "stm32f4xx_hal.h"
+#include "Sensor.hpp"
+#include <cstdint>
+
+enum class IMU_UPDATE_RATES
+{
+	Hz_833,
+	Hz_1660,
+};
+
+class IMU : public Sensor
+{
+private:
+	IMU_UPDATE_RATES update_rate;
+	void Select_Update_Rate(IMU_UPDATE_RATES rate);
+public:
+	void Initialize(IMU_UPDATE_RATES update_rate, ) override;
+
+	void DMA_TxRxCompleteCallback() override;
+	void DMA_ErrorCallback() override;
+
+	void Read_Data() override;
+};
+
+#endif

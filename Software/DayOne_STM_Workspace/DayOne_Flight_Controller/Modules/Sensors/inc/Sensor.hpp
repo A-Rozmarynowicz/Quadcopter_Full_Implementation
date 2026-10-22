@@ -23,6 +23,7 @@ public:
 	virtual void DMA_TxRxCompleteCallback() = 0;
 	virtual void DMA_ErrorCallback() = 0;
 
+	virtual void Read_ID_Register() = 0;
 	virtual void Read_Data() = 0;
 	SPI_HandleTypeDef* Get_SPI();
 };

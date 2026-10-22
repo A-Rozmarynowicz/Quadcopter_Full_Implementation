@@ -1,6 +1,9 @@
 #include "Sensors/inc/IMU.hpp"
 #include "stm32f4xx_hal.h"
 
+#define IMU_CTRL1_REG 0x10 // Accelerometer settings
+#define IMU_CTRL2_REG 0x11 // Gyroscope settings
+
 void IMU::Initialize()
 {
 	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
