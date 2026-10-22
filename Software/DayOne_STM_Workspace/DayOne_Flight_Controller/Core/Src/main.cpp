@@ -26,7 +26,15 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
+void HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef *hspi)
+{
+    IMU_TxRxCompleteCallback(hspi);
+}
 
+void HAL_SPI_ErrorCallback(SPI_HandleTypeDef *hspi)
+{
+    IMU_ErrorCallback(hspi);
+}
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -73,6 +81,7 @@ int main(void)
   /* USER CODE BEGIN 1 */
 	Sensor senor;
 	senor.dupka = cipka;
+	HAL_GPIO_WritePin(GPIOx, GPIO_Pin, PinState)
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
