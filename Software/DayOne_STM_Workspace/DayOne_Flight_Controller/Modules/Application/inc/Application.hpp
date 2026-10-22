@@ -4,13 +4,15 @@
 #ifdef __cplusplus
 
 #include "Sensors/inc/IMU.hpp"
+#include "Sensors/inc/Magnetometer.hpp"
 
 extern IMU imu;
+extern Magnetometer magnetometer;
 
 extern "C" {
 #endif
 
-void App_Init(SPI_HandleTypeDef* hspi1);
+void App_Init(SPI_HandleTypeDef* hspi1, SPI_HandleTypeDef* hspi2);
 void App_Process(void);
 
 void HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef *hspi);

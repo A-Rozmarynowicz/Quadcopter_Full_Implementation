@@ -1,17 +1,10 @@
-15:08:00 **** Incremental Build of configuration Debug for project DayOne_Flight_Controller ****
+16:07:35 **** Incremental Build of configuration Debug for project DayOne_Flight_Controller ****
 make -j16 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F413xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-g++ -o "DayOne_Flight_Controller.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\arekr\OneDrive\Pulpit\Github\Quadcopter_Full_Implementation\Software\DayOne_STM_Workspace\DayOne_Flight_Controller\STM32F413RHTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="DayOne_Flight_Controller.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
-Finished building target: DayOne_Flight_Controller.elf
- 
 arm-none-eabi-size  DayOne_Flight_Controller.elf 
-arm-none-eabi-objdump -h -S DayOne_Flight_Controller.elf  > "DayOne_Flight_Controller.list"
    text	   data	    bss	    dec	    hex	filename
-  11804	     92	   2188	  14084	   3704	DayOne_Flight_Controller.elf
+  12912	     92	   2492	  15496	   3c88	DayOne_Flight_Controller.elf
 Finished building: default.size.stdout
  
-Finished building: DayOne_Flight_Controller.list
- 
 
-15:08:01 Build Finished. 0 errors, 0 warnings. (took 925ms)
+16:07:36 Build Finished. 0 errors, 0 warnings. (took 399ms)
 
