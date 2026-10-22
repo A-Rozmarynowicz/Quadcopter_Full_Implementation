@@ -3,7 +3,7 @@
 
 void IMU::Initialize()
 {
-
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
 }
 
 void IMU::DMA_TxRxCompleteCallback()
@@ -18,8 +18,9 @@ void IMU::IMU_ErrorCallback()
 
 void IMU::Read_Data()
 {
+	tx_buffer = {0x8F, 0x00};
 	if (HAL_SPI_TransmitReceive_DMA(
-	            &spi, tx_buffer, rx_buffer, 2) != HAL_OK)
+	            spi, tx_buffer, rx_buffer, 2) != HAL_OK)
 	    {
 	        HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
 	    }
