@@ -11,8 +11,8 @@ protected:
 	GPIO_TypeDef* cs_port;
 	uint16_t cs_pin;
 
-	uint8_t tx_buffer;
-	uint8_t rx_buffer;
+	uint8_t tx_buffer[2];
+	uint8_t rx_buffer[2];
 public:
 	Sensor();
 	virtual ~Sensor() = default;
@@ -21,7 +21,7 @@ public:
 	virtual void Initialize() = 0;
 
 	virtual void DMA_TxRxCompleteCallback() = 0;
-	virtual void IMU_ErrorCallback() = 0;
+	virtual void DMA_ErrorCallback() = 0;
 
 	virtual void Read_Data() = 0;
 	SPI_HandleTypeDef* Get_SPI();

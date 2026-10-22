@@ -1,0 +1,15 @@
+#include "Application/inc/Application.hpp"
+#include "main.h"
+
+IMU imu;
+
+extern "C" void App_Init(SPI_HandleTypeDef* hspi1)
+{
+    imu.Setup(hspi1, IMU_CS_GPIO_Port, IMU_CS_Pin);
+    imu.Read_Data();
+}
+
+extern "C" void App_Process(void)
+{
+    // Your application logic
+}

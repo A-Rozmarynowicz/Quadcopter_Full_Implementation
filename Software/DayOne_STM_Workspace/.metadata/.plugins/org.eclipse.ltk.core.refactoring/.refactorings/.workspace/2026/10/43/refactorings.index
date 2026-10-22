@@ -1,2 +1,4 @@
 1792661665617	Rename resource 'DayOne_Flight_Controler'
 1792661719691	Delete resource 'DayOne_Flight_Controller'
+1792671489044	Delete resource 'DayOne_Flight_Controller/Core/Src/main.c'
+1792671814780	Delete resource 'DayOne_Flight_Controller/Core/Src/main.cpp'

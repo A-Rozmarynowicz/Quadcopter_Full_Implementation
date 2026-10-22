@@ -1,0 +1,17 @@
+#ifndef APPLICATION_H
+#define APPLICATION_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+#include "Sensors/inc/IMU.hpp"
+
+extern IMU imu;
+void App_Init(void);
+void App_Process(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif

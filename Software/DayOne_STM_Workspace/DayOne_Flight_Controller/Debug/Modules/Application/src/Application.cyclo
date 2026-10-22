@@ -1,0 +1,13 @@
+C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/inc/Sensor.hpp:18:10:Sensor::~Sensor()	1
+C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/inc/Sensor.hpp:18:10:virtual Sensor::~Sensor()	1
+C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/inc/IMU.hpp:9:7:IMU::IMU()	1
+../Modules/Application/src/Application.cpp:6:17:void App_Init(SPI_HandleTypeDef*)	1
+../Modules/Application/src/Application.cpp:12:17:void App_Process()	1
+../Modules/Application/src/Application.cpp:17:6:void HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef*)	2
+../Modules/Application/src/Application.cpp:25:6:void HAL_SPI_ErrorCallback(SPI_HandleTypeDef*)	2
+../Modules/Application/src/Application.cpp:31:1:void __static_initialization_and_destruction_0()	1
+C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/inc/IMU.hpp:9:7:IMU::~IMU()	1
+C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/inc/IMU.hpp:9:7:virtual IMU::~IMU()	1
+../Modules/Application/src/Application.cpp:31:1:void __static_initialization_and_destruction_1()	1
+../Modules/Application/src/Application.cpp:31:1:cpp)	1
+../Modules/Application/src/Application.cpp:31:1:cpp)	1

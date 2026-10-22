@@ -9,19 +9,21 @@ void IMU::Initialize()
 void IMU::DMA_TxRxCompleteCallback()
 {
 	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
+	uint8_t cipka = 15 + 5;
 }
 
-void IMU::IMU_ErrorCallback()
+void IMU::DMA_ErrorCallback()
 {
 	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
 }
 
 void IMU::Read_Data()
 {
-	tx_buffer = {0x8F, 0x00};
-	if (HAL_SPI_TransmitReceive_DMA(
-	            spi, tx_buffer, rx_buffer, 2) != HAL_OK)
-	    {
-	        HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
-	    }
+	tx_buffer[0] = 0x8F;
+	tx_buffer[1] = 0x00;
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
+	if (HAL_SPI_TransmitReceive_DMA(spi, tx_buffer, rx_buffer, 2) != HAL_OK)
+	{
+		HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
+	}
 }

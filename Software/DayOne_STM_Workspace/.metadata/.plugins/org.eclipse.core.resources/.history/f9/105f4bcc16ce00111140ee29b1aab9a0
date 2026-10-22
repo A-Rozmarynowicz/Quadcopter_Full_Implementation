@@ -1,0 +1,16 @@
+#include "Application.hpp"
+#include "main.h"
+#include "Sensors/inc/IMU.hpp"
+
+IMU imu;
+
+void App_Init(void)
+{
+	 imu.Setup(&hspi1, IMU_CS_GPIO_Port, IMU_CS_Pin);
+	 imu.Read_Data();
+}
+
+void App_Process(void)
+{
+    // Your application logic
+}
