@@ -4,21 +4,28 @@
 #include <cstdint>
 #include "stm32f4xx_hal.h"
 
-uint8_t cipka = 8;
-
 class Sensor
 {
 private:
-	SPI_HandleTypeDef spi;
-	GPIO_TypeDef cs_port;
+	SPI_HandleTypeDef& spi;
+	GPIO_TypeDef& cs_port;
 	uint16_t cs_pin;
-public:
-	void DMA_TxRxCompleteCallback();
-	void IMU_ErrorCallback();
 
-	SPI_HandleTypeDef Get_SPI() {
-		return spi;
-	}
+	uint8_t tx_buffer;
+	uint8_t rx_buffer;
+public:
+	Sensor(SPI_HandleTypeDef& hspi,
+	           GPIO_TypeDef* port,
+	           uint16_t pin);
+	virtual ~Sensor() = default;
+
+	virtual void Initialize() = 0;
+
+	virtual void DMA_TxRxCompleteCallback() = 0;
+	virtual void IMU_ErrorCallback() = 0;
+
+	virtual void Read_Data() = 0;
+	SPI_HandleTypeDef& Get_SPI() final;
 };
 
 

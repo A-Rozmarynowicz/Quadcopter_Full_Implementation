@@ -1,0 +1,29 @@
+#ifndef SENSOR_HPP
+#define SENSOR_HPP
+
+#include <cstdint>
+#include "stm32f4xx_hal.h"
+
+class Sensor
+{
+private:
+	SPI_HandleTypeDef& spi;
+	GPIO_TypeDef& cs_port;
+	uint16_t cs_pin;
+
+	uint8_t tx_buffer;
+	uint8_t rx_buffer;
+public:
+	Sensor(SPI_HandleTypeDef& hspi,
+	           GPIO_TypeDef* port,
+	           uint16_t pin);
+	virtual ~Sensor() = default;
+
+	virtual void DMA_TxRxCompleteCallback() = 0;
+	virtual void IMU_ErrorCallback() = 0;
+
+	SPI_HandleTypeDef& Get_SPI() final;
+};
+
+
+#endif
