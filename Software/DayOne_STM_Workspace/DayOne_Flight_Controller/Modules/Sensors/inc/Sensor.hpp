@@ -6,7 +6,7 @@
 
 class Sensor
 {
-private:
+protected:
 	SPI_HandleTypeDef& spi;
 	GPIO_TypeDef& cs_port;
 	uint16_t cs_pin;

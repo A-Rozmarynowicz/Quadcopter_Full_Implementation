@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "Sensors/inc/Sensor.hpp"
+#include "Sensors/inc/IMU.hpp"
 #include "main.h"
 
 /* Private includes ----------------------------------------------------------*/

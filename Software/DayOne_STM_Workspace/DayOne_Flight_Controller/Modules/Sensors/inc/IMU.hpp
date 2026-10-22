@@ -8,7 +8,13 @@
 
 class IMU : public Sensor
 {
+public:
+	void Initialize() override;
 
+	void DMA_TxRxCompleteCallback() override;
+	void IMU_ErrorCallback() override;
+
+	void Read_Data() override;
 };
 
 #endif

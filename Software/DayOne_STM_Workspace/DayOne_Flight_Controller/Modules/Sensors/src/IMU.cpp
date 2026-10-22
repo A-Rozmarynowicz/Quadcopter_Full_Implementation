@@ -1,0 +1,26 @@
+#include "Sensors/inc/IMU.hpp"
+#include "stm32f4xx_hal.h"
+
+void IMU::Initialize()
+{
+
+}
+
+void IMU::DMA_TxRxCompleteCallback()
+{
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
+}
+
+void IMU::IMU_ErrorCallback()
+{
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
+}
+
+void IMU::Read_Data()
+{
+	if (HAL_SPI_TransmitReceive_DMA(
+	            &spi, tx_buffer, rx_buffer, 2) != HAL_OK)
+	    {
+	        HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
+	    }
+}

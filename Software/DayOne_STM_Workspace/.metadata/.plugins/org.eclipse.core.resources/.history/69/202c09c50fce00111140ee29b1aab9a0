@@ -1,0 +1,22 @@
+#include "Sensors/inc/IMU.hpp"
+#include "stm32f4xx_hal.h"
+
+void IMU::Initialize()
+{
+
+}
+
+void IMU::DMA_TxRxCompleteCallback()
+{
+
+}
+
+void IMU::IMU_ErrorCallback()
+{
+
+}
+
+void IMU::Read_Data()
+{
+
+}
