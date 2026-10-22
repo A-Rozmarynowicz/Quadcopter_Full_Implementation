@@ -10,6 +10,21 @@ void Sensor<BUFFER_SIZE>::Setup(SPI_HandleTypeDef* hspi, GPIO_TypeDef* cs_port_s
 	cs_pin = cs_pin_spi;
 }
 
+template<size_t BUFFER_SIZE>
+void Sensor<BUFFER_SIZE>::Change_Buffer_Pointers()
+{
+	if (current_receive_buffer == receive_buffer_1)
+	{
+		current_receive_buffer = receive_buffer_2;
+		current_transmit_buffer = receive_buffer_2;
+	}
+	else
+	{
+		current_receive_buffer = receive_buffer_1;
+		current_transmit_buffer = receive_buffer_1;
+	}
+}
+
 template <size_t BUFFER_SIZE>
 bool Sensor<BUFFER_SIZE>::Is_Data_Ready()
 {

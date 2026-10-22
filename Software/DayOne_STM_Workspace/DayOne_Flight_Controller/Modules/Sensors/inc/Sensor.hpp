@@ -4,6 +4,13 @@
 #include <cstdint>
 #include "stm32f4xx_hal.h"
 
+
+enum class SENSOR_STATUS
+{
+	INIT_OK,
+	INIT_FAIL,
+};
+
 template <size_t BUFFER_SIZE>
 class Sensor
 {
@@ -12,10 +19,10 @@ protected:
     GPIO_TypeDef* cs_port;
     uint16_t cs_pin;
 
-    uint8_t transmit_buffer_1[BUFFER_SIZE];
-    uint8_t receive_buffer_1[BUFFER_SIZE];
-    uint8_t transmit_buffer_2[BUFFER_SIZE];
-    uint8_t receive_buffer_2[BUFFER_SIZE];
+    uint8_t transmit_buffer_1[BUFFER_SIZE]{};
+    uint8_t receive_buffer_1[BUFFER_SIZE]{};
+    uint8_t transmit_buffer_2[BUFFER_SIZE]{};
+    uint8_t receive_buffer_2[BUFFER_SIZE]{};
 
     uint8_t* current_transmit_buffer = transmit_buffer_1;
     uint8_t* current_receive_buffer = receive_buffer_1;
@@ -26,6 +33,7 @@ protected:
     virtual uint8_t Get_Write_Command(uint8_t message);
     virtual uint8_t Get_Read_Command(uint8_t message);
 
+    virtual void Change_Buffer_Pointers();
 public:
     Sensor() = default;
     virtual ~Sensor() = default;

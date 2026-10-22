@@ -9,20 +9,20 @@
 
 enum class IMU_UPDATE_RATES : uint8_t
 {
-	Hz_833 = 0b01110000,
-	Hz_1660 = 0b10000000,
+	Hz_833 = 0b0111'0000,
+	Hz_1660 = 0b1000'0000,
 };
 
 enum class IMU_ACC_SCALE : uint8_t
 {
-	G_8 =  0b00001100,
-	G_16 = 0b00000100,
+	G_8 =  0b0000'1100,
+	G_16 = 0b0000'0100,
 };
 
 enum class IMU_GYRO_SCALE : uint8_t
 {
-	DPS_500 =  0b00000100,
-	DPS_1000 = 0b00001000,
+	DPS_500 =  0b0000'0100,
+	DPS_1000 = 0b0000'1000,
 };
 
 
@@ -32,12 +32,12 @@ private:
 	IMU_UPDATE_RATES update_rate;
 	IMU_ACC_SCALE acc_scale;
 	IMU_GYRO_SCALE gyro_scale;
-	void Handle_Acc_Control_Registers();
-	void Handle_Gyro_Control_Registers();
+	HAL_StatusTypeDef Handle_Acc_Control_Registers();
+	HAL_StatusTypeDef Handle_Gyro_Control_Registers();
 protected:
 	void Read_ID_Register() override;
 public:
-	void Initialize(IMU_UPDATE_RATES p_update_rate,
+	SENSOR_STATUS Initialize(IMU_UPDATE_RATES p_update_rate,
 			IMU_ACC_SCALE p_acc_scale,
 			IMU_GYRO_SCALE p_gyro_scale);
 
