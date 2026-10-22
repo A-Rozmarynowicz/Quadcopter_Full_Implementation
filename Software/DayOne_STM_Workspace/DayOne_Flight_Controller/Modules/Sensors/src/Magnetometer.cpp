@@ -12,8 +12,9 @@ void Magnetometer::DMA_ErrorCallback()
 	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
 }
 
-void Magnetometer::Read_ID_Register()
+bool Magnetometer::Assert_ID_Register()
 {
+	return false;
 }
 
 void Magnetometer::Measurement_Cycle_Finished()

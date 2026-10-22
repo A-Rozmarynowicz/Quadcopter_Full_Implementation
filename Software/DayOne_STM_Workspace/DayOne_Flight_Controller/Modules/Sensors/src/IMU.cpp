@@ -1,8 +1,11 @@
 #include "Sensors/inc/IMU.hpp"
 #include "stm32f4xx_hal.h"
 
+constexpr uint8_t IMU_WHOAMI_REG = 0x0F; // Product ID
 constexpr uint8_t IMU_CTRL1_ACC_REG = 0x10; // Accelerometer
 constexpr uint8_t IMU_CTRL2_GYRO_REG = 0x11; // Gyroscope
+
+constexpr uint8_t TARGET_WHOAMI_VALUE = 0x6c;
 
 SENSOR_STATUS IMU::Initialize(IMU_UPDATE_RATES p_update_rate, IMU_ACC_SCALE p_acc_scale,
 		IMU_GYRO_SCALE p_gyro_scale)
@@ -13,10 +16,11 @@ SENSOR_STATUS IMU::Initialize(IMU_UPDATE_RATES p_update_rate, IMU_ACC_SCALE p_ac
 	acc_scale = p_acc_scale;
 	gyro_scale = p_gyro_scale;
 
+	bool id_ok = Assert_ID_Register();
 	HAL_StatusTypeDef acc_code = Handle_Acc_Control_Registers();
 	HAL_StatusTypeDef gyro_code = Handle_Gyro_Control_Registers();
 
-	if (acc_code == HAL_OK && gyro_code == HAL_OK)
+	if (acc_code == HAL_OK && gyro_code == HAL_OK && id_ok == true)
 	{
 		return SENSOR_STATUS::INIT_OK;
 	}
@@ -62,8 +66,20 @@ HAL_StatusTypeDef IMU::Handle_Gyro_Control_Registers()
 	return code;
 }
 
-void IMU::Read_ID_Register()
+bool IMU::Assert_ID_Register()
 {
+	current_transmit_buffer[0] = Get_Read_Command(IMU_WHOAMI_REG);
+
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
+	HAL_StatusTypeDef code = HAL_SPI_TransmitReceive(spi, current_transmit_buffer, current_receive_buffer,
+			IMU_BUFFER_SIZE, HAL_MAX_DELAY);
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
+
+	bool ok = current_receive_buffer[1] == TARGET_WHOAMI_VALUE;
+
+	Change_Buffer_Pointers();
+
+	return (code == HAL_OK) && (ok == true);
 }
 
 void IMU::Measurement_Cycle_Finished()

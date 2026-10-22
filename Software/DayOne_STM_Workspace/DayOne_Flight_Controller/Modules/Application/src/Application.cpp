@@ -6,8 +6,10 @@ Magnetometer magnetometer;
 
 extern "C" void App_Init(SPI_HandleTypeDef* hspi1, SPI_HandleTypeDef* hspi2)
 {
-//    imu.Setup(hspi1, IMU_CS_GPIO_Port, IMU_CS_Pin);
-//    imu.Read_Data();
+    imu.Setup(hspi1, IMU_CS_GPIO_Port, IMU_CS_Pin);
+    SENSOR_STATUS code = imu.Initialize(IMU_UPDATE_RATES::Hz_833, IMU_ACC_SCALE::G_8, IMU_GYRO_SCALE::DPS_500);
+    uint8_t cipka = 15  +6;
+    //    imu.Read_Data();
 //	magnetometer.Setup(hspi2, MAGNETOMETER_CS_GPIO_Port, MAGNETOMETER_CS_Pin);
 //	magnetometer.Read_Data();
 }

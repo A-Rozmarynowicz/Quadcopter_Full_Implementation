@@ -29,7 +29,7 @@ protected:
 
     bool data_ready = false;
 
-    virtual void Read_ID_Register() = 0;
+    virtual bool Assert_ID_Register() = 0;
     virtual uint8_t Get_Write_Command(uint8_t message);
     virtual uint8_t Get_Read_Command(uint8_t message);
 

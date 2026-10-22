@@ -16,12 +16,12 @@ void Sensor<BUFFER_SIZE>::Change_Buffer_Pointers()
 	if (current_receive_buffer == receive_buffer_1)
 	{
 		current_receive_buffer = receive_buffer_2;
-		current_transmit_buffer = receive_buffer_2;
+		current_transmit_buffer = transmit_buffer_2;
 	}
 	else
 	{
 		current_receive_buffer = receive_buffer_1;
-		current_transmit_buffer = receive_buffer_1;
+		current_transmit_buffer = transmit_buffer_1;
 	}
 }
 

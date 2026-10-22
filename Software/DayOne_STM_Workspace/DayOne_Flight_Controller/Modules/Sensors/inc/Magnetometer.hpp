@@ -8,7 +8,7 @@
 class Magnetometer : public Sensor<7>
 {
 protected:
-	void Read_ID_Register() override;
+	bool Assert_ID_Register() override;
 public:
 //	void Initialize(IMU_UPDATE_RATES p_update_rate,
 //			IMU_ACC_SCALE p_acc_scale,

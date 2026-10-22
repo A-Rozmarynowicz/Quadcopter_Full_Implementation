@@ -1,19 +1,10 @@
-20:16:33 **** Incremental Build of configuration Debug for project DayOne_Flight_Controller ****
+20:32:13 **** Incremental Build of configuration Debug for project DayOne_Flight_Controller ****
 make -j16 all 
-arm-none-eabi-g++ "../Modules/Sensors/src/IMU.cpp" -mcpu=cortex-m4 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F413xx -c -I../Core/Inc -I"C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules" -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Modules/Sensors/src/IMU.d" -MT"Modules/Sensors/src/IMU.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Modules/Sensors/src/IMU.o"
-arm-none-eabi-g++ "../Modules/Sensors/src/Magnetometer.cpp" -mcpu=cortex-m4 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F413xx -c -I../Core/Inc -I"C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules" -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Modules/Sensors/src/Magnetometer.d" -MT"Modules/Sensors/src/Magnetometer.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Modules/Sensors/src/Magnetometer.o"
-arm-none-eabi-g++ "../Modules/Application/src/Application.cpp" -mcpu=cortex-m4 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F413xx -c -I../Core/Inc -I"C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules" -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Modules/Application/src/Application.d" -MT"Modules/Application/src/Application.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Modules/Application/src/Application.o"
-arm-none-eabi-g++ -o "DayOne_Flight_Controller.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\arekr\OneDrive\Pulpit\Github\Quadcopter_Full_Implementation\Software\DayOne_STM_Workspace\DayOne_Flight_Controller\STM32F413RHTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="DayOne_Flight_Controller.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
-Finished building target: DayOne_Flight_Controller.elf
- 
 arm-none-eabi-size  DayOne_Flight_Controller.elf 
-arm-none-eabi-objdump -h -S DayOne_Flight_Controller.elf  > "DayOne_Flight_Controller.list"
    text	   data	    bss	    dec	    hex	filename
-  14160	     92	   2660	  16912	   4210	DayOne_Flight_Controller.elf
+  16700	     92	   2660	  19452	   4bfc	DayOne_Flight_Controller.elf
 Finished building: default.size.stdout
  
-Finished building: DayOne_Flight_Controller.list
- 
 
-20:16:34 Build Finished. 0 errors, 0 warnings. (took 1s.18ms)
+20:32:13 Build Finished. 0 errors, 0 warnings. (took 308ms)
 

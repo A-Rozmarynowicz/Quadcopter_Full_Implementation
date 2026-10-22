@@ -35,7 +35,7 @@ private:
 	HAL_StatusTypeDef Handle_Acc_Control_Registers();
 	HAL_StatusTypeDef Handle_Gyro_Control_Registers();
 protected:
-	void Read_ID_Register() override;
+	bool Assert_ID_Register() override;
 public:
 	SENSOR_STATUS Initialize(IMU_UPDATE_RATES p_update_rate,
 			IMU_ACC_SCALE p_acc_scale,
