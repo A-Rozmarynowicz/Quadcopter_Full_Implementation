@@ -5,26 +5,28 @@
 #include "Sensor.hpp"
 #include <cstdint>
 
-enum class IMU_UPDATE_RATES
+#define IMU_BUFFER_SIZE 13
+
+enum class IMU_UPDATE_RATES : uint8_t
 {
 	Hz_833 = 0b01110000,
 	Hz_1660 = 0b10000000,
 };
 
-enum class IMU_ACC_SCALE
+enum class IMU_ACC_SCALE : uint8_t
 {
 	G_8 =  0b00001100,
 	G_16 = 0b00000100,
 };
 
-enum class IMU_GYRO_SCALE
+enum class IMU_GYRO_SCALE : uint8_t
 {
 	DPS_500 =  0b00000100,
 	DPS_1000 = 0b00001000,
 };
 
 
-class IMU : public Sensor<13>
+class IMU : public Sensor<IMU_BUFFER_SIZE>
 {
 private:
 	IMU_UPDATE_RATES update_rate;

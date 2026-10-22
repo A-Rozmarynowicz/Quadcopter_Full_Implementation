@@ -13,7 +13,6 @@ void IMU::Initialize(IMU_UPDATE_RATES p_update_rate, IMU_ACC_SCALE p_acc_scale,
 	acc_scale = p_acc_scale;
 	gyro_scale = p_gyro_scale;
 
-//	current_transmit_buffer[0];
 	Handle_Acc_Control_Registers();
 	Handle_Gyro_Control_Registers();
 }
@@ -30,14 +29,18 @@ void IMU::DMA_ErrorCallback()
 
 void IMU::Handle_Acc_Control_Registers()
 {
-
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
+	HAL_SPI_Transmit(spi, current_transmit_buffer, IMU_BUFFER_SIZE, HAL_MAX_DELAY);
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
 }
 
-void Read_ID_Register()
-{
-	}
 
-void IMU::Handle_Gyro_Control_Registers() {
+void IMU::Handle_Gyro_Control_Registers()
+{
+}
+
+void IMU::Read_ID_Register()
+{
 }
 
 void IMU::Measurement_Cycle_Finished()

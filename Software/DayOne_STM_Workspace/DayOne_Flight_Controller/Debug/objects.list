@@ -24,4 +24,3 @@
 "./Modules/Application/src/Application.o"
 "./Modules/Sensors/src/IMU.o"
 "./Modules/Sensors/src/Magnetometer.o"
-"./Modules/Sensors/src/Sensor.o"

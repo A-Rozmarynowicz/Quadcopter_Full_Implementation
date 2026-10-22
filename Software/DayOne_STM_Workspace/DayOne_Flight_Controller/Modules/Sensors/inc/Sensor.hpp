@@ -45,4 +45,6 @@ public:
     virtual bool Is_Data_Ready();
 };
 
+#include "Sensors/src/Sensor_src.hpp"
+
 #endif

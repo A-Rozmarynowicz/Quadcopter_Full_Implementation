@@ -1,0 +1,49 @@
+#include "Sensors/inc/IMU.hpp"
+#include "stm32f4xx_hal.h"
+
+#define IMU_CTRL1_REG 0x10 // Accelerometer settings
+#define IMU_CTRL2_REG 0x11 // Gyroscope settings
+
+void IMU::Initialize(IMU_UPDATE_RATES p_update_rate, IMU_ACC_SCALE p_acc_scale,
+		IMU_GYRO_SCALE p_gyro_scale)
+{
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
+
+	update_rate = p_update_rate;
+	acc_scale = p_acc_scale;
+	gyro_scale = p_gyro_scale;
+
+	Handle_Acc_Control_Registers();
+	Handle_Gyro_Control_Registers();
+}
+
+void IMU::DMA_TxRxCompleteCallback()
+{
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
+}
+
+void IMU::DMA_ErrorCallback()
+{
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
+}
+
+void IMU::Handle_Acc_Control_Registers()
+{
+
+}
+
+void IMU::Read_ID_Register()
+{
+	}
+
+void IMU::Handle_Gyro_Control_Registers() {
+}
+
+void IMU::Measurement_Cycle_Finished()
+{
+}
+
+void IMU::Task_Perform_Transaction()
+{
+//	HAL_SPI_TransmitReceive_DMA(hspi, current_transmit_buffer, current_receive_buffer, Size)
+}

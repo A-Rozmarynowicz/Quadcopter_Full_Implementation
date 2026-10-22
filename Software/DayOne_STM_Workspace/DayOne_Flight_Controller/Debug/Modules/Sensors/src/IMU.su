@@ -2,7 +2,14 @@
 ../Modules/Sensors/src/IMU.cpp:21:6:virtual void IMU::DMA_TxRxCompleteCallback()	16	static
 ../Modules/Sensors/src/IMU.cpp:26:6:virtual void IMU::DMA_ErrorCallback()	16	static
 ../Modules/Sensors/src/IMU.cpp:31:6:void IMU::Handle_Acc_Control_Registers()	16	static
-../Modules/Sensors/src/IMU.cpp:36:6:void Read_ID_Register()	4	static
+../Modules/Sensors/src/IMU.cpp:36:6:virtual void IMU::Read_ID_Register()	16	static
 ../Modules/Sensors/src/IMU.cpp:40:6:void IMU::Handle_Gyro_Control_Registers()	16	static
 ../Modules/Sensors/src/IMU.cpp:43:6:virtual void IMU::Measurement_Cycle_Finished()	16	static
 ../Modules/Sensors/src/IMU.cpp:47:6:virtual void IMU::Task_Perform_Transaction()	16	static
+C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/inc/Sensor.hpp:31:13:Sensor<BUFFER_SIZE>::~Sensor() [with unsigned int BUFFER_SIZE = 13]	16	static
+C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/inc/Sensor.hpp:31:13:Sensor<BUFFER_SIZE>::~Sensor() [with unsigned int BUFFER_SIZE = 13]	16	static
+C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/inc/IMU.hpp:27:7:IMU::~IMU()	16	static
+C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/inc/IMU.hpp:27:7:virtual IMU::~IMU()	16	static
+C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/src/Sensor_src.hpp:22:9:uint8_t Sensor<BUFFER_SIZE>::Get_Write_Command(uint8_t) [with unsigned int BUFFER_SIZE = 13]	16	static
+C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/src/Sensor_src.hpp:28:9:uint8_t Sensor<BUFFER_SIZE>::Get_Read_Command(uint8_t) [with unsigned int BUFFER_SIZE = 13]	16	static
+C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/src/Sensor_src.hpp:16:6:bool Sensor<BUFFER_SIZE>::Is_Data_Ready() [with unsigned int BUFFER_SIZE = 13]	16	static

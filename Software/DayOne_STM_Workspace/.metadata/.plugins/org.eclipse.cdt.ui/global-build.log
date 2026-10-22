@@ -1,52 +1,16 @@
-19:40:16 **** Incremental Build of configuration Debug for project DayOne_Flight_Controller ****
+19:51:24 **** Incremental Build of configuration Debug for project DayOne_Flight_Controller ****
 make -j16 all 
 arm-none-eabi-g++ "../Modules/Sensors/src/IMU.cpp" -mcpu=cortex-m4 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F413xx -c -I../Core/Inc -I"C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules" -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Modules/Sensors/src/IMU.d" -MT"Modules/Sensors/src/IMU.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Modules/Sensors/src/IMU.o"
 arm-none-eabi-g++ "../Modules/Sensors/src/Magnetometer.cpp" -mcpu=cortex-m4 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F413xx -c -I../Core/Inc -I"C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules" -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Modules/Sensors/src/Magnetometer.d" -MT"Modules/Sensors/src/Magnetometer.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Modules/Sensors/src/Magnetometer.o"
 arm-none-eabi-g++ "../Modules/Application/src/Application.cpp" -mcpu=cortex-m4 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F413xx -c -I../Core/Inc -I"C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules" -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Modules/Application/src/Application.d" -MT"Modules/Application/src/Application.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Modules/Application/src/Application.o"
-In file included from ../Modules/Sensors/src/Magnetometer.cpp:1:
-C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/inc/Magnetometer.hpp:11:14: error: 'void Magnetometer::Initialize()' marked 'override', but does not override
-   11 |         void Initialize() override;
-      |              ^~~~~~~~~~
-C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/inc/Magnetometer.hpp:16:14: error: 'void Magnetometer::Read_Data()' marked 'override', but does not override
-   16 |         void Read_Data() override;
-      |              ^~~~~~~~~
-../Modules/Sensors/src/Magnetometer.cpp: In member function 'virtual void Magnetometer::DMA_TxRxCompleteCallback()':
-../Modules/Sensors/src/Magnetometer.cpp:12:17: warning: unused variable 'cipka' [-Wunused-variable]
-   12 |         uint8_t cipka = 15 + 5;
-      |                 ^~~~~
-../Modules/Sensors/src/Magnetometer.cpp: In member function 'void Magnetometer::Read_Data()':
-../Modules/Sensors/src/Magnetometer.cpp:22:9: error: 'tx_buffer' was not declared in this scope
-   22 |         tx_buffer[0] = 0x2F | 0x80;
-      |         ^~~~~~~~~
-../Modules/Sensors/src/Magnetometer.cpp:25:57: error: 'rx_buffer' was not declared in this scope
-   25 |         if (HAL_SPI_TransmitReceive_DMA(spi, tx_buffer, rx_buffer, 2) != HAL_OK)
-      |                                                         ^~~~~~~~~
-In file included from C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Application/inc/Application.hpp:7,
-                 from ../Modules/Application/src/Application.cpp:1:
-C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/inc/Magnetometer.hpp:11:14: error: 'void Magnetometer::Initialize()' marked 'override', but does not override
-   11 |         void Initialize() override;
-      |              ^~~~~~~~~~
-C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/inc/Magnetometer.hpp:16:14: error: 'void Magnetometer::Read_Data()' marked 'override', but does not override
-   16 |         void Read_Data() override;
-      |              ^~~~~~~~~
-../Modules/Application/src/Application.cpp:5:14: error: cannot declare variable 'magnetometer' to be of abstract type 'Magnetometer'
-    5 | Magnetometer magnetometer;
-      |              ^~~~~~~~~~~~
-C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/inc/Magnetometer.hpp:8:7: note:   because the following virtual functions are pure within 'Magnetometer':
-    8 | class Magnetometer : public Sensor<7>
-      |       ^~~~~~~~~~~~
-In file included from C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/inc/IMU.hpp:5,
-                 from C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Application/inc/Application.hpp:6:
-C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/inc/Sensor.hpp:25:18: note:     'void Sensor<BUFFER_SIZE>::Read_ID_Register() [with unsigned int BUFFER_SIZE = 7]'
-   25 |     virtual void Read_ID_Register() = 0;
-      |                  ^~~~~~~~~~~~~~~~
-C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/inc/Sensor.hpp:42:18: note:     'void Sensor<BUFFER_SIZE>::Measurement_Cycle_Finished() [with unsigned int BUFFER_SIZE = 7]'
-   42 |     virtual void Measurement_Cycle_Finished() = 0;
-      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~
-C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/inc/Sensor.hpp:43:18: note:     'void Sensor<BUFFER_SIZE>::Task_Perform_Transaction() [with unsigned int BUFFER_SIZE = 7]'
-   43 |     virtual void Task_Perform_Transaction() = 0;
-      |                  ^~~~~~~~~~~~~~~~~~~~~~~~
-make: *** [Modules/Sensors/src/subdir.mk:25: Modules/Sensors/src/Magnetometer.o] Error 1
-make: *** Waiting for unfinished jobs....
-make: *** [Modules/Application/src/subdir.mk:19: Modules/Application/src/Application.o] Error 1
-"make -j16 all" terminated with exit code 2. Build might be incomplete.
+arm-none-eabi-g++ -o "DayOne_Flight_Controller.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\arekr\OneDrive\Pulpit\Github\Quadcopter_Full_Implementation\Software\DayOne_STM_Workspace\DayOne_Flight_Controller\STM32F413RHTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="DayOne_Flight_Controller.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: DayOne_Flight_Controller.elf
+ 
+arm-none-eabi-size  DayOne_Flight_Controller.elf 
+arm-none-eabi-objdump -h -S DayOne_Flight_Controller.elf  > "DayOne_Flight_Controller.list"
+   text	   data	    bss	    dec	    hex	filename
+  13892	     92	   2668	  16652	   410c	DayOne_Flight_Controller.elf
+Finished building: default.size.stdout
+ 
+Finished building: DayOne_Flight_Controller.list
+ 

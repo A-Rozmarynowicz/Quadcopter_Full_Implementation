@@ -7,13 +7,17 @@
 
 class Magnetometer : public Sensor<7>
 {
+protected:
+	void Read_ID_Register() override;
 public:
-	void Initialize() override;
+//	void Initialize(IMU_UPDATE_RATES p_update_rate,
+//			IMU_ACC_SCALE p_acc_scale,
+//			IMU_GYRO_SCALE p_gyro_scale);
 
 	void DMA_TxRxCompleteCallback() override;
 	void DMA_ErrorCallback() override;
 
-	void Read_Data() override;
+	void Measurement_Cycle_Finished() override;
+	void Task_Perform_Transaction() override;
 };
-
 #endif

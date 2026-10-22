@@ -6,18 +6,15 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
 ../Modules/Sensors/src/IMU.cpp \
-../Modules/Sensors/src/Magnetometer.cpp \
-../Modules/Sensors/src/Sensor.cpp 
+../Modules/Sensors/src/Magnetometer.cpp 
 
 OBJS += \
 ./Modules/Sensors/src/IMU.o \
-./Modules/Sensors/src/Magnetometer.o \
-./Modules/Sensors/src/Sensor.o 
+./Modules/Sensors/src/Magnetometer.o 
 
 CPP_DEPS += \
 ./Modules/Sensors/src/IMU.d \
-./Modules/Sensors/src/Magnetometer.d \
-./Modules/Sensors/src/Sensor.d 
+./Modules/Sensors/src/Magnetometer.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -27,7 +24,7 @@ Modules/Sensors/src/%.o Modules/Sensors/src/%.su Modules/Sensors/src/%.cyclo: ..
 clean: clean-Modules-2f-Sensors-2f-src
 
 clean-Modules-2f-Sensors-2f-src:
-	-$(RM) ./Modules/Sensors/src/IMU.cyclo ./Modules/Sensors/src/IMU.d ./Modules/Sensors/src/IMU.o ./Modules/Sensors/src/IMU.su ./Modules/Sensors/src/Magnetometer.cyclo ./Modules/Sensors/src/Magnetometer.d ./Modules/Sensors/src/Magnetometer.o ./Modules/Sensors/src/Magnetometer.su ./Modules/Sensors/src/Sensor.cyclo ./Modules/Sensors/src/Sensor.d ./Modules/Sensors/src/Sensor.o ./Modules/Sensors/src/Sensor.su
+	-$(RM) ./Modules/Sensors/src/IMU.cyclo ./Modules/Sensors/src/IMU.d ./Modules/Sensors/src/IMU.o ./Modules/Sensors/src/IMU.su ./Modules/Sensors/src/Magnetometer.cyclo ./Modules/Sensors/src/Magnetometer.d ./Modules/Sensors/src/Magnetometer.o ./Modules/Sensors/src/Magnetometer.su
 
 .PHONY: clean-Modules-2f-Sensors-2f-src
 
