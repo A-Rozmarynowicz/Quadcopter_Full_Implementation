@@ -32,6 +32,7 @@ SENSOR_STATUS IMU::Initialize(IMU_UPDATE_RATES p_update_rate, IMU_ACC_SCALE p_ac
 
 void IMU::DMA_TxRxCompleteCallback()
 {
+	Parse_Measurement(current_receive_buffer);
 	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
 }
 
@@ -99,6 +100,11 @@ void IMU::Prepare_For_Measurements()
 void IMU::Measurement_Cycle_Finished()
 {
 	Change_Buffer_Pointers();
+}
+
+void IMU::Parse_Measurement(uint8_t* received_data, uint8_t size)
+{
+
 }
 
 void IMU::Task_Perform_Transaction()

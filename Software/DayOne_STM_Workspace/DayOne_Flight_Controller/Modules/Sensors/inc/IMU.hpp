@@ -38,8 +38,11 @@ private:
 	IMU_UPDATE_RATES update_rate;
 	IMU_ACC_SCALE acc_scale;
 	IMU_GYRO_SCALE gyro_scale;
+	IMU_Measurement current_measurement;
+
 	HAL_StatusTypeDef Handle_Acc_Control_Registers();
 	HAL_StatusTypeDef Handle_Gyro_Control_Registers();
+	void Parse_Measurement(uint8_t* received_data, uint8_t size);
 protected:
 	bool Assert_ID_Register() override;
 public:
