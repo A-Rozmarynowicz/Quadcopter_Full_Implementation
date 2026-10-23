@@ -7,6 +7,12 @@
 
 #define IMU_BUFFER_SIZE 13
 
+struct IMU_Measurement
+{
+	float acc_x, acc_y, acc_z;
+	float rot_x, rot_y, rot_z;
+};
+
 enum class IMU_UPDATE_RATES : uint8_t
 {
 	Hz_833 = 0b0111'0000,

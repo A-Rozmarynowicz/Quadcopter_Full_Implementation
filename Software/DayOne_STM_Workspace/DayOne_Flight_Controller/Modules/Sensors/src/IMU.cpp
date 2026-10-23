@@ -103,5 +103,5 @@ void IMU::Measurement_Cycle_Finished()
 
 void IMU::Task_Perform_Transaction()
 {
-	HAL_SPI_TransmitReceive_DMA(hspi, current_transmit_buffer, current_receive_buffer, Size)
+	HAL_SPI_TransmitReceive_DMA(hspi, current_transmit_buffer, current_receive_buffer, IMU_BUFFER_SIZE);
 }
