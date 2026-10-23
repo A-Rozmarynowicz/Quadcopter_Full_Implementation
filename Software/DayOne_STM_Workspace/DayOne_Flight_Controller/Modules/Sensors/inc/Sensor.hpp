@@ -47,6 +47,7 @@ public:
     virtual void DMA_TxRxCompleteCallback() = 0;
     virtual void DMA_ErrorCallback() = 0;
 
+    virtual void Prepare_For_Measurements() = 0;
     virtual void Measurement_Cycle_Finished() = 0;
     virtual void Task_Perform_Transaction() = 0;
 

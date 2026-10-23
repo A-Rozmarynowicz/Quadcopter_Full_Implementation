@@ -44,6 +44,7 @@ public:
 	void DMA_TxRxCompleteCallback() override;
 	void DMA_ErrorCallback() override;
 
+	void Prepare_For_Measurements() override;
 	void Measurement_Cycle_Finished() override;
 	void Task_Perform_Transaction() override;
 };
