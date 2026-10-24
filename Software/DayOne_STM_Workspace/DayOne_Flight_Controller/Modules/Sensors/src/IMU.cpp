@@ -39,6 +39,7 @@ SENSOR_STATUS IMU::Initialize(IMU_UPDATE_RATES p_update_rate, IMU_ACC_SCALE p_ac
 	bool id_ok = Assert_ID_Register();
 	HAL_StatusTypeDef acc_code = Handle_Acc_Control_Registers();
 	HAL_StatusTypeDef gyro_code = Handle_Gyro_Control_Registers();
+	Update_Sensitivities();
 
 	if (acc_code == HAL_OK && gyro_code == HAL_OK && id_ok == true)
 	{
@@ -49,7 +50,7 @@ SENSOR_STATUS IMU::Initialize(IMU_UPDATE_RATES p_update_rate, IMU_ACC_SCALE p_ac
 
 void IMU::DMA_TxRxCompleteCallback()
 {
-	Parse_Measurement(current_receive_buffer);
+	Parse_Measurement(current_receive_buffer, IMU_BUFFER_SIZE);
 	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
 }
 
@@ -116,26 +117,36 @@ void IMU::Prepare_For_Measurements()
 
 void IMU::Measurement_Cycle_Finished()
 {
+	data_ready = false;
 	Change_Buffer_Pointers();
 }
 
-bool IMU::Parse_Measurement(uint8_t* received_data, uint8_t size)
+bool IMU::Parse_Measurement(uint8_t* received_data, uint8_t size) // TODO: Maybe FPU
 {
 	if (size != IMU_BUFFER_SIZE)
 	{
 		return false;
 	}
 
-	raw_A_x = (int16_t) (received_data[OUTX_H_A] << 8 | received_data[OUTX_L_A]);
-	raw_A_y = (int16_t) (received_data[OUTY_H_A] << 8 | received_data[OUTY_L_A]);
-	raw_A_z = (int16_t) (received_data[OUTZ_H_A] << 8 | received_data[OUTZ_L_A]);
+	int16_t raw_A_x = (int16_t) (received_data[OUTX_H_A] << 8 | received_data[OUTX_L_A]);
+	int16_t raw_A_y = (int16_t) (received_data[OUTY_H_A] << 8 | received_data[OUTY_L_A]);
+	int16_t raw_A_z = (int16_t) (received_data[OUTZ_H_A] << 8 | received_data[OUTZ_L_A]);
 
-	raw_G_x = (int16_t) (received_data[OUTX_H_G] << 8 | received_data[OUTX_L_G]);
-	raw_G_y = (int16_t) (received_data[OUTY_H_G] << 8 | received_data[OUTY_L_G]);
-	raw_G_z = (int16_t) (received_data[OUTZ_H_G] << 8 | received_data[OUTZ_L_G]);
+	int16_t raw_G_x = (int16_t) (received_data[OUTX_H_G] << 8 | received_data[OUTX_L_G]);
+	int16_t raw_G_y = (int16_t) (received_data[OUTY_H_G] << 8 | received_data[OUTY_L_G]);
+	int16_t raw_G_z = (int16_t) (received_data[OUTZ_H_G] << 8 | received_data[OUTZ_L_G]);
 
+	current_measurement.acc_x = raw_A_x * acc_sensitivity_g;
+	current_measurement.acc_y = raw_A_y * acc_sensitivity_g;
+	current_measurement.acc_z = raw_A_z * acc_sensitivity_g;
 
+	current_measurement.gyro_x = raw_G_x * gyro_sensitivity_dps;
+	current_measurement.gyro_y = raw_G_y * gyro_sensitivity_dps;
+	current_measurement.gyro_z = raw_G_z * gyro_sensitivity_dps;
 
+	data_ready = true;
+
+	return true;
 }
 
 void IMU::Update_Sensitivities()
@@ -143,27 +154,36 @@ void IMU::Update_Sensitivities()
 	switch (acc_scale)
 	{
 		case IMU_ACC_SCALE::G_8:
-			acc_sensitivity_mg = 0.244f;
+			acc_sensitivity_g = 0.244f * 0.001f;
 			break;
 		case IMU_ACC_SCALE::G_16:
-			acc_sensitivity_mg = 0.488f;
+			acc_sensitivity_g = 0.488f * 0.001;
 			break;
 	}
 	switch (gyro_scale)
 	{
 		case IMU_GYRO_SCALE::DPS_500:
-			gyro_sensitivity_mdps = 17.50f;
+			gyro_sensitivity_dps = 17.50f * 0.001;
 			break;
-		case IMU_ACC_SCALE::G_16:
-			gyro_sensitivity_mdps = 35.0f;
+		case IMU_GYRO_SCALE::DPS_1000:
+			gyro_sensitivity_dps = 35.0f * 0.001;
 			break;
 	}
 
 }
 
 
-
 void IMU::Task_Perform_Transaction()
 {
-	HAL_SPI_TransmitReceive_DMA(hspi, current_transmit_buffer, current_receive_buffer, IMU_BUFFER_SIZE);
+	HAL_SPI_TransmitReceive_DMA(spi, current_transmit_buffer, current_receive_buffer, IMU_BUFFER_SIZE);
+}
+
+bool IMU::Get_Measurement(IMU_Measurement &meas)
+{
+	if (data_ready)
+	{
+		meas = current_measurement;
+		return true;
+	}
+	return false;
 }

@@ -14,6 +14,8 @@ public:
 //			IMU_ACC_SCALE p_acc_scale,
 //			IMU_GYRO_SCALE p_gyro_scale);
 
+	void Prepare_For_Measurements() override;
+
 	void DMA_TxRxCompleteCallback() override;
 	void DMA_ErrorCallback() override;
 

@@ -10,7 +10,7 @@
 struct IMU_Measurement
 {
 	float acc_x, acc_y, acc_z;
-	float rot_x, rot_y, rot_z;
+	float gyro_x, gyro_y, gyro_z;
 };
 
 enum class IMU_UPDATE_RATES : uint8_t
@@ -38,8 +38,8 @@ private:
 	IMU_UPDATE_RATES update_rate;
 	IMU_ACC_SCALE acc_scale;
 	IMU_GYRO_SCALE gyro_scale;
-	float acc_sensitivity_mg;
-	float gyro_sensitivity_mdps;
+	float acc_sensitivity_g;
+	float gyro_sensitivity_dps;
 	IMU_Measurement current_measurement;
 
 	void Update_Sensitivities();
@@ -60,6 +60,8 @@ public:
 	void Prepare_For_Measurements() override;
 	void Measurement_Cycle_Finished() override;
 	void Task_Perform_Transaction() override;
+
+	bool Get_Measurement(IMU_Measurement& meas);
 };
 
 #endif
