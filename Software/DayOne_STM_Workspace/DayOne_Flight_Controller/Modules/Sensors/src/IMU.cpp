@@ -10,6 +10,23 @@ constexpr uint8_t IMU_MEASUREMENT_REG = 0x22; // Temperature read register
 
 constexpr uint8_t TARGET_WHOAMI_VALUE = 0x6c;
 
+enum MEASUREMENT_DATA_LAYOUT
+{
+	OUTX_L_G = 1,
+	OUTX_H_G,
+	OUTY_L_G,
+	OUTY_H_G,
+	OUTZ_L_G,
+	OUTZ_H_G,
+
+	OUTX_L_A,
+	OUTX_H_A,
+	OUTY_L_A,
+	OUTY_H_A,
+	OUTZ_L_A,
+	OUTZ_H_A,
+};
+
 SENSOR_STATUS IMU::Initialize(IMU_UPDATE_RATES p_update_rate, IMU_ACC_SCALE p_acc_scale,
 		IMU_GYRO_SCALE p_gyro_scale)
 {
@@ -102,8 +119,20 @@ void IMU::Measurement_Cycle_Finished()
 	Change_Buffer_Pointers();
 }
 
-void IMU::Parse_Measurement(uint8_t* received_data, uint8_t size)
+bool IMU::Parse_Measurement(uint8_t* received_data, uint8_t size)
 {
+	if (size != IMU_BUFFER_SIZE)
+	{
+		return false;
+	}
+
+	raw_A_x = (int16_t) (received_data[OUTX_H_A] << 8 | received_data[OUTX_L_A]);
+	raw_A_y = (int16_t) (received_data[OUTY_H_A] << 8 | received_data[OUTY_L_A]);
+	raw_A_z = (int16_t) (received_data[OUTZ_H_A] << 8 | received_data[OUTZ_L_A]);
+
+	raw_G_x = (int16_t) (received_data[OUTX_H_G] << 8 | received_data[OUTX_L_G]);
+	raw_G_y = (int16_t) (received_data[OUTY_H_G] << 8 | received_data[OUTY_L_G]);
+	raw_G_z = (int16_t) (received_data[OUTZ_H_G] << 8 | received_data[OUTZ_L_G]);
 
 }
 
