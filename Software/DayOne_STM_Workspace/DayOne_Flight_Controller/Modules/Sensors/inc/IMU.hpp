@@ -38,9 +38,11 @@ private:
 	IMU_UPDATE_RATES update_rate;
 	IMU_ACC_SCALE acc_scale;
 	IMU_GYRO_SCALE gyro_scale;
+	float acc_sensitivity_mg;
+	float gyro_sensitivity_mdps;
 	IMU_Measurement current_measurement;
 
-	void Get_Sensitivities(float& acc_sensitivity, float& gyro_sensitivity);
+	void Update_Sensitivities();
 
 	HAL_StatusTypeDef Handle_Acc_Control_Registers();
 	HAL_StatusTypeDef Handle_Gyro_Control_Registers();

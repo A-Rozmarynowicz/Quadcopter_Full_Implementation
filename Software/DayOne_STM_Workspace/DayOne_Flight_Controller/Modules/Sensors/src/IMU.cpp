@@ -135,9 +135,10 @@ bool IMU::Parse_Measurement(uint8_t* received_data, uint8_t size)
 	raw_G_z = (int16_t) (received_data[OUTZ_H_G] << 8 | received_data[OUTZ_L_G]);
 
 
+
 }
 
-void IMU::Get_Sensitivities(float &acc_sensitivity_mg, float &gyro_sensitivity_mdps)
+void IMU::Update_Sensitivities()
 {
 	switch (acc_scale)
 	{
