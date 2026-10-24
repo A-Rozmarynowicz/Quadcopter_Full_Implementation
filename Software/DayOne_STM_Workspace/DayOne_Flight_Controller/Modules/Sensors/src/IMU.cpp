@@ -134,7 +134,33 @@ bool IMU::Parse_Measurement(uint8_t* received_data, uint8_t size)
 	raw_G_y = (int16_t) (received_data[OUTY_H_G] << 8 | received_data[OUTY_L_G]);
 	raw_G_z = (int16_t) (received_data[OUTZ_H_G] << 8 | received_data[OUTZ_L_G]);
 
+
 }
+
+void IMU::Get_Sensitivities(float &acc_sensitivity_mg, float &gyro_sensitivity_mdps)
+{
+	switch (acc_scale)
+	{
+		case IMU_ACC_SCALE::G_8:
+			acc_sensitivity_mg = 0.244f;
+			break;
+		case IMU_ACC_SCALE::G_16:
+			acc_sensitivity_mg = 0.488f;
+			break;
+	}
+	switch (gyro_scale)
+	{
+		case IMU_GYRO_SCALE::DPS_500:
+			gyro_sensitivity_mdps = 17.50f;
+			break;
+		case IMU_ACC_SCALE::G_16:
+			gyro_sensitivity_mdps = 35.0f;
+			break;
+	}
+
+}
+
+
 
 void IMU::Task_Perform_Transaction()
 {

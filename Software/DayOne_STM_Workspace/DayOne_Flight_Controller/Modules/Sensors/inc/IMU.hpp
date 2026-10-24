@@ -40,9 +40,11 @@ private:
 	IMU_GYRO_SCALE gyro_scale;
 	IMU_Measurement current_measurement;
 
+	void Get_Sensitivities(float& acc_sensitivity, float& gyro_sensitivity);
+
 	HAL_StatusTypeDef Handle_Acc_Control_Registers();
 	HAL_StatusTypeDef Handle_Gyro_Control_Registers();
-	void Parse_Measurement(uint8_t* received_data, uint8_t size);
+	bool Parse_Measurement(uint8_t* received_data, uint8_t size);
 protected:
 	bool Assert_ID_Register() override;
 public:
