@@ -1,0 +1,70 @@
+#ifndef MAGNETOMETER_HPP
+#define MAGNETOMETER_HPP
+
+#include "stm32f4xx_hal.h"
+#include "Sensor.hpp"
+#include <cstdint>
+
+constexpr uint8_t MAGNETOMETER_BUFFER_SIZE = 13;
+
+struct Magnetometer_Measurement
+{
+	float mag_x, mag_y, mag_z;
+};
+
+enum class MAGNETOMETER_UPDATE_RATES
+{
+	Hz_100,
+	Hz_200,
+	Hz_400,
+};
+
+enum class MAGNETOMETER_INTERNAL_STATES : uint8_t
+{
+	INIT,
+	SET,
+	ENABLE_MEASUREMENT_1,
+	READ_MEASUREMENT_1,
+	RESET,
+	ENABLE_MEASUREMENT_2,
+	READ_MEASUREMENT_2,
+	CLEAR_INTERRUPT
+};
+
+class Magnetometer : public Sensor<7>
+{
+private:
+	bool chip_output_ready = false;
+
+	MAGNETOMETER_UPDATE_RATES update_rate;
+	MAGNETOMETER_INTERNAL_STATES current_state = MAGNETOMETER_INTERNAL_STATES::INIT;
+
+	Magnetometer_Measurement set_measurement;
+	Magnetometer_Measurement current_measurement;
+
+	uint8_t Get_Update_Rate_Command();
+	HAL_StatusTypeDef Handle_Update_Rate_Registers();
+	HAL_StatusTypeDef Perform_Set();
+	HAL_StatusTypeDef Perform_Reset();
+	HAL_StatusTypeDef Enable_Measurement();
+	HAL_StatusTypeDef Read_Measurement();
+	HAL_StatusTypeDef Clear_Interrupt();
+
+	HAL_StatusTypeDef Enable_Interrupt();
+protected:
+	bool Assert_ID_Register() override;
+public:
+	SENSOR_STATUS Initialize(MAGNETOMETER_UPDATE_RATES p_update_rate);
+
+	void Prepare_For_Measurements() override;
+
+	void DMA_TxRxCompleteCallback() override;
+	void DMA_ErrorCallback() override;
+
+	void Measurement_Cycle_Finished() override;
+	void Task_Perform_Transaction() override;
+
+	void Data_Ready_EXTI_Handler();
+	bool Get_Measurement(Magnetometer_Measurement& meas);
+};
+#endif
