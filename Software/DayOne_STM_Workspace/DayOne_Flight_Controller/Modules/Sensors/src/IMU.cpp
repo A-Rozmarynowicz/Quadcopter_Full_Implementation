@@ -68,7 +68,7 @@ HAL_StatusTypeDef IMU::Handle_Acc_Control_Registers()
 	current_transmit_buffer[1] = static_cast<uint8_t>(update_rate) | static_cast<uint8_t>(acc_scale);
 
 	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
-	HAL_StatusTypeDef code = HAL_SPI_Transmit(spi, current_transmit_buffer, IMU_BUFFER_SIZE, HAL_MAX_DELAY);
+	HAL_StatusTypeDef code = HAL_SPI_Transmit(spi, current_transmit_buffer, 2, HAL_MAX_DELAY);
 	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
 
 	Change_Buffer_Pointers();
@@ -83,7 +83,7 @@ HAL_StatusTypeDef IMU::Handle_Gyro_Control_Registers()
 	current_transmit_buffer[1] = static_cast<uint8_t>(update_rate) | static_cast<uint8_t>(gyro_scale);
 
 	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
-	HAL_StatusTypeDef code = HAL_SPI_Transmit(spi, current_transmit_buffer, IMU_BUFFER_SIZE, HAL_MAX_DELAY);
+	HAL_StatusTypeDef code = HAL_SPI_Transmit(spi, current_transmit_buffer, 2, HAL_MAX_DELAY);
 	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
 
 	Change_Buffer_Pointers();
@@ -96,8 +96,7 @@ bool IMU::Assert_ID_Register()
 	current_transmit_buffer[0] = Get_Read_Command(REGISTERS::IMU_WHOAMI_REG);
 
 	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
-	HAL_StatusTypeDef code = HAL_SPI_TransmitReceive(spi, current_transmit_buffer, current_receive_buffer,
-			IMU_BUFFER_SIZE, HAL_MAX_DELAY);
+	HAL_StatusTypeDef code = HAL_SPI_TransmitReceive(spi, current_transmit_buffer, current_receive_buffer, 2, HAL_MAX_DELAY);
 	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
 
 	bool ok = current_receive_buffer[1] == TARGET_WHOAMI_VALUE;
@@ -178,7 +177,11 @@ void IMU::Update_Sensitivities()
 void IMU::Task_Perform_Transaction()
 {
 	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
-	HAL_SPI_TransmitReceive_DMA(spi, current_transmit_buffer, current_receive_buffer, IMU_BUFFER_SIZE);
+	HAL_StatusTypeDef code =  HAL_SPI_TransmitReceive_DMA(spi, current_transmit_buffer, current_receive_buffer, IMU_BUFFER_SIZE);
+	if (code != HAL_OK)
+	{
+		uint8_t check = 2 + 5;
+	}
 }
 
 bool IMU::Get_Measurement(IMU_Measurement &meas)
