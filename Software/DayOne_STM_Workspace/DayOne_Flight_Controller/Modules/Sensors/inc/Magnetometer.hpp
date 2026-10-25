@@ -5,6 +5,13 @@
 #include "Sensor.hpp"
 #include <cstdint>
 
+constexpr uint8_t MAGNETOMETER_BUFFER_SIZE = 13;
+
+struct Magnetometer_Measurement
+{
+	float mag_x, mag_y, mag_z;
+};
+
 class Magnetometer : public Sensor<7>
 {
 protected:

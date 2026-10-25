@@ -136,13 +136,13 @@ bool IMU::Parse_Measurement(uint8_t* received_data, uint8_t size) // TODO: Maybe
 	int16_t raw_G_y = (int16_t) (received_data[OUTY_H_G] << 8 | received_data[OUTY_L_G]);
 	int16_t raw_G_z = (int16_t) (received_data[OUTZ_H_G] << 8 | received_data[OUTZ_L_G]);
 
-	current_measurement.acc_x = raw_A_x * acc_sensitivity_g;
-	current_measurement.acc_y = raw_A_y * acc_sensitivity_g;
-	current_measurement.acc_z = raw_A_z * acc_sensitivity_g;
+	current_measurement.acc_x = (float)raw_A_x * acc_sensitivity_g;
+	current_measurement.acc_y = (float)raw_A_y * acc_sensitivity_g;
+	current_measurement.acc_z = (float)raw_A_z * acc_sensitivity_g;
 
-	current_measurement.gyro_x = raw_G_x * gyro_sensitivity_dps;
-	current_measurement.gyro_y = raw_G_y * gyro_sensitivity_dps;
-	current_measurement.gyro_z = raw_G_z * gyro_sensitivity_dps;
+	current_measurement.gyro_x = (float)raw_G_x * gyro_sensitivity_dps;
+	current_measurement.gyro_y = (float)raw_G_y * gyro_sensitivity_dps;
+	current_measurement.gyro_z = (float)raw_G_z * gyro_sensitivity_dps;
 
 	data_ready = true;
 

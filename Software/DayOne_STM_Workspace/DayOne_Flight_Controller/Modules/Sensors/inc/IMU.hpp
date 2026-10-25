@@ -5,7 +5,7 @@
 #include "Sensor.hpp"
 #include <cstdint>
 
-#define IMU_BUFFER_SIZE 13
+constexpr uint8_t IMU_BUFFER_SIZE = 13;
 
 struct IMU_Measurement
 {

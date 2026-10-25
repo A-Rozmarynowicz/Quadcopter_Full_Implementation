@@ -2,6 +2,8 @@
 #include "stm32f4xx_hal.h"
 
 
+constexpr uint8_t PRODUCT_ID_ADDRESS = 0x2F;
+
 void Magnetometer::DMA_TxRxCompleteCallback()
 {
 	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
@@ -19,6 +21,9 @@ bool Magnetometer::Assert_ID_Register()
 
 void Magnetometer::Measurement_Cycle_Finished()
 {
+}
+
+void Magnetometer::Prepare_For_Measurements() {
 }
 
 void Magnetometer::Task_Perform_Transaction()
