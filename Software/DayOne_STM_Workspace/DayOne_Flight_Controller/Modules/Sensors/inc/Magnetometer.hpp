@@ -59,7 +59,8 @@ private:
 
 	HAL_StatusTypeDef Enable_Interrupt();
 
-	bool Parse_Measurement(uint8_t* received_data, uint8_t size, Raw_Magnetic_Value& meas);
+	bool Store_Measurement(uint8_t* received_data, uint8_t size, Raw_Magnetic_Value& meas);
+	bool Parse_Data();
 protected:
 	bool Assert_ID_Register() override;
 public:

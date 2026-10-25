@@ -1,6 +1,7 @@
 #include "Sensors/inc/Magnetometer.hpp"
 #include "stm32f4xx_hal.h"
 
+constexpr float SENSITIVITY = 4096.0;
 
 enum REGISTERS : uint8_t
 {
@@ -63,11 +64,11 @@ void Magnetometer::DMA_TxRxCompleteCallback()
 
 	if (current_state == MAGNETOMETER_INTERNAL_STATES::READ_MEASUREMENT_1)
 	{
-//		Parse_Measurement(received_data, size, meas)
+		Store_Measurement(received_data, size, set_raw_measurement);
 	}
 	else if (current_state == MAGNETOMETER_INTERNAL_STATES::READ_MEASUREMENT_2)
 	{
-
+		Store_Measurement(received_data, size, reset_raw_measurement);
 	}
 	else
 	{
@@ -280,7 +281,7 @@ void Magnetometer::Data_Ready_EXTI_Handler()
 	chip_output_ready = true;
 }
 
-bool Magnetometer::Parse_Measurement(uint8_t *received_data, uint8_t size, Raw_Magnetic_Value& meas)
+bool Magnetometer::Store_Measurement(uint8_t *received_data, uint8_t size, Raw_Magnetic_Value& meas)
 {
 	if (size != MAGNETOMETER_BUFFER_SIZE)
 	{
@@ -289,6 +290,18 @@ bool Magnetometer::Parse_Measurement(uint8_t *received_data, uint8_t size, Raw_M
 	meas.x = ((uint32_t)received_data[1] << 8) | received_data[2];
 	meas.y = ((uint32_t)received_data[3] << 8) | received_data[4];
 	meas.z = ((uint32_t)received_data[5] << 8) | received_data[6];
+
+	return true;
+}
+
+bool Magnetometer::Parse_Data()
+{
+	current_measurement.mag_x = (float(set_raw_measurement.x) - float(reset_raw_measurement.x)) / (2.0 * SENSITIVITY);
+	current_measurement.mag_y = (float(set_raw_measurement.y) - float(reset_raw_measurement.y)) / (2.0 * SENSITIVITY);
+	current_measurement.mag_z = (float(set_raw_measurement.z) - float(reset_raw_measurement.z)) / (2.0 * SENSITIVITY);
+
+	data_ready = true;
+	return true;
 }
 
 bool Magnetometer::Get_Measurement(Magnetometer_Measurement &meas)
@@ -296,6 +309,7 @@ bool Magnetometer::Get_Measurement(Magnetometer_Measurement &meas)
 	if (data_ready)
 	{
 		meas = current_measurement;
+		data_ready = false;
 		return true;
 	}
 	return false;
