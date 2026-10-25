@@ -1,12 +1,15 @@
 #include "Sensors/inc/IMU.hpp"
 #include "stm32f4xx_hal.h"
 
-constexpr uint8_t IMU_WHOAMI_REG = 0x0F; // Product ID
-constexpr uint8_t IMU_CTRL1_ACC_REG = 0x10; // Accelerometer settings
-constexpr uint8_t IMU_CTRL2_GYRO_REG = 0x11; // Gyroscope settings
+enum REGISTERS : uint8_t
+{
+	IMU_WHOAMI_REG = 0x0F, // Product ID
+	IMU_CTRL1_ACC_REG = 0x10, // Accelerometer settings
+	IMU_CTRL2_GYRO_REG = 0x11, // Gyroscope settings
 
-constexpr uint8_t IMU_TEMP_REG = 0x20; // Temperature read register
-constexpr uint8_t IMU_MEASUREMENT_REG = 0x22; // Temperature read register
+	IMU_TEMP_REG = 0x20, // Temperature read register
+	IMU_MEASUREMENT_REG = 0x22, // Temperature read register
+};
 
 constexpr uint8_t TARGET_WHOAMI_VALUE = 0x6c;
 
@@ -61,7 +64,7 @@ void IMU::DMA_ErrorCallback()
 
 HAL_StatusTypeDef IMU::Handle_Acc_Control_Registers()
 {
-	current_transmit_buffer[0] = Get_Write_Command(IMU_CTRL1_ACC_REG);
+	current_transmit_buffer[0] = Get_Write_Command(REGISTERS::IMU_CTRL1_ACC_REG);
 	current_transmit_buffer[1] = static_cast<uint8_t>(update_rate) | static_cast<uint8_t>(acc_scale);
 
 	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
@@ -76,7 +79,7 @@ HAL_StatusTypeDef IMU::Handle_Acc_Control_Registers()
 
 HAL_StatusTypeDef IMU::Handle_Gyro_Control_Registers()
 {
-	current_transmit_buffer[0] = Get_Write_Command(IMU_CTRL2_GYRO_REG);
+	current_transmit_buffer[0] = Get_Write_Command(REGISTERS::IMU_CTRL2_GYRO_REG);
 	current_transmit_buffer[1] = static_cast<uint8_t>(update_rate) | static_cast<uint8_t>(gyro_scale);
 
 	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
@@ -90,7 +93,7 @@ HAL_StatusTypeDef IMU::Handle_Gyro_Control_Registers()
 
 bool IMU::Assert_ID_Register()
 {
-	current_transmit_buffer[0] = Get_Read_Command(IMU_WHOAMI_REG);
+	current_transmit_buffer[0] = Get_Read_Command(REGISTERS::IMU_WHOAMI_REG);
 
 	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
 	HAL_StatusTypeDef code = HAL_SPI_TransmitReceive(spi, current_transmit_buffer, current_receive_buffer,
@@ -111,8 +114,8 @@ void IMU::Prepare_For_Measurements()
 		transmit_buffer_1[i] = 0;
 		transmit_buffer_2[i] = 0;
 	}
-	transmit_buffer_1[0] = Get_Read_Command(IMU_MEASUREMENT_REG);
-	transmit_buffer_2[0] = Get_Read_Command(IMU_MEASUREMENT_REG);
+	transmit_buffer_1[0] = Get_Read_Command(REGISTERS::IMU_MEASUREMENT_REG);
+	transmit_buffer_2[0] = Get_Read_Command(REGISTERS::IMU_MEASUREMENT_REG);
 }
 
 void IMU::Measurement_Cycle_Finished()

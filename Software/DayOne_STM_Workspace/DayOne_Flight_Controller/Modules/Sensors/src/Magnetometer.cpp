@@ -37,12 +37,6 @@ enum CONTROL_1_COMMANDS : uint8_t
     CHIP_RESET = 0b1000'0000,
 };
 
-
-constexpr uint8_t PRODUCT_ID_ADDRESS = 0x2F;
-constexpr uint8_t MEASUREMENT_FIRST_ADDRESS = 0x00;
-constexpr uint8_t STATUS_REG_ADDRESS = 0x08;
-
-
 constexpr uint8_t TARGET_PRODUCT_ID = 0x30;
 
 void Magnetometer::DMA_TxRxCompleteCallback()
