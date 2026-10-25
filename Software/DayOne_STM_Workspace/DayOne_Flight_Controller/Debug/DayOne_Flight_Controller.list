@@ -769,7 +769,7 @@ static void MX_TIM2_Init(void)
  800075a:	4b1a      	ldr	r3, [pc, #104]	@ (80007c4 <MX_TIM2_Init+0x94>)
  800075c:	2200      	movs	r2, #0
  800075e:	609a      	str	r2, [r3, #8]
-  htim2.Init.Period = 1000000-1;
+  htim2.Init.Period = 100000-1;
  8000760:	4b18      	ldr	r3, [pc, #96]	@ (80007c4 <MX_TIM2_Init+0x94>)
  8000762:	4a19      	ldr	r2, [pc, #100]	@ (80007c8 <MX_TIM2_Init+0x98>)
  8000764:	60da      	str	r2, [r3, #12]
@@ -835,7 +835,7 @@ static void MX_TIM2_Init(void)
  80007c0:	bd80      	pop	{r7, pc}
  80007c2:	bf00      	nop
  80007c4:	200002a8 	.word	0x200002a8
- 80007c8:	000f423f 	.word	0x000f423f
+ 80007c8:	0001869f 	.word	0x0001869f
 
 080007cc <MX_DMA_Init>:
 
