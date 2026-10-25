@@ -23,9 +23,11 @@ enum class MAGNETOMETER_INTERNAL_STATES : uint8_t
 {
 	INIT,
 	SET,
-	MEASUREMENT_1,
+	ENABLE_MEASUREMENT_1,
+	READ_MEASUREMENT_1,
 	RESET,
-	MEASUREMENT_2,
+	ENABLE_MEASUREMENT_2,
+	READ_MEASUREMENT_2,
 	CLEAR_INTERRUPT
 };
 
@@ -39,7 +41,7 @@ private:
 	HAL_StatusTypeDef Handle_Update_Rate_Registers();
 	HAL_StatusTypeDef Perform_Set();
 	HAL_StatusTypeDef Perform_Reset();
-	HAL_StatusTypeDef Perform_Measurement();
+	HAL_StatusTypeDef Enable_Measurement();
 	HAL_StatusTypeDef Read_Measurement();
 	HAL_StatusTypeDef Clear_Interrupt();
 
