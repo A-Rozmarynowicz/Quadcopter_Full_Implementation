@@ -58,6 +58,9 @@ SENSOR_STATUS Magnetometer::Initialize(MAGNETOMETER_UPDATE_RATES p_update_rate)
 	return SENSOR_STATUS::INIT_FAIL;
 }
 
+
+#pragma region Callbacks
+
 void Magnetometer::DMA_TxRxCompleteCallback()
 {
 	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
@@ -83,21 +86,14 @@ void Magnetometer::DMA_ErrorCallback()
 	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
 }
 
-bool Magnetometer::Assert_ID_Register()
+void Magnetometer::Data_Ready_EXTI_Handler()
 {
-	current_transmit_buffer[0] = Get_Read_Command(REGISTERS::PRODUCT_ID);
-
-	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
-	HAL_StatusTypeDef code = HAL_SPI_TransmitReceive(spi, current_transmit_buffer, current_receive_buffer,
-			IMU_BUFFER_SIZE, HAL_MAX_DELAY);
-	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
-
-	bool ok = current_receive_buffer[1] == TARGET_PRODUCT_ID;
-
-	Change_Buffer_Pointers();
-
-	return (code == HAL_OK) && (ok == true);
+	chip_output_ready = true;
 }
+#pragma endregion
+
+
+#pragma Master_Calls
 
 void Magnetometer::Measurement_Cycle_Finished()
 {
@@ -107,23 +103,36 @@ void Magnetometer::Prepare_For_Measurements()
 {
 }
 
-uint8_t Magnetometer::Get_Update_Rate_Command()
+void Magnetometer::Task_Perform_Transaction()
 {
-	uint8_t command = 0b0000'0000;
-	switch (update_rate)
-	{
-		case MAGNETOMETER_UPDATE_RATES::Hz_100:
-			command = CONTROL_1_COMMANDS::BW_100HZ;
+	switch (current_state) {
+		case MAGNETOMETER_INTERNAL_STATES::SET:
+			Perform_Set();
 			break;
-		case MAGNETOMETER_UPDATE_RATES::Hz_200:
-			command = CONTROL_1_COMMANDS::BW_200HZ;
+		case MAGNETOMETER_INTERNAL_STATES::ENABLE_MEASUREMENT_1:
+			Enable_Measurement();
 			break;
-		case MAGNETOMETER_UPDATE_RATES::Hz_400:
-			command = CONTROL_1_COMMANDS::BW_400HZ;
+		case MAGNETOMETER_INTERNAL_STATES::READ_MEASUREMENT_1:
+			Read_Measurement();
+			break;
+		case MAGNETOMETER_INTERNAL_STATES::RESET:
+			Perform_Reset();
+			break;
+		case MAGNETOMETER_INTERNAL_STATES::ENABLE_MEASUREMENT_2:
+			Enable_Measurement();
+			break;
+		case MAGNETOMETER_INTERNAL_STATES::READ_MEASUREMENT_2:
+			Read_Measurement();
+			break;
+		case MAGNETOMETER_INTERNAL_STATES::CLEAR_INTERRUPT:
+			Clear_Interrupt();
+			break;
+		default:
 			break;
 	}
-	return command;
 }
+
+#pragma region Data_Transmission
 
 HAL_StatusTypeDef Magnetometer::Handle_Update_Rate_Registers()
 {
@@ -211,35 +220,6 @@ HAL_StatusTypeDef Magnetometer::Enable_Interrupt()
 	return code;
 }
 
-void Magnetometer::Task_Perform_Transaction()
-{
-	switch (current_state) {
-		case MAGNETOMETER_INTERNAL_STATES::SET:
-			Perform_Set();
-			break;
-		case MAGNETOMETER_INTERNAL_STATES::ENABLE_MEASUREMENT_1:
-			Enable_Measurement();
-			break;
-		case MAGNETOMETER_INTERNAL_STATES::READ_MEASUREMENT_1:
-			Read_Measurement();
-			break;
-		case MAGNETOMETER_INTERNAL_STATES::RESET:
-			Perform_Reset();
-			break;
-		case MAGNETOMETER_INTERNAL_STATES::ENABLE_MEASUREMENT_2:
-			Enable_Measurement();
-			break;
-		case MAGNETOMETER_INTERNAL_STATES::READ_MEASUREMENT_2:
-			Read_Measurement();
-			break;
-		case MAGNETOMETER_INTERNAL_STATES::CLEAR_INTERRUPT:
-			Clear_Interrupt();
-			break;
-		default:
-			break;
-	}
-}
-
 HAL_StatusTypeDef Magnetometer::Read_Measurement()
 {
 	if (current_state != MAGNETOMETER_INTERNAL_STATES::READ_MEASUREMENT_1 && current_state != MAGNETOMETER_INTERNAL_STATES::READ_MEASUREMENT_2)
@@ -258,7 +238,6 @@ HAL_StatusTypeDef Magnetometer::Read_Measurement()
 	return code;
 }
 
-
 HAL_StatusTypeDef Magnetometer::Clear_Interrupt()
 {
 	if (current_state != MAGNETOMETER_INTERNAL_STATES::RESET)
@@ -276,9 +255,41 @@ HAL_StatusTypeDef Magnetometer::Clear_Interrupt()
 	return code;
 }
 
-void Magnetometer::Data_Ready_EXTI_Handler()
+bool Magnetometer::Assert_ID_Register()
 {
-	chip_output_ready = true;
+	current_transmit_buffer[0] = Get_Read_Command(REGISTERS::PRODUCT_ID);
+
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
+	HAL_StatusTypeDef code = HAL_SPI_TransmitReceive(spi, current_transmit_buffer, current_receive_buffer,
+			IMU_BUFFER_SIZE, HAL_MAX_DELAY);
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
+
+	bool ok = current_receive_buffer[1] == TARGET_PRODUCT_ID;
+
+	Change_Buffer_Pointers();
+
+	return (code == HAL_OK) && (ok == true);
+}
+
+#pragma endregion
+
+
+uint8_t Magnetometer::Get_Update_Rate_Command()
+{
+	uint8_t command = 0b0000'0000;
+	switch (update_rate)
+	{
+		case MAGNETOMETER_UPDATE_RATES::Hz_100:
+			command = CONTROL_1_COMMANDS::BW_100HZ;
+			break;
+		case MAGNETOMETER_UPDATE_RATES::Hz_200:
+			command = CONTROL_1_COMMANDS::BW_200HZ;
+			break;
+		case MAGNETOMETER_UPDATE_RATES::Hz_400:
+			command = CONTROL_1_COMMANDS::BW_400HZ;
+			break;
+	}
+	return command;
 }
 
 bool Magnetometer::Store_Measurement(uint8_t *received_data, uint8_t size, Raw_Magnetic_Value& meas)
