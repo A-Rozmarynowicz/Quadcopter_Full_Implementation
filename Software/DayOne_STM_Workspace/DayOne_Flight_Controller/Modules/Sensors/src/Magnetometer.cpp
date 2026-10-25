@@ -60,6 +60,21 @@ SENSOR_STATUS Magnetometer::Initialize(MAGNETOMETER_UPDATE_RATES p_update_rate)
 void Magnetometer::DMA_TxRxCompleteCallback()
 {
 	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
+
+	if (current_state == MAGNETOMETER_INTERNAL_STATES::READ_MEASUREMENT_1)
+	{
+//		Parse_Measurement(received_data, size, meas)
+	}
+	else if (current_state == MAGNETOMETER_INTERNAL_STATES::READ_MEASUREMENT_2)
+	{
+
+	}
+	else
+	{
+		return;
+	}
+
+	Change_Buffer_Pointers();
 }
 
 void Magnetometer::DMA_ErrorCallback()
@@ -87,7 +102,8 @@ void Magnetometer::Measurement_Cycle_Finished()
 {
 }
 
-void Magnetometer::Prepare_For_Measurements() {
+void Magnetometer::Prepare_For_Measurements()
+{
 }
 
 uint8_t Magnetometer::Get_Update_Rate_Command()
@@ -229,17 +245,14 @@ HAL_StatusTypeDef Magnetometer::Read_Measurement()
 	{
 		return HAL_ERROR;
 	}
+	if (!chip_output_ready)
+	{
+		return HAL_ERROR;
+	}
 	current_transmit_buffer[0] = Get_Read_Command(REGISTERS::MEASUREMENT);
 
 	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
 	HAL_StatusTypeDef code = HAL_SPI_TransmitReceive_DMA(spi, current_transmit_buffer, current_receive_buffer, MAGNETOMETER_BUFFER_SIZE);
-
-	Change_Buffer_Pointers();
-
-	if (current_state == MAGNETOMETER_INTERNAL_STATES::READ_MEASUREMENT_1)
-		{current_state = MAGNETOMETER_INTERNAL_STATES::RESET;}
-	else
-		{current_state = MAGNETOMETER_INTERNAL_STATES::CLEAR_INTERRUPT;}
 
 	return code;
 }
@@ -264,5 +277,26 @@ HAL_StatusTypeDef Magnetometer::Clear_Interrupt()
 
 void Magnetometer::Data_Ready_EXTI_Handler()
 {
-	Read_Measurement();
+	chip_output_ready = true;
+}
+
+bool Magnetometer::Parse_Measurement(uint8_t *received_data, uint8_t size, Raw_Magnetic_Value& meas)
+{
+	if (size != MAGNETOMETER_BUFFER_SIZE)
+	{
+		return false;
+	}
+	meas.x = ((uint32_t)received_data[1] << 8) | received_data[2];
+	meas.y = ((uint32_t)received_data[3] << 8) | received_data[4];
+	meas.z = ((uint32_t)received_data[5] << 8) | received_data[6];
+}
+
+bool Magnetometer::Get_Measurement(Magnetometer_Measurement &meas)
+{
+	if (data_ready)
+	{
+		meas = current_measurement;
+		return true;
+	}
+	return false;
 }
