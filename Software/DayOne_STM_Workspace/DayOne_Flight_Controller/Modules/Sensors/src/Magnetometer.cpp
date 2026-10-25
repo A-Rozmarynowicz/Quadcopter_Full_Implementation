@@ -39,6 +39,15 @@ enum CONTROL_1_COMMANDS : uint8_t
 
 constexpr uint8_t TARGET_PRODUCT_ID = 0x30;
 
+SENSOR_STATUS Magnetometer::Initialize(MAGNETOMETER_UPDATE_RATES p_update_rate)
+{
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
+
+	update_rate = p_update_rate;
+
+
+}
+
 void Magnetometer::DMA_TxRxCompleteCallback()
 {
 	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
@@ -59,6 +68,38 @@ void Magnetometer::Measurement_Cycle_Finished()
 }
 
 void Magnetometer::Prepare_For_Measurements() {
+}
+
+uint8_t Magnetometer::Get_Update_Rate_Command()
+{
+	uint8_t command = 0b0000'0000;
+	switch (update_rate)
+	{
+		case MAGNETOMETER_UPDATE_RATES::Hz_100:
+			command = CONTROL_1_COMMANDS::BW_100HZ;
+			break;
+		case MAGNETOMETER_UPDATE_RATES::Hz_200:
+			command = CONTROL_1_COMMANDS::BW_200HZ;
+			break;
+		case MAGNETOMETER_UPDATE_RATES::Hz_400:
+			command = CONTROL_1_COMMANDS::BW_400HZ;
+			break;
+	}
+	return command;
+}
+
+HAL_StatusTypeDef Magnetometer::Handle_Update_Rate_Registers()
+{
+	current_transmit_buffer[0] = Get_Write_Command(REGISTERS::CONTROL_1);
+	current_transmit_buffer[1] = Get_Update_Rate_Command();
+
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
+	HAL_StatusTypeDef code = HAL_SPI_Transmit(spi, current_transmit_buffer, 2, HAL_MAX_DELAY);
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
+
+	Change_Buffer_Pointers();
+
+	return code;
 }
 
 void Magnetometer::Task_Perform_Transaction()

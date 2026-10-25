@@ -12,14 +12,24 @@ struct Magnetometer_Measurement
 	float mag_x, mag_y, mag_z;
 };
 
+enum class MAGNETOMETER_UPDATE_RATES
+{
+	Hz_100,
+	Hz_200,
+	Hz_400,
+};
+
 class Magnetometer : public Sensor<7>
 {
+private:
+	MAGNETOMETER_UPDATE_RATES update_rate;
+
+	uint8_t Get_Update_Rate_Command();
+	HAL_StatusTypeDef Handle_Update_Rate_Registers();
 protected:
 	bool Assert_ID_Register() override;
 public:
-//	void Initialize(IMU_UPDATE_RATES p_update_rate,
-//			IMU_ACC_SCALE p_acc_scale,
-//			IMU_GYRO_SCALE p_gyro_scale);
+	SENSOR_STATUS Initialize(MAGNETOMETER_UPDATE_RATES p_update_rate);
 
 	void Prepare_For_Measurements() override;
 

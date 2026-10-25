@@ -1,0 +1,39 @@
+#ifndef MAGNETOMETER_HPP
+#define MAGNETOMETER_HPP
+
+#include "stm32f4xx_hal.h"
+#include "Sensor.hpp"
+#include <cstdint>
+
+constexpr uint8_t MAGNETOMETER_BUFFER_SIZE = 13;
+
+struct Magnetometer_Measurement
+{
+	float mag_x, mag_y, mag_z;
+};
+
+enum class MAGNETOMETER_UPDATE_RATES
+{
+	Hz_100,
+	Hz_200,
+	Hz_400,
+};
+
+class Magnetometer : public Sensor<7>
+{
+protected:
+	bool Assert_ID_Register() override;
+public:
+//	void Initialize(IMU_UPDATE_RATES p_update_rate,
+//			IMU_ACC_SCALE p_acc_scale,
+//			IMU_GYRO_SCALE p_gyro_scale);
+
+	void Prepare_For_Measurements() override;
+
+	void DMA_TxRxCompleteCallback() override;
+	void DMA_ErrorCallback() override;
+
+	void Measurement_Cycle_Finished() override;
+	void Task_Perform_Transaction() override;
+};
+#endif
