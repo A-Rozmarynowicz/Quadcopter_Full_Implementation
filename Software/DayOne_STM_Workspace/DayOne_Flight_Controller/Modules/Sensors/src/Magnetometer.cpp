@@ -51,6 +51,7 @@ SENSOR_STATUS Magnetometer::Initialize(MAGNETOMETER_UPDATE_RATES p_update_rate)
 
 	if (id_ok == true && update_rate_code == HAL_OK && interrupt_code == HAL_OK)
 	{
+		current_state = MAGNETOMETER_INTERNAL_STATES::SET;
 		return SENSOR_STATUS::INIT_OK;
 	}
 	return SENSOR_STATUS::INIT_FAIL;
@@ -123,6 +124,10 @@ HAL_StatusTypeDef Magnetometer::Handle_Update_Rate_Registers()
 
 HAL_StatusTypeDef Magnetometer::Perform_Set()
 {
+	if (current_state != MAGNETOMETER_INTERNAL_STATES::SET)
+	{
+		return HAL_ERROR;
+	}
 	current_transmit_buffer[0] = Get_Write_Command(REGISTERS::CONTROL_0);
 	current_transmit_buffer[1] = CONTROL_0_COMMANDS::INTERRUPT_ENABLE | CONTROL_0_COMMANDS::SET;
 
@@ -181,6 +186,7 @@ void Magnetometer::Task_Perform_Transaction()
 HAL_StatusTypeDef Magnetometer::Read_Measurement()
 {
 	current_transmit_buffer[0] = Get_Read_Command(REGISTERS::MEASUREMENT);
+
 
 	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
 	HAL_StatusTypeDef code = HAL_SPI_TransmitReceive_DMA(spi, current_transmit_buffer, current_receive_buffer, MAGNETOMETER_BUFFER_SIZE);

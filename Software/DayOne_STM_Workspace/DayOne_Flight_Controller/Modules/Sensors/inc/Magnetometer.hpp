@@ -19,11 +19,21 @@ enum class MAGNETOMETER_UPDATE_RATES
 	Hz_400,
 };
 
+enum class MAGNETOMETER_INTERNAL_STATES : uint8_t
+{
+	INIT,
+	SET,
+	MEASUREMENT_1,
+	RESET,
+	MEASUREMENT_2,
+	CLEAR_INTERRUPT
+};
+
 class Magnetometer : public Sensor<7>
 {
 private:
 	MAGNETOMETER_UPDATE_RATES update_rate;
-	uint8_t measurement_period = 0;
+	MAGNETOMETER_INTERNAL_STATES current_state = MAGNETOMETER_INTERNAL_STATES::INIT;
 
 	uint8_t Get_Update_Rate_Command();
 	HAL_StatusTypeDef Handle_Update_Rate_Registers();
