@@ -1,7 +1,7 @@
 #include "Sensors/inc/Magnetometer.hpp"
 #include "stm32f4xx_hal.h"
 
-constexpr float SENSITIVITY = 4096.0;
+constexpr float MAG_SENSITIVITY = 4096.0;
 
 enum class MAGNETOMETER_REGISTERS : uint8_t
 {
@@ -294,6 +294,7 @@ HAL_StatusTypeDef Magnetometer::Read_Measurement()
 
     if (!chip_output_ready)
     {
+		chip_output_ready = true;
         return HAL_ERROR;
     }
 
@@ -301,7 +302,7 @@ HAL_StatusTypeDef Magnetometer::Read_Measurement()
 
     current_transmit_buffer[0] =
         Get_Read_Command(
-            static_cast<uint8_t>(MAGNETOMETER_REGISTERS::MEASUREMENT_REG));
+            static_cast<uint8_t>(MAGNETOMETER_REGISTERS::STATUS)); // MEASUREMENT_REG
 
     current_transmit_buffer[1] = 0x00;
 
@@ -312,7 +313,7 @@ HAL_StatusTypeDef Magnetometer::Read_Measurement()
             spi,
             current_transmit_buffer,
             current_receive_buffer,
-            MAGNETOMETER_BUFFER_SIZE);
+            2); // BUFFER SIZE
 
     return code;
 }
@@ -359,7 +360,7 @@ bool Magnetometer::Assert_ID_Register()
             spi,
             current_transmit_buffer,
             current_receive_buffer,
-            MAGNETOMETER_BUFFER_SIZE,
+            2,
             HAL_MAX_DELAY);
 
     HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
@@ -429,17 +430,17 @@ bool Magnetometer::Parse_Data()
     current_measurement.mag_x =
         (static_cast<float>(set_raw_measurement.x) -
          static_cast<float>(reset_raw_measurement.x)) /
-        (2.0f * SENSITIVITY);
+        (2.0f * MAG_SENSITIVITY);
 
     current_measurement.mag_y =
         (static_cast<float>(set_raw_measurement.y) -
          static_cast<float>(reset_raw_measurement.y)) /
-        (2.0f * SENSITIVITY);
+        (2.0f * MAG_SENSITIVITY);
 
     current_measurement.mag_z =
         (static_cast<float>(set_raw_measurement.z) -
          static_cast<float>(reset_raw_measurement.z)) /
-        (2.0f * SENSITIVITY);
+        (2.0f * MAG_SENSITIVITY);
 
     data_ready = true;
     return true;
