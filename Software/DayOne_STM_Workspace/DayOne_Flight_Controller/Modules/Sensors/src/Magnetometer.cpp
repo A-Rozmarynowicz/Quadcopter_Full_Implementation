@@ -127,7 +127,7 @@ HAL_StatusTypeDef Magnetometer::Perform_Set()
 	current_transmit_buffer[1] = CONTROL_0_COMMANDS::INTERRUPT_ENABLE | CONTROL_0_COMMANDS::SET;
 
 	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
-	HAL_StatusTypeDef code = HAL_SPI_TransmitReceive_DMA(spi, current_transmit_buffer, current_receive_buffer, IMU_BUFFER_SIZE);
+	HAL_StatusTypeDef code = HAL_SPI_Transmit_DMA(spi, current_transmit_buffer, 2);
 
 	Change_Buffer_Pointers();
 
@@ -176,5 +176,35 @@ HAL_StatusTypeDef Magnetometer::Enable_Interrupt()
 
 void Magnetometer::Task_Perform_Transaction()
 {
-//	HAL_SPI_TransmitReceive_DMA(hspi, current_transmit_buffer, current_receive_buffer, Size)
+}
+
+HAL_StatusTypeDef Magnetometer::Read_Measurement()
+{
+	current_transmit_buffer[0] = Get_Read_Command(REGISTERS::MEASUREMENT);
+
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
+	HAL_StatusTypeDef code = HAL_SPI_TransmitReceive_DMA(spi, current_transmit_buffer, current_receive_buffer, MAGNETOMETER_BUFFER_SIZE);
+
+	Change_Buffer_Pointers();
+
+	return code;
+}
+
+
+HAL_StatusTypeDef Magnetometer::Clear_Interrupt()
+{
+	current_transmit_buffer[0] = Get_Write_Command(REGISTERS::STATUS);
+	current_transmit_buffer[1] = STATUS_COMMANDS::MEAS_MAGNETOMETER_DONE | STATUS_COMMANDS::MEAS_TEMP_DONE;
+
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
+	HAL_StatusTypeDef code = HAL_SPI_Transmit_DMA(spi, current_transmit_buffer, 2);
+
+	Change_Buffer_Pointers();
+
+	return code;
+}
+
+void Magnetometer::Data_Ready_EXTI_Handler()
+{
+	Read_Measurement();
 }

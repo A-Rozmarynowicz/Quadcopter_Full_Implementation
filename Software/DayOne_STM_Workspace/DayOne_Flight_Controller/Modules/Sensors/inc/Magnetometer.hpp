@@ -30,6 +30,9 @@ private:
 	HAL_StatusTypeDef Perform_Set();
 	HAL_StatusTypeDef Perform_Reset();
 	HAL_StatusTypeDef Perform_Measurement();
+	HAL_StatusTypeDef Read_Measurement();
+	HAL_StatusTypeDef Clear_Interrupt();
+
 	HAL_StatusTypeDef Enable_Interrupt();
 protected:
 	bool Assert_ID_Register() override;
@@ -43,5 +46,7 @@ public:
 
 	void Measurement_Cycle_Finished() override;
 	void Task_Perform_Transaction() override;
+
+	void Data_Ready_EXTI_Handler();
 };
 #endif
