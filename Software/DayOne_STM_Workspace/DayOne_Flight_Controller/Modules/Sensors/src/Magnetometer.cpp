@@ -47,8 +47,13 @@ SENSOR_STATUS Magnetometer::Initialize(MAGNETOMETER_UPDATE_RATES p_update_rate)
 
 	bool id_ok = Assert_ID_Register();
 	HAL_StatusTypeDef update_rate_code = Handle_Update_Rate_Registers();
+	HAL_StatusTypeDef interrupt_code = Enable_Interrupt();
 
-
+	if (id_ok == true && update_rate_code == HAL_OK && interrupt_code == HAL_OK)
+	{
+		return SENSOR_STATUS::INIT_OK;
+	}
+	return SENSOR_STATUS::INIT_FAIL;
 }
 
 void Magnetometer::DMA_TxRxCompleteCallback()
@@ -118,14 +123,41 @@ HAL_StatusTypeDef Magnetometer::Handle_Update_Rate_Registers()
 
 HAL_StatusTypeDef Magnetometer::Perform_Set()
 {
+	current_transmit_buffer[0] = Get_Write_Command(REGISTERS::CONTROL_0);
+	current_transmit_buffer[1] = CONTROL_0_COMMANDS::INTERRUPT_ENABLE | CONTROL_0_COMMANDS::SET;
+
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
+	HAL_StatusTypeDef code = HAL_SPI_TransmitReceive_DMA(spi, current_transmit_buffer, current_receive_buffer, IMU_BUFFER_SIZE);
+
+	Change_Buffer_Pointers();
+
+	return code;
 }
 
 HAL_StatusTypeDef Magnetometer::Perform_Reset()
 {
+	current_transmit_buffer[0] = Get_Write_Command(REGISTERS::CONTROL_0);
+	current_transmit_buffer[1] = CONTROL_0_COMMANDS::INTERRUPT_ENABLE | CONTROL_0_COMMANDS::RESET;
+
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
+	HAL_StatusTypeDef code = HAL_SPI_Transmit_DMA(spi, current_transmit_buffer, 2);
+
+	Change_Buffer_Pointers();
+
+	return code;
 }
 
 HAL_StatusTypeDef Magnetometer::Perform_Measurement()
 {
+	current_transmit_buffer[0] = Get_Write_Command(REGISTERS::CONTROL_0);
+	current_transmit_buffer[1] = CONTROL_0_COMMANDS::INTERRUPT_ENABLE | CONTROL_0_COMMANDS::INIT_MAGNETOMETER_MEASUREMENT;
+
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
+	HAL_StatusTypeDef code = HAL_SPI_Transmit_DMA(spi, current_transmit_buffer, 2);
+
+	Change_Buffer_Pointers();
+
+	return code;
 }
 
 HAL_StatusTypeDef Magnetometer::Enable_Interrupt()

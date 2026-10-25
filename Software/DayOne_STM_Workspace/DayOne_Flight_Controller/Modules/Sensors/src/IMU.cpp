@@ -178,6 +178,7 @@ void IMU::Update_Sensitivities()
 
 void IMU::Task_Perform_Transaction()
 {
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
 	HAL_SPI_TransmitReceive_DMA(spi, current_transmit_buffer, current_receive_buffer, IMU_BUFFER_SIZE);
 }
 
