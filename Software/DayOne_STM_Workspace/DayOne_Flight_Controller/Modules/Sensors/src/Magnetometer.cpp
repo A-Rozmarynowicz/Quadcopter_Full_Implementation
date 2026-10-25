@@ -24,7 +24,7 @@ enum CONTROL_0_COMMANDS : uint8_t
 {
     INIT_TEMP_MEASUREMENT = 0b0000'0010,
     INIT_MAGNETOMETER_MEASUREMENT = 0b0000'0001,
-    INTERRUPT = 0b0000'0100,
+    INTERRUPT_ENABLE = 0b0000'0100,
     SET = 0b0000'1000,
     RESET = 0b0001'0000,
 };
@@ -45,6 +45,9 @@ SENSOR_STATUS Magnetometer::Initialize(MAGNETOMETER_UPDATE_RATES p_update_rate)
 
 	update_rate = p_update_rate;
 
+	bool id_ok = Assert_ID_Register();
+	HAL_StatusTypeDef update_rate_code = Handle_Update_Rate_Registers();
+
 
 }
 
@@ -60,7 +63,18 @@ void Magnetometer::DMA_ErrorCallback()
 
 bool Magnetometer::Assert_ID_Register()
 {
-	return false;
+	current_transmit_buffer[0] = Get_Read_Command(REGISTERS::PRODUCT_ID);
+
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
+	HAL_StatusTypeDef code = HAL_SPI_TransmitReceive(spi, current_transmit_buffer, current_receive_buffer,
+			IMU_BUFFER_SIZE, HAL_MAX_DELAY);
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
+
+	bool ok = current_receive_buffer[1] == TARGET_PRODUCT_ID;
+
+	Change_Buffer_Pointers();
+
+	return (code == HAL_OK) && (ok == true);
 }
 
 void Magnetometer::Measurement_Cycle_Finished()
@@ -92,6 +106,32 @@ HAL_StatusTypeDef Magnetometer::Handle_Update_Rate_Registers()
 {
 	current_transmit_buffer[0] = Get_Write_Command(REGISTERS::CONTROL_1);
 	current_transmit_buffer[1] = Get_Update_Rate_Command();
+
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
+	HAL_StatusTypeDef code = HAL_SPI_Transmit(spi, current_transmit_buffer, 2, HAL_MAX_DELAY);
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
+
+	Change_Buffer_Pointers();
+
+	return code;
+}
+
+HAL_StatusTypeDef Magnetometer::Perform_Set()
+{
+}
+
+HAL_StatusTypeDef Magnetometer::Perform_Reset()
+{
+}
+
+HAL_StatusTypeDef Magnetometer::Perform_Measurement()
+{
+}
+
+HAL_StatusTypeDef Magnetometer::Enable_Interrupt()
+{
+	current_transmit_buffer[0] = Get_Write_Command(REGISTERS::CONTROL_0);
+	current_transmit_buffer[1] = CONTROL_0_COMMANDS::INTERRUPT_ENABLE;
 
 	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
 	HAL_StatusTypeDef code = HAL_SPI_Transmit(spi, current_transmit_buffer, 2, HAL_MAX_DELAY);

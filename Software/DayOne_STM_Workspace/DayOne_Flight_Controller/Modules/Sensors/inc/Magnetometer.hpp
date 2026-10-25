@@ -23,9 +23,14 @@ class Magnetometer : public Sensor<7>
 {
 private:
 	MAGNETOMETER_UPDATE_RATES update_rate;
+	uint8_t measurement_period = 0;
 
 	uint8_t Get_Update_Rate_Command();
 	HAL_StatusTypeDef Handle_Update_Rate_Registers();
+	HAL_StatusTypeDef Perform_Set();
+	HAL_StatusTypeDef Perform_Reset();
+	HAL_StatusTypeDef Perform_Measurement();
+	HAL_StatusTypeDef Enable_Interrupt();
 protected:
 	bool Assert_ID_Register() override;
 public:
