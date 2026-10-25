@@ -247,7 +247,7 @@ HAL_StatusTypeDef Magnetometer::Read_Measurement()
 
 HAL_StatusTypeDef Magnetometer::Clear_Interrupt()
 {
-	if (current_state != MAGNETOMETER_INTERNAL_STATES::RESET)
+	if (current_state != MAGNETOMETER_INTERNAL_STATES::CLEAR_INTERRUPT)
 	{
 		return HAL_ERROR;
 	}
@@ -258,6 +258,8 @@ HAL_StatusTypeDef Magnetometer::Clear_Interrupt()
 	HAL_StatusTypeDef code = HAL_SPI_Transmit_DMA(spi, current_transmit_buffer, 2);
 
 	Change_Buffer_Pointers();
+
+	current_state = MAGNETOMETER_INTERNAL_STATES::SET;
 
 	return code;
 }
