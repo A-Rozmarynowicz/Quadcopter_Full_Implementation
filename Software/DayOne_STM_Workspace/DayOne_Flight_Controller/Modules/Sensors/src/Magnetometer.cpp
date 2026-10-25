@@ -184,6 +184,8 @@ HAL_StatusTypeDef Magnetometer::Perform_Reset()
 
 	Change_Buffer_Pointers();
 
+	current_state = MAGNETOMETER_INTERNAL_STATES::ENABLE_MEASUREMENT_2;
+
 	return code;
 }
 

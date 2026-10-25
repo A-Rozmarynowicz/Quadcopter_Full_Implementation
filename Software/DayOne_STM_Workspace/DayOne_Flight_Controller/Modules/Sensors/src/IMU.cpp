@@ -120,7 +120,6 @@ void IMU::Prepare_For_Measurements()
 
 void IMU::Measurement_Cycle_Finished()
 {
-	data_ready = false;
 	Change_Buffer_Pointers();
 }
 
@@ -187,6 +186,7 @@ bool IMU::Get_Measurement(IMU_Measurement &meas)
 	if (data_ready)
 	{
 		meas = current_measurement;
+		data_ready = false;
 		return true;
 	}
 	return false;
