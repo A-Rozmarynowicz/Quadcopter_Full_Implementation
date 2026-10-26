@@ -39,16 +39,16 @@ void Flight_State::Task_20ms()
 
 void Flight_State::Task_100ms()
 {
+
+}
+
+void Flight_State::Task_1000ms()
+{
     Handle_Ready_Measurements();
     if (full_telemetry_requests_enabled)
     {
         I2C_MESSAGES::Request_Full_Telemetry();
     }
-}
-
-void Flight_State::Task_1000ms()
-{
-
 }
 
 void Flight_State::Handle_Ready_Measurements()

@@ -59,7 +59,7 @@ bool Request_LGHS_Positions_State::Check_For_Position_Response()
 {
     if (Get_Requested_State() != STATES::NONE_STATE){return false;}
     ESP_Packet position_packet;
-    Serial.printf("ESP rec stack Size: %d\n", esp_receive_queue.size());
+    // Serial.printf("ESP rec stack Size: %d\n", esp_receive_queue.size());
     if (!Search_For_ESP_Command(position_packet, ESP_Data_Commands::OBSERVER_RESPONSE_POSITION))
     { return false; }
     Serial.printf("Received some packet from %d vs needed %d\n", position_packet.data[ESP_Data_Setup::TRANSMITTER_ID], current_request_lgh_index);
