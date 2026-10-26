@@ -350,8 +350,7 @@ HAL_StatusTypeDef Magnetometer::Read_Measurement()
     if (!chip_output_ready)
     {
     	read_chip_safety_counter++;
-    	bool sra = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_15);
-        if (read_chip_safety_counter >= 10)
+        if (read_chip_safety_counter >= 5)
         {
         	current_state = MAGNETOMETER_INTERNAL_STATES::RECOVER;
         	read_chip_safety_counter = 0;

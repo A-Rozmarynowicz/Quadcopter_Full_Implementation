@@ -13673,10 +13673,10 @@ HAL_StatusTypeDef Magnetometer::Read_Measurement()
  8004eec:	2301      	movne	r3, #1
  8004eee:	2300      	moveq	r3, #0
  8004ef0:	73bb      	strb	r3, [r7, #14]
-        if (read_chip_safety_counter >= 10)
+        if (read_chip_safety_counter >= 5)
  8004ef2:	687b      	ldr	r3, [r7, #4]
  8004ef4:	8edb      	ldrh	r3, [r3, #54]	@ 0x36
- 8004ef6:	2b09      	cmp	r3, #9
+ 8004ef6:	2b04      	cmp	r3, #4
  8004ef8:	d906      	bls.n	8004f08 <_ZN12Magnetometer16Read_MeasurementEv+0x50>
         {
         	current_state = MAGNETOMETER_INTERNAL_STATES::RECOVER;
