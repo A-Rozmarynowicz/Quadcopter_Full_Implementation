@@ -13,7 +13,6 @@ extern "C" void App_Init(SPI_HandleTypeDef* hspi1, SPI_HandleTypeDef* hspi2)
 	HAL_StatusTypeDef code1 = magnetometer.Reset_Chip();
 	HAL_Delay(15);
 	SENSOR_STATUS code2 = magnetometer.Initialize(MAGNETOMETER_UPDATE_RATES::Hz_580);
-//	magnetometer.Prepare_For_Measurements();
 }
 
 extern "C" void App_Process(void)
@@ -64,7 +63,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 		magnetometer.Data_Ready_EXTI_Handler();
 	}
 }
-#include <math.h>
+
 uint8_t imu_counter = 0;
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim)
 {
@@ -72,14 +71,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim)
 	if (magnetometer.Is_Data_Ready())
 	{
 		Magnetometer_Measurement meas;
-		bool yes = magnetometer.Get_Measurement(meas);
-		int check = 1+2;
-		float total_strength_gauss = sqrtf((meas.mag_x * meas.mag_x) + (meas.mag_y * meas.mag_y) + (meas.mag_z * meas.mag_z));
+		bool measurement_ok = magnetometer.Get_Measurement(meas);
 		HAL_GPIO_TogglePin(STATUS_LED_GPIO_Port, STATUS_LED_Pin);
-		if (total_strength_gauss < 0.2)
-		{
-			int cika = 1 +  4;
-		}
 	}
 //	if (imu_counter == 0)
 //	{
