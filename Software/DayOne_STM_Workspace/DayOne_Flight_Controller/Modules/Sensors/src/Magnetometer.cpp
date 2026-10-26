@@ -123,7 +123,11 @@ void Magnetometer::Task_Perform_Transaction()
 {
     switch (current_state)
     {
-        case MAGNETOMETER_INTERNAL_STATES::SET:
+    	case MAGNETOMETER_INTERNAL_STATES::RECOVER:
+			Recover();
+			break;
+
+    	case MAGNETOMETER_INTERNAL_STATES::SET:
             Perform_Set();
             break;
 
@@ -217,7 +221,7 @@ HAL_StatusTypeDef Magnetometer::Enable_Interrupt()
     return code;
 }
 
-HAL_StatusTypeDef Recover()
+HAL_StatusTypeDef Magnetometer::Recover()
 {
 	current_transmit_buffer[0] =
 		Get_Write_Command(
@@ -237,7 +241,7 @@ HAL_StatusTypeDef Recover()
 	}
 
 	Change_Buffer_Pointers();
-	current_state = MAGNETOMETER_INTERNAL_STATES::SET;
+	current_state = MAGNETOMETER_INTERNAL_STATES::CLEAR_INTERRUPT_2;
 	return code;
 }
 
@@ -346,9 +350,10 @@ HAL_StatusTypeDef Magnetometer::Read_Measurement()
     if (!chip_output_ready)
     {
     	read_chip_safety_counter++;
+    	bool sra = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_15);
         if (read_chip_safety_counter >= 10)
         {
-        	current_state = MAGNETOMETER_INTERNAL_STATES::ENABLE_MEASUREMENT_1;
+        	current_state = MAGNETOMETER_INTERNAL_STATES::RECOVER;
         	read_chip_safety_counter = 0;
         }
     	return HAL_ERROR;
