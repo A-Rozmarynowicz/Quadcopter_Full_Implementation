@@ -3798,20 +3798,21 @@ LOAD C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
                 0x08004d72       0x94 ./Modules/Sensors/src/Magnetometer.o
                 0x08004d72                Magnetometer::Enable_Measurement()
  .text._ZN12Magnetometer16Read_MeasurementEv
-                0x08004e06       0xac ./Modules/Sensors/src/Magnetometer.o
+                0x08004e06       0xaa ./Modules/Sensors/src/Magnetometer.o
                 0x08004e06                Magnetometer::Read_Measurement()
  .text._ZN12Magnetometer15Clear_InterruptEv
-                0x08004eb2       0x94 ./Modules/Sensors/src/Magnetometer.o
-                0x08004eb2                Magnetometer::Clear_Interrupt()
+                0x08004eb0       0x94 ./Modules/Sensors/src/Magnetometer.o
+                0x08004eb0                Magnetometer::Clear_Interrupt()
  .text._ZN12Magnetometer18Assert_ID_RegisterEv
-                0x08004f46       0x94 ./Modules/Sensors/src/Magnetometer.o
-                0x08004f46                Magnetometer::Assert_ID_Register()
+                0x08004f44       0x94 ./Modules/Sensors/src/Magnetometer.o
+                0x08004f44                Magnetometer::Assert_ID_Register()
  .text._ZN12Magnetometer23Get_Update_Rate_CommandEv
-                0x08004fda       0x42 ./Modules/Sensors/src/Magnetometer.o
-                0x08004fda                Magnetometer::Get_Update_Rate_Command()
+                0x08004fd8       0x42 ./Modules/Sensors/src/Magnetometer.o
+                0x08004fd8                Magnetometer::Get_Update_Rate_Command()
  .text._ZN12Magnetometer17Store_MeasurementEPhhR18Raw_Magnetic_Value
-                0x0800501c       0x64 ./Modules/Sensors/src/Magnetometer.o
-                0x0800501c                Magnetometer::Store_Measurement(unsigned char*, unsigned char, Raw_Magnetic_Value&)
+                0x0800501a       0x64 ./Modules/Sensors/src/Magnetometer.o
+                0x0800501a                Magnetometer::Store_Measurement(unsigned char*, unsigned char, Raw_Magnetic_Value&)
+ *fill*         0x0800507e        0x2 
  .text._ZN12Magnetometer10Parse_DataEv
                 0x08005080       0xa0 ./Modules/Sensors/src/Magnetometer.o
                 0x08005080                Magnetometer::Parse_Data()

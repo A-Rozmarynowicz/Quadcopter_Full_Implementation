@@ -217,6 +217,30 @@ HAL_StatusTypeDef Magnetometer::Enable_Interrupt()
     return code;
 }
 
+HAL_StatusTypeDef Recover()
+{
+	current_transmit_buffer[0] =
+		Get_Write_Command(
+			static_cast<uint8_t>(MAGNETOMETER_REGISTERS::CONTROL_0));
+
+	current_transmit_buffer[1] =
+		static_cast<uint8_t>(
+			MAGNETOMETER_CONTROL_0_COMMANDS::INTERRUPT_ENABLE);
+
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
+	HAL_StatusTypeDef code =
+		HAL_SPI_Transmit_DMA(spi, current_transmit_buffer, 2);
+
+	if (code != HAL_OK)
+	{
+		return code;
+	}
+
+	Change_Buffer_Pointers();
+	current_state = MAGNETOMETER_INTERNAL_STATES::SET;
+	return code;
+}
+
 HAL_StatusTypeDef Magnetometer::Perform_Set()
 {
     if (current_state != MAGNETOMETER_INTERNAL_STATES::SET)
@@ -322,7 +346,7 @@ HAL_StatusTypeDef Magnetometer::Read_Measurement()
     if (!chip_output_ready)
     {
     	read_chip_safety_counter++;
-        if (read_chip_safety_counter >= 1000)
+        if (read_chip_safety_counter >= 10)
         {
         	current_state = MAGNETOMETER_INTERNAL_STATES::ENABLE_MEASUREMENT_1;
         	read_chip_safety_counter = 0;
@@ -489,7 +513,6 @@ bool Magnetometer::Parse_Data()
     data_ready = true;
     return true;
 }
-
 
 
 bool Magnetometer::Get_Measurement(Magnetometer_Measurement &meas)
