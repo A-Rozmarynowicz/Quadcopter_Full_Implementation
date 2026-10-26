@@ -14,12 +14,12 @@
 ../Modules/Sensors/src/Magnetometer.cpp:281:19:HAL_StatusTypeDef Magnetometer::Perform_Reset()	3
 ../Modules/Sensors/src/Magnetometer.cpp:314:19:HAL_StatusTypeDef Magnetometer::Enable_Measurement()	4
 ../Modules/Sensors/src/Magnetometer.cpp:348:19:HAL_StatusTypeDef Magnetometer::Read_Measurement()	4
-../Modules/Sensors/src/Magnetometer.cpp:388:19:HAL_StatusTypeDef Magnetometer::Clear_Interrupt()	4
-../Modules/Sensors/src/Magnetometer.cpp:423:6:virtual bool Magnetometer::Assert_ID_Register()	3
-../Modules/Sensors/src/Magnetometer.cpp:450:9:uint8_t Magnetometer::Get_Update_Rate_Command()	5
-../Modules/Sensors/src/Magnetometer.cpp:479:6:bool Magnetometer::Store_Measurement(uint8_t*, uint8_t, Raw_Magnetic_Value&)	2
-../Modules/Sensors/src/Magnetometer.cpp:501:6:bool Magnetometer::Parse_Data()	1
-../Modules/Sensors/src/Magnetometer.cpp:523:6:bool Magnetometer::Get_Measurement(Magnetometer_Measurement&)	2
+../Modules/Sensors/src/Magnetometer.cpp:387:19:HAL_StatusTypeDef Magnetometer::Clear_Interrupt()	4
+../Modules/Sensors/src/Magnetometer.cpp:422:6:virtual bool Magnetometer::Assert_ID_Register()	3
+../Modules/Sensors/src/Magnetometer.cpp:449:9:uint8_t Magnetometer::Get_Update_Rate_Command()	5
+../Modules/Sensors/src/Magnetometer.cpp:478:6:bool Magnetometer::Store_Measurement(uint8_t*, uint8_t, Raw_Magnetic_Value&)	2
+../Modules/Sensors/src/Magnetometer.cpp:500:6:bool Magnetometer::Parse_Data()	1
+../Modules/Sensors/src/Magnetometer.cpp:522:6:bool Magnetometer::Get_Measurement(Magnetometer_Measurement&)	2
 C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/src/Sensor_src.hpp:14:6:void Sensor<BUFFER_SIZE>::Change_Buffer_Pointers() [with unsigned int BUFFER_SIZE = 7]	2
 C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/src/Sensor_src.hpp:35:9:uint8_t Sensor<BUFFER_SIZE>::Get_Write_Command(uint8_t) [with unsigned int BUFFER_SIZE = 7]	1
 C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/src/Sensor_src.hpp:41:9:uint8_t Sensor<BUFFER_SIZE>::Get_Read_Command(uint8_t) [with unsigned int BUFFER_SIZE = 7]	1
