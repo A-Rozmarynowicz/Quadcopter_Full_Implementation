@@ -20,6 +20,18 @@ extern "C" void App_Process(void)
     // Your application logic
 }
 
+void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi)
+{
+    if (hspi->Instance == SPI1)
+    {
+        imu.DMA_TxCompleteCallback();
+    }
+    if (hspi->Instance == SPI2)
+    {
+        magnetometer.DMA_TxCompleteCallback();
+    }
+}
+
 void HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef *hspi)
 {
     if (hspi->Instance == SPI1)
@@ -57,6 +69,12 @@ uint8_t imu_counter = 0;
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim)
 {
 	magnetometer.Task_Perform_Transaction();
+	if (magnetometer.Is_Data_Ready())
+	{
+		Magnetometer_Measurement meas;
+		magnetometer.Get_Measurement(meas);
+		int check = 1+2;
+	}
 //	if (imu_counter == 0)
 //	{
 //		imu_counter = 1;

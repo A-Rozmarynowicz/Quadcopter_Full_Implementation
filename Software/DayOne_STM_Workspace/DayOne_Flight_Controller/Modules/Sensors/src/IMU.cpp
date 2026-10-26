@@ -287,6 +287,11 @@ void IMU::Task_Perform_Transaction()
     }
 }
 
+void IMU::DMA_TxCompleteCallback()
+{
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
+}
+
 bool IMU::Get_Measurement(IMU_Measurement &meas)
 {
     if (data_ready)

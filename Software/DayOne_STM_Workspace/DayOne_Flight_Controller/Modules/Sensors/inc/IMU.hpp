@@ -55,6 +55,7 @@ public:
 			IMU_GYRO_SCALE p_gyro_scale);
 
 	void DMA_TxRxCompleteCallback() override;
+	void DMA_TxCompleteCallback() override;
 	void DMA_ErrorCallback() override;
 
 	void Prepare_For_Measurements() override;

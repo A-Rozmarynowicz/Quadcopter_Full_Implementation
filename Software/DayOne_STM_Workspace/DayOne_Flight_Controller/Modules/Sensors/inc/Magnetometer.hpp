@@ -70,6 +70,7 @@ public:
 	void Prepare_For_Measurements() override;
 
 	void DMA_TxRxCompleteCallback() override;
+	void DMA_TxCompleteCallback() override;
 	void DMA_ErrorCallback() override;
 
 	void Measurement_Cycle_Finished() override;
