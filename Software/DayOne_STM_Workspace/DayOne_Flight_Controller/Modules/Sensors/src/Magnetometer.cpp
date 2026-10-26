@@ -162,6 +162,23 @@ void Magnetometer::Task_Perform_Transaction()
 
 #pragma region Data_Transmission
 
+HAL_StatusTypeDef Magnetometer::Reset_Chip()
+{
+	current_transmit_buffer[0] =
+		Get_Write_Command(
+			static_cast<uint8_t>(MAGNETOMETER_REGISTERS::CONTROL_1));
+
+	current_transmit_buffer[1] = static_cast<uint8_t>(MAGNETOMETER_CONTROL_1_COMMANDS::CHIP_RESET);
+
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
+	HAL_StatusTypeDef code =
+		HAL_SPI_Transmit_DMA(spi, current_transmit_buffer, 2);
+
+	Change_Buffer_Pointers();
+
+	return code;
+}
+
 HAL_StatusTypeDef Magnetometer::Handle_Update_Rate_Registers()
 {
     current_transmit_buffer[0] =
@@ -223,7 +240,7 @@ HAL_StatusTypeDef Magnetometer::Perform_Set()
 
     if (code != HAL_OK)
     {
-    	return;
+    	return code;
     }
 
     Change_Buffer_Pointers();
@@ -255,9 +272,9 @@ HAL_StatusTypeDef Magnetometer::Perform_Reset()
         HAL_SPI_Transmit_DMA(spi, current_transmit_buffer, 2);
 
     if (code != HAL_OK)
-        {
-        	return;
-        }
+	{
+		return code;
+	}
 
     Change_Buffer_Pointers();
 
@@ -284,7 +301,7 @@ HAL_StatusTypeDef Magnetometer::Enable_Measurement()
 
     if (code != HAL_OK)
 	{
-		return;
+		return code;
 	}
 
     Change_Buffer_Pointers();
@@ -304,8 +321,15 @@ HAL_StatusTypeDef Magnetometer::Read_Measurement()
 {
     if (!chip_output_ready)
     {
-        return HAL_ERROR;
+    	read_chip_safety_counter++;
+        if (read_chip_safety_counter >= 1000)
+        {
+        	current_state = MAGNETOMETER_INTERNAL_STATES::ENABLE_MEASUREMENT_1;
+        	read_chip_safety_counter = 0;
+        }
+    	return HAL_ERROR;
     }
+    read_chip_safety_counter = 0;
 
     chip_output_ready = false;
 
@@ -351,7 +375,7 @@ HAL_StatusTypeDef Magnetometer::Clear_Interrupt()
 
     if (code != HAL_OK)
 	{
-		return;
+		return code;
 	}
 
     Change_Buffer_Pointers();
@@ -465,6 +489,7 @@ bool Magnetometer::Parse_Data()
     data_ready = true;
     return true;
 }
+
 
 
 bool Magnetometer::Get_Measurement(Magnetometer_Measurement &meas)

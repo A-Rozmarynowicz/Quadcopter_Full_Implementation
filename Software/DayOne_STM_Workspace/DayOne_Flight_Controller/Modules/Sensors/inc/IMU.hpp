@@ -58,6 +58,7 @@ public:
 	void DMA_TxCompleteCallback() override;
 	void DMA_ErrorCallback() override;
 
+	HAL_StatusTypeDef Reset_Chip() override;
 	void Prepare_For_Measurements() override;
 	void Measurement_Cycle_Finished() override;
 	void Task_Perform_Transaction() override;

@@ -41,6 +41,7 @@ class Magnetometer : public Sensor<7>
 {
 private:
 	bool chip_output_ready = false;
+	uint16_t read_chip_safety_counter = 0;
 
 	MAGNETOMETER_UPDATE_RATES update_rate;
 	MAGNETOMETER_INTERNAL_STATES current_state = MAGNETOMETER_INTERNAL_STATES::INIT;
@@ -73,6 +74,7 @@ public:
 	void DMA_TxCompleteCallback() override;
 	void DMA_ErrorCallback() override;
 
+	HAL_StatusTypeDef Reset_Chip() override;
 	void Measurement_Cycle_Finished() override;
 	void Task_Perform_Transaction() override;
 

@@ -292,6 +292,9 @@ void IMU::DMA_TxCompleteCallback()
 	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
 }
 
+HAL_StatusTypeDef IMU::Reset_Chip() {
+}
+
 bool IMU::Get_Measurement(IMU_Measurement &meas)
 {
     if (data_ready)
