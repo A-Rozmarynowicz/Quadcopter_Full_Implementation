@@ -32,9 +32,9 @@ enum class MAGNETOMETER_CONTROL_0_COMMANDS : uint8_t
 
 enum class MAGNETOMETER_CONTROL_1_COMMANDS : uint8_t
 {
-    BW_100HZ = 0b0000'0000,
-    BW_200HZ = 0b0000'0001,
-    BW_400HZ = 0b0000'0010,
+    BW_100HZ = 0b0000'0001,
+    BW_225HZ = 0b0000'0010,
+    BW_580HZ = 0b0000'0011,
     CHIP_RESET = 0b1000'0000,
 };
 
@@ -382,16 +382,16 @@ uint8_t Magnetometer::Get_Update_Rate_Command()
                     MAGNETOMETER_CONTROL_1_COMMANDS::BW_100HZ);
             break;
 
-        case MAGNETOMETER_UPDATE_RATES::Hz_200:
+        case MAGNETOMETER_UPDATE_RATES::Hz_225:
             command =
                 static_cast<uint8_t>(
-                    MAGNETOMETER_CONTROL_1_COMMANDS::BW_200HZ);
+                    MAGNETOMETER_CONTROL_1_COMMANDS::BW_225HZ);
             break;
 
-        case MAGNETOMETER_UPDATE_RATES::Hz_400:
+        case MAGNETOMETER_UPDATE_RATES::Hz_580:
             command =
                 static_cast<uint8_t>(
-                    MAGNETOMETER_CONTROL_1_COMMANDS::BW_400HZ);
+                    MAGNETOMETER_CONTROL_1_COMMANDS::BW_580HZ);
             break;
     }
 

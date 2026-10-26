@@ -11,7 +11,7 @@ extern "C" void App_Init(SPI_HandleTypeDef* hspi1, SPI_HandleTypeDef* hspi2)
 //    imu.Prepare_For_Measurements();
 
 	magnetometer.Setup(hspi2, MAGNETOMETER_CS_GPIO_Port, MAGNETOMETER_CS_Pin);
-	SENSOR_STATUS code = magnetometer.Initialize(MAGNETOMETER_UPDATE_RATES::Hz_400);
+	SENSOR_STATUS code = magnetometer.Initialize(MAGNETOMETER_UPDATE_RATES::Hz_225);
 //	magnetometer.Prepare_For_Measurements();
 }
 
@@ -60,7 +60,6 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
 	if (GPIO_Pin == MAGNETOMETER_INTERRUPT_Pin)
 	{
-		HAL_GPIO_TogglePin(STATUS_LED_GPIO_Port, STATUS_LED_Pin);
 		magnetometer.Data_Ready_EXTI_Handler();
 	}
 }
@@ -74,6 +73,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim)
 		Magnetometer_Measurement meas;
 		magnetometer.Get_Measurement(meas);
 		int check = 1+2;
+		HAL_GPIO_TogglePin(STATUS_LED_GPIO_Port, STATUS_LED_Pin);
 	}
 //	if (imu_counter == 0)
 //	{

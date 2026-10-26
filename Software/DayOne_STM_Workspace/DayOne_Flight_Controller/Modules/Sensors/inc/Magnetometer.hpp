@@ -20,8 +20,8 @@ struct Raw_Magnetic_Value
 enum class MAGNETOMETER_UPDATE_RATES
 {
 	Hz_100,
-	Hz_200,
-	Hz_400,
+	Hz_225,
+	Hz_580,
 };
 
 enum class MAGNETOMETER_INTERNAL_STATES : uint8_t
