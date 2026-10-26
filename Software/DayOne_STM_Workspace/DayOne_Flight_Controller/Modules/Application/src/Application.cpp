@@ -12,7 +12,7 @@ extern "C" void App_Init(SPI_HandleTypeDef* hspi1, SPI_HandleTypeDef* hspi2)
 
 	magnetometer.Setup(hspi2, MAGNETOMETER_CS_GPIO_Port, MAGNETOMETER_CS_Pin);
 	SENSOR_STATUS code = magnetometer.Initialize(MAGNETOMETER_UPDATE_RATES::Hz_400);
-	magnetometer.Prepare_For_Measurements();
+//	magnetometer.Prepare_For_Measurements();
 }
 
 extern "C" void App_Process(void)
