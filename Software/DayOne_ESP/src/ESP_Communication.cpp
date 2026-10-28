@@ -121,7 +121,7 @@ void _receive_callback(const uint8_t* macAddr, const uint8_t* data, int dataLen)
   {
     return;
   }
-  Serial.printf("TRANSMITTTER: %d\n", data[ESP_Data_Setup::TRANSMITTER_ID]);
+  // Serial.printf("TRANSMITTTER: %d\n", data[ESP_Data_Setup::TRANSMITTER_ID]);
   ESP_Packet packet;
 
   std::copy(data, data + dataLen, packet.data);
