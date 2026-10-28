@@ -54,6 +54,7 @@ void Restart_UWB_As_Tag(){
     DW1000Ranging.attachInactiveDevice(_inactive_device);
     DW1000.setAntennaDelay(BASE_ANTENNA_DELAY_VALUE);
 
+    DW1000.useExtendedFrameLength(true);
     DW1000Ranging.setReplyTime(UWB_RESPONSE_DELAY_TIME);
 
     char address_str[24] = {0};
@@ -68,6 +69,7 @@ void Restart_UWB_As_Tag(){
     // down from 7000us to 1500us before starting the state machine
     // DW1000Ranging.setReplyTime(UWB_RESPONSE_DELAY_TIME);
 
+    DW1000Ranging.useRangeFilter(true);
     DW1000Ranging.setResetPeriod(UWB_RESET_TIME);
     DW1000.setChannel(CHANNEL);
     DW1000.useSmartPower(false);
@@ -166,7 +168,10 @@ void _new_range()
     float rx_power = DW1000Ranging.getDistantDevice()->getRXPower();
     int8_t lgh_index = Get_LGH_From_Short_Address(device);
 
-    Serial.printf("GOT RANGE FROM %d\n", lgh_index);
+    if (lgh_index == 3)
+    {
+        // Serial.printf("RANGE TO %d = %0.3f\n", lgh_index, range);
+    }
 
     if (lgh_index < 0 || lgh_index > NUMBER_OF_LIGHTHOUSES - 1)
     {

@@ -44,7 +44,6 @@ void Flight_State::Task_100ms()
 
 void Flight_State::Task_1000ms()
 {
-    return;
     Handle_Ready_Measurements();
     if (full_telemetry_requests_enabled)
     {

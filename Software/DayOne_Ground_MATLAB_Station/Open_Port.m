@@ -2,7 +2,7 @@ function s = Open_Port(port, baudrate)
 
     s = serialport(port, baudrate);
     configureTerminator(s, "LF");
-    s.Timeout = 30;
+    s.Timeout = 50;
     
     flush(s);
     
