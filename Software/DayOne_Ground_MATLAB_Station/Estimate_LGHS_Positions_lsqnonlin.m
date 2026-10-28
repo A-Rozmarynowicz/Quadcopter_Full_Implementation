@@ -118,6 +118,8 @@ function [P, dFit, residuals, rmse] = Estimate_LGHS_Positions_lsqnonlin(d)
 
     P = parametersToPoints(bestTheta,N);
 
+    P(:, 3) = P(:, 3) * sign(P(4, 3));
+
     % Calculate fitted distances.
     dFit = zeros(M,1);
 
