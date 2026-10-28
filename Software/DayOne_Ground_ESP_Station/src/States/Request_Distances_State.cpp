@@ -16,6 +16,9 @@ void Request_Distances_State::Receive_Callback(ESP_Packet& esp_packet)
         Serial.println("Received distances from master LGHS\n");
         Request_Change_State(STATES::MATLAB_EXCHANGE_STATE);
     }
+    else if (esp_packet.data[ESP_Data_Setup::COMMAND] == ESP_Data_Commands::MASTER_READY_FOR_GROUND_STATION_EXCHANGE) {
+        Serial.println("MASTER READY FOR DATA EXCHANGE\n");
+    }
 }
 
 void Request_Distances_State::Handle_Serial_Message(uint8_t command, const float (&values)[MAX_NUMBER_OF_VALUES_IN_TRANSFER], uint8_t value_count)
