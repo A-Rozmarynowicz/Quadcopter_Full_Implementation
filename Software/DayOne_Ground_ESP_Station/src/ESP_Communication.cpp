@@ -15,6 +15,21 @@ bool ESP_MESSAGES::Send_Master_Start_All_Configuration()
   return esp_transmit_queue.push(packet);
 }
 
+
+bool Send_UWB_Settings(uint8_t receiver, uint16_t response_delay_time, uint32_t reset_time, uint8_t channel)
+{
+  ESP_Packet packet{};
+  packet.data[ESP_Data_Setup::RECEIVER_ID] = receiver;
+  packet.data[ESP_Data_Setup::TRANSMITTER_ID] = GROUND_STATION_ID;
+  packet.data[ESP_Data_Setup::COMMAND] = ESP_Data_Commands::LGHS_SET_UWB_PARAMETERS;
+
+  memcpy(&packet.data[ESP_Data_Setup::QUAD_0], &response_delay_time, sizeof(uint16_t));
+  memcpy(&packet.data[ESP_Data_Setup::QUAD_1], &reset_time, sizeof(uint32_t));
+  packet.data[ESP_Data_Setup::SINGLE_0] = channel;
+
+  return esp_transmit_queue.push(packet);
+}
+
 bool ESP_MESSAGES::Send_Ground_Station_Query_Distances()
 {
   ESP_Packet packet{};

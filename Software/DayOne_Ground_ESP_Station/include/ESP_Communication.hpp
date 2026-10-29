@@ -24,6 +24,7 @@ enum ESP_Communication_Errors
 namespace ESP_MESSAGES
 {
   bool Send_Master_Start_All_Configuration();
+  bool Send_UWB_Settings(uint8_t receiver, uint16_t response_delay_time, uint32_t reset_time, uint8_t channel);
 
   bool Send_Ground_Station_Query_Distances();
   bool Send_Ground_Station_Update_Position(uint8_t lghs_id, Position& position);
