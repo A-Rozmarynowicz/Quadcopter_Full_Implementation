@@ -9,6 +9,7 @@
 enum class SERIAL_COMMANDS
 {
     RELAY = 1,
+    MASTER_START_ALL_CONFIGURATION,
     REQUEST_MEASUREMENTS,
     SEND_POSITIONS,
     ACK_RECEIVED_POSITIONS,
@@ -38,8 +39,9 @@ struct CommandInfo {
     uint8_t expectedCount;
 };
 
-constexpr std::array<CommandInfo, 19> commandTable {{
+constexpr std::array<CommandInfo, 20> commandTable {{
     {SERIAL_COMMANDS::RELAY,                          0},
+    {SERIAL_COMMANDS::MASTER_START_ALL_CONFIGURATION, 0},
     {SERIAL_COMMANDS::REQUEST_MEASUREMENTS,           0},
     {SERIAL_COMMANDS::SEND_POSITIONS,                POSITION_TRANSFER_DATA_LENGTH},
     {SERIAL_COMMANDS::ACK_RECEIVED_POSITIONS,         0},

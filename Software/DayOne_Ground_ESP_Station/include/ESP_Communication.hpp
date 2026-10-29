@@ -23,6 +23,8 @@ enum ESP_Communication_Errors
 
 namespace ESP_MESSAGES
 {
+  bool Send_Master_Start_All_Configuration();
+
   bool Send_Ground_Station_Query_Distances();
   bool Send_Ground_Station_Update_Position(uint8_t lghs_id, Position& position);
   bool Send_Ground_Station_Position_Transfer_Done();

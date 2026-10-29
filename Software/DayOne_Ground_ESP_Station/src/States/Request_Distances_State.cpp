@@ -37,6 +37,12 @@ void Request_Distances_State::Handle_Serial_Message(uint8_t command, const float
             }
             break;
 
+        case static_cast<uint8_t>(SERIAL_COMMANDS::MASTER_START_ALL_CONFIGURATION):
+            if (value_count == 0) {
+                ESP_MESSAGES::Send_Master_Start_All_Configuration();
+            }
+            break;
+
         default:
             Serial.println("Unknown command");
             break;
