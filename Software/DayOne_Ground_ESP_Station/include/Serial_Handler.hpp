@@ -20,6 +20,7 @@ enum class SERIAL_COMMANDS
     ENABLE_ESP_SEND_POSITIONS,
     REQUEST_CURRENT_LGH_STATE,
     CHANGE_TO_MANUAL_OPERATION_STATE,
+    LGHS_UWB_SETTINGS_SET,
 
     HEARTBEAT,
     QUADCOPTER_INIT,
@@ -39,7 +40,7 @@ struct CommandInfo {
     uint8_t expectedCount;
 };
 
-constexpr std::array<CommandInfo, 20> commandTable {{
+constexpr std::array<CommandInfo, 21> commandTable {{
     {SERIAL_COMMANDS::RELAY,                          0},
     {SERIAL_COMMANDS::MASTER_START_ALL_CONFIGURATION, 0},
     {SERIAL_COMMANDS::REQUEST_MEASUREMENTS,           0},
@@ -52,6 +53,7 @@ constexpr std::array<CommandInfo, 20> commandTable {{
     {SERIAL_COMMANDS::ENABLE_ESP_SEND_POSITIONS,      0},
     {SERIAL_COMMANDS::REQUEST_CURRENT_LGH_STATE,      1},
     {SERIAL_COMMANDS::CHANGE_TO_MANUAL_OPERATION_STATE, 0},
+    {SERIAL_COMMANDS::LGHS_UWB_SETTINGS_SET, 4},
     {SERIAL_COMMANDS::HEARTBEAT, 0},
     {SERIAL_COMMANDS::QUADCOPTER_INIT, 0},
     {SERIAL_COMMANDS::QUADCOPTER_HOVER, 1},
