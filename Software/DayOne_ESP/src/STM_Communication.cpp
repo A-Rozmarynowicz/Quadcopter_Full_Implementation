@@ -3,8 +3,8 @@
 
 #include <cstring>
 
-Queue<I2C_Packet, I2C_RECEIVE_QUEUE_SIZE> i2c_receive_queue;
-Queue<I2C_Packet, I2C_TRANSMIT_QUEUE_SIZE> i2c_transmit_queue;
+Queue<I2C_Packet<I2C_RX_DATA_SIZE>, I2C_RECEIVE_QUEUE_SIZE> i2c_receive_queue;
+Queue<I2C_Packet<I2C_TX_DATA_SIZE>, I2C_TRANSMIT_QUEUE_SIZE> i2c_transmit_queue;
 
 
 bool Initialize_I2C()
@@ -25,7 +25,7 @@ void Flush_Unused_STM_Received_Packets()
   {
     if (i2c_receive_queue[i2c_receive_queue.get_head_offset_index(i)].Is_For_Flush())
     {
-      I2C_Packet proxy;
+      I2C_Packet<I2C_RX_DATA_SIZE> proxy;
       i2c_receive_queue.pop(proxy);
     }
     else
@@ -37,14 +37,9 @@ void Flush_Unused_STM_Received_Packets()
 
 bool Send_I2C()
 {
-    I2C_Packet packet{};
+    I2C_Packet<I2C_TX_DATA_SIZE> packet{};
 
     if (!i2c_transmit_queue.pop(packet))
-    {
-        return false;
-    }
-
-    if (packet.length == 0 || packet.length > I2C_DATA_SIZE)
     {
         return false;
     }
@@ -83,10 +78,10 @@ bool _read_I2C_full_telemetry()
 {
     const size_t received = Wire.requestFrom(
         static_cast<uint8_t>(STM_I2C_ADDRESS),
-        static_cast<size_t>(I2C_TELEMETRY_SIZE)
+        static_cast<size_t>(I2C_RX_DATA_SIZE)
     );
 
-    if (received != I2C_TELEMETRY_SIZE)
+    if (received != I2C_RX_DATA_SIZE)
     {
         // Discard any partial response.
         while (Wire.available() > 0)
@@ -97,10 +92,9 @@ bool _read_I2C_full_telemetry()
         return false;
     }
 
-    I2C_Packet response{};
-    response.length = I2C_TELEMETRY_SIZE;
+    I2C_Packet<I2C_RX_DATA_SIZE> response{};
 
-    for (std::size_t i = 0; i < I2C_TELEMETRY_SIZE; ++i)
+    for (std::size_t i = 0; i < I2C_RX_DATA_SIZE; ++i)
     {
         if (Wire.available() <= 0)
         {
@@ -127,13 +121,11 @@ bool _read_I2C_full_telemetry()
 
 bool I2C_MESSAGES::Send_Quadcopter_Init()
 {
-    I2C_Packet packet{};
+    I2C_Packet<I2C_TX_DATA_SIZE> packet{};
 
     packet.data[
         static_cast<std::size_t>(I2C_Data_Setup::COMMAND)
     ] = I2C_Data_Commands::QUADCOPTER_INIT;
-
-    packet.length = 1;
 
     return i2c_transmit_queue.push(packet);
 }
