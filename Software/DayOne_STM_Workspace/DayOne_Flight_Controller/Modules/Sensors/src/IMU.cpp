@@ -6,6 +6,7 @@ enum class IMU_REGISTERS : uint8_t
     IMU_WHOAMI_REG = 0x0F,          // Product ID
     IMU_CTRL1_ACC_REG = 0x10,       // Accelerometer settings
     IMU_CTRL2_GYRO_REG = 0x11,      // Gyroscope settings
+    IMU_CTRL3_REG = 0x12,      // Reset and other settings
 
     IMU_TEMP_REG = 0x20,            // Temperature read register
     IMU_MEASUREMENT_REG = 0x22,     // Measurement read register
@@ -292,7 +293,28 @@ void IMU::DMA_TxCompleteCallback()
 	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
 }
 
-HAL_StatusTypeDef IMU::Reset_Chip() {
+HAL_StatusTypeDef IMU::Reset_Chip()
+{
+    current_transmit_buffer[0] =
+        Get_Write_Command(
+            static_cast<uint8_t>(IMU_REGISTERS::IMU_CTRL3_REG));
+
+    current_transmit_buffer[1] = 0b0000'0101;
+
+    HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
+
+    HAL_StatusTypeDef code =
+        HAL_SPI_Transmit(
+            spi,
+            current_transmit_buffer,
+            2,
+            HAL_MAX_DELAY);
+
+    HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
+
+    Change_Buffer_Pointers();
+
+    return code;
 }
 
 bool IMU::Get_Measurement(IMU_Measurement &meas)
