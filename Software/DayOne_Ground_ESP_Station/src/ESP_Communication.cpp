@@ -16,7 +16,7 @@ bool ESP_MESSAGES::Send_Master_Start_All_Configuration()
 }
 
 
-bool Send_UWB_Settings(uint8_t receiver, uint16_t response_delay_time, uint32_t reset_time, uint8_t channel)
+bool ESP_MESSAGES::Send_UWB_Settings(uint8_t receiver, uint16_t response_delay_time, uint32_t reset_time, uint8_t channel)
 {
   ESP_Packet packet{};
   packet.data[ESP_Data_Setup::RECEIVER_ID] = receiver;
