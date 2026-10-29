@@ -47,7 +47,6 @@ uint8_t Get_Averaged_Results(
         average_distances[i].range = range_accumulator[i];
         average_distances[i].lgh_index = i;
         last_averaged_ranges[i] = range_accumulator[i];
-        Serial.printf("Range to %d = %0.2f \n", i, range_accumulator[i]);
     }
 
     return missing_lghs_penalty;
@@ -93,26 +92,48 @@ void _get_average_ranges(
     {
         if (uwb_stacks[i].empty())
         {
-            continue;
-        }
-        for (uint8_t j=0; j<MAX_NUMBER_OF_RANGES_PER_LIGHTHOUSE; j++)
-        {
-            UWB_Measurement uwb;
-            if (!uwb_stacks[i].pop(uwb))
-            {
-                break;
-            }
-            range_accumulator[i] += uwb.range;
-            count_accumulator[i]++;
-        };
-        uwb_stacks[i].flush(); // @todo: for sure?
-        if (count_accumulator[i] == 0)
-        {
             range_accumulator[i] = last_averaged_ranges[i];
-            continue;
         }
-        range_accumulator[i] = range_accumulator[i] / count_accumulator[i];
-    };
+        else
+        {
+            count_accumulator[i] = uwb_stacks[i].size();
+            UWB_Measurement uwb;
+            uwb_stacks[i].pop(uwb);
+            range_accumulator[i] = uwb.range;
+            uwb_stacks[i].flush();
+        }
+        Serial.printf("L: %d, M: %d, R: %0.2f \n", i, count_accumulator[i], range_accumulator[i]);
+    }
+    return;
+
+    // uint8_t count_accumulator[NUMBER_OF_LIGHTHOUSES] = {0};
+    // for (uint8_t i=0; i<NUMBER_OF_LIGHTHOUSES; i++)
+    // {
+    //     if (uwb_stacks[i].empty())
+    //     {
+    //         continue;
+    //     }
+    //     for (uint8_t j=0; j<MAX_NUMBER_OF_RANGES_PER_LIGHTHOUSE; j++)
+    //     {
+    //         UWB_Measurement uwb;
+    //         if (!uwb_stacks[i].pop(uwb))
+    //         {
+    //             break;
+    //         }
+    //         range_accumulator[i] += uwb.range;
+    //         count_accumulator[i]++;
+    //     };
+    //     uwb_stacks[i].flush(); // @todo: for sure?
+
+    //     if (count_accumulator[i] == 0)
+    //     {
+    //         range_accumulator[i] = last_averaged_ranges[i];
+    //         continue;
+    //     }
+
+    //     range_accumulator[i] = range_accumulator[i] / count_accumulator[i];
+    //     Serial.printf("L: %d, M: %d, R: %0.2f \n", i, count_accumulator[i], range_accumulator[i]);
+    // };
 
 }
 

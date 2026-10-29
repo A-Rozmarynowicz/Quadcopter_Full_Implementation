@@ -71,7 +71,7 @@ uint8_t Flight_State::Parse_Measurements()
     uint8_t penalty = Calculate_Position(uwb_measurement_stacks, current_calculated_position);
     if (penalty < MAX_MISSING_LGHS_PENALTY)
     {
-        I2C_MESSAGES::Send_Current_Position(current_calculated_position);
+        // I2C_MESSAGES::Send_Current_Position(current_calculated_position);
         Serial.printf("SENT: x = %0.2f, y = %0.2f, z = %0.2f \n", current_calculated_position.x, current_calculated_position.y, current_calculated_position.z);
     }
     return penalty;
