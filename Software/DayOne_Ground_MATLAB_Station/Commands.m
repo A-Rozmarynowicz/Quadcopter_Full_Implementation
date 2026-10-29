@@ -24,6 +24,8 @@ classdef Commands < int32
         QUADCOPTER_ESP_RESET (21)
         QUADCOPTER_STM_RESET (22)
         
+        GROUND_STATION_CONTINUE_FROM_INITIAL_STATE (23)
+
         ERROR (99)
     end
 end
