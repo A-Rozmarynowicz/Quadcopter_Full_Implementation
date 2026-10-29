@@ -1,7 +1,9 @@
 #include "Sensors/inc/Magnetometer.hpp"
 #include "stm32f4xx_hal.h"
 
-constexpr float MAG_SENSITIVITY = 4096.0;
+//NOTE: it's negative because normally Magnetometer's and IMU's
+// axes are reversed.
+constexpr float MAG_SENSITIVITY = -4096.0;
 
 enum class MAGNETOMETER_REGISTERS : uint8_t
 {
