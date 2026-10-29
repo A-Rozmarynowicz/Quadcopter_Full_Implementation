@@ -1,25 +1,25 @@
-../Modules/Sensors/src/Magnetometer.cpp:43:15:SENSOR_STATUS Magnetometer::Initialize(MAGNETOMETER_UPDATE_RATES)	24	static
-../Modules/Sensors/src/Magnetometer.cpp:66:6:virtual void Magnetometer::DMA_TxRxCompleteCallback()	16	static
-../Modules/Sensors/src/Magnetometer.cpp:95:6:virtual void Magnetometer::DMA_TxCompleteCallback()	16	static
-../Modules/Sensors/src/Magnetometer.cpp:100:6:virtual void Magnetometer::DMA_ErrorCallback()	16	static
-../Modules/Sensors/src/Magnetometer.cpp:105:6:void Magnetometer::Data_Ready_EXTI_Handler()	16	static
-../Modules/Sensors/src/Magnetometer.cpp:114:6:virtual void Magnetometer::Measurement_Cycle_Finished()	16	static
-../Modules/Sensors/src/Magnetometer.cpp:118:6:virtual void Magnetometer::Prepare_For_Measurements()	16	static
-../Modules/Sensors/src/Magnetometer.cpp:122:6:virtual void Magnetometer::Task_Perform_Transaction()	16	static
-../Modules/Sensors/src/Magnetometer.cpp:169:19:virtual HAL_StatusTypeDef Magnetometer::Reset_Chip()	32	static
-../Modules/Sensors/src/Magnetometer.cpp:186:19:HAL_StatusTypeDef Magnetometer::Handle_Update_Rate_Registers()	32	static
-../Modules/Sensors/src/Magnetometer.cpp:204:19:HAL_StatusTypeDef Magnetometer::Enable_Interrupt()	32	static
-../Modules/Sensors/src/Magnetometer.cpp:224:19:HAL_StatusTypeDef Magnetometer::Recover()	32	static
-../Modules/Sensors/src/Magnetometer.cpp:248:19:HAL_StatusTypeDef Magnetometer::Perform_Set()	32	static
-../Modules/Sensors/src/Magnetometer.cpp:281:19:HAL_StatusTypeDef Magnetometer::Perform_Reset()	32	static
-../Modules/Sensors/src/Magnetometer.cpp:314:19:HAL_StatusTypeDef Magnetometer::Enable_Measurement()	32	static
-../Modules/Sensors/src/Magnetometer.cpp:348:19:HAL_StatusTypeDef Magnetometer::Read_Measurement()	32	static
-../Modules/Sensors/src/Magnetometer.cpp:387:19:HAL_StatusTypeDef Magnetometer::Clear_Interrupt()	32	static
-../Modules/Sensors/src/Magnetometer.cpp:422:6:virtual bool Magnetometer::Assert_ID_Register()	40	static
-../Modules/Sensors/src/Magnetometer.cpp:449:9:uint8_t Magnetometer::Get_Update_Rate_Command()	24	static
-../Modules/Sensors/src/Magnetometer.cpp:478:6:bool Magnetometer::Store_Measurement(uint8_t*, uint8_t, Raw_Magnetic_Value&)	24	static
-../Modules/Sensors/src/Magnetometer.cpp:500:6:bool Magnetometer::Parse_Data()	16	static
-../Modules/Sensors/src/Magnetometer.cpp:522:6:bool Magnetometer::Get_Measurement(Magnetometer_Measurement&)	16	static
+../Modules/Sensors/src/Magnetometer.cpp:49:15:SENSOR_STATUS Magnetometer::Initialize(MAGNETOMETER_UPDATE_RATES)	24	static
+../Modules/Sensors/src/Magnetometer.cpp:72:6:virtual void Magnetometer::DMA_TxRxCompleteCallback()	16	static
+../Modules/Sensors/src/Magnetometer.cpp:101:6:virtual void Magnetometer::DMA_TxCompleteCallback()	16	static
+../Modules/Sensors/src/Magnetometer.cpp:106:6:virtual void Magnetometer::DMA_ErrorCallback()	16	static
+../Modules/Sensors/src/Magnetometer.cpp:111:6:void Magnetometer::Data_Ready_EXTI_Handler()	16	static
+../Modules/Sensors/src/Magnetometer.cpp:120:6:virtual void Magnetometer::Measurement_Cycle_Finished()	16	static
+../Modules/Sensors/src/Magnetometer.cpp:124:6:virtual void Magnetometer::Prepare_For_Measurements()	16	static
+../Modules/Sensors/src/Magnetometer.cpp:128:6:virtual void Magnetometer::Task_Perform_Transaction()	16	static
+../Modules/Sensors/src/Magnetometer.cpp:175:19:virtual HAL_StatusTypeDef Magnetometer::Reset_Chip()	32	static
+../Modules/Sensors/src/Magnetometer.cpp:192:19:HAL_StatusTypeDef Magnetometer::Handle_Update_Rate_Registers()	32	static
+../Modules/Sensors/src/Magnetometer.cpp:210:19:HAL_StatusTypeDef Magnetometer::Enable_Interrupt()	32	static
+../Modules/Sensors/src/Magnetometer.cpp:230:19:HAL_StatusTypeDef Magnetometer::Recover()	32	static
+../Modules/Sensors/src/Magnetometer.cpp:254:19:HAL_StatusTypeDef Magnetometer::Perform_Set()	32	static
+../Modules/Sensors/src/Magnetometer.cpp:287:19:HAL_StatusTypeDef Magnetometer::Perform_Reset()	32	static
+../Modules/Sensors/src/Magnetometer.cpp:320:19:HAL_StatusTypeDef Magnetometer::Enable_Measurement()	32	static
+../Modules/Sensors/src/Magnetometer.cpp:354:19:HAL_StatusTypeDef Magnetometer::Read_Measurement()	32	static
+../Modules/Sensors/src/Magnetometer.cpp:393:19:HAL_StatusTypeDef Magnetometer::Clear_Interrupt()	32	static
+../Modules/Sensors/src/Magnetometer.cpp:428:6:virtual bool Magnetometer::Assert_ID_Register()	40	static
+../Modules/Sensors/src/Magnetometer.cpp:455:9:uint8_t Magnetometer::Get_Update_Rate_Command()	24	static
+../Modules/Sensors/src/Magnetometer.cpp:484:6:bool Magnetometer::Store_Measurement(uint8_t*, uint8_t, Raw_Magnetic_Value&)	24	static
+../Modules/Sensors/src/Magnetometer.cpp:506:6:bool Magnetometer::Parse_Data()	16	static
+../Modules/Sensors/src/Magnetometer.cpp:528:6:bool Magnetometer::Get_Measurement(Magnetometer_Measurement&)	16	static
 C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/src/Sensor_src.hpp:14:6:void Sensor<BUFFER_SIZE>::Change_Buffer_Pointers() [with unsigned int BUFFER_SIZE = 7]	16	static
 C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/src/Sensor_src.hpp:35:9:uint8_t Sensor<BUFFER_SIZE>::Get_Write_Command(uint8_t) [with unsigned int BUFFER_SIZE = 7]	16	static
 C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/src/Sensor_src.hpp:41:9:uint8_t Sensor<BUFFER_SIZE>::Get_Read_Command(uint8_t) [with unsigned int BUFFER_SIZE = 7]	16	static

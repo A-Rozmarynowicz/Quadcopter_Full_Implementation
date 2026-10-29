@@ -6,21 +6,26 @@ C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/Da
 C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/inc/Sensor.hpp:39:13:Sensor<BUFFER_SIZE>::~Sensor() [with unsigned int BUFFER_SIZE = 7]	1
 C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/inc/Sensor.hpp:39:13:Sensor<BUFFER_SIZE>::~Sensor() [with unsigned int BUFFER_SIZE = 7]	1
 C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/inc/Magnetometer.hpp:41:7:Magnetometer::Magnetometer()	1
-../Modules/Application/src/Application.cpp:7:17:void App_Init(SPI_HandleTypeDef*, SPI_HandleTypeDef*)	1
+../Modules/Application/src/Application.cpp:8:17:void App_Init(SPI_HandleTypeDef*, SPI_HandleTypeDef*)	1
 ../Modules/Application/src/Application.cpp:19:17:void App_Process()	1
 ../Modules/Application/src/Application.cpp:24:6:void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef*)	3
 ../Modules/Application/src/Application.cpp:36:6:void HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef*)	3
 ../Modules/Application/src/Application.cpp:48:6:void HAL_SPI_ErrorCallback(SPI_HandleTypeDef*)	3
 ../Modules/Application/src/Application.cpp:60:6:void HAL_GPIO_EXTI_Callback(uint16_t)	2
-../Modules/Application/src/Application.cpp:69:6:void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef*)	3
+../Modules/Application/src/Application.cpp:69:6:void HAL_I2C_AddrCallback(I2C_HandleTypeDef*, uint8_t, uint16_t)	2
+../Modules/Application/src/Application.cpp:81:6:void HAL_I2C_SlaveRxCpltCallback(I2C_HandleTypeDef*)	2
+../Modules/Application/src/Application.cpp:89:6:void HAL_I2C_SlaveTxCpltCallback(I2C_HandleTypeDef*)	2
+../Modules/Application/src/Application.cpp:98:6:void HAL_I2C_ListenCpltCallback(I2C_HandleTypeDef*)	1
+../Modules/Application/src/Application.cpp:103:6:void HAL_I2C_ErrorCallback(I2C_HandleTypeDef*)	1
+../Modules/Application/src/Application.cpp:113:6:void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef*)	2
 C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/src/Sensor_src.hpp:6:6:void Sensor<BUFFER_SIZE>::Setup(SPI_HandleTypeDef*, GPIO_TypeDef*, uint16_t) [with unsigned int BUFFER_SIZE = 7]	1
 C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/src/Sensor_src.hpp:29:6:bool Sensor<BUFFER_SIZE>::Is_Data_Ready() [with unsigned int BUFFER_SIZE = 7]	1
-../Modules/Application/src/Application.cpp:103:1:void __static_initialization_and_destruction_0()	1
+../Modules/Application/src/Application.cpp:141:1:void __static_initialization_and_destruction_0()	1
 C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/inc/Magnetometer.hpp:41:7:Magnetometer::~Magnetometer()	1
 C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/inc/Magnetometer.hpp:41:7:virtual Magnetometer::~Magnetometer()	1
 C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/inc/IMU.hpp:35:7:IMU::~IMU()	1
 C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/inc/IMU.hpp:35:7:virtual IMU::~IMU()	1
-../Modules/Application/src/Application.cpp:103:1:void __static_initialization_and_destruction_1()	1
+../Modules/Application/src/Application.cpp:141:1:void __static_initialization_and_destruction_1()	1
 C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/src/Sensor_src.hpp:35:9:uint8_t Sensor<BUFFER_SIZE>::Get_Write_Command(uint8_t) [with unsigned int BUFFER_SIZE = 7]	1
 C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/src/Sensor_src.hpp:41:9:uint8_t Sensor<BUFFER_SIZE>::Get_Read_Command(uint8_t) [with unsigned int BUFFER_SIZE = 7]	1
 C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/src/Sensor_src.hpp:14:6:void Sensor<BUFFER_SIZE>::Change_Buffer_Pointers() [with unsigned int BUFFER_SIZE = 7]	2
@@ -28,5 +33,5 @@ C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/Da
 C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/src/Sensor_src.hpp:41:9:uint8_t Sensor<BUFFER_SIZE>::Get_Read_Command(uint8_t) [with unsigned int BUFFER_SIZE = 13]	1
 C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/src/Sensor_src.hpp:14:6:void Sensor<BUFFER_SIZE>::Change_Buffer_Pointers() [with unsigned int BUFFER_SIZE = 13]	2
 C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/src/Sensor_src.hpp:29:6:bool Sensor<BUFFER_SIZE>::Is_Data_Ready() [with unsigned int BUFFER_SIZE = 13]	1
-../Modules/Application/src/Application.cpp:103:1:cpp)	1
-../Modules/Application/src/Application.cpp:103:1:cpp)	1
+../Modules/Application/src/Application.cpp:141:1:cpp)	1
+../Modules/Application/src/Application.cpp:141:1:cpp)	1

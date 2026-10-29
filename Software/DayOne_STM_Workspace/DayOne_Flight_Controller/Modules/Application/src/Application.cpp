@@ -3,6 +3,7 @@
 
 IMU imu;
 Magnetometer magnetometer;
+ESP_Handler esp_handler;
 
 extern "C" void App_Init(SPI_HandleTypeDef* hspi1, SPI_HandleTypeDef* hspi2)
 {
@@ -63,6 +64,50 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 		magnetometer.Data_Ready_EXTI_Handler();
 	}
 }
+
+
+void HAL_I2C_AddrCallback(
+    I2C_HandleTypeDef *hi2c,
+    uint8_t TransferDirection,
+    uint16_t AddrMatchCode)
+{
+	if (hi2c->Instance == I2C1)
+	{
+		esp_handler.I2C_Listen_Callback(TransferDirection);
+	}
+}
+
+#pragma region I2C
+void HAL_I2C_SlaveRxCpltCallback(I2C_HandleTypeDef *hi2c)
+{
+    if (hi2c->Instance == I2C1)
+    {
+        esp_handler.I2C_Slave_RX_Callback();
+    }
+}
+
+void HAL_I2C_SlaveTxCpltCallback(I2C_HandleTypeDef *hi2c)
+{
+    if (hi2c->Instance == I2C1)
+    {
+        esp_handler.I2C_Slave_TX_Callback();
+    }
+}
+
+
+void HAL_I2C_ListenCpltCallback(I2C_HandleTypeDef *hi2c)
+{
+    HAL_I2C_EnableListen_IT(hi2c);
+}
+
+void HAL_I2C_ErrorCallback(I2C_HandleTypeDef *hi2c)
+{
+    uint32_t error = HAL_I2C_GetError(hi2c);
+
+    // Inspect error and perform appropriate recovery.
+}
+
+#pragma end region
 
 uint8_t imu_counter = 0;
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim)

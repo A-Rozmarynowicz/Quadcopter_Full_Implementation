@@ -1,17 +1,17 @@
-../Modules/Sensors/src/IMU.cpp:33:15:SENSOR_STATUS IMU::Initialize(IMU_UPDATE_RATES, IMU_ACC_SCALE, IMU_GYRO_SCALE)	24	static
-../Modules/Sensors/src/IMU.cpp:60:6:virtual void IMU::DMA_TxRxCompleteCallback()	16	static
-../Modules/Sensors/src/IMU.cpp:66:6:virtual void IMU::DMA_ErrorCallback()	16	static
-../Modules/Sensors/src/IMU.cpp:71:19:HAL_StatusTypeDef IMU::Handle_Acc_Control_Registers()	32	static
-../Modules/Sensors/src/IMU.cpp:97:19:HAL_StatusTypeDef IMU::Handle_Gyro_Control_Registers()	32	static
-../Modules/Sensors/src/IMU.cpp:123:6:virtual bool IMU::Assert_ID_Register()	40	static
-../Modules/Sensors/src/IMU.cpp:148:6:virtual void IMU::Prepare_For_Measurements()	24	static
-../Modules/Sensors/src/IMU.cpp:165:6:virtual void IMU::Measurement_Cycle_Finished()	16	static
-../Modules/Sensors/src/IMU.cpp:170:6:bool IMU::Parse_Measurement(uint8_t*, uint8_t)	40	static
-../Modules/Sensors/src/IMU.cpp:242:6:void IMU::Update_Sensitivities()	16	static
-../Modules/Sensors/src/IMU.cpp:273:6:virtual void IMU::Task_Perform_Transaction()	24	static
-../Modules/Sensors/src/IMU.cpp:290:6:virtual void IMU::DMA_TxCompleteCallback()	16	static
-../Modules/Sensors/src/IMU.cpp:295:19:virtual HAL_StatusTypeDef IMU::Reset_Chip()	16	static
-../Modules/Sensors/src/IMU.cpp:298:6:bool IMU::Get_Measurement(IMU_Measurement&)	24	static
+../Modules/Sensors/src/IMU.cpp:38:15:SENSOR_STATUS IMU::Initialize(IMU_UPDATE_RATES, IMU_ACC_SCALE, IMU_GYRO_SCALE)	24	static
+../Modules/Sensors/src/IMU.cpp:67:6:virtual void IMU::DMA_TxRxCompleteCallback()	16	static
+../Modules/Sensors/src/IMU.cpp:73:6:virtual void IMU::DMA_ErrorCallback()	16	static
+../Modules/Sensors/src/IMU.cpp:78:6:virtual void IMU::DMA_TxCompleteCallback()	16	static
+../Modules/Sensors/src/IMU.cpp:87:19:HAL_StatusTypeDef IMU::Handle_Acc_Control_Registers()	32	static
+../Modules/Sensors/src/IMU.cpp:113:19:HAL_StatusTypeDef IMU::Handle_Gyro_Control_Registers()	32	static
+../Modules/Sensors/src/IMU.cpp:139:6:virtual bool IMU::Assert_ID_Register()	40	static
+../Modules/Sensors/src/IMU.cpp:164:6:void IMU::Update_Sensitivities()	16	static
+../Modules/Sensors/src/IMU.cpp:199:6:virtual void IMU::Prepare_For_Measurements()	24	static
+../Modules/Sensors/src/IMU.cpp:216:6:virtual void IMU::Measurement_Cycle_Finished()	16	static
+../Modules/Sensors/src/IMU.cpp:221:6:virtual void IMU::Task_Perform_Transaction()	24	static
+../Modules/Sensors/src/IMU.cpp:238:19:virtual HAL_StatusTypeDef IMU::Reset_Chip()	32	static
+../Modules/Sensors/src/IMU.cpp:262:6:bool IMU::Get_Measurement(IMU_Measurement&)	24	static
+../Modules/Sensors/src/IMU.cpp:278:6:bool IMU::Parse_Measurement(uint8_t*, uint8_t)	40	static
 C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/src/Sensor_src.hpp:35:9:uint8_t Sensor<BUFFER_SIZE>::Get_Write_Command(uint8_t) [with unsigned int BUFFER_SIZE = 13]	16	static
 C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/src/Sensor_src.hpp:14:6:void Sensor<BUFFER_SIZE>::Change_Buffer_Pointers() [with unsigned int BUFFER_SIZE = 13]	16	static
 C:/Users/arekr/OneDrive/Pulpit/Github/Quadcopter_Full_Implementation/Software/DayOne_STM_Workspace/DayOne_Flight_Controller/Modules/Sensors/src/Sensor_src.hpp:41:9:uint8_t Sensor<BUFFER_SIZE>::Get_Read_Command(uint8_t) [with unsigned int BUFFER_SIZE = 13]	16	static

@@ -5,9 +5,11 @@
 
 #include "Sensors/inc/IMU.hpp"
 #include "Sensors/inc/Magnetometer.hpp"
+#include "Communication/inc/ESP_Handler.hpp"
 
 extern IMU imu;
 extern Magnetometer magnetometer;
+extern ESP_Handler esp_handler;
 
 extern "C" {
 #endif
