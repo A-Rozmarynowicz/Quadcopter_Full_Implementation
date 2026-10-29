@@ -109,7 +109,7 @@ int main(void)
   MX_TIM2_Init();
   MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
-  App_Init(&hspi1, &hspi2);
+  App_Init(&hspi1, &hspi2, &hi2c1);
   HAL_TIM_Base_Start_IT(&htim2);
   /* USER CODE END 2 */
 

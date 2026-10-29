@@ -5,15 +5,18 @@ IMU imu;
 Magnetometer magnetometer;
 ESP_Handler esp_handler;
 
-extern "C" void App_Init(SPI_HandleTypeDef* hspi1, SPI_HandleTypeDef* hspi2)
+extern "C" void App_Init(SPI_HandleTypeDef* hspi1, SPI_HandleTypeDef* hspi2, I2C_HandleTypeDef* i2c1)
 {
 //    imu.Setup(hspi1, IMU_CS_GPIO_Port, IMU_CS_Pin);
 //    SENSOR_STATUS code = imu.Initialize(IMU_UPDATE_RATES::Hz_833, IMU_ACC_SCALE::G_8, IMU_GYRO_SCALE::DPS_500);
 //    imu.Prepare_For_Measurements();
-	magnetometer.Setup(hspi2, MAGNETOMETER_CS_GPIO_Port, MAGNETOMETER_CS_Pin);
-	HAL_StatusTypeDef code1 = magnetometer.Reset_Chip();
-	HAL_Delay(15);
-	SENSOR_STATUS code2 = magnetometer.Initialize(MAGNETOMETER_UPDATE_RATES::Hz_580);
+//	magnetometer.Setup(hspi2, MAGNETOMETER_CS_GPIO_Port, MAGNETOMETER_CS_Pin);
+//	HAL_StatusTypeDef code1 = magnetometer.Reset_Chip();
+//	HAL_Delay(15);
+//	SENSOR_STATUS code2 = magnetometer.Initialize(MAGNETOMETER_UPDATE_RATES::Hz_580);
+
+	esp_handler.Setup(i2c1, ESP_REQUEST_GPIO_Port, ESP_REQUEST_Pin);
+	esp_handler.Initialize();
 }
 
 extern "C" void App_Process(void)
@@ -107,18 +110,18 @@ void HAL_I2C_ErrorCallback(I2C_HandleTypeDef *hi2c)
     // Inspect error and perform appropriate recovery.
 }
 
-#pragma end region
+#pragma endregion
 
 uint8_t imu_counter = 0;
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim)
 {
-	magnetometer.Task_Perform_Transaction();
-	if (magnetometer.Is_Data_Ready())
-	{
-		Magnetometer_Measurement meas;
-		bool measurement_ok = magnetometer.Get_Measurement(meas);
-		HAL_GPIO_TogglePin(STATUS_LED_GPIO_Port, STATUS_LED_Pin);
-	}
+//	magnetometer.Task_Perform_Transaction();
+//	if (magnetometer.Is_Data_Ready())
+//	{
+//		Magnetometer_Measurement meas;
+//		bool measurement_ok = magnetometer.Get_Measurement(meas);
+//		HAL_GPIO_TogglePin(STATUS_LED_GPIO_Port, STATUS_LED_Pin);
+//	}
 //	if (imu_counter == 0)
 //	{
 //		imu_counter = 1;

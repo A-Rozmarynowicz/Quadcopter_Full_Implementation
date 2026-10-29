@@ -5,7 +5,7 @@
 #include "stm32f4xx_hal.h"
 
 constexpr uint8_t I2C_RX_PACKET_SIZE = 16;
-constexpr uint8_t I2C_TX_PACKET_SIZE = 16;
+constexpr uint8_t I2C_TX_PACKET_SIZE = 28;
 
 class ESP_Handler
 {
@@ -13,6 +13,9 @@ private:
 	I2C_HandleTypeDef* hi2c;
 	GPIO_TypeDef* esp_request_port;
 	uint16_t esp_request_pin;
+
+	uint8_t rx_buffer[I2C_RX_PACKET_SIZE];
+	uint8_t tx_buffer[I2C_TX_PACKET_SIZE];
 public:
 	void Setup(I2C_HandleTypeDef* i2c_handle, GPIO_TypeDef* GPIO_port_esp_request, uint16_t GPIO_pin_esp_request);
 	void Initialize();
