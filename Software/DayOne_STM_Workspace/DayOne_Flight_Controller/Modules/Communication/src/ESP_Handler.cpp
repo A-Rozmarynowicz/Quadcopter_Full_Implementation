@@ -66,6 +66,11 @@ void ESP_Handler::I2C_Listen_Callback(uint8_t TransferDirection)
     else
     {
         // ESP32 reads from STM32.
+    	tx_buffer[0] = static_cast<uint8_t>(I2C_Data_Commands::ANSWER_FULL_TELEMETRY);
+    	tx_buffer[I2C_TX_PACKET_SIZE-1] = 69;
+    	float x = 37;
+    	memcpy(&tx_buffer[4], &x, sizeof(float));
+
         status = HAL_I2C_Slave_Seq_Transmit_DMA(
             hi2c,
             tx_buffer,

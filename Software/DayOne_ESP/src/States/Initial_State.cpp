@@ -42,7 +42,8 @@ void Initial_State::Task_1000ms()
     p.x = 67.0;
     p.y = 69.0;
     p.z = 420.0;
-    I2C_MESSAGES::Send_Current_Position(p);
+    // I2C_MESSAGES::Send_Current_Position(p);
+    _read_I2C_full_telemetry();
     // ESP_MESSAGES::Send_Wakeup_Reckon(BROADCAST_RECEIVER_ID);
 }
 

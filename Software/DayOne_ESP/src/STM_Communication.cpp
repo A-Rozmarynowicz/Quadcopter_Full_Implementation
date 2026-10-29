@@ -96,6 +96,8 @@ bool _read_I2C_full_telemetry()
         return false;
     }
 
+    Serial.printf("CHECK 1: received\n");
+
     I2C_Packet<I2C_RX_DATA_SIZE> response{};
 
     for (std::size_t i = 0; i < I2C_RX_DATA_SIZE; ++i)
@@ -111,6 +113,10 @@ bool _read_I2C_full_telemetry()
 
         response.data[i] = static_cast<uint8_t>(Wire.read());
     }
+
+    float z;
+    memcpy(&z, &response.data[4], sizeof(float));
+    Serial.printf("Comm: %d, last: %d, float: %0.2f\n", response.data[0], response.data[I2C_RX_DATA_SIZE-1], z);
 
     if (!i2c_receive_queue.push(response))
     {
