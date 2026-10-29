@@ -1,6 +1,8 @@
 #include "Sensors/inc/Magnetometer.hpp"
 #include "stm32f4xx_hal.h"
 
+#pragma region Variables
+
 //NOTE: it's negative because normally Magnetometer's and IMU's
 // axes are reversed.
 constexpr float MAG_SENSITIVITY = -4096.0;
@@ -41,6 +43,8 @@ enum class MAGNETOMETER_CONTROL_1_COMMANDS : uint8_t
 };
 
 constexpr uint8_t TARGET_PRODUCT_ID = 0x30;
+
+#pragma endregion
 
 SENSOR_STATUS Magnetometer::Initialize(MAGNETOMETER_UPDATE_RATES p_update_rate)
 {

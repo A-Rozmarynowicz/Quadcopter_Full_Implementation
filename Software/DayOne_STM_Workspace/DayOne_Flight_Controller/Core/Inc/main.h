@@ -66,6 +66,8 @@ void Error_Handler(void);
 #define MAGNETOMETER_INTERRUPT_EXTI_IRQn EXTI15_10_IRQn
 #define STATUS_LED_Pin GPIO_PIN_8
 #define STATUS_LED_GPIO_Port GPIOC
+#define ESP_REQUEST_Pin GPIO_PIN_5
+#define ESP_REQUEST_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 
