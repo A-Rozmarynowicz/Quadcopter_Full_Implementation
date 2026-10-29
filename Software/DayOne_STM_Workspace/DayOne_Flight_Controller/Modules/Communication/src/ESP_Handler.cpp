@@ -81,7 +81,6 @@ void ESP_Handler::I2C_Listen_Callback(uint8_t TransferDirection)
 
     if (status != HAL_OK)
     {
-        uint8_t check = 1+2;
         HAL_I2C_EnableListen_IT(hi2c);
     }
 }

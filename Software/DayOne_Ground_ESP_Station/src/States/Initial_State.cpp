@@ -30,6 +30,12 @@ void Initial_State::Handle_Serial_Message(uint8_t command, const float (&values)
             }
             break;
 
+        case static_cast<uint8_t>(SERIAL_COMMANDS::MASTER_START_ALL_CONFIGURATION):
+            if (value_count == 0) {
+                ESP_MESSAGES::Send_Master_Start_All_Configuration();
+            }
+            break;
+
         case static_cast<uint8_t>(SERIAL_COMMANDS::LGHS_UWB_SETTINGS_SET):
             if (value_count == 4) {
                 uint8_t receiver = static_cast<uint8_t>(values[0]);

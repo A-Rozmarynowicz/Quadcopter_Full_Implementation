@@ -17,7 +17,10 @@ private:
 	uint8_t rx_buffer[I2C_RX_PACKET_SIZE];
 	uint8_t tx_buffer[I2C_TX_PACKET_SIZE];
 public:
-	void Setup(I2C_HandleTypeDef* i2c_handle, GPIO_TypeDef* GPIO_port_esp_request, uint16_t GPIO_pin_esp_request);
+	void Setup(
+			I2C_HandleTypeDef* i2c_handle,
+			GPIO_TypeDef* GPIO_port_esp_request,
+			uint16_t GPIO_pin_esp_request);
 	void Initialize();
 
 	void I2C_Listen_Callback(uint8_t TransferDirection);

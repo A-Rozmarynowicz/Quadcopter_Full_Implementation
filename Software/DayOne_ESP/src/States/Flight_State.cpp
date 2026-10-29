@@ -58,7 +58,7 @@ void Flight_State::Handle_Ready_Measurements()
     if (penalty == 0)
     {
         total_penalty = 0;
-        LED_Toggle();
+        // LED_Toggle();
     }
     else
     {
@@ -66,13 +66,24 @@ void Flight_State::Handle_Ready_Measurements()
     }
 }
 
+Position pos_zero;
+bool trr = false;
 uint8_t Flight_State::Parse_Measurements()
 {
     uint8_t penalty = Calculate_Position(uwb_measurement_stacks, current_calculated_position);
+
+    if (penalty == 0 && !trr)
+    {
+        trr = true;
+        pos_zero = current_calculated_position;
+    }
     if (penalty < MAX_MISSING_LGHS_PENALTY)
     {
         // I2C_MESSAGES::Send_Current_Position(current_calculated_position);
-        Serial.printf("SENT: x = %0.2f, y = %0.2f, z = %0.2f \n", current_calculated_position.x, current_calculated_position.y, current_calculated_position.z);
+        Position pos1 = current_calculated_position - pos_zero;
+        float mag = sqrt(pos1.x*pos1.x + pos1.y*pos1.y + pos1.z*pos1.z);
+        Serial.printf("SENT: x = %0.2f, y = %0.2f, z = %0.2f || R = %0.2f\n", pos1.x, pos1.y, pos1.z, mag);
+        // Serial.printf("SENT: x = %0.2f, y = %0.2f, z = %0.2f \n", current_calculated_position.x, current_calculated_position.y, current_calculated_position.z);
     }
     return penalty;
 }

@@ -6,7 +6,7 @@
 #include "DW1000Ranging.h"
 #include "Buffers.hpp"
 
-#define UWB_RESPONSE_DELAY_TIME 2000
+#define UWB_RESPONSE_DELAY_TIME 1000
 #define UWB_RESET_TIME 1000
 #define UWB_USE_RANGE_FILTER true
 #define UWB_RANGE_FILTER_VALUE 8
