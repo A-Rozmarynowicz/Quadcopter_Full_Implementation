@@ -2,7 +2,6 @@
 
 void Initial_State::Enter()
 {
-    Request_Change_State(STATES::REQUEST_DISTANCES_STATE);
 }
 
 void Initial_State::Exit()
@@ -22,6 +21,12 @@ void Initial_State::Handle_Serial_Message(uint8_t command, const float (&values)
         case static_cast<uint8_t>(SERIAL_COMMANDS::CHANGE_TO_MANUAL_OPERATION_STATE):
             if (value_count == 0) {
                 Request_Change_State(STATES::MANUAL_OPERATION_STATE);
+            }
+            break;
+
+        case static_cast<uint8_t>(SERIAL_COMMANDS::GROUND_STATION_CONTINUE_FROM_INITIAL_STATE):
+            if (value_count == 0) {
+                Request_Change_State(STATES::REQUEST_DISTANCES_STATE);
             }
             break;
 

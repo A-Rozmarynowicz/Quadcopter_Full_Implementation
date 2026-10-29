@@ -32,6 +32,8 @@ enum class SERIAL_COMMANDS
     QUADCOPTER_ESP_RESET,
     QUADCOPTER_STM_RESET,
 
+    GROUND_STATION_CONTINUE_FROM_INITIAL_STATE,
+
     ERROR = 99,
 };
 
@@ -40,7 +42,7 @@ struct CommandInfo {
     uint8_t expectedCount;
 };
 
-constexpr std::array<CommandInfo, 21> commandTable {{
+constexpr std::array<CommandInfo, 22> commandTable {{
     {SERIAL_COMMANDS::RELAY,                          0},
     {SERIAL_COMMANDS::MASTER_START_ALL_CONFIGURATION, 0},
     {SERIAL_COMMANDS::REQUEST_MEASUREMENTS,           0},
@@ -62,6 +64,7 @@ constexpr std::array<CommandInfo, 21> commandTable {{
     {SERIAL_COMMANDS::QUADCOPTER_EMERGENCY_LANDING, 0},
     {SERIAL_COMMANDS::QUADCOPTER_ESP_RESET, 0},
     {SERIAL_COMMANDS::QUADCOPTER_STM_RESET, 0},
+    {SERIAL_COMMANDS::GROUND_STATION_CONTINUE_FROM_INITIAL_STATE, 0},
 }};
 
 bool Update_Serial(uint8_t& command, float (&values)[MAX_NUMBER_OF_VALUES_IN_TRANSFER], uint8_t& value_count);
