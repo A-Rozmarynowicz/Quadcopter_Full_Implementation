@@ -65,52 +65,17 @@ void Restart_UWB_As_Tag(){
         false
     );
 
-    // CRITICAL SPEED FIX 2: Manually override the global library reply delay
-    // down from 7000us to 1500us before starting the state machine
-    // DW1000Ranging.setReplyTime(UWB_RESPONSE_DELAY_TIME);
-
-    DW1000Ranging.useRangeFilter(true);
+    DW1000Ranging.setReplyTime(UWB_RESPONSE_DELAY_TIME);
+    DW1000Ranging.useRangeFilter(UWB_USE_RANGE_FILTER);
+    DW1000Ranging.setRangeFilterValue(UWB_RANGE_FILTER_VALUE);
     DW1000Ranging.setResetPeriod(UWB_RESET_TIME);
+
     DW1000.setChannel(CHANNEL);
     DW1000.useSmartPower(false);
     uint32_t maxPower = 0x26486A6A;
     DW1000.writeBytes(0x1E, 0x00, (byte*)&maxPower, 4);
     DW1000.commitConfiguration();
-
-    // CRITICAL SPEED FIX 3: Force the Tag's internal blink/poll loop timer down.
-    // By default, this is often set to 200ms or 500ms. Shifting it to 10-20ms
-    // frees the loop to poll continuously.
-    // DW1000Ranging.setTimerFrequency(20);
 }
-
-
-// void Restart_UWB_As_Tag()
-// {
-//     _reset_DW1000();
-
-//     SPI.begin(PIN_SCK, PIN_MISO, PIN_MOSI, PIN_SS);
-//     SPI.setFrequency(4000000);
-//     DW1000Ranging.initCommunication(PIN_RST, PIN_SS, PIN_IRQ);
-
-//     DW1000Ranging.attachNewRange(_new_range);
-//     DW1000Ranging.attachNewDevice(_new_device);
-//     DW1000Ranging.attachInactiveDevice(_inactive_device);
-//     DW1000.setAntennaDelay(BASE_ANTENNA_DELAY_VALUE);
-
-//     char address_str[24] = {0};
-//     _format_drone_address_to_string(address_str);
-//     DW1000Ranging.startAsTag(
-//         address_str,
-//         UWB_TRANSMIT_MODE,
-//         false
-//     );
-
-//     DW1000.setChannel(CHANNEL);
-//     DW1000.useSmartPower(false);
-//     uint32_t maxPower = 0x26486A6A;
-//     DW1000.writeBytes(0x1E, 0x00, (byte*)&maxPower, 4);
-//     DW1000.commitConfiguration();
-// }
 
 void Disable_UWB()
 {
