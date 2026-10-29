@@ -63,7 +63,7 @@ bool Send_I2C()
 
     if (error != 0 || written != packet.length)
     {
-        i2c_transmit_queue.push(packet);
+        // i2c_transmit_queue.push(packet);
         return false;
     }
 

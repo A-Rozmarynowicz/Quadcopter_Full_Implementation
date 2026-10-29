@@ -51,19 +51,35 @@ void ESP_Handler::Initialize()
 
 void ESP_Handler::I2C_Listen_Callback(uint8_t TransferDirection)
 {
-	if (TransferDirection == I2C_DIRECTION_TRANSMIT)
-	{
-		HAL_I2C_Slave_Receive_DMA(
-			hi2c, rx_buffer, I2C_RX_PACKET_SIZE);
-	}
-	else
-	{
-		// Master is receiving FROM the slave.
-		HAL_I2C_Slave_Transmit_DMA(
-			hi2c, tx_buffer, I2C_TX_PACKET_SIZE);
-	}
-}
+    HAL_StatusTypeDef status;
 
+    if (TransferDirection == I2C_DIRECTION_TRANSMIT)
+    {
+        // ESP32 writes to STM32.
+        status = HAL_I2C_Slave_Seq_Receive_DMA(
+            hi2c,
+            rx_buffer,
+            I2C_RX_PACKET_SIZE,
+            I2C_FIRST_AND_LAST_FRAME
+        );
+    }
+    else
+    {
+        // ESP32 reads from STM32.
+        status = HAL_I2C_Slave_Seq_Transmit_DMA(
+            hi2c,
+            tx_buffer,
+            I2C_TX_PACKET_SIZE,
+            I2C_FIRST_AND_LAST_FRAME
+        );
+    }
+
+    if (status != HAL_OK)
+    {
+        uint8_t check = 1+2;
+        HAL_I2C_EnableListen_IT(hi2c);
+    }
+}
 
 void ESP_Handler::I2C_Slave_RX_Callback()
 {

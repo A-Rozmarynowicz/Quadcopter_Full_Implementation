@@ -18,7 +18,7 @@ void Initial_State::Task_1ms()
 
 void Initial_State::Task_5ms()
 {
-
+    // I2C_MESSAGES::Send_Heartbeat();
 }
 
 void Initial_State::Task_10ms()
@@ -38,7 +38,11 @@ void Initial_State::Task_100ms()
 
 void Initial_State::Task_1000ms()
 {
-    I2C_MESSAGES::Send_Heartbeat();
+    Position p;
+    p.x = 67.0;
+    p.y = 69.0;
+    p.z = 420.0;
+    I2C_MESSAGES::Send_Current_Position(p);
     // ESP_MESSAGES::Send_Wakeup_Reckon(BROADCAST_RECEIVER_ID);
 }
 
