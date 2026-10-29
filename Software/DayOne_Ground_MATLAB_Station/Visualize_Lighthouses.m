@@ -3,8 +3,10 @@ function Visualize_Lighthouses(P, d, N)
 side_num = 60;
 
 figure;
-scatter3(P(:, 1), P(:, 2), P(:, 3), "blue", "o");
+scatter3(P(:, 1), P(:, 2), P(:, 3), "blue", "o", "filled");
 hold on;
+
+xlim([-2, 2]);
 
 for i = 1:N
     text(P(i, 1), P(i, 2), P(i, 3), sprintf('%d', i-1), ...
