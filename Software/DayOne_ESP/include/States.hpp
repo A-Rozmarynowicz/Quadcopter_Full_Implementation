@@ -123,7 +123,7 @@ private:
     uint8_t Parse_Measurements();
     void Parse_ESP_Messages();
     void Parse_STM_Telemetry();
-    void _handle_full_telemetry_packet(I2C_Packet& packet);
+    void _handle_full_telemetry_packet(I2C_Packet<I2C_RX_DATA_SIZE>& packet);
 };
 
 class Emergency_State : public State

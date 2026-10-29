@@ -3,7 +3,7 @@
 void Initial_State::Enter()
 {
     Reset_Requested_State();
-    ESP_MESSAGES::Send_Wakeup_Reckon(BROADCAST_RECEIVER_ID);
+    // ESP_MESSAGES::Send_Wakeup_Reckon(BROADCAST_RECEIVER_ID);
 };
 
 void Initial_State::Exit()
@@ -33,12 +33,13 @@ void Initial_State::Task_20ms()
 
 void Initial_State::Task_100ms()
 {
-    Check_For_Wakeup_Response();
+    // Check_For_Wakeup_Response();
 }
 
 void Initial_State::Task_1000ms()
 {
-    ESP_MESSAGES::Send_Wakeup_Reckon(BROADCAST_RECEIVER_ID);
+    I2C_MESSAGES::Send_Heartbeat();
+    // ESP_MESSAGES::Send_Wakeup_Reckon(BROADCAST_RECEIVER_ID);
 }
 
 void Initial_State::Check_For_Wakeup_Response()

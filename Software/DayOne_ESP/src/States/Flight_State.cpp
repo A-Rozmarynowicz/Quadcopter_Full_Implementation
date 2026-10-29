@@ -138,7 +138,7 @@ void Flight_State::Parse_STM_Telemetry()
     I2C_Data_Commands command = static_cast<I2C_Data_Commands>
         (i2c_receive_queue[i2c_receive_queue.get_head_offset_index(0)].data[static_cast<uint8_t>(I2C_Data_Setup::COMMAND)]);
 
-    I2C_Packet response;
+    I2C_Packet<I2C_RX_DATA_SIZE> response;
 
     switch (command)
     {
@@ -154,12 +154,8 @@ void Flight_State::Parse_STM_Telemetry()
     }
 }
 
-void Flight_State::_handle_full_telemetry_packet(I2C_Packet& packet)
+void Flight_State::_handle_full_telemetry_packet(I2C_Packet<I2C_RX_DATA_SIZE>& packet)
 {
-     if (packet.length != I2C_TELEMETRY_SIZE)
-    {
-        return;
-    }
 
     uint8_t single[3];
     float telemetry[6];

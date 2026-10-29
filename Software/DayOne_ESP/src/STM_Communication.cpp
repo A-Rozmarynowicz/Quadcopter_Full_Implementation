@@ -16,6 +16,7 @@ bool Initialize_I2C()
 
     Wire.setTimeOut(I2C_TIMEOUT_MS);
 
+    Serial.printf("WE're good\n");
     return true;
 }
 
@@ -58,6 +59,8 @@ bool Send_I2C()
 
     const uint8_t error = Wire.endTransmission();
 
+    Serial.printf("Error: %d\n", error);
+
     if (error != 0 || written != packet.length)
     {
         i2c_transmit_queue.push(packet);
@@ -70,6 +73,7 @@ bool Send_I2C()
         return _read_I2C_full_telemetry();
     }
 
+    Serial.printf("SENT I2C: %d\n", command);
     return true;
 }
 

@@ -62,7 +62,7 @@ template <std::size_t N>
 struct I2C_Packet
 {
     uint8_t data[N];
-    const uint8_t length = N;
+    uint8_t length = N;
     uint8_t flush_value;
     static constexpr uint8_t max_flush_value = 8;
     void Mark_To_Flush(){flush_value=max_flush_value;}
