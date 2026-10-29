@@ -1,5 +1,5 @@
 #include "Communication/inc/ESP_Handler.hpp"
-
+#include <cstring>
 
 enum class I2C_Data_Commands
 {
@@ -86,6 +86,12 @@ void ESP_Handler::I2C_Slave_RX_Callback()
 	I2C_Data_Commands command = static_cast<I2C_Data_Commands>(
 			rx_buffer[static_cast<uint8_t>(I2C_Data_Setup::COMMAND)]
 					  );
+
+	float x, y, z;
+
+	memcpy(&x, &rx_buffer[static_cast<uint8_t>(I2C_Data_Setup::QUAD_0)], sizeof(float));
+	memcpy(&y, &rx_buffer[static_cast<uint8_t>(I2C_Data_Setup::QUAD_1)], sizeof(float));
+	memcpy(&z, &rx_buffer[static_cast<uint8_t>(I2C_Data_Setup::QUAD_2)], sizeof(float));
 
 	uint8_t check = 1+2;
 }

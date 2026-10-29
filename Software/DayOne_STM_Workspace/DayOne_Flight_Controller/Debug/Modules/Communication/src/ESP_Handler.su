@@ -1,5 +1,5 @@
 ../Modules/Communication/src/ESP_Handler.cpp:36:6:void ESP_Handler::Setup(I2C_HandleTypeDef*, GPIO_TypeDef*, uint16_t)	24	static
 ../Modules/Communication/src/ESP_Handler.cpp:45:6:void ESP_Handler::Initialize()	16	static
 ../Modules/Communication/src/ESP_Handler.cpp:52:6:void ESP_Handler::I2C_Listen_Callback(uint8_t)	24	static
-../Modules/Communication/src/ESP_Handler.cpp:84:6:void ESP_Handler::I2C_Slave_RX_Callback()	24	static
-../Modules/Communication/src/ESP_Handler.cpp:93:6:void ESP_Handler::I2C_Slave_TX_Callback()	16	static
+../Modules/Communication/src/ESP_Handler.cpp:84:6:void ESP_Handler::I2C_Slave_RX_Callback()	40	static
+../Modules/Communication/src/ESP_Handler.cpp:99:6:void ESP_Handler::I2C_Slave_TX_Callback()	16	static
