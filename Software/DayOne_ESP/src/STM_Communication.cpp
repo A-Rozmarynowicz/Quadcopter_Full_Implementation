@@ -9,7 +9,7 @@ Queue<I2C_Packet, I2C_TRANSMIT_QUEUE_SIZE> i2c_transmit_queue;
 
 bool Initialize_I2C()
 {
-    if (!Wire.begin(SDA_PIN, SCL_PIN, 400000UL))
+    if (!Wire.begin(SDA_PIN, SCL_PIN, 100000UL))
     {
         return false;
     }
@@ -141,7 +141,7 @@ bool I2C_MESSAGES::Send_Quadcopter_Init()
 
 bool I2C_MESSAGES::Send_Current_Position(Position &position)
 {
-    I2C_Packet packet{};
+    I2C_Packet<I2C_TX_DATA_SIZE> packet{};
 
     packet.data[
         static_cast<std::size_t>(I2C_Data_Setup::COMMAND)
@@ -165,21 +165,17 @@ bool I2C_MESSAGES::Send_Current_Position(Position &position)
         sizeof(float)
     );
 
-    packet.length = 16;
-
     return i2c_transmit_queue.push(packet);
 }
 
 
 bool I2C_MESSAGES::Send_Heartbeat()
 {
-    I2C_Packet packet{};
+    I2C_Packet<I2C_TX_DATA_SIZE> packet{};
 
     packet.data[
         static_cast<std::size_t>(I2C_Data_Setup::COMMAND)
     ] = I2C_Data_Commands::HEARTBEAT;
-
-    packet.length = 1;
 
     return i2c_transmit_queue.push(packet);
 }
@@ -187,13 +183,11 @@ bool I2C_MESSAGES::Send_Heartbeat()
 
 bool I2C_MESSAGES::Send_Emergency_Total_Stop()
 {
-    I2C_Packet packet{};
+    I2C_Packet<I2C_TX_DATA_SIZE> packet{};
 
     packet.data[
         static_cast<std::size_t>(I2C_Data_Setup::COMMAND)
     ] = I2C_Data_Commands::EMERGENCY_TOTAL_STOP;
-
-    packet.length = 1;
 
     return i2c_transmit_queue.push(packet);
 }
@@ -201,13 +195,11 @@ bool I2C_MESSAGES::Send_Emergency_Total_Stop()
 
 bool I2C_MESSAGES::Send_Emergency_Landing()
 {
-    I2C_Packet packet{};
+    I2C_Packet<I2C_TX_DATA_SIZE> packet{};
 
     packet.data[
         static_cast<std::size_t>(I2C_Data_Setup::COMMAND)
     ] = I2C_Data_Commands::EMERGENCY_LANDING;
-
-    packet.length = 1;
 
     return i2c_transmit_queue.push(packet);
 }
@@ -215,7 +207,7 @@ bool I2C_MESSAGES::Send_Emergency_Landing()
 
 bool I2C_MESSAGES::Send_Hover(float height)
 {
-    I2C_Packet packet{};
+    I2C_Packet<I2C_TX_DATA_SIZE> packet{};
 
     packet.data[
         static_cast<std::size_t>(I2C_Data_Setup::COMMAND)
@@ -227,47 +219,39 @@ bool I2C_MESSAGES::Send_Hover(float height)
         sizeof(float)
     );
 
-    packet.length = 8;
-
     return i2c_transmit_queue.push(packet);
 }
 
 
 bool I2C_MESSAGES::Send_Land()
 {
-    I2C_Packet packet{};
+    I2C_Packet<I2C_TX_DATA_SIZE> packet{};
 
     packet.data[
         static_cast<std::size_t>(I2C_Data_Setup::COMMAND)
     ] = I2C_Data_Commands::LAND;
-
-    packet.length = 1;
 
     return i2c_transmit_queue.push(packet);
 }
 
 bool I2C_MESSAGES::Request_Full_Telemetry()
 {
-    I2C_Packet packet{};
+    I2C_Packet<I2C_TX_DATA_SIZE> packet{};
 
     packet.data[
         static_cast<std::size_t>(I2C_Data_Setup::COMMAND)
     ] = I2C_Data_Commands::REQUEST_FULL_TELEMETRY;
-
-    packet.length = 1;
 
     return i2c_transmit_queue.push(packet);
 }
 
 bool I2C_MESSAGES::Send_Reset_STM()
 {
-    I2C_Packet packet{};
+    I2C_Packet<I2C_TX_DATA_SIZE> packet{};
 
     packet.data[
         static_cast<std::size_t>(I2C_Data_Setup::COMMAND)
     ] = I2C_Data_Commands::RESET_STM;
-
-    packet.length = 1;
 
     return i2c_transmit_queue.push(packet);
 }

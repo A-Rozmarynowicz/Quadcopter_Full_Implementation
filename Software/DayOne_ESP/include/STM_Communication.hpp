@@ -10,10 +10,11 @@
 #include <cstddef>
 #include <cstdint>
 
-#define STM_I2C_ADDRESS 0x77
+#define STM_I2C_ADDRESS 0x67
 #define ESP_I2C_ADDRESS 0x12
 
-#define I2C_DATA_SIZE 28
+#define I2C_TX_DATA_SIZE 16
+#define I2C_RX_DATA_SIZE 28
 #define I2C_TELEMETRY_SIZE I2C_DATA_SIZE
 
 #define I2C_RECEIVE_QUEUE_SIZE 33
@@ -58,10 +59,11 @@ enum class I2C_Data_Setup
     QUAD_5 = 24,
 };
 
+template <std::size_t N>
 struct I2C_Packet
 {
-    uint8_t data[I2C_DATA_SIZE];
-    uint8_t length = 0;
+    uint8_t data[N];
+    const uint8_t length = N;
     uint8_t flush_value;
     static constexpr uint8_t max_flush_value = 8;
     void Mark_To_Flush(){flush_value=max_flush_value;}
@@ -72,10 +74,10 @@ struct I2C_Packet
     bool Is_For_Flush(){return flush_value>=max_flush_value;}
 };
 
-extern Queue<I2C_Packet, I2C_RECEIVE_QUEUE_SIZE>
+extern Queue<I2C_Packet<I2C_RX_DATA_SIZE>, I2C_RECEIVE_QUEUE_SIZE>
     i2c_receive_queue;
 
-extern Queue<I2C_Packet, I2C_TRANSMIT_QUEUE_SIZE>
+extern Queue<I2C_Packet<I2C_TX_DATA_SIZE>, I2C_TRANSMIT_QUEUE_SIZE>
     i2c_transmit_queue;
 
 bool Initialize_I2C();
