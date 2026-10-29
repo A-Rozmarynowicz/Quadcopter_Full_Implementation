@@ -1,6 +1,8 @@
 #include "Sensors/inc/IMU.hpp"
 #include "stm32f4xx_hal.h"
 
+#pragma region Variables
+
 enum class IMU_REGISTERS : uint8_t
 {
     IMU_WHOAMI_REG = 0x0F,          // Product ID
@@ -31,6 +33,8 @@ enum class IMU_MEASUREMENT_DATA_LAYOUT : uint8_t
     OUTZ_H_A,
 };
 
+#pragma endregion
+
 SENSOR_STATUS IMU::Initialize(
     IMU_UPDATE_RATES p_update_rate,
     IMU_ACC_SCALE p_acc_scale,
@@ -58,6 +62,8 @@ SENSOR_STATUS IMU::Initialize(
     return SENSOR_STATUS::INIT_FAIL;
 }
 
+#pragma region Callbacks
+
 void IMU::DMA_TxRxCompleteCallback()
 {
     Parse_Measurement(current_receive_buffer, IMU_BUFFER_SIZE);
@@ -68,6 +74,15 @@ void IMU::DMA_ErrorCallback()
 {
     HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
 }
+
+void IMU::DMA_TxCompleteCallback()
+{
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
+}
+
+#pragma endregion
+
+#pragma region Setup
 
 HAL_StatusTypeDef IMU::Handle_Acc_Control_Registers()
 {
@@ -146,6 +161,41 @@ bool IMU::Assert_ID_Register()
     return (code == HAL_OK) && ok;
 }
 
+void IMU::Update_Sensitivities()
+{
+    switch (acc_scale)
+    {
+        case IMU_ACC_SCALE::G_8:
+            acc_sensitivity_g = 0.244f * 0.001f;
+            break;
+
+        case IMU_ACC_SCALE::G_16:
+            acc_sensitivity_g = 0.488f * 0.001f;
+            break;
+
+        default:
+            break;
+    }
+
+    switch (gyro_scale)
+    {
+        case IMU_GYRO_SCALE::DPS_500:
+            gyro_sensitivity_dps = 17.50f * 0.001f;
+            break;
+
+        case IMU_GYRO_SCALE::DPS_1000:
+            gyro_sensitivity_dps = 35.0f * 0.001f;
+            break;
+
+        default:
+            break;
+    }
+}
+
+#pragma endregion
+
+#pragma region Master Calls
+
 void IMU::Prepare_For_Measurements()
 {
     for (uint8_t i = 0; i < IMU_BUFFER_SIZE; ++i)
@@ -167,6 +217,63 @@ void IMU::Measurement_Cycle_Finished()
 {
     Change_Buffer_Pointers();
 }
+
+void IMU::Task_Perform_Transaction()
+{
+    HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
+
+    HAL_StatusTypeDef code =
+        HAL_SPI_TransmitReceive_DMA(
+            spi,
+            current_transmit_buffer,
+            current_receive_buffer,
+            IMU_BUFFER_SIZE);
+
+    if (code != HAL_OK)
+    {
+        HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
+    }
+}
+
+HAL_StatusTypeDef IMU::Reset_Chip()
+{
+    current_transmit_buffer[0] =
+        Get_Write_Command(
+            static_cast<uint8_t>(IMU_REGISTERS::IMU_CTRL3_REG));
+
+    current_transmit_buffer[1] = 0b0000'0101;
+
+    HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
+
+    HAL_StatusTypeDef code =
+        HAL_SPI_Transmit(
+            spi,
+            current_transmit_buffer,
+            2,
+            HAL_MAX_DELAY);
+
+    HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
+
+    Change_Buffer_Pointers();
+
+    return code;
+}
+
+bool IMU::Get_Measurement(IMU_Measurement &meas)
+{
+    if (data_ready)
+    {
+        meas = current_measurement;
+        data_ready = false;
+        return true;
+    }
+
+    return false;
+}
+
+#pragma endregion
+
+#pragma region Data Parsing
 
 bool IMU::Parse_Measurement(uint8_t* received_data, uint8_t size)
 {
@@ -240,91 +347,4 @@ bool IMU::Parse_Measurement(uint8_t* received_data, uint8_t size)
     return true;
 }
 
-void IMU::Update_Sensitivities()
-{
-    switch (acc_scale)
-    {
-        case IMU_ACC_SCALE::G_8:
-            acc_sensitivity_g = 0.244f * 0.001f;
-            break;
-
-        case IMU_ACC_SCALE::G_16:
-            acc_sensitivity_g = 0.488f * 0.001f;
-            break;
-
-        default:
-            break;
-    }
-
-    switch (gyro_scale)
-    {
-        case IMU_GYRO_SCALE::DPS_500:
-            gyro_sensitivity_dps = 17.50f * 0.001f;
-            break;
-
-        case IMU_GYRO_SCALE::DPS_1000:
-            gyro_sensitivity_dps = 35.0f * 0.001f;
-            break;
-
-        default:
-            break;
-    }
-}
-
-void IMU::Task_Perform_Transaction()
-{
-    HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
-
-    HAL_StatusTypeDef code =
-        HAL_SPI_TransmitReceive_DMA(
-            spi,
-            current_transmit_buffer,
-            current_receive_buffer,
-            IMU_BUFFER_SIZE);
-
-    if (code != HAL_OK)
-    {
-        HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
-    }
-}
-
-void IMU::DMA_TxCompleteCallback()
-{
-	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
-}
-
-HAL_StatusTypeDef IMU::Reset_Chip()
-{
-    current_transmit_buffer[0] =
-        Get_Write_Command(
-            static_cast<uint8_t>(IMU_REGISTERS::IMU_CTRL3_REG));
-
-    current_transmit_buffer[1] = 0b0000'0101;
-
-    HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
-
-    HAL_StatusTypeDef code =
-        HAL_SPI_Transmit(
-            spi,
-            current_transmit_buffer,
-            2,
-            HAL_MAX_DELAY);
-
-    HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
-
-    Change_Buffer_Pointers();
-
-    return code;
-}
-
-bool IMU::Get_Measurement(IMU_Measurement &meas)
-{
-    if (data_ready)
-    {
-        meas = current_measurement;
-        data_ready = false;
-        return true;
-    }
-
-    return false;
-}
+#pragma endregion
