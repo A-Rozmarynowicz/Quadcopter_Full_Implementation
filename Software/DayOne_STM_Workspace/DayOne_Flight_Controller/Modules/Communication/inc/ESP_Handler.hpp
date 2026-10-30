@@ -23,6 +23,8 @@ private:
 	uint8_t rx_buffer[I2C_RX_PACKET_SIZE];
 	uint8_t tx_buffer[I2C_TX_PACKET_SIZE];
 
+
+
 	void Parse_Received_Data();
 
 	void _handle_current_position_transfer();

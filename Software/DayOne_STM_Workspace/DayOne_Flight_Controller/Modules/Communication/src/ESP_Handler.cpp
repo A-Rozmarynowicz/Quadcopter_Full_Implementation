@@ -94,6 +94,41 @@ void ESP_Handler::I2C_Slave_TX_Callback()
 {
 }
 
+void ESP_Handler::_handle_current_position_transfer()
+{
+	float x, y, z;
+
+	memcpy(&x, &rx_buffer[static_cast<uint8_t>(I2C_Data_Setup::QUAD_0)], sizeof(float));
+	memcpy(&y, &rx_buffer[static_cast<uint8_t>(I2C_Data_Setup::QUAD_1)], sizeof(float));
+	memcpy(&z, &rx_buffer[static_cast<uint8_t>(I2C_Data_Setup::QUAD_2)], sizeof(float));
+}
+
+void ESP_Handler::_handle_heartbeat() {
+}
+
+void ESP_Handler::_handle_emergency_landing() {
+}
+
+void ESP_Handler::_handle_emergency_total_stop() {
+}
+
+void ESP_Handler::_handle_hover() {
+}
+
+void ESP_Handler::_handle_land() {
+}
+
+void ESP_Handler::_handle_quadcopter_init() {
+}
+
+void ESP_Handler::_handle_reset_stm() {
+}
+
+void ESP_Handler::_handle_request(I2C_REQUESTS new_request) {
+}
+
+
+
 void ESP_Handler::Parse_Received_Data()
 {
 	I2C_Data_Commands command = static_cast<I2C_Data_Commands>(
@@ -134,20 +169,12 @@ void ESP_Handler::Parse_Received_Data()
 			break;
 
 		case I2C_Data_Commands::REQUEST_FULL_TELEMETRY:
-			_handle_reset_stm();
+			_handle_request(I2C_REQUESTS::FULL_TELEMETRY);
 			break;
-
 
 		default:
 			break;
 	}
-
-	float x, y, z;
-
-	memcpy(&x, &rx_buffer[static_cast<uint8_t>(I2C_Data_Setup::QUAD_0)], sizeof(float));
-	memcpy(&y, &rx_buffer[static_cast<uint8_t>(I2C_Data_Setup::QUAD_1)], sizeof(float));
-	memcpy(&z, &rx_buffer[static_cast<uint8_t>(I2C_Data_Setup::QUAD_2)], sizeof(float));
-
 }
 
 #pragma endregion
