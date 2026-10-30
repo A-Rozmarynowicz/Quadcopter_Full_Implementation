@@ -87,9 +87,60 @@ void ESP_Handler::I2C_Listen_Callback(uint8_t TransferDirection)
 
 void ESP_Handler::I2C_Slave_RX_Callback()
 {
+	Parse_Received_Data();
+}
+
+void ESP_Handler::I2C_Slave_TX_Callback()
+{
+}
+
+void ESP_Handler::Parse_Received_Data()
+{
 	I2C_Data_Commands command = static_cast<I2C_Data_Commands>(
 			rx_buffer[static_cast<uint8_t>(I2C_Data_Setup::COMMAND)]
 					  );
+
+	switch (command) {
+		case I2C_Data_Commands::CURRENT_POSITION_TRANSFER:
+			_handle_current_position_transfer();
+			break;
+
+		case I2C_Data_Commands::HEARTBEAT:
+			_handle_heartbeat();
+			break;
+
+		case I2C_Data_Commands::EMERGENCY_LANDING:
+			_handle_emergency_landing();
+			break;
+
+		case I2C_Data_Commands::EMERGENCY_TOTAL_STOP:
+			_handle_emergency_total_stop();
+			break;
+
+		case I2C_Data_Commands::HOVER:
+			_handle_hover();
+			break;
+
+		case I2C_Data_Commands::LAND:
+			_handle_land();
+			break;
+
+		case I2C_Data_Commands::QUADCOPTER_INIT:
+			_handle_quadcopter_init();
+			break;
+
+		case I2C_Data_Commands::RESET_STM:
+			_handle_reset_stm();
+			break;
+
+		case I2C_Data_Commands::REQUEST_FULL_TELEMETRY:
+			_handle_reset_stm();
+			break;
+
+
+		default:
+			break;
+	}
 
 	float x, y, z;
 
@@ -97,13 +148,6 @@ void ESP_Handler::I2C_Slave_RX_Callback()
 	memcpy(&y, &rx_buffer[static_cast<uint8_t>(I2C_Data_Setup::QUAD_1)], sizeof(float));
 	memcpy(&z, &rx_buffer[static_cast<uint8_t>(I2C_Data_Setup::QUAD_2)], sizeof(float));
 
-	uint8_t check = 1+2;
 }
-
-void ESP_Handler::I2C_Slave_TX_Callback()
-{
-}
-
-
 
 #pragma endregion
