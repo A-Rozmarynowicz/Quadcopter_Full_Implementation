@@ -3819,7 +3819,7 @@ LOAD C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
                 0x08000000                g_pfnVectors
                 0x080001d8                        . = ALIGN (0x4)
 
-.text           0x080001d8     0x774c
+.text           0x080001d8     0x788c
                 0x080001d8                        . = ALIGN (0x4)
  *(.text)
  .text          0x080001d8       0x40 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
@@ -4407,215 +4407,244 @@ LOAD C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
                 0x08006c6c                ESP_Handler::Initialize()
  *fill*         0x08006c86        0x2 
  .text._ZN11ESP_Handler19I2C_Listen_CallbackEh
-                0x08006c88       0x7c ./Modules/Communication/src/ESP_Handler.o
+                0x08006c88       0x78 ./Modules/Communication/src/ESP_Handler.o
                 0x08006c88                ESP_Handler::I2C_Listen_Callback(unsigned char)
  .text._ZN11ESP_Handler21I2C_Slave_RX_CallbackEv
-                0x08006d04       0x36 ./Modules/Communication/src/ESP_Handler.o
-                0x08006d04                ESP_Handler::I2C_Slave_RX_Callback()
+                0x08006d00       0x16 ./Modules/Communication/src/ESP_Handler.o
+                0x08006d00                ESP_Handler::I2C_Slave_RX_Callback()
  .text._ZN11ESP_Handler21I2C_Slave_TX_CallbackEv
-                0x08006d3a       0x14 ./Modules/Communication/src/ESP_Handler.o
-                0x08006d3a                ESP_Handler::I2C_Slave_TX_Callback()
+                0x08006d16       0x14 ./Modules/Communication/src/ESP_Handler.o
+                0x08006d16                ESP_Handler::I2C_Slave_TX_Callback()
+ .text._ZN11ESP_Handler33_handle_current_position_transferEv
+                0x08006d2a       0x2c ./Modules/Communication/src/ESP_Handler.o
+                0x08006d2a                ESP_Handler::_handle_current_position_transfer()
+ .text._ZN11ESP_Handler17_handle_heartbeatEv
+                0x08006d56       0x14 ./Modules/Communication/src/ESP_Handler.o
+                0x08006d56                ESP_Handler::_handle_heartbeat()
+ .text._ZN11ESP_Handler25_handle_emergency_landingEv
+                0x08006d6a       0x14 ./Modules/Communication/src/ESP_Handler.o
+                0x08006d6a                ESP_Handler::_handle_emergency_landing()
+ .text._ZN11ESP_Handler28_handle_emergency_total_stopEv
+                0x08006d7e       0x14 ./Modules/Communication/src/ESP_Handler.o
+                0x08006d7e                ESP_Handler::_handle_emergency_total_stop()
+ .text._ZN11ESP_Handler13_handle_hoverEv
+                0x08006d92       0x14 ./Modules/Communication/src/ESP_Handler.o
+                0x08006d92                ESP_Handler::_handle_hover()
+ .text._ZN11ESP_Handler12_handle_landEv
+                0x08006da6       0x14 ./Modules/Communication/src/ESP_Handler.o
+                0x08006da6                ESP_Handler::_handle_land()
+ .text._ZN11ESP_Handler23_handle_quadcopter_initEv
+                0x08006dba       0x14 ./Modules/Communication/src/ESP_Handler.o
+                0x08006dba                ESP_Handler::_handle_quadcopter_init()
+ .text._ZN11ESP_Handler17_handle_reset_stmEv
+                0x08006dce       0x14 ./Modules/Communication/src/ESP_Handler.o
+                0x08006dce                ESP_Handler::_handle_reset_stm()
+ .text._ZN11ESP_Handler15_handle_requestENS_12I2C_REQUESTSE
+                0x08006de2       0x16 ./Modules/Communication/src/ESP_Handler.o
+                0x08006de2                ESP_Handler::_handle_request(ESP_Handler::I2C_REQUESTS)
+ .text._ZN11ESP_Handler19Parse_Received_DataEv
+                0x08006df8       0x98 ./Modules/Communication/src/ESP_Handler.o
+                0x08006df8                ESP_Handler::Parse_Received_Data()
  .text._ZN3IMU24DMA_TxRxCompleteCallbackEv
-                0x08006d4e       0x2e ./Modules/Sensors/src/IMU.o
-                0x08006d4e                IMU::DMA_TxRxCompleteCallback()
+                0x08006e90       0x2e ./Modules/Sensors/src/IMU.o
+                0x08006e90                IMU::DMA_TxRxCompleteCallback()
  .text._ZN3IMU17DMA_ErrorCallbackEv
-                0x08006d7c       0x20 ./Modules/Sensors/src/IMU.o
-                0x08006d7c                IMU::DMA_ErrorCallback()
+                0x08006ebe       0x20 ./Modules/Sensors/src/IMU.o
+                0x08006ebe                IMU::DMA_ErrorCallback()
  .text._ZN3IMU22DMA_TxCompleteCallbackEv
-                0x08006d9c       0x20 ./Modules/Sensors/src/IMU.o
-                0x08006d9c                IMU::DMA_TxCompleteCallback()
+                0x08006ede       0x20 ./Modules/Sensors/src/IMU.o
+                0x08006ede                IMU::DMA_TxCompleteCallback()
  .text._ZN3IMU18Assert_ID_RegisterEv
-                0x08006dbc       0x94 ./Modules/Sensors/src/IMU.o
-                0x08006dbc                IMU::Assert_ID_Register()
+                0x08006efe       0x94 ./Modules/Sensors/src/IMU.o
+                0x08006efe                IMU::Assert_ID_Register()
  .text._ZN3IMU24Prepare_For_MeasurementsEv
-                0x08006e50       0x6a ./Modules/Sensors/src/IMU.o
-                0x08006e50                IMU::Prepare_For_Measurements()
+                0x08006f92       0x6a ./Modules/Sensors/src/IMU.o
+                0x08006f92                IMU::Prepare_For_Measurements()
  .text._ZN3IMU26Measurement_Cycle_FinishedEv
-                0x08006eba       0x1e ./Modules/Sensors/src/IMU.o
-                0x08006eba                IMU::Measurement_Cycle_Finished()
+                0x08006ffc       0x1e ./Modules/Sensors/src/IMU.o
+                0x08006ffc                IMU::Measurement_Cycle_Finished()
  .text._ZN3IMU24Task_Perform_TransactionEv
-                0x08006ed8       0x4c ./Modules/Sensors/src/IMU.o
-                0x08006ed8                IMU::Task_Perform_Transaction()
+                0x0800701a       0x4c ./Modules/Sensors/src/IMU.o
+                0x0800701a                IMU::Task_Perform_Transaction()
  .text._ZN3IMU10Reset_ChipEv
-                0x08006f24       0x76 ./Modules/Sensors/src/IMU.o
-                0x08006f24                IMU::Reset_Chip()
+                0x08007066       0x76 ./Modules/Sensors/src/IMU.o
+                0x08007066                IMU::Reset_Chip()
  .text._ZN3IMU17Parse_MeasurementEPhh
-                0x08006f9a      0x166 ./Modules/Sensors/src/IMU.o
-                0x08006f9a                IMU::Parse_Measurement(unsigned char*, unsigned char)
+                0x080070dc      0x166 ./Modules/Sensors/src/IMU.o
+                0x080070dc                IMU::Parse_Measurement(unsigned char*, unsigned char)
  .text._ZN12Magnetometer24DMA_TxRxCompleteCallbackEv
-                0x08007100       0x86 ./Modules/Sensors/src/Magnetometer.o
-                0x08007100                Magnetometer::DMA_TxRxCompleteCallback()
+                0x08007242       0x86 ./Modules/Sensors/src/Magnetometer.o
+                0x08007242                Magnetometer::DMA_TxRxCompleteCallback()
  .text._ZN12Magnetometer22DMA_TxCompleteCallbackEv
-                0x08007186       0x20 ./Modules/Sensors/src/Magnetometer.o
-                0x08007186                Magnetometer::DMA_TxCompleteCallback()
+                0x080072c8       0x20 ./Modules/Sensors/src/Magnetometer.o
+                0x080072c8                Magnetometer::DMA_TxCompleteCallback()
  .text._ZN12Magnetometer17DMA_ErrorCallbackEv
-                0x080071a6       0x20 ./Modules/Sensors/src/Magnetometer.o
-                0x080071a6                Magnetometer::DMA_ErrorCallback()
+                0x080072e8       0x20 ./Modules/Sensors/src/Magnetometer.o
+                0x080072e8                Magnetometer::DMA_ErrorCallback()
  .text._ZN12Magnetometer23Data_Ready_EXTI_HandlerEv
-                0x080071c6       0x1c ./Modules/Sensors/src/Magnetometer.o
-                0x080071c6                Magnetometer::Data_Ready_EXTI_Handler()
+                0x08007308       0x1c ./Modules/Sensors/src/Magnetometer.o
+                0x08007308                Magnetometer::Data_Ready_EXTI_Handler()
  .text._ZN12Magnetometer26Measurement_Cycle_FinishedEv
-                0x080071e2       0x14 ./Modules/Sensors/src/Magnetometer.o
-                0x080071e2                Magnetometer::Measurement_Cycle_Finished()
+                0x08007324       0x14 ./Modules/Sensors/src/Magnetometer.o
+                0x08007324                Magnetometer::Measurement_Cycle_Finished()
  .text._ZN12Magnetometer24Prepare_For_MeasurementsEv
-                0x080071f6       0x14 ./Modules/Sensors/src/Magnetometer.o
-                0x080071f6                Magnetometer::Prepare_For_Measurements()
- *fill*         0x0800720a        0x2 
+                0x08007338       0x14 ./Modules/Sensors/src/Magnetometer.o
+                0x08007338                Magnetometer::Prepare_For_Measurements()
  .text._ZN12Magnetometer24Task_Perform_TransactionEv
-                0x0800720c       0x94 ./Modules/Sensors/src/Magnetometer.o
-                0x0800720c                Magnetometer::Task_Perform_Transaction()
+                0x0800734c       0x94 ./Modules/Sensors/src/Magnetometer.o
+                0x0800734c                Magnetometer::Task_Perform_Transaction()
  .text._ZN12Magnetometer10Reset_ChipEv
-                0x080072a0       0x64 ./Modules/Sensors/src/Magnetometer.o
-                0x080072a0                Magnetometer::Reset_Chip()
+                0x080073e0       0x64 ./Modules/Sensors/src/Magnetometer.o
+                0x080073e0                Magnetometer::Reset_Chip()
  .text._ZN12Magnetometer7RecoverEv
-                0x08007304       0x76 ./Modules/Sensors/src/Magnetometer.o
-                0x08007304                Magnetometer::Recover()
+                0x08007444       0x76 ./Modules/Sensors/src/Magnetometer.o
+                0x08007444                Magnetometer::Recover()
  .text._ZN12Magnetometer11Perform_SetEv
-                0x0800737a       0x84 ./Modules/Sensors/src/Magnetometer.o
-                0x0800737a                Magnetometer::Perform_Set()
+                0x080074ba       0x84 ./Modules/Sensors/src/Magnetometer.o
+                0x080074ba                Magnetometer::Perform_Set()
  .text._ZN12Magnetometer13Perform_ResetEv
-                0x080073fe       0x84 ./Modules/Sensors/src/Magnetometer.o
-                0x080073fe                Magnetometer::Perform_Reset()
+                0x0800753e       0x84 ./Modules/Sensors/src/Magnetometer.o
+                0x0800753e                Magnetometer::Perform_Reset()
  .text._ZN12Magnetometer18Enable_MeasurementEv
-                0x08007482       0x94 ./Modules/Sensors/src/Magnetometer.o
-                0x08007482                Magnetometer::Enable_Measurement()
+                0x080075c2       0x94 ./Modules/Sensors/src/Magnetometer.o
+                0x080075c2                Magnetometer::Enable_Measurement()
  .text._ZN12Magnetometer16Read_MeasurementEv
-                0x08007516       0xaa ./Modules/Sensors/src/Magnetometer.o
-                0x08007516                Magnetometer::Read_Measurement()
+                0x08007656       0xaa ./Modules/Sensors/src/Magnetometer.o
+                0x08007656                Magnetometer::Read_Measurement()
  .text._ZN12Magnetometer15Clear_InterruptEv
-                0x080075c0       0x94 ./Modules/Sensors/src/Magnetometer.o
-                0x080075c0                Magnetometer::Clear_Interrupt()
+                0x08007700       0x94 ./Modules/Sensors/src/Magnetometer.o
+                0x08007700                Magnetometer::Clear_Interrupt()
  .text._ZN12Magnetometer18Assert_ID_RegisterEv
-                0x08007654       0x94 ./Modules/Sensors/src/Magnetometer.o
-                0x08007654                Magnetometer::Assert_ID_Register()
+                0x08007794       0x94 ./Modules/Sensors/src/Magnetometer.o
+                0x08007794                Magnetometer::Assert_ID_Register()
  .text._ZN12Magnetometer17Store_MeasurementEPhhR18Raw_Magnetic_Value
-                0x080076e8       0x64 ./Modules/Sensors/src/Magnetometer.o
-                0x080076e8                Magnetometer::Store_Measurement(unsigned char*, unsigned char, Raw_Magnetic_Value&)
+                0x08007828       0x64 ./Modules/Sensors/src/Magnetometer.o
+                0x08007828                Magnetometer::Store_Measurement(unsigned char*, unsigned char, Raw_Magnetic_Value&)
  .text._ZN12Magnetometer10Parse_DataEv
-                0x0800774c       0xa0 ./Modules/Sensors/src/Magnetometer.o
-                0x0800774c                Magnetometer::Parse_Data()
- .text._ZdlPvj  0x080077ec        0x4 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(del_ops.o)
-                0x080077ec                operator delete(void*, unsigned int)
- .text._ZdlPv   0x080077f0        0x4 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(del_op.o)
-                0x080077f0                operator delete(void*)
- .text.free     0x080077f4       0x10 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-malloc.o)
-                0x080077f4                free
+                0x0800788c       0xa0 ./Modules/Sensors/src/Magnetometer.o
+                0x0800788c                Magnetometer::Parse_Data()
+ .text._ZdlPvj  0x0800792c        0x4 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(del_ops.o)
+                0x0800792c                operator delete(void*, unsigned int)
+ .text._ZdlPv   0x08007930        0x4 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(del_op.o)
+                0x08007930                operator delete(void*)
+ .text.free     0x08007934       0x10 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-malloc.o)
+                0x08007934                free
  .text.__malloc_lock
-                0x08007804        0xc C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mlock.o)
-                0x08007804                __malloc_lock
+                0x08007944        0xc C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mlock.o)
+                0x08007944                __malloc_lock
  .text.__malloc_unlock
-                0x08007810        0xc C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mlock.o)
-                0x08007810                __malloc_unlock
- .text.memset   0x0800781c       0x10 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
-                0x0800781c                memset
+                0x08007950        0xc C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mlock.o)
+                0x08007950                __malloc_unlock
+ .text.memset   0x0800795c       0x10 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
+                0x0800795c                memset
  .text.__libc_init_array
-                0x0800782c       0x48 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
-                0x0800782c                __libc_init_array
+                0x0800796c       0x48 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
+                0x0800796c                __libc_init_array
  .text.__retarget_lock_acquire_recursive
-                0x08007874        0x2 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-lock.o)
-                0x08007874                __retarget_lock_acquire_recursive
+                0x080079b4        0x2 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-lock.o)
+                0x080079b4                __retarget_lock_acquire_recursive
  .text.__retarget_lock_release_recursive
-                0x08007876        0x2 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-lock.o)
-                0x08007876                __retarget_lock_release_recursive
- .text._free_r  0x08007878       0x94 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-freer.o)
-                0x08007878                _free_r
+                0x080079b6        0x2 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-lock.o)
+                0x080079b6                __retarget_lock_release_recursive
+ .text._free_r  0x080079b8       0x94 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-freer.o)
+                0x080079b8                _free_r
  *(.glue_7)
- .glue_7        0x0800790c        0x0 linker stubs
+ .glue_7        0x08007a4c        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x0800790c        0x0 linker stubs
+ .glue_7t       0x08007a4c        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x0800790c        0x0 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+ .eh_frame      0x08007a4c        0x0 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
  *(.init)
- .init          0x0800790c        0x4 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crti.o
-                0x0800790c                _init
- .init          0x08007910        0x8 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtn.o
+ .init          0x08007a4c        0x4 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crti.o
+                0x08007a4c                _init
+ .init          0x08007a50        0x8 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtn.o
  *(.fini)
- .fini          0x08007918        0x4 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crti.o
-                0x08007918                _fini
- .fini          0x0800791c        0x8 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtn.o
-                0x08007924                        . = ALIGN (0x4)
-                0x08007924                        _etext = .
+ .fini          0x08007a58        0x4 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crti.o
+                0x08007a58                _fini
+ .fini          0x08007a5c        0x8 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtn.o
+                0x08007a64                        . = ALIGN (0x4)
+                0x08007a64                        _etext = .
 
-.vfp11_veneer   0x08007924        0x0
- .vfp11_veneer  0x08007924        0x0 linker stubs
+.vfp11_veneer   0x08007a64        0x0
+ .vfp11_veneer  0x08007a64        0x0 linker stubs
 
-.v4_bx          0x08007924        0x0
- .v4_bx         0x08007924        0x0 linker stubs
+.v4_bx          0x08007a64        0x0
+ .v4_bx         0x08007a64        0x0 linker stubs
 
-.iplt           0x08007924        0x0
- .iplt          0x08007924        0x0 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+.iplt           0x08007a64        0x0
+ .iplt          0x08007a64        0x0 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
 
-.rodata         0x08007924      0x120
-                0x08007924                        . = ALIGN (0x4)
+.rodata         0x08007a64      0x120
+                0x08007a64                        . = ALIGN (0x4)
  *(.rodata)
  *(.rodata*)
  .rodata.AHBPrescTable
-                0x08007924       0x10 ./Core/Src/system_stm32f4xx.o
-                0x08007924                AHBPrescTable
+                0x08007a64       0x10 ./Core/Src/system_stm32f4xx.o
+                0x08007a64                AHBPrescTable
  .rodata.APBPrescTable
-                0x08007934        0x8 ./Core/Src/system_stm32f4xx.o
-                0x08007934                APBPrescTable
+                0x08007a74        0x8 ./Core/Src/system_stm32f4xx.o
+                0x08007a74                APBPrescTable
  .rodata.flagBitshiftOffset.0
-                0x0800793c        0x8 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
+                0x08007a7c        0x8 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
  .rodata._ZTV6SensorILj7EE
-                0x08007944       0x40 ./Modules/Application/src/Application.o
-                0x08007944                vtable for Sensor<7u>
+                0x08007a84       0x40 ./Modules/Application/src/Application.o
+                0x08007a84                vtable for Sensor<7u>
  .rodata._ZTV6SensorILj13EE
-                0x08007984       0x40 ./Modules/Application/src/Application.o
-                0x08007984                vtable for Sensor<13u>
+                0x08007ac4       0x40 ./Modules/Application/src/Application.o
+                0x08007ac4                vtable for Sensor<13u>
  .rodata._ZTV3IMU
-                0x080079c4       0x40 ./Modules/Sensors/src/IMU.o
-                0x080079c4                vtable for IMU
+                0x08007b04       0x40 ./Modules/Sensors/src/IMU.o
+                0x08007b04                vtable for IMU
  .rodata._ZTV12Magnetometer
-                0x08007a04       0x40 ./Modules/Sensors/src/Magnetometer.o
-                0x08007a04                vtable for Magnetometer
-                0x08007a44                        . = ALIGN (0x4)
+                0x08007b44       0x40 ./Modules/Sensors/src/Magnetometer.o
+                0x08007b44                vtable for Magnetometer
+                0x08007b84                        . = ALIGN (0x4)
 
-.ARM.extab      0x08007a44        0x0
-                0x08007a44                        . = ALIGN (0x4)
+.ARM.extab      0x08007b84        0x0
+                0x08007b84                        . = ALIGN (0x4)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x08007a44                        . = ALIGN (0x4)
+                0x08007b84                        . = ALIGN (0x4)
 
-.ARM            0x08007a44        0x8
-                0x08007a44                        . = ALIGN (0x4)
-                0x08007a44                        __exidx_start = .
+.ARM            0x08007b84        0x8
+                0x08007b84                        . = ALIGN (0x4)
+                0x08007b84                        __exidx_start = .
  *(.ARM.exidx*)
- .ARM.exidx     0x08007a44        0x8 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
-                0x08007a4c                        __exidx_end = .
-                0x08007a4c                        . = ALIGN (0x4)
+ .ARM.exidx     0x08007b84        0x8 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+                0x08007b8c                        __exidx_end = .
+                0x08007b8c                        . = ALIGN (0x4)
 
-.preinit_array  0x08007a4c        0x0
-                0x08007a4c                        . = ALIGN (0x4)
-                0x08007a4c                        PROVIDE (__preinit_array_start = .)
+.preinit_array  0x08007b8c        0x0
+                0x08007b8c                        . = ALIGN (0x4)
+                0x08007b8c                        PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x08007a4c                        PROVIDE (__preinit_array_end = .)
-                0x08007a4c                        . = ALIGN (0x4)
+                0x08007b8c                        PROVIDE (__preinit_array_end = .)
+                0x08007b8c                        . = ALIGN (0x4)
 
-.init_array     0x08007a4c        0x8
-                0x08007a4c                        . = ALIGN (0x4)
-                0x08007a4c                        PROVIDE (__init_array_start = .)
+.init_array     0x08007b8c        0x8
+                0x08007b8c                        . = ALIGN (0x4)
+                0x08007b8c                        PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array*)
- .init_array    0x08007a4c        0x4 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
- .init_array    0x08007a50        0x4 ./Modules/Application/src/Application.o
-                0x08007a54                        PROVIDE (__init_array_end = .)
-                0x08007a54                        . = ALIGN (0x4)
+ .init_array    0x08007b8c        0x4 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+ .init_array    0x08007b90        0x4 ./Modules/Application/src/Application.o
+                0x08007b94                        PROVIDE (__init_array_end = .)
+                0x08007b94                        . = ALIGN (0x4)
 
-.fini_array     0x08007a54        0x8
-                0x08007a54                        . = ALIGN (0x4)
+.fini_array     0x08007b94        0x8
+                0x08007b94                        . = ALIGN (0x4)
                 [!provide]                        PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x08007a54        0x4 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
- .fini_array    0x08007a58        0x4 ./Modules/Application/src/Application.o
+ .fini_array    0x08007b94        0x4 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+ .fini_array    0x08007b98        0x4 ./Modules/Application/src/Application.o
                 [!provide]                        PROVIDE (__fini_array_end = .)
-                0x08007a5c                        . = ALIGN (0x4)
-                0x08007a5c                        _sidata = LOADADDR (.data)
+                0x08007b9c                        . = ALIGN (0x4)
+                0x08007b9c                        _sidata = LOADADDR (.data)
 
-.rel.dyn        0x08007a5c        0x0
- .rel.iplt      0x08007a5c        0x0 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+.rel.dyn        0x08007b9c        0x0
+ .rel.iplt      0x08007b9c        0x0 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
 
-.data           0x20000000       0x5c load address 0x08007a5c
+.data           0x20000000       0x5c load address 0x08007b9c
                 0x20000000                        . = ALIGN (0x4)
                 0x20000000                        _sdata = .
  *(.data)
@@ -4641,11 +4670,11 @@ LOAD C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
                 0x2000005c                        . = ALIGN (0x4)
                 0x2000005c                        _edata = .
 
-.igot.plt       0x2000005c        0x0 load address 0x08007ab8
+.igot.plt       0x2000005c        0x0 load address 0x08007bf8
  .igot.plt      0x2000005c        0x0 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
                 0x2000005c                        . = ALIGN (0x4)
 
-.bss            0x2000005c      0x5f8 load address 0x08007ab8
+.bss            0x2000005c      0x5fc load address 0x08007bf8
                 0x2000005c                        _sbss = .
                 0x2000005c                        __bss_start__ = _sbss
  *(.bss)
@@ -4685,26 +4714,25 @@ LOAD C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
                 0x20000478       0x64 ./Modules/Application/src/Application.o
                 0x20000478                magnetometer
  .bss.esp_handler
-                0x200004dc       0x38 ./Modules/Application/src/Application.o
+                0x200004dc       0x3c ./Modules/Application/src/Application.o
                 0x200004dc                esp_handler
  .bss.__malloc_free_list
-                0x20000514        0x4 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mallocr.o)
-                0x20000514                __malloc_free_list
- .bss.__sf      0x20000518      0x138 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-findfp.o)
-                0x20000518                __sf
+                0x20000518        0x4 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mallocr.o)
+                0x20000518                __malloc_free_list
+ .bss.__sf      0x2000051c      0x138 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-findfp.o)
+                0x2000051c                __sf
  .bss.__lock___malloc_recursive_mutex
-                0x20000650        0x1 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-lock.o)
-                0x20000650                __lock___malloc_recursive_mutex
+                0x20000654        0x1 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-lock.o)
+                0x20000654                __lock___malloc_recursive_mutex
  *(COMMON)
-                0x20000654                        . = ALIGN (0x4)
- *fill*         0x20000651        0x3 
-                0x20000654                        _ebss = .
-                0x20000654                        __bss_end__ = _ebss
+                0x20000658                        . = ALIGN (0x4)
+ *fill*         0x20000655        0x3 
+                0x20000658                        _ebss = .
+                0x20000658                        __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x20000654      0x604 load address 0x08007ab8
+                0x20000658      0x600 load address 0x08007bf8
                 0x20000658                        . = ALIGN (0x8)
- *fill*         0x20000654        0x4 
                 [!provide]                        PROVIDE (end = .)
                 0x20000658                        PROVIDE (_end = .)
                 0x20000858                        . = (. + _Min_Heap_Size)
@@ -4799,7 +4827,7 @@ LOAD C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
 LOAD C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a
 LOAD C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a
 
-.debug_info     0x00000000    0x14f4c
+.debug_info     0x00000000    0x152db
  .debug_info    0x00000000     0x172c ./Core/Src/main.o
  .debug_info    0x0000172c     0x1408 ./Core/Src/stm32f4xx_hal_msp.o
  .debug_info    0x00002b34      0xdaa ./Core/Src/stm32f4xx_it.o
@@ -4815,12 +4843,12 @@ LOAD C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  .debug_info    0x00009b59     0x1525 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
  .debug_info    0x0000b07e     0x299d ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
  .debug_info    0x0000da1b     0x1771 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
- .debug_info    0x0000f18c     0x1fec ./Modules/Application/src/Application.o
- .debug_info    0x00011178      0xe6d ./Modules/Communication/src/ESP_Handler.o
- .debug_info    0x00011fe5     0x167f ./Modules/Sensors/src/IMU.o
- .debug_info    0x00013664     0x18e8 ./Modules/Sensors/src/Magnetometer.o
+ .debug_info    0x0000f18c     0x2107 ./Modules/Application/src/Application.o
+ .debug_info    0x00011293     0x10e1 ./Modules/Communication/src/ESP_Handler.o
+ .debug_info    0x00012374     0x167f ./Modules/Sensors/src/IMU.o
+ .debug_info    0x000139f3     0x18e8 ./Modules/Sensors/src/Magnetometer.o
 
-.debug_abbrev   0x00000000     0x30c0
+.debug_abbrev   0x00000000     0x30fc
  .debug_abbrev  0x00000000      0x28f ./Core/Src/main.o
  .debug_abbrev  0x0000028f      0x262 ./Core/Src/stm32f4xx_hal_msp.o
  .debug_abbrev  0x000004f1      0x1dd ./Core/Src/stm32f4xx_it.o
@@ -4836,12 +4864,12 @@ LOAD C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  .debug_abbrev  0x000018c5      0x27a ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
  .debug_abbrev  0x00001b3f      0x278 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
  .debug_abbrev  0x00001db7      0x28c ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
- .debug_abbrev  0x00002043      0x4fa ./Modules/Application/src/Application.o
- .debug_abbrev  0x0000253d      0x28d ./Modules/Communication/src/ESP_Handler.o
- .debug_abbrev  0x000027ca      0x483 ./Modules/Sensors/src/IMU.o
- .debug_abbrev  0x00002c4d      0x473 ./Modules/Sensors/src/Magnetometer.o
+ .debug_abbrev  0x00002043      0x513 ./Modules/Application/src/Application.o
+ .debug_abbrev  0x00002556      0x2b0 ./Modules/Communication/src/ESP_Handler.o
+ .debug_abbrev  0x00002806      0x483 ./Modules/Sensors/src/IMU.o
+ .debug_abbrev  0x00002c89      0x473 ./Modules/Sensors/src/Magnetometer.o
 
-.debug_aranges  0x00000000     0x12a8
+.debug_aranges  0x00000000     0x12f8
  .debug_aranges
                 0x00000000       0x60 ./Core/Src/main.o
  .debug_aranges
@@ -4875,14 +4903,14 @@ LOAD C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  .debug_aranges
                 0x00000f60      0x138 ./Modules/Application/src/Application.o
  .debug_aranges
-                0x00001098       0x40 ./Modules/Communication/src/ESP_Handler.o
+                0x00001098       0x90 ./Modules/Communication/src/ESP_Handler.o
  .debug_aranges
-                0x000010d8       0xc8 ./Modules/Sensors/src/IMU.o
+                0x00001128       0xc8 ./Modules/Sensors/src/IMU.o
  .debug_aranges
-                0x000011a0      0x108 ./Modules/Sensors/src/Magnetometer.o
+                0x000011f0      0x108 ./Modules/Sensors/src/Magnetometer.o
 
 .debug_rnglists
-                0x00000000      0xe88
+                0x00000000      0xec5
  .debug_rnglists
                 0x00000000       0x47 ./Core/Src/main.o
  .debug_rnglists
@@ -4916,11 +4944,11 @@ LOAD C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  .debug_rnglists
                 0x00000c18       0xe5 ./Modules/Application/src/Application.o
  .debug_rnglists
-                0x00000cfd       0x2b ./Modules/Communication/src/ESP_Handler.o
+                0x00000cfd       0x68 ./Modules/Communication/src/ESP_Handler.o
  .debug_rnglists
-                0x00000d28       0x96 ./Modules/Sensors/src/IMU.o
+                0x00000d65       0x96 ./Modules/Sensors/src/IMU.o
  .debug_rnglists
-                0x00000dbe       0xca ./Modules/Sensors/src/Magnetometer.o
+                0x00000dfb       0xca ./Modules/Sensors/src/Magnetometer.o
 
 .debug_macro    0x00000000    0x23ea9
  .debug_macro   0x00000000      0x200 ./Core/Src/main.o
@@ -5002,7 +5030,7 @@ LOAD C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  .debug_macro   0x00023a3b      0x237 ./Modules/Sensors/src/IMU.o
  .debug_macro   0x00023c72      0x237 ./Modules/Sensors/src/Magnetometer.o
 
-.debug_line     0x00000000    0x15ed7
+.debug_line     0x00000000    0x15fe1
  .debug_line    0x00000000      0xa3d ./Core/Src/main.o
  .debug_line    0x00000a3d      0x9a1 ./Core/Src/stm32f4xx_hal_msp.o
  .debug_line    0x000013de      0x945 ./Core/Src/stm32f4xx_it.o
@@ -5019,31 +5047,31 @@ LOAD C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  .debug_line    0x0000d135     0x37dd ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
  .debug_line    0x00010912     0x19d2 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
  .debug_line    0x000122e4     0x1013 ./Modules/Application/src/Application.o
- .debug_line    0x000132f7      0xc2a ./Modules/Communication/src/ESP_Handler.o
- .debug_line    0x00013f21      0xecf ./Modules/Sensors/src/IMU.o
- .debug_line    0x00014df0     0x10e7 ./Modules/Sensors/src/Magnetometer.o
+ .debug_line    0x000132f7      0xd34 ./Modules/Communication/src/ESP_Handler.o
+ .debug_line    0x0001402b      0xecf ./Modules/Sensors/src/IMU.o
+ .debug_line    0x00014efa     0x10e7 ./Modules/Sensors/src/Magnetometer.o
 
-.debug_str      0x00000000    0xd3647
- .debug_str     0x00000000    0xd3647 ./Core/Src/main.o
+.debug_str      0x00000000    0xd38eb
+ .debug_str     0x00000000    0xd38eb ./Core/Src/main.o
                               0xc9332 (size before relaxing)
- .debug_str     0x000d3647    0xc90b5 ./Core/Src/stm32f4xx_hal_msp.o
- .debug_str     0x000d3647    0xc8a6a ./Core/Src/stm32f4xx_it.o
- .debug_str     0x000d3647    0xc7ed5 ./Core/Src/system_stm32f4xx.o
- .debug_str     0x000d3647       0xc6 ./Core/Startup/startup_stm32f413rhtx.o
- .debug_str     0x000d3647    0xc8b0b ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
- .debug_str     0x000d3647    0xc8863 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
- .debug_str     0x000d3647    0xc82cb ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
- .debug_str     0x000d3647    0xc805f ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
- .debug_str     0x000d3647    0xc8ed4 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o
- .debug_str     0x000d3647    0xc830e ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
- .debug_str     0x000d3647    0xc8293 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o
- .debug_str     0x000d3647    0xc876f ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
- .debug_str     0x000d3647    0xc923b ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
- .debug_str     0x000d3647    0xc8b7c ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
- .debug_str     0x000d3647    0xcba83 ./Modules/Application/src/Application.o
- .debug_str     0x000d3647    0xcdc0c ./Modules/Communication/src/ESP_Handler.o
- .debug_str     0x000d3647    0xcaf25 ./Modules/Sensors/src/IMU.o
- .debug_str     0x000d3647    0xcb260 ./Modules/Sensors/src/Magnetometer.o
+ .debug_str     0x000d38eb    0xc90b5 ./Core/Src/stm32f4xx_hal_msp.o
+ .debug_str     0x000d38eb    0xc8a6a ./Core/Src/stm32f4xx_it.o
+ .debug_str     0x000d38eb    0xc7ed5 ./Core/Src/system_stm32f4xx.o
+ .debug_str     0x000d38eb       0xc6 ./Core/Startup/startup_stm32f413rhtx.o
+ .debug_str     0x000d38eb    0xc8b0b ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
+ .debug_str     0x000d38eb    0xc8863 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
+ .debug_str     0x000d38eb    0xc82cb ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
+ .debug_str     0x000d38eb    0xc805f ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
+ .debug_str     0x000d38eb    0xc8ed4 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o
+ .debug_str     0x000d38eb    0xc830e ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
+ .debug_str     0x000d38eb    0xc8293 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o
+ .debug_str     0x000d38eb    0xc876f ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
+ .debug_str     0x000d38eb    0xc923b ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
+ .debug_str     0x000d38eb    0xc8b7c ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
+ .debug_str     0x000d38eb    0xcbd30 ./Modules/Application/src/Application.o
+ .debug_str     0x000d38eb    0xcdebf ./Modules/Communication/src/ESP_Handler.o
+ .debug_str     0x000d38eb    0xcaf25 ./Modules/Sensors/src/IMU.o
+ .debug_str     0x000d38eb    0xcb260 ./Modules/Sensors/src/Magnetometer.o
 
 .comment        0x00000000       0x43
  .comment       0x00000000       0x43 ./Core/Src/main.o
@@ -5066,7 +5094,7 @@ LOAD C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  .comment       0x00000043       0x44 ./Modules/Sensors/src/IMU.o
  .comment       0x00000043       0x44 ./Modules/Sensors/src/Magnetometer.o
 
-.debug_frame    0x00000000     0x52c8
+.debug_frame    0x00000000     0x5450
  .debug_frame   0x00000000      0x128 ./Core/Src/main.o
  .debug_frame   0x00000128      0x114 ./Core/Src/stm32f4xx_hal_msp.o
  .debug_frame   0x0000023c      0x254 ./Core/Src/stm32f4xx_it.o
@@ -5082,21 +5110,21 @@ LOAD C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  .debug_frame   0x0000290c     0x11c0 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
  .debug_frame   0x00003acc      0x638 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
  .debug_frame   0x00004104      0x530 ./Modules/Application/src/Application.o
- .debug_frame   0x00004634       0xd0 ./Modules/Communication/src/ESP_Handler.o
- .debug_frame   0x00004704      0x35c ./Modules/Sensors/src/IMU.o
- .debug_frame   0x00004a60      0x4a0 ./Modules/Sensors/src/Magnetometer.o
- .debug_frame   0x00004f00       0x20 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(del_ops.o)
- .debug_frame   0x00004f20       0x20 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(del_op.o)
- .debug_frame   0x00004f40       0x30 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-malloc.o)
- .debug_frame   0x00004f70       0x50 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mallocr.o)
- .debug_frame   0x00004fc0       0x30 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mlock.o)
- .debug_frame   0x00004ff0      0x144 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-findfp.o)
- .debug_frame   0x00005134       0x20 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
- .debug_frame   0x00005154       0x2c C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
- .debug_frame   0x00005180       0xb0 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-lock.o)
- .debug_frame   0x00005230       0x38 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-freer.o)
- .debug_frame   0x00005268       0x2c C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o)
- .debug_frame   0x00005294       0x34 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+ .debug_frame   0x00004634      0x258 ./Modules/Communication/src/ESP_Handler.o
+ .debug_frame   0x0000488c      0x35c ./Modules/Sensors/src/IMU.o
+ .debug_frame   0x00004be8      0x4a0 ./Modules/Sensors/src/Magnetometer.o
+ .debug_frame   0x00005088       0x20 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(del_ops.o)
+ .debug_frame   0x000050a8       0x20 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(del_op.o)
+ .debug_frame   0x000050c8       0x30 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-malloc.o)
+ .debug_frame   0x000050f8       0x50 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mallocr.o)
+ .debug_frame   0x00005148       0x30 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mlock.o)
+ .debug_frame   0x00005178      0x144 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-findfp.o)
+ .debug_frame   0x000052bc       0x20 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
+ .debug_frame   0x000052dc       0x2c C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
+ .debug_frame   0x00005308       0xb0 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-lock.o)
+ .debug_frame   0x000053b8       0x38 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-freer.o)
+ .debug_frame   0x000053f0       0x2c C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o)
+ .debug_frame   0x0000541c       0x34 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
 
 .debug_line_str
                 0x00000000       0xaa

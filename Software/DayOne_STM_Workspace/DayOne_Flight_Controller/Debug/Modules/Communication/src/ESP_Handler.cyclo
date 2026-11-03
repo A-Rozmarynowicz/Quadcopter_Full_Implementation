@@ -1,5 +1,15 @@
 ../Modules/Communication/src/ESP_Handler.cpp:36:6:void ESP_Handler::Setup(I2C_HandleTypeDef*, GPIO_TypeDef*, uint16_t)	1
 ../Modules/Communication/src/ESP_Handler.cpp:45:6:void ESP_Handler::Initialize()	1
 ../Modules/Communication/src/ESP_Handler.cpp:52:6:void ESP_Handler::I2C_Listen_Callback(uint8_t)	3
-../Modules/Communication/src/ESP_Handler.cpp:89:6:void ESP_Handler::I2C_Slave_RX_Callback()	1
-../Modules/Communication/src/ESP_Handler.cpp:104:6:void ESP_Handler::I2C_Slave_TX_Callback()	1
+../Modules/Communication/src/ESP_Handler.cpp:88:6:void ESP_Handler::I2C_Slave_RX_Callback()	1
+../Modules/Communication/src/ESP_Handler.cpp:93:6:void ESP_Handler::I2C_Slave_TX_Callback()	1
+../Modules/Communication/src/ESP_Handler.cpp:97:6:void ESP_Handler::_handle_current_position_transfer()	1
+../Modules/Communication/src/ESP_Handler.cpp:106:6:void ESP_Handler::_handle_heartbeat()	1
+../Modules/Communication/src/ESP_Handler.cpp:109:6:void ESP_Handler::_handle_emergency_landing()	1
+../Modules/Communication/src/ESP_Handler.cpp:112:6:void ESP_Handler::_handle_emergency_total_stop()	1
+../Modules/Communication/src/ESP_Handler.cpp:115:6:void ESP_Handler::_handle_hover()	1
+../Modules/Communication/src/ESP_Handler.cpp:118:6:void ESP_Handler::_handle_land()	1
+../Modules/Communication/src/ESP_Handler.cpp:121:6:void ESP_Handler::_handle_quadcopter_init()	1
+../Modules/Communication/src/ESP_Handler.cpp:124:6:void ESP_Handler::_handle_reset_stm()	1
+../Modules/Communication/src/ESP_Handler.cpp:127:6:void ESP_Handler::_handle_request(I2C_REQUESTS)	1
+../Modules/Communication/src/ESP_Handler.cpp:132:6:void ESP_Handler::Parse_Received_Data()	10
