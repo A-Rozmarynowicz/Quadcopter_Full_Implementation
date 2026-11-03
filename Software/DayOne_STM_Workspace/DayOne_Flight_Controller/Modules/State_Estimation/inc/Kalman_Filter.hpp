@@ -23,12 +23,18 @@ private:
 
 	float R_last_measurement_variance;
 
+	void _build_A(float dt);
+	void _build_Q(float dt, float acc_variance);
+	void _calculate_X_kk1();
+	void _calculate_P_kk1();
+
 	void Propagate_State();
 	void Update_With_Measurement();
 
 public:
 	void Initialize();
 	void Measurement_Received(float measurement, float dt, float variance);
+	void Perform_Cycle();
 };
 
 #endif /* STATE_ESTIMATION_INC_KALMAN_FILTER_HPP_ */
