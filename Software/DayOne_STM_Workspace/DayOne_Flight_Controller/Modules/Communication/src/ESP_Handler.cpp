@@ -3,37 +3,31 @@
 
 enum class I2C_Data_Commands
 {
-    QUADCOPTER_INIT,
-    CURRENT_POSITION_TRANSFER,
-    HEARTBEAT,
-    EMERGENCY_TOTAL_STOP,
-    EMERGENCY_LANDING,
-    HOVER,
-    LAND,
+	QUADCOPTER_INIT,
+	CURRENT_POSITION_TRANSFER,
+	HEARTBEAT,
+	EMERGENCY_TOTAL_STOP,
+	EMERGENCY_LANDING,
+	HOVER,
+	LAND,
 
-    REQUEST_FULL_TELEMETRY,
-    ANSWER_FULL_TELEMETRY,
+	REQUEST_FULL_TELEMETRY,
+	ANSWER_FULL_TELEMETRY,
 
-    RESET_STM,
+	RESET_STM,
 };
 
 enum class I2C_Data_Setup
 {
-    COMMAND = 0,
+	COMMAND = 0,
 
-    SINGLE_0 = 1,
-    SINGLE_1 = 2,
-    SINGLE_2 = 3,
+	SINGLE_0 = 1, SINGLE_1 = 2, SINGLE_2 = 3,
 
-    QUAD_0 = 4,
-    QUAD_1 = 8,
-    QUAD_2 = 12,
-    QUAD_3 = 16,
-    QUAD_4 = 20,
-    QUAD_5 = 24,
+	QUAD_0 = 4, QUAD_1 = 8, QUAD_2 = 12, QUAD_3 = 16, QUAD_4 = 20, QUAD_5 = 24,
 };
 
-void ESP_Handler::Setup(I2C_HandleTypeDef *i2c_handle,
+void ESP_Handler::Setup(
+		I2C_HandleTypeDef *i2c_handle,
 		GPIO_TypeDef *GPIO_port_esp_request,
 		uint16_t GPIO_pin_esp_request)
 {
@@ -51,38 +45,33 @@ void ESP_Handler::Initialize()
 
 void ESP_Handler::I2C_Listen_Callback(uint8_t TransferDirection)
 {
-    HAL_StatusTypeDef status;
+	HAL_StatusTypeDef status;
 
-    if (TransferDirection == I2C_DIRECTION_TRANSMIT)
-    {
-        // ESP32 writes to STM32.
-        status = HAL_I2C_Slave_Seq_Receive_DMA(
-            hi2c,
-            rx_buffer,
-            I2C_RX_PACKET_SIZE,
-            I2C_FIRST_AND_LAST_FRAME
-        );
-    }
-    else
-    {
-        // ESP32 reads from STM32.
-    	tx_buffer[0] = static_cast<uint8_t>(I2C_Data_Commands::ANSWER_FULL_TELEMETRY);
-    	tx_buffer[I2C_TX_PACKET_SIZE-1] = 69;
-    	float x = 37;
-    	memcpy(&tx_buffer[4], &x, sizeof(float));
+	if (TransferDirection == I2C_DIRECTION_TRANSMIT)
+	{
+		// ESP32 writes to STM32.
+		status = HAL_I2C_Slave_Seq_Receive_DMA(hi2c, rx_buffer,
+				I2C_RX_PACKET_SIZE,
+				I2C_FIRST_AND_LAST_FRAME);
+	}
+	else
+	{
+		// ESP32 reads from STM32.
+		tx_buffer[0] =
+				static_cast<uint8_t>(I2C_Data_Commands::ANSWER_FULL_TELEMETRY);
+		tx_buffer[I2C_TX_PACKET_SIZE - 1] = 69;
+		float x = 37;
+		memcpy(&tx_buffer[4], &x, sizeof(float));
 
-        status = HAL_I2C_Slave_Seq_Transmit_DMA(
-            hi2c,
-            tx_buffer,
-            I2C_TX_PACKET_SIZE,
-            I2C_FIRST_AND_LAST_FRAME
-        );
-    }
+		status = HAL_I2C_Slave_Seq_Transmit_DMA(hi2c, tx_buffer,
+				I2C_TX_PACKET_SIZE,
+				I2C_FIRST_AND_LAST_FRAME);
+	}
 
-    if (status != HAL_OK)
-    {
-        HAL_I2C_EnableListen_IT(hi2c);
-    }
+	if (status != HAL_OK)
+	{
+		HAL_I2C_EnableListen_IT(hi2c);
+	}
 }
 
 void ESP_Handler::I2C_Slave_RX_Callback()
@@ -98,82 +87,91 @@ void ESP_Handler::_handle_current_position_transfer()
 {
 	float x, y, z;
 
-	memcpy(&x, &rx_buffer[static_cast<uint8_t>(I2C_Data_Setup::QUAD_0)], sizeof(float));
-	memcpy(&y, &rx_buffer[static_cast<uint8_t>(I2C_Data_Setup::QUAD_1)], sizeof(float));
-	memcpy(&z, &rx_buffer[static_cast<uint8_t>(I2C_Data_Setup::QUAD_2)], sizeof(float));
+	memcpy(&x, &rx_buffer[static_cast<uint8_t>(I2C_Data_Setup::QUAD_0)],
+			sizeof(float));
+	memcpy(&y, &rx_buffer[static_cast<uint8_t>(I2C_Data_Setup::QUAD_1)],
+			sizeof(float));
+	memcpy(&z, &rx_buffer[static_cast<uint8_t>(I2C_Data_Setup::QUAD_2)],
+			sizeof(float));
 }
 
-void ESP_Handler::_handle_heartbeat() {
+void ESP_Handler::_handle_heartbeat()
+{
 }
 
-void ESP_Handler::_handle_emergency_landing() {
+void ESP_Handler::_handle_emergency_landing()
+{
 }
 
-void ESP_Handler::_handle_emergency_total_stop() {
+void ESP_Handler::_handle_emergency_total_stop()
+{
 }
 
-void ESP_Handler::_handle_hover() {
+void ESP_Handler::_handle_hover()
+{
 }
 
-void ESP_Handler::_handle_land() {
+void ESP_Handler::_handle_land()
+{
 }
 
-void ESP_Handler::_handle_quadcopter_init() {
+void ESP_Handler::_handle_quadcopter_init()
+{
 }
 
-void ESP_Handler::_handle_reset_stm() {
+void ESP_Handler::_handle_reset_stm()
+{
 }
 
-void ESP_Handler::_handle_request(I2C_REQUESTS new_request) {
+void ESP_Handler::_handle_request(I2C_REQUESTS new_request)
+{
 }
-
-
 
 void ESP_Handler::Parse_Received_Data()
 {
-	I2C_Data_Commands command = static_cast<I2C_Data_Commands>(
-			rx_buffer[static_cast<uint8_t>(I2C_Data_Setup::COMMAND)]
-					  );
+	I2C_Data_Commands command =
+			static_cast<I2C_Data_Commands>(rx_buffer[static_cast<uint8_t>(I2C_Data_Setup::COMMAND)]);
 
-	switch (command) {
-		case I2C_Data_Commands::CURRENT_POSITION_TRANSFER:
-			_handle_current_position_transfer();
-			break;
+	switch (command)
+	{
+	case I2C_Data_Commands::CURRENT_POSITION_TRANSFER:
+		_handle_current_position_transfer();
+		break;
 
-		case I2C_Data_Commands::HEARTBEAT:
-			_handle_heartbeat();
-			break;
+	case I2C_Data_Commands::HEARTBEAT:
+		_handle_heartbeat();
+		break;
 
-		case I2C_Data_Commands::EMERGENCY_LANDING:
-			_handle_emergency_landing();
-			break;
+	case I2C_Data_Commands::EMERGENCY_LANDING:
+		_handle_emergency_landing();
+		break;
 
-		case I2C_Data_Commands::EMERGENCY_TOTAL_STOP:
-			_handle_emergency_total_stop();
-			break;
+	case I2C_Data_Commands::EMERGENCY_TOTAL_STOP:
+		_handle_emergency_total_stop();
+		break;
 
-		case I2C_Data_Commands::HOVER:
-			_handle_hover();
-			break;
+	case I2C_Data_Commands::HOVER:
+		_handle_hover();
+		break;
 
-		case I2C_Data_Commands::LAND:
-			_handle_land();
-			break;
+	case I2C_Data_Commands::LAND:
+		_handle_land();
+		break;
 
-		case I2C_Data_Commands::QUADCOPTER_INIT:
-			_handle_quadcopter_init();
-			break;
+	case I2C_Data_Commands::QUADCOPTER_INIT:
+		_handle_quadcopter_init();
+		break;
 
-		case I2C_Data_Commands::RESET_STM:
-			_handle_reset_stm();
-			break;
+	case I2C_Data_Commands::RESET_STM:
+		_handle_reset_stm();
+		break;
 
-		case I2C_Data_Commands::REQUEST_FULL_TELEMETRY:
-			_handle_request(I2C_REQUESTS::FULL_TELEMETRY);
-			break;
+	case I2C_Data_Commands::REQUEST_FULL_TELEMETRY:
+		_handle_request(I2C_REQUESTS::FULL_TELEMETRY);
+		break;
 
-		default:
-			break;
+	default:
+		break;
 	}
 }
 

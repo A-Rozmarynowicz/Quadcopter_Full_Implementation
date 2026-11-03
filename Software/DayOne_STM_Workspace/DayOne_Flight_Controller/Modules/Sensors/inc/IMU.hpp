@@ -15,24 +15,20 @@ struct IMU_Measurement
 
 enum class IMU_UPDATE_RATES : uint8_t
 {
-	Hz_833 = 0b0111'0000,
-	Hz_1660 = 0b1000'0000,
+	Hz_833 = 0b0111'0000, Hz_1660 = 0b1000'0000,
 };
 
 enum class IMU_ACC_SCALE : uint8_t
 {
-	G_8 =  0b0000'1100,
-	G_16 = 0b0000'0100,
+	G_8 = 0b0000'1100, G_16 = 0b0000'0100,
 };
 
 enum class IMU_GYRO_SCALE : uint8_t
 {
-	DPS_500 =  0b0000'0100,
-	DPS_1000 = 0b0000'1000,
+	DPS_500 = 0b0000'0100, DPS_1000 = 0b0000'1000,
 };
 
-
-class IMU : public Sensor<IMU_BUFFER_SIZE>
+class IMU: public Sensor<IMU_BUFFER_SIZE>
 {
 private:
 	IMU_UPDATE_RATES update_rate;
@@ -46,11 +42,12 @@ private:
 
 	HAL_StatusTypeDef Handle_Acc_Control_Registers();
 	HAL_StatusTypeDef Handle_Gyro_Control_Registers();
-	bool Parse_Measurement(uint8_t* received_data, uint8_t size);
+	bool Parse_Measurement(uint8_t *received_data, uint8_t size);
 protected:
 	bool Assert_ID_Register() override;
 public:
-	SENSOR_STATUS Initialize(IMU_UPDATE_RATES p_update_rate,
+	SENSOR_STATUS Initialize(
+			IMU_UPDATE_RATES p_update_rate,
 			IMU_ACC_SCALE p_acc_scale,
 			IMU_GYRO_SCALE p_gyro_scale);
 
@@ -63,7 +60,7 @@ public:
 	void Measurement_Cycle_Finished() override;
 	void Task_Perform_Transaction() override;
 
-	bool Get_Measurement(IMU_Measurement& meas);
+	bool Get_Measurement(IMU_Measurement &meas);
 };
 
 #endif

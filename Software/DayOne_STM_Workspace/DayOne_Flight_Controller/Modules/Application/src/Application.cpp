@@ -5,7 +5,10 @@ IMU imu;
 Magnetometer magnetometer;
 ESP_Handler esp_handler;
 
-extern "C" void App_Init(SPI_HandleTypeDef* hspi1, SPI_HandleTypeDef* hspi2, I2C_HandleTypeDef* i2c1)
+extern "C" void App_Init(
+		SPI_HandleTypeDef *hspi1,
+		SPI_HandleTypeDef *hspi2,
+		I2C_HandleTypeDef *i2c1)
 {
 //    imu.Setup(hspi1, IMU_CS_GPIO_Port, IMU_CS_Pin);
 //    SENSOR_STATUS code = imu.Initialize(IMU_UPDATE_RATES::Hz_833, IMU_ACC_SCALE::G_8, IMU_GYRO_SCALE::DPS_500);
@@ -21,43 +24,43 @@ extern "C" void App_Init(SPI_HandleTypeDef* hspi1, SPI_HandleTypeDef* hspi2, I2C
 
 extern "C" void App_Process(void)
 {
-    // Your application logic
+	// Your application logic
 }
 
 void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi)
 {
-    if (hspi->Instance == SPI1)
-    {
-        imu.DMA_TxCompleteCallback();
-    }
-    if (hspi->Instance == SPI2)
-    {
-        magnetometer.DMA_TxCompleteCallback();
-    }
+	if (hspi->Instance == SPI1)
+	{
+		imu.DMA_TxCompleteCallback();
+	}
+	if (hspi->Instance == SPI2)
+	{
+		magnetometer.DMA_TxCompleteCallback();
+	}
 }
 
 void HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef *hspi)
 {
-    if (hspi->Instance == SPI1)
-    {
-        imu.DMA_TxRxCompleteCallback();
-    }
-    if (hspi->Instance == SPI2)
-    {
-        magnetometer.DMA_TxRxCompleteCallback();
-    }
+	if (hspi->Instance == SPI1)
+	{
+		imu.DMA_TxRxCompleteCallback();
+	}
+	if (hspi->Instance == SPI2)
+	{
+		magnetometer.DMA_TxRxCompleteCallback();
+	}
 }
 
 void HAL_SPI_ErrorCallback(SPI_HandleTypeDef *hspi)
 {
-    if (hspi->Instance == SPI1)
-    {
-        imu.DMA_ErrorCallback();
-    }
-    if (hspi->Instance == SPI2)
-    {
-    	magnetometer.DMA_ErrorCallback();
-    }
+	if (hspi->Instance == SPI1)
+	{
+		imu.DMA_ErrorCallback();
+	}
+	if (hspi->Instance == SPI2)
+	{
+		magnetometer.DMA_ErrorCallback();
+	}
 }
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
@@ -68,11 +71,10 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 	}
 }
 
-
 void HAL_I2C_AddrCallback(
-    I2C_HandleTypeDef *hi2c,
-    uint8_t TransferDirection,
-    uint16_t AddrMatchCode)
+		I2C_HandleTypeDef *hi2c,
+		uint8_t TransferDirection,
+		uint16_t AddrMatchCode)
 {
 	if (hi2c->Instance == I2C1)
 	{
@@ -83,37 +85,36 @@ void HAL_I2C_AddrCallback(
 #pragma region I2C
 void HAL_I2C_SlaveRxCpltCallback(I2C_HandleTypeDef *hi2c)
 {
-    if (hi2c->Instance == I2C1)
-    {
-        esp_handler.I2C_Slave_RX_Callback();
-    }
+	if (hi2c->Instance == I2C1)
+	{
+		esp_handler.I2C_Slave_RX_Callback();
+	}
 }
 
 void HAL_I2C_SlaveTxCpltCallback(I2C_HandleTypeDef *hi2c)
 {
-    if (hi2c->Instance == I2C1)
-    {
-        esp_handler.I2C_Slave_TX_Callback();
-    }
+	if (hi2c->Instance == I2C1)
+	{
+		esp_handler.I2C_Slave_TX_Callback();
+	}
 }
-
 
 void HAL_I2C_ListenCpltCallback(I2C_HandleTypeDef *hi2c)
 {
-    HAL_I2C_EnableListen_IT(hi2c);
+	HAL_I2C_EnableListen_IT(hi2c);
 }
 
 void HAL_I2C_ErrorCallback(I2C_HandleTypeDef *hi2c)
 {
-    uint32_t error = HAL_I2C_GetError(hi2c);
+	uint32_t error = HAL_I2C_GetError(hi2c);
 
-    // Inspect error and perform appropriate recovery.
+	// Inspect error and perform appropriate recovery.
 }
 
 #pragma endregion
 
 uint8_t imu_counter = 0;
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim)
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 //	magnetometer.Task_Perform_Transaction();
 //	if (magnetometer.Is_Data_Ready())

@@ -19,9 +19,7 @@ struct Raw_Magnetic_Value
 
 enum class MAGNETOMETER_UPDATE_RATES
 {
-	Hz_100,
-	Hz_225,
-	Hz_580,
+	Hz_100, Hz_225, Hz_580,
 };
 
 enum class MAGNETOMETER_INTERNAL_STATES : uint8_t
@@ -38,14 +36,15 @@ enum class MAGNETOMETER_INTERNAL_STATES : uint8_t
 	CLEAR_INTERRUPT_2
 };
 
-class Magnetometer : public Sensor<7>
+class Magnetometer: public Sensor<7>
 {
 private:
 	bool chip_output_ready = false;
 	uint16_t read_chip_safety_counter = 0;
 
 	MAGNETOMETER_UPDATE_RATES update_rate;
-	MAGNETOMETER_INTERNAL_STATES current_state = MAGNETOMETER_INTERNAL_STATES::INIT;
+	MAGNETOMETER_INTERNAL_STATES current_state =
+			MAGNETOMETER_INTERNAL_STATES::INIT;
 
 	Raw_Magnetic_Value set_raw_measurement;
 	Raw_Magnetic_Value reset_raw_measurement;
@@ -63,7 +62,10 @@ private:
 
 	HAL_StatusTypeDef Enable_Interrupt();
 
-	bool Store_Measurement(uint8_t* received_data, uint8_t size, Raw_Magnetic_Value& meas);
+	bool Store_Measurement(
+			uint8_t *received_data,
+			uint8_t size,
+			Raw_Magnetic_Value &meas);
 	bool Parse_Data();
 protected:
 	bool Assert_ID_Register() override;
@@ -81,6 +83,6 @@ public:
 	void Task_Perform_Transaction() override;
 
 	void Data_Ready_EXTI_Handler();
-	bool Get_Measurement(Magnetometer_Measurement& meas);
+	bool Get_Measurement(Magnetometer_Measurement &meas);
 };
 #endif

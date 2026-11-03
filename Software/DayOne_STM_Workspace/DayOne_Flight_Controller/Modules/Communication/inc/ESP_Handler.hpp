@@ -16,14 +16,12 @@ private:
 	};
 	I2C_REQUESTS current_request;
 
-	I2C_HandleTypeDef* hi2c;
-	GPIO_TypeDef* esp_request_port;
+	I2C_HandleTypeDef *hi2c;
+	GPIO_TypeDef *esp_request_port;
 	uint16_t esp_request_pin;
 
 	uint8_t rx_buffer[I2C_RX_PACKET_SIZE];
 	uint8_t tx_buffer[I2C_TX_PACKET_SIZE];
-
-
 
 	void Parse_Received_Data();
 
@@ -39,8 +37,8 @@ private:
 
 public:
 	void Setup(
-			I2C_HandleTypeDef* i2c_handle,
-			GPIO_TypeDef* GPIO_port_esp_request,
+			I2C_HandleTypeDef *i2c_handle,
+			GPIO_TypeDef *GPIO_port_esp_request,
 			uint16_t GPIO_pin_esp_request);
 	void Initialize();
 
@@ -48,6 +46,5 @@ public:
 	void I2C_Slave_RX_Callback();
 	void I2C_Slave_TX_Callback();
 };
-
 
 #endif /* COMMUNICATION_INC_ESP_HANDLER_HPP_ */
