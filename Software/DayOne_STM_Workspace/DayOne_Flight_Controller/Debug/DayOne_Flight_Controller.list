@@ -27,25 +27,25 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000030  00000000  00000000  0000905c  2**0
                   CONTENTS, READONLY
- 12 .debug_info   000152db  00000000  00000000  0000908c  2**0
+ 12 .debug_info   000152d3  00000000  00000000  0000908c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 000030fc  00000000  00000000  0001e367  2**0
+ 13 .debug_abbrev 000030a1  00000000  00000000  0001e35f  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_aranges 000012f8  00000000  00000000  00021468  2**3
+ 14 .debug_aranges 000012f8  00000000  00000000  00021400  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_rnglists 00000ec5  00000000  00000000  00022760  2**0
+ 15 .debug_rnglists 00000ec5  00000000  00000000  000226f8  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  00023ea9  00000000  00000000  00023625  2**0
+ 16 .debug_macro  00023ea9  00000000  00000000  000235bd  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   00015fe1  00000000  00000000  000474ce  2**0
+ 17 .debug_line   0001600e  00000000  00000000  00047466  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    000d38eb  00000000  00000000  0005d4af  2**0
+ 18 .debug_str    000d38eb  00000000  00000000  0005d474  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000043  00000000  00000000  00130d9a  2**0
+ 19 .comment      00000043  00000000  00000000  00130d5f  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00005450  00000000  00000000  00130de0  2**2
+ 20 .debug_frame  00005450  00000000  00000000  00130da4  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 000000aa  00000000  00000000  00136230  2**0
+ 21 .debug_line_str 000000aa  00000000  00000000  001361f4  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -17816,12 +17816,12 @@ __weak void HAL_TIMEx_BreakCallback(TIM_HandleTypeDef *htim)
  8006686:	4770      	bx	lr
 
 08006688 <_ZN6SensorILj13EEC1Ev>:
-    virtual uint8_t Get_Write_Command(uint8_t message);
-    virtual uint8_t Get_Read_Command(uint8_t message);
+	virtual uint8_t Get_Write_Command(uint8_t message);
+	virtual uint8_t Get_Read_Command(uint8_t message);
 
-    virtual void Change_Buffer_Pointers();
+	virtual void Change_Buffer_Pointers();
 public:
-    Sensor() = default;
+	Sensor() = default;
  8006688:	b480      	push	{r7}
  800668a:	b083      	sub	sp, #12
  800668c:	af00      	add	r7, sp, #0
@@ -17877,7 +17877,7 @@ public:
  80066f8:	08007acc 	.word	0x08007acc
 
 080066fc <_ZN6SensorILj13EED1Ev>:
-    virtual ~Sensor() = default;
+	virtual ~Sensor() = default;
  80066fc:	b480      	push	{r7}
  80066fe:	b083      	sub	sp, #12
  8006700:	af00      	add	r7, sp, #0
@@ -17910,12 +17910,12 @@ public:
  800673a:	bd80      	pop	{r7, pc}
 
 0800673c <_ZN3IMUC1Ev>:
-	DPS_500 =  0b0000'0100,
-	DPS_1000 = 0b0000'1000,
+enum class IMU_GYRO_SCALE : uint8_t
+{
+	DPS_500 = 0b0000'0100, DPS_1000 = 0b0000'1000,
 };
 
-
-class IMU : public Sensor<IMU_BUFFER_SIZE>
+class IMU: public Sensor<IMU_BUFFER_SIZE>
  800673c:	b580      	push	{r7, lr}
  800673e:	b082      	sub	sp, #8
  8006740:	af00      	add	r7, sp, #0
@@ -17934,7 +17934,7 @@ class IMU : public Sensor<IMU_BUFFER_SIZE>
  800675c:	08007b0c 	.word	0x08007b0c
 
 08006760 <_ZN6SensorILj7EEC1Ev>:
-    Sensor() = default;
+	Sensor() = default;
  8006760:	b480      	push	{r7}
  8006762:	b083      	sub	sp, #12
  8006764:	af00      	add	r7, sp, #0
@@ -17982,7 +17982,7 @@ class IMU : public Sensor<IMU_BUFFER_SIZE>
  80067c8:	08007a8c 	.word	0x08007a8c
 
 080067cc <_ZN6SensorILj7EED1Ev>:
-    virtual ~Sensor() = default;
+	virtual ~Sensor() = default;
  80067cc:	b480      	push	{r7}
  80067ce:	b083      	sub	sp, #12
  80067d0:	af00      	add	r7, sp, #0
@@ -18020,7 +18020,7 @@ class IMU : public Sensor<IMU_BUFFER_SIZE>
 	CLEAR_INTERRUPT_2
 };
 
-class Magnetometer : public Sensor<7>
+class Magnetometer: public Sensor<7>
  800680c:	b580      	push	{r7, lr}
  800680e:	b082      	sub	sp, #8
  8006810:	af00      	add	r7, sp, #0
@@ -18049,11 +18049,11 @@ class Magnetometer : public Sensor<7>
  8006844:	08007b4c 	.word	0x08007b4c
 
 08006848 <App_Init>:
-IMU imu;
-Magnetometer magnetometer;
-ESP_Handler esp_handler;
 
-extern "C" void App_Init(SPI_HandleTypeDef* hspi1, SPI_HandleTypeDef* hspi2, I2C_HandleTypeDef* i2c1)
+extern "C" void App_Init(
+		SPI_HandleTypeDef *hspi1,
+		SPI_HandleTypeDef *hspi2,
+		I2C_HandleTypeDef *i2c1)
 {
  8006848:	b580      	push	{r7, lr}
  800684a:	b084      	sub	sp, #16
@@ -18086,7 +18086,7 @@ extern "C" void App_Init(SPI_HandleTypeDef* hspi1, SPI_HandleTypeDef* hspi2, I2C
 
 08006878 <HAL_SPI_TxCpltCallback>:
 {
-    // Your application logic
+	// Your application logic
 }
 
 void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi)
@@ -18095,28 +18095,28 @@ void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi)
  800687a:	b082      	sub	sp, #8
  800687c:	af00      	add	r7, sp, #0
  800687e:	6078      	str	r0, [r7, #4]
-    if (hspi->Instance == SPI1)
+	if (hspi->Instance == SPI1)
  8006880:	687b      	ldr	r3, [r7, #4]
  8006882:	681b      	ldr	r3, [r3, #0]
  8006884:	4a08      	ldr	r2, [pc, #32]	@ (80068a8 <HAL_SPI_TxCpltCallback+0x30>)
  8006886:	4293      	cmp	r3, r2
  8006888:	d102      	bne.n	8006890 <HAL_SPI_TxCpltCallback+0x18>
-    {
-        imu.DMA_TxCompleteCallback();
+	{
+		imu.DMA_TxCompleteCallback();
  800688a:	4808      	ldr	r0, [pc, #32]	@ (80068ac <HAL_SPI_TxCpltCallback+0x34>)
  800688c:	f000 fb27 	bl	8006ede <_ZN3IMU22DMA_TxCompleteCallbackEv>
-    }
-    if (hspi->Instance == SPI2)
+	}
+	if (hspi->Instance == SPI2)
  8006890:	687b      	ldr	r3, [r7, #4]
  8006892:	681b      	ldr	r3, [r3, #0]
  8006894:	4a06      	ldr	r2, [pc, #24]	@ (80068b0 <HAL_SPI_TxCpltCallback+0x38>)
  8006896:	4293      	cmp	r3, r2
  8006898:	d102      	bne.n	80068a0 <HAL_SPI_TxCpltCallback+0x28>
-    {
-        magnetometer.DMA_TxCompleteCallback();
+	{
+		magnetometer.DMA_TxCompleteCallback();
  800689a:	4806      	ldr	r0, [pc, #24]	@ (80068b4 <HAL_SPI_TxCpltCallback+0x3c>)
  800689c:	f000 fd14 	bl	80072c8 <_ZN12Magnetometer22DMA_TxCompleteCallbackEv>
-    }
+	}
 }
  80068a0:	bf00      	nop
  80068a2:	3708      	adds	r7, #8
@@ -18135,28 +18135,28 @@ void HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef *hspi)
  80068ba:	b082      	sub	sp, #8
  80068bc:	af00      	add	r7, sp, #0
  80068be:	6078      	str	r0, [r7, #4]
-    if (hspi->Instance == SPI1)
+	if (hspi->Instance == SPI1)
  80068c0:	687b      	ldr	r3, [r7, #4]
  80068c2:	681b      	ldr	r3, [r3, #0]
  80068c4:	4a08      	ldr	r2, [pc, #32]	@ (80068e8 <HAL_SPI_TxRxCpltCallback+0x30>)
  80068c6:	4293      	cmp	r3, r2
  80068c8:	d102      	bne.n	80068d0 <HAL_SPI_TxRxCpltCallback+0x18>
-    {
-        imu.DMA_TxRxCompleteCallback();
+	{
+		imu.DMA_TxRxCompleteCallback();
  80068ca:	4808      	ldr	r0, [pc, #32]	@ (80068ec <HAL_SPI_TxRxCpltCallback+0x34>)
  80068cc:	f000 fae0 	bl	8006e90 <_ZN3IMU24DMA_TxRxCompleteCallbackEv>
-    }
-    if (hspi->Instance == SPI2)
+	}
+	if (hspi->Instance == SPI2)
  80068d0:	687b      	ldr	r3, [r7, #4]
  80068d2:	681b      	ldr	r3, [r3, #0]
  80068d4:	4a06      	ldr	r2, [pc, #24]	@ (80068f0 <HAL_SPI_TxRxCpltCallback+0x38>)
  80068d6:	4293      	cmp	r3, r2
  80068d8:	d102      	bne.n	80068e0 <HAL_SPI_TxRxCpltCallback+0x28>
-    {
-        magnetometer.DMA_TxRxCompleteCallback();
+	{
+		magnetometer.DMA_TxRxCompleteCallback();
  80068da:	4806      	ldr	r0, [pc, #24]	@ (80068f4 <HAL_SPI_TxRxCpltCallback+0x3c>)
  80068dc:	f000 fcb1 	bl	8007242 <_ZN12Magnetometer24DMA_TxRxCompleteCallbackEv>
-    }
+	}
 }
  80068e0:	bf00      	nop
  80068e2:	3708      	adds	r7, #8
@@ -18175,28 +18175,28 @@ void HAL_SPI_ErrorCallback(SPI_HandleTypeDef *hspi)
  80068fa:	b082      	sub	sp, #8
  80068fc:	af00      	add	r7, sp, #0
  80068fe:	6078      	str	r0, [r7, #4]
-    if (hspi->Instance == SPI1)
+	if (hspi->Instance == SPI1)
  8006900:	687b      	ldr	r3, [r7, #4]
  8006902:	681b      	ldr	r3, [r3, #0]
  8006904:	4a08      	ldr	r2, [pc, #32]	@ (8006928 <HAL_SPI_ErrorCallback+0x30>)
  8006906:	4293      	cmp	r3, r2
  8006908:	d102      	bne.n	8006910 <HAL_SPI_ErrorCallback+0x18>
-    {
-        imu.DMA_ErrorCallback();
+	{
+		imu.DMA_ErrorCallback();
  800690a:	4808      	ldr	r0, [pc, #32]	@ (800692c <HAL_SPI_ErrorCallback+0x34>)
  800690c:	f000 fad7 	bl	8006ebe <_ZN3IMU17DMA_ErrorCallbackEv>
-    }
-    if (hspi->Instance == SPI2)
+	}
+	if (hspi->Instance == SPI2)
  8006910:	687b      	ldr	r3, [r7, #4]
  8006912:	681b      	ldr	r3, [r3, #0]
  8006914:	4a06      	ldr	r2, [pc, #24]	@ (8006930 <HAL_SPI_ErrorCallback+0x38>)
  8006916:	4293      	cmp	r3, r2
  8006918:	d102      	bne.n	8006920 <HAL_SPI_ErrorCallback+0x28>
-    {
-    	magnetometer.DMA_ErrorCallback();
+	{
+		magnetometer.DMA_ErrorCallback();
  800691a:	4806      	ldr	r0, [pc, #24]	@ (8006934 <HAL_SPI_ErrorCallback+0x3c>)
  800691c:	f000 fce4 	bl	80072e8 <_ZN12Magnetometer17DMA_ErrorCallbackEv>
-    }
+	}
 }
  8006920:	bf00      	nop
  8006922:	3708      	adds	r7, #8
@@ -18235,9 +18235,9 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 0800695c <HAL_I2C_AddrCallback>:
 
 void HAL_I2C_AddrCallback(
-    I2C_HandleTypeDef *hi2c,
-    uint8_t TransferDirection,
-    uint16_t AddrMatchCode)
+		I2C_HandleTypeDef *hi2c,
+		uint8_t TransferDirection,
+		uint16_t AddrMatchCode)
 {
  800695c:	b580      	push	{r7, lr}
  800695e:	b082      	sub	sp, #8
@@ -18277,17 +18277,17 @@ void HAL_I2C_SlaveRxCpltCallback(I2C_HandleTypeDef *hi2c)
  8006992:	b082      	sub	sp, #8
  8006994:	af00      	add	r7, sp, #0
  8006996:	6078      	str	r0, [r7, #4]
-    if (hi2c->Instance == I2C1)
+	if (hi2c->Instance == I2C1)
  8006998:	687b      	ldr	r3, [r7, #4]
  800699a:	681b      	ldr	r3, [r3, #0]
  800699c:	4a04      	ldr	r2, [pc, #16]	@ (80069b0 <HAL_I2C_SlaveRxCpltCallback+0x20>)
  800699e:	4293      	cmp	r3, r2
  80069a0:	d102      	bne.n	80069a8 <HAL_I2C_SlaveRxCpltCallback+0x18>
-    {
-        esp_handler.I2C_Slave_RX_Callback();
+	{
+		esp_handler.I2C_Slave_RX_Callback();
  80069a2:	4804      	ldr	r0, [pc, #16]	@ (80069b4 <HAL_I2C_SlaveRxCpltCallback+0x24>)
  80069a4:	f000 f9ac 	bl	8006d00 <_ZN11ESP_Handler21I2C_Slave_RX_CallbackEv>
-    }
+	}
 }
  80069a8:	bf00      	nop
  80069aa:	3708      	adds	r7, #8
@@ -18304,17 +18304,17 @@ void HAL_I2C_SlaveTxCpltCallback(I2C_HandleTypeDef *hi2c)
  80069ba:	b082      	sub	sp, #8
  80069bc:	af00      	add	r7, sp, #0
  80069be:	6078      	str	r0, [r7, #4]
-    if (hi2c->Instance == I2C1)
+	if (hi2c->Instance == I2C1)
  80069c0:	687b      	ldr	r3, [r7, #4]
  80069c2:	681b      	ldr	r3, [r3, #0]
  80069c4:	4a04      	ldr	r2, [pc, #16]	@ (80069d8 <HAL_I2C_SlaveTxCpltCallback+0x20>)
  80069c6:	4293      	cmp	r3, r2
  80069c8:	d102      	bne.n	80069d0 <HAL_I2C_SlaveTxCpltCallback+0x18>
-    {
-        esp_handler.I2C_Slave_TX_Callback();
+	{
+		esp_handler.I2C_Slave_TX_Callback();
  80069ca:	4804      	ldr	r0, [pc, #16]	@ (80069dc <HAL_I2C_SlaveTxCpltCallback+0x24>)
  80069cc:	f000 f9a3 	bl	8006d16 <_ZN11ESP_Handler21I2C_Slave_TX_CallbackEv>
-    }
+	}
 }
  80069d0:	bf00      	nop
  80069d2:	3708      	adds	r7, #8
@@ -18325,14 +18325,13 @@ void HAL_I2C_SlaveTxCpltCallback(I2C_HandleTypeDef *hi2c)
 
 080069e0 <HAL_I2C_ListenCpltCallback>:
 
-
 void HAL_I2C_ListenCpltCallback(I2C_HandleTypeDef *hi2c)
 {
  80069e0:	b580      	push	{r7, lr}
  80069e2:	b082      	sub	sp, #8
  80069e4:	af00      	add	r7, sp, #0
  80069e6:	6078      	str	r0, [r7, #4]
-    HAL_I2C_EnableListen_IT(hi2c);
+	HAL_I2C_EnableListen_IT(hi2c);
  80069e8:	6878      	ldr	r0, [r7, #4]
  80069ea:	f7fb fe51 	bl	8002690 <HAL_I2C_EnableListen_IT>
 }
@@ -18349,12 +18348,12 @@ void HAL_I2C_ErrorCallback(I2C_HandleTypeDef *hi2c)
  80069f8:	b084      	sub	sp, #16
  80069fa:	af00      	add	r7, sp, #0
  80069fc:	6078      	str	r0, [r7, #4]
-    uint32_t error = HAL_I2C_GetError(hi2c);
+	uint32_t error = HAL_I2C_GetError(hi2c);
  80069fe:	6878      	ldr	r0, [r7, #4]
  8006a00:	f7fc f8c6 	bl	8002b90 <HAL_I2C_GetError>
  8006a04:	60f8      	str	r0, [r7, #12]
 
-    // Inspect error and perform appropriate recovery.
+	// Inspect error and perform appropriate recovery.
 }
  8006a06:	bf00      	nop
  8006a08:	3710      	adds	r7, #16
@@ -18366,7 +18365,7 @@ void HAL_I2C_ErrorCallback(I2C_HandleTypeDef *hi2c)
 #pragma endregion
 
 uint8_t imu_counter = 0;
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim)
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
  8006a0e:	b480      	push	{r7}
  8006a10:	b083      	sub	sp, #12
@@ -18488,7 +18487,7 @@ IMU imu;
 	return data_ready;
 }
 
-template <size_t BUFFER_SIZE>
+template<size_t BUFFER_SIZE>
 uint8_t Sensor<BUFFER_SIZE>::Get_Write_Command(uint8_t message)
  8006ae4:	b480      	push	{r7}
  8006ae6:	b083      	sub	sp, #12
@@ -18510,7 +18509,7 @@ uint8_t Sensor<BUFFER_SIZE>::Get_Write_Command(uint8_t message)
 
 08006b04 <_ZN6SensorILj7EE16Get_Read_CommandEh>:
 
-template <size_t BUFFER_SIZE>
+template<size_t BUFFER_SIZE>
 uint8_t Sensor<BUFFER_SIZE>::Get_Read_Command(uint8_t message)
  8006b04:	b480      	push	{r7}
  8006b06:	b083      	sub	sp, #12
@@ -18697,9 +18696,9 @@ bool Sensor<BUFFER_SIZE>::Is_Data_Ready()
  8006c3e:	bd80      	pop	{r7, pc}
 
 08006c40 <_ZN11ESP_Handler5SetupEP17I2C_HandleTypeDefP12GPIO_TypeDeft>:
-};
 
-void ESP_Handler::Setup(I2C_HandleTypeDef *i2c_handle,
+void ESP_Handler::Setup(
+		I2C_HandleTypeDef *i2c_handle,
 		GPIO_TypeDef *GPIO_port_esp_request,
 		uint16_t GPIO_pin_esp_request)
 {
@@ -18761,79 +18760,73 @@ void ESP_Handler::I2C_Listen_Callback(uint8_t TransferDirection)
  8006c8e:	6078      	str	r0, [r7, #4]
  8006c90:	460b      	mov	r3, r1
  8006c92:	70fb      	strb	r3, [r7, #3]
-    HAL_StatusTypeDef status;
+	HAL_StatusTypeDef status;
 
-    if (TransferDirection == I2C_DIRECTION_TRANSMIT)
+	if (TransferDirection == I2C_DIRECTION_TRANSMIT)
  8006c94:	78fb      	ldrb	r3, [r7, #3]
  8006c96:	2b01      	cmp	r3, #1
  8006c98:	d10b      	bne.n	8006cb2 <_ZN11ESP_Handler19I2C_Listen_CallbackEh+0x2a>
-    {
-        // ESP32 writes to STM32.
-        status = HAL_I2C_Slave_Seq_Receive_DMA(
+	{
+		// ESP32 writes to STM32.
+		status = HAL_I2C_Slave_Seq_Receive_DMA(hi2c, rx_buffer,
  8006c9a:	687b      	ldr	r3, [r7, #4]
  8006c9c:	6858      	ldr	r0, [r3, #4]
-            hi2c,
-            rx_buffer,
  8006c9e:	687b      	ldr	r3, [r7, #4]
  8006ca0:	f103 010e 	add.w	r1, r3, #14
-        status = HAL_I2C_Slave_Seq_Receive_DMA(
  8006ca4:	2308      	movs	r3, #8
  8006ca6:	2210      	movs	r2, #16
  8006ca8:	f7fb fbb8 	bl	800241c <HAL_I2C_Slave_Seq_Receive_DMA>
  8006cac:	4603      	mov	r3, r0
  8006cae:	73fb      	strb	r3, [r7, #15]
  8006cb0:	e017      	b.n	8006ce2 <_ZN11ESP_Handler19I2C_Listen_CallbackEh+0x5a>
-        );
-    }
-    else
-    {
-        // ESP32 reads from STM32.
-    	tx_buffer[0] = static_cast<uint8_t>(I2C_Data_Commands::ANSWER_FULL_TELEMETRY);
+				I2C_FIRST_AND_LAST_FRAME);
+	}
+	else
+	{
+		// ESP32 reads from STM32.
+		tx_buffer[0] =
  8006cb2:	687b      	ldr	r3, [r7, #4]
  8006cb4:	2208      	movs	r2, #8
  8006cb6:	779a      	strb	r2, [r3, #30]
-    	tx_buffer[I2C_TX_PACKET_SIZE-1] = 69;
+				static_cast<uint8_t>(I2C_Data_Commands::ANSWER_FULL_TELEMETRY);
+		tx_buffer[I2C_TX_PACKET_SIZE - 1] = 69;
  8006cb8:	687b      	ldr	r3, [r7, #4]
  8006cba:	2245      	movs	r2, #69	@ 0x45
  8006cbc:	f883 2039 	strb.w	r2, [r3, #57]	@ 0x39
-    	float x = 37;
+		float x = 37;
  8006cc0:	4b0e      	ldr	r3, [pc, #56]	@ (8006cfc <_ZN11ESP_Handler19I2C_Listen_CallbackEh+0x74>)
  8006cc2:	60bb      	str	r3, [r7, #8]
-    	memcpy(&tx_buffer[4], &x, sizeof(float));
+		memcpy(&tx_buffer[4], &x, sizeof(float));
  8006cc4:	687b      	ldr	r3, [r7, #4]
  8006cc6:	3322      	adds	r3, #34	@ 0x22
  8006cc8:	68ba      	ldr	r2, [r7, #8]
  8006cca:	601a      	str	r2, [r3, #0]
 
-        status = HAL_I2C_Slave_Seq_Transmit_DMA(
+		status = HAL_I2C_Slave_Seq_Transmit_DMA(hi2c, tx_buffer,
  8006ccc:	687b      	ldr	r3, [r7, #4]
  8006cce:	6858      	ldr	r0, [r3, #4]
-            hi2c,
-            tx_buffer,
  8006cd0:	687b      	ldr	r3, [r7, #4]
  8006cd2:	f103 011e 	add.w	r1, r3, #30
-        status = HAL_I2C_Slave_Seq_Transmit_DMA(
  8006cd6:	2308      	movs	r3, #8
  8006cd8:	221c      	movs	r2, #28
  8006cda:	f7fb fa65 	bl	80021a8 <HAL_I2C_Slave_Seq_Transmit_DMA>
  8006cde:	4603      	mov	r3, r0
  8006ce0:	73fb      	strb	r3, [r7, #15]
-            I2C_TX_PACKET_SIZE,
-            I2C_FIRST_AND_LAST_FRAME
-        );
-    }
+				I2C_TX_PACKET_SIZE,
+				I2C_FIRST_AND_LAST_FRAME);
+	}
 
-    if (status != HAL_OK)
+	if (status != HAL_OK)
  8006ce2:	7bfb      	ldrb	r3, [r7, #15]
  8006ce4:	2b00      	cmp	r3, #0
  8006ce6:	d004      	beq.n	8006cf2 <_ZN11ESP_Handler19I2C_Listen_CallbackEh+0x6a>
-    {
-        HAL_I2C_EnableListen_IT(hi2c);
+	{
+		HAL_I2C_EnableListen_IT(hi2c);
  8006ce8:	687b      	ldr	r3, [r7, #4]
  8006cea:	685b      	ldr	r3, [r3, #4]
  8006cec:	4618      	mov	r0, r3
  8006cee:	f7fb fccf 	bl	8002690 <HAL_I2C_EnableListen_IT>
-    }
+	}
 }
  8006cf2:	bf00      	nop
  8006cf4:	3710      	adds	r7, #16
@@ -18884,21 +18877,24 @@ void ESP_Handler::_handle_current_position_transfer()
  8006d30:	6078      	str	r0, [r7, #4]
 	float x, y, z;
 
-	memcpy(&x, &rx_buffer[static_cast<uint8_t>(I2C_Data_Setup::QUAD_0)], sizeof(float));
+	memcpy(&x, &rx_buffer[static_cast<uint8_t>(I2C_Data_Setup::QUAD_0)],
  8006d32:	687b      	ldr	r3, [r7, #4]
  8006d34:	3312      	adds	r3, #18
  8006d36:	681b      	ldr	r3, [r3, #0]
  8006d38:	617b      	str	r3, [r7, #20]
-	memcpy(&y, &rx_buffer[static_cast<uint8_t>(I2C_Data_Setup::QUAD_1)], sizeof(float));
+			sizeof(float));
+	memcpy(&y, &rx_buffer[static_cast<uint8_t>(I2C_Data_Setup::QUAD_1)],
  8006d3a:	687b      	ldr	r3, [r7, #4]
  8006d3c:	3316      	adds	r3, #22
  8006d3e:	681b      	ldr	r3, [r3, #0]
  8006d40:	613b      	str	r3, [r7, #16]
-	memcpy(&z, &rx_buffer[static_cast<uint8_t>(I2C_Data_Setup::QUAD_2)], sizeof(float));
+			sizeof(float));
+	memcpy(&z, &rx_buffer[static_cast<uint8_t>(I2C_Data_Setup::QUAD_2)],
  8006d42:	687b      	ldr	r3, [r7, #4]
  8006d44:	331a      	adds	r3, #26
  8006d46:	681b      	ldr	r3, [r3, #0]
  8006d48:	60fb      	str	r3, [r7, #12]
+			sizeof(float));
 }
  8006d4a:	bf00      	nop
  8006d4c:	371c      	adds	r7, #28
@@ -18908,7 +18904,8 @@ void ESP_Handler::_handle_current_position_transfer()
 
 08006d56 <_ZN11ESP_Handler17_handle_heartbeatEv>:
 
-void ESP_Handler::_handle_heartbeat() {
+void ESP_Handler::_handle_heartbeat()
+{
  8006d56:	b480      	push	{r7}
  8006d58:	b083      	sub	sp, #12
  8006d5a:	af00      	add	r7, sp, #0
@@ -18922,7 +18919,8 @@ void ESP_Handler::_handle_heartbeat() {
 
 08006d6a <_ZN11ESP_Handler25_handle_emergency_landingEv>:
 
-void ESP_Handler::_handle_emergency_landing() {
+void ESP_Handler::_handle_emergency_landing()
+{
  8006d6a:	b480      	push	{r7}
  8006d6c:	b083      	sub	sp, #12
  8006d6e:	af00      	add	r7, sp, #0
@@ -18936,7 +18934,8 @@ void ESP_Handler::_handle_emergency_landing() {
 
 08006d7e <_ZN11ESP_Handler28_handle_emergency_total_stopEv>:
 
-void ESP_Handler::_handle_emergency_total_stop() {
+void ESP_Handler::_handle_emergency_total_stop()
+{
  8006d7e:	b480      	push	{r7}
  8006d80:	b083      	sub	sp, #12
  8006d82:	af00      	add	r7, sp, #0
@@ -18950,7 +18949,8 @@ void ESP_Handler::_handle_emergency_total_stop() {
 
 08006d92 <_ZN11ESP_Handler13_handle_hoverEv>:
 
-void ESP_Handler::_handle_hover() {
+void ESP_Handler::_handle_hover()
+{
  8006d92:	b480      	push	{r7}
  8006d94:	b083      	sub	sp, #12
  8006d96:	af00      	add	r7, sp, #0
@@ -18964,7 +18964,8 @@ void ESP_Handler::_handle_hover() {
 
 08006da6 <_ZN11ESP_Handler12_handle_landEv>:
 
-void ESP_Handler::_handle_land() {
+void ESP_Handler::_handle_land()
+{
  8006da6:	b480      	push	{r7}
  8006da8:	b083      	sub	sp, #12
  8006daa:	af00      	add	r7, sp, #0
@@ -18978,7 +18979,8 @@ void ESP_Handler::_handle_land() {
 
 08006dba <_ZN11ESP_Handler23_handle_quadcopter_initEv>:
 
-void ESP_Handler::_handle_quadcopter_init() {
+void ESP_Handler::_handle_quadcopter_init()
+{
  8006dba:	b480      	push	{r7}
  8006dbc:	b083      	sub	sp, #12
  8006dbe:	af00      	add	r7, sp, #0
@@ -18992,7 +18994,8 @@ void ESP_Handler::_handle_quadcopter_init() {
 
 08006dce <_ZN11ESP_Handler17_handle_reset_stmEv>:
 
-void ESP_Handler::_handle_reset_stm() {
+void ESP_Handler::_handle_reset_stm()
+{
  8006dce:	b480      	push	{r7}
  8006dd0:	b083      	sub	sp, #12
  8006dd2:	af00      	add	r7, sp, #0
@@ -19006,7 +19009,8 @@ void ESP_Handler::_handle_reset_stm() {
 
 08006de2 <_ZN11ESP_Handler15_handle_requestENS_12I2C_REQUESTSE>:
 
-void ESP_Handler::_handle_request(I2C_REQUESTS new_request) {
+void ESP_Handler::_handle_request(I2C_REQUESTS new_request)
+{
  8006de2:	b480      	push	{r7}
  8006de4:	b083      	sub	sp, #12
  8006de6:	af00      	add	r7, sp, #0
@@ -19021,23 +19025,20 @@ void ESP_Handler::_handle_request(I2C_REQUESTS new_request) {
 
 08006df8 <_ZN11ESP_Handler19Parse_Received_DataEv>:
 
-
-
 void ESP_Handler::Parse_Received_Data()
 {
  8006df8:	b580      	push	{r7, lr}
  8006dfa:	b084      	sub	sp, #16
  8006dfc:	af00      	add	r7, sp, #0
  8006dfe:	6078      	str	r0, [r7, #4]
-	I2C_Data_Commands command = static_cast<I2C_Data_Commands>(
-			rx_buffer[static_cast<uint8_t>(I2C_Data_Setup::COMMAND)]
+	I2C_Data_Commands command =
+			static_cast<I2C_Data_Commands>(rx_buffer[static_cast<uint8_t>(I2C_Data_Setup::COMMAND)]);
  8006e00:	687b      	ldr	r3, [r7, #4]
  8006e02:	7b9b      	ldrb	r3, [r3, #14]
-	I2C_Data_Commands command = static_cast<I2C_Data_Commands>(
+	I2C_Data_Commands command =
  8006e04:	60fb      	str	r3, [r7, #12]
-					  );
 
-	switch (command) {
+	switch (command)
  8006e06:	68fb      	ldr	r3, [r7, #12]
  8006e08:	2b09      	cmp	r3, #9
  8006e0a:	d83c      	bhi.n	8006e86 <_ZN11ESP_Handler19Parse_Received_DataEv+0x8e>
@@ -19054,72 +19055,73 @@ void ESP_Handler::Parse_Received_Data()
  8006e30:	08006e7d 	.word	0x08006e7d
  8006e34:	08006e87 	.word	0x08006e87
  8006e38:	08006e75 	.word	0x08006e75
-		case I2C_Data_Commands::CURRENT_POSITION_TRANSFER:
-			_handle_current_position_transfer();
+	{
+	case I2C_Data_Commands::CURRENT_POSITION_TRANSFER:
+		_handle_current_position_transfer();
  8006e3c:	6878      	ldr	r0, [r7, #4]
  8006e3e:	f7ff ff74 	bl	8006d2a <_ZN11ESP_Handler33_handle_current_position_transferEv>
-			break;
+		break;
  8006e42:	e021      	b.n	8006e88 <_ZN11ESP_Handler19Parse_Received_DataEv+0x90>
 
-		case I2C_Data_Commands::HEARTBEAT:
-			_handle_heartbeat();
+	case I2C_Data_Commands::HEARTBEAT:
+		_handle_heartbeat();
  8006e44:	6878      	ldr	r0, [r7, #4]
  8006e46:	f7ff ff86 	bl	8006d56 <_ZN11ESP_Handler17_handle_heartbeatEv>
-			break;
+		break;
  8006e4a:	e01d      	b.n	8006e88 <_ZN11ESP_Handler19Parse_Received_DataEv+0x90>
 
-		case I2C_Data_Commands::EMERGENCY_LANDING:
-			_handle_emergency_landing();
+	case I2C_Data_Commands::EMERGENCY_LANDING:
+		_handle_emergency_landing();
  8006e4c:	6878      	ldr	r0, [r7, #4]
  8006e4e:	f7ff ff8c 	bl	8006d6a <_ZN11ESP_Handler25_handle_emergency_landingEv>
-			break;
+		break;
  8006e52:	e019      	b.n	8006e88 <_ZN11ESP_Handler19Parse_Received_DataEv+0x90>
 
-		case I2C_Data_Commands::EMERGENCY_TOTAL_STOP:
-			_handle_emergency_total_stop();
+	case I2C_Data_Commands::EMERGENCY_TOTAL_STOP:
+		_handle_emergency_total_stop();
  8006e54:	6878      	ldr	r0, [r7, #4]
  8006e56:	f7ff ff92 	bl	8006d7e <_ZN11ESP_Handler28_handle_emergency_total_stopEv>
-			break;
+		break;
  8006e5a:	e015      	b.n	8006e88 <_ZN11ESP_Handler19Parse_Received_DataEv+0x90>
 
-		case I2C_Data_Commands::HOVER:
-			_handle_hover();
+	case I2C_Data_Commands::HOVER:
+		_handle_hover();
  8006e5c:	6878      	ldr	r0, [r7, #4]
  8006e5e:	f7ff ff98 	bl	8006d92 <_ZN11ESP_Handler13_handle_hoverEv>
-			break;
+		break;
  8006e62:	e011      	b.n	8006e88 <_ZN11ESP_Handler19Parse_Received_DataEv+0x90>
 
-		case I2C_Data_Commands::LAND:
-			_handle_land();
+	case I2C_Data_Commands::LAND:
+		_handle_land();
  8006e64:	6878      	ldr	r0, [r7, #4]
  8006e66:	f7ff ff9e 	bl	8006da6 <_ZN11ESP_Handler12_handle_landEv>
-			break;
+		break;
  8006e6a:	e00d      	b.n	8006e88 <_ZN11ESP_Handler19Parse_Received_DataEv+0x90>
 
-		case I2C_Data_Commands::QUADCOPTER_INIT:
-			_handle_quadcopter_init();
+	case I2C_Data_Commands::QUADCOPTER_INIT:
+		_handle_quadcopter_init();
  8006e6c:	6878      	ldr	r0, [r7, #4]
  8006e6e:	f7ff ffa4 	bl	8006dba <_ZN11ESP_Handler23_handle_quadcopter_initEv>
-			break;
+		break;
  8006e72:	e009      	b.n	8006e88 <_ZN11ESP_Handler19Parse_Received_DataEv+0x90>
 
-		case I2C_Data_Commands::RESET_STM:
-			_handle_reset_stm();
+	case I2C_Data_Commands::RESET_STM:
+		_handle_reset_stm();
  8006e74:	6878      	ldr	r0, [r7, #4]
  8006e76:	f7ff ffaa 	bl	8006dce <_ZN11ESP_Handler17_handle_reset_stmEv>
-			break;
+		break;
  8006e7a:	e005      	b.n	8006e88 <_ZN11ESP_Handler19Parse_Received_DataEv+0x90>
 
-		case I2C_Data_Commands::REQUEST_FULL_TELEMETRY:
-			_handle_request(I2C_REQUESTS::FULL_TELEMETRY);
+	case I2C_Data_Commands::REQUEST_FULL_TELEMETRY:
+		_handle_request(I2C_REQUESTS::FULL_TELEMETRY);
  8006e7c:	2100      	movs	r1, #0
  8006e7e:	6878      	ldr	r0, [r7, #4]
  8006e80:	f7ff ffaf 	bl	8006de2 <_ZN11ESP_Handler15_handle_requestENS_12I2C_REQUESTSE>
-			break;
+		break;
  8006e84:	e000      	b.n	8006e88 <_ZN11ESP_Handler19Parse_Received_DataEv+0x90>
 
-		default:
-			break;
+	default:
+		break;
  8006e86:	bf00      	nop
 	}
 }
@@ -19139,14 +19141,14 @@ void IMU::DMA_TxRxCompleteCallback()
  8006e92:	b082      	sub	sp, #8
  8006e94:	af00      	add	r7, sp, #0
  8006e96:	6078      	str	r0, [r7, #4]
-    Parse_Measurement(current_receive_buffer, IMU_BUFFER_SIZE);
+	Parse_Measurement(current_receive_buffer, IMU_BUFFER_SIZE);
  8006e98:	687b      	ldr	r3, [r7, #4]
  8006e9a:	6c9b      	ldr	r3, [r3, #72]	@ 0x48
  8006e9c:	220d      	movs	r2, #13
  8006e9e:	4619      	mov	r1, r3
  8006ea0:	6878      	ldr	r0, [r7, #4]
  8006ea2:	f000 f91b 	bl	80070dc <_ZN3IMU17Parse_MeasurementEPhh>
-    HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
  8006ea6:	687b      	ldr	r3, [r7, #4]
  8006ea8:	6898      	ldr	r0, [r3, #8]
  8006eaa:	687b      	ldr	r3, [r7, #4]
@@ -19168,7 +19170,7 @@ void IMU::DMA_ErrorCallback()
  8006ec0:	b082      	sub	sp, #8
  8006ec2:	af00      	add	r7, sp, #0
  8006ec4:	6078      	str	r0, [r7, #4]
-    HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
  8006ec6:	687b      	ldr	r3, [r7, #4]
  8006ec8:	6898      	ldr	r0, [r3, #8]
  8006eca:	687b      	ldr	r3, [r7, #4]
@@ -19206,7 +19208,7 @@ void IMU::DMA_TxCompleteCallback()
 
 08006efe <_ZN3IMU18Assert_ID_RegisterEv>:
 
-    return code;
+	return code;
 }
 
 bool IMU::Assert_ID_Register()
@@ -19215,25 +19217,21 @@ bool IMU::Assert_ID_Register()
  8006f00:	b087      	sub	sp, #28
  8006f02:	af02      	add	r7, sp, #8
  8006f04:	6078      	str	r0, [r7, #4]
-    current_transmit_buffer[0] =
-        Get_Read_Command(
+	current_transmit_buffer[0] = Get_Read_Command(
  8006f06:	6878      	ldr	r0, [r7, #4]
  8006f08:	687b      	ldr	r3, [r7, #4]
  8006f0a:	681b      	ldr	r3, [r3, #0]
  8006f0c:	3308      	adds	r3, #8
  8006f0e:	681b      	ldr	r3, [r3, #0]
-    current_transmit_buffer[0] =
  8006f10:	687a      	ldr	r2, [r7, #4]
  8006f12:	6c54      	ldr	r4, [r2, #68]	@ 0x44
-        Get_Read_Command(
  8006f14:	210f      	movs	r1, #15
  8006f16:	4798      	blx	r3
  8006f18:	4603      	mov	r3, r0
-    current_transmit_buffer[0] =
  8006f1a:	7023      	strb	r3, [r4, #0]
-            static_cast<uint8_t>(IMU_REGISTERS::IMU_WHOAMI_REG));
+			static_cast<uint8_t>(IMU_REGISTERS::IMU_WHOAMI_REG));
 
-    HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
  8006f1c:	687b      	ldr	r3, [r7, #4]
  8006f1e:	6898      	ldr	r0, [r3, #8]
  8006f20:	687b      	ldr	r3, [r7, #4]
@@ -19242,15 +19240,13 @@ bool IMU::Assert_ID_Register()
  8006f26:	4619      	mov	r1, r3
  8006f28:	f7fa ffb2 	bl	8001e90 <HAL_GPIO_WritePin>
 
-    HAL_StatusTypeDef code =
-        HAL_SPI_TransmitReceive(
+	HAL_StatusTypeDef code = HAL_SPI_TransmitReceive(spi,
  8006f2c:	687b      	ldr	r3, [r7, #4]
  8006f2e:	6858      	ldr	r0, [r3, #4]
-            spi,
-            current_transmit_buffer,
+			current_transmit_buffer, current_receive_buffer, 2,
  8006f30:	687b      	ldr	r3, [r7, #4]
  8006f32:	6c59      	ldr	r1, [r3, #68]	@ 0x44
-        HAL_SPI_TransmitReceive(
+	HAL_StatusTypeDef code = HAL_SPI_TransmitReceive(spi,
  8006f34:	687b      	ldr	r3, [r7, #4]
  8006f36:	6c9a      	ldr	r2, [r3, #72]	@ 0x48
  8006f38:	f04f 33ff 	mov.w	r3, #4294967295
@@ -19259,11 +19255,9 @@ bool IMU::Assert_ID_Register()
  8006f40:	f7fe f823 	bl	8004f8a <HAL_SPI_TransmitReceive>
  8006f44:	4603      	mov	r3, r0
  8006f46:	73fb      	strb	r3, [r7, #15]
-            current_receive_buffer,
-            2,
-            HAL_MAX_DELAY);
+			HAL_MAX_DELAY);
 
-    HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
  8006f48:	687b      	ldr	r3, [r7, #4]
  8006f4a:	6898      	ldr	r0, [r3, #8]
  8006f4c:	687b      	ldr	r3, [r7, #4]
@@ -19272,7 +19266,7 @@ bool IMU::Assert_ID_Register()
  8006f52:	4619      	mov	r1, r3
  8006f54:	f7fa ff9c 	bl	8001e90 <HAL_GPIO_WritePin>
 
-    bool ok = current_receive_buffer[1] == TARGET_WHOAMI_VALUE;
+	bool ok = current_receive_buffer[1] == TARGET_WHOAMI_VALUE;
  8006f58:	687b      	ldr	r3, [r7, #4]
  8006f5a:	6c9b      	ldr	r3, [r3, #72]	@ 0x48
  8006f5c:	3301      	adds	r3, #1
@@ -19283,7 +19277,7 @@ bool IMU::Assert_ID_Register()
  8006f66:	2300      	movne	r3, #0
  8006f68:	73bb      	strb	r3, [r7, #14]
 
-    Change_Buffer_Pointers();
+	Change_Buffer_Pointers();
  8006f6a:	687a      	ldr	r2, [r7, #4]
  8006f6c:	687b      	ldr	r3, [r7, #4]
  8006f6e:	681b      	ldr	r3, [r3, #0]
@@ -19292,7 +19286,7 @@ bool IMU::Assert_ID_Register()
  8006f74:	4610      	mov	r0, r2
  8006f76:	4798      	blx	r3
 
-    return (code == HAL_OK) && ok;
+	return (code == HAL_OK) && ok;
  8006f78:	7bfb      	ldrb	r3, [r7, #15]
  8006f7a:	2b00      	cmp	r3, #0
  8006f7c:	d104      	bne.n	8006f88 <_ZN3IMU18Assert_ID_RegisterEv+0x8a>
@@ -19319,34 +19313,33 @@ void IMU::Prepare_For_Measurements()
  8006f94:	b084      	sub	sp, #16
  8006f96:	af00      	add	r7, sp, #0
  8006f98:	6078      	str	r0, [r7, #4]
-    for (uint8_t i = 0; i < IMU_BUFFER_SIZE; ++i)
+	for (uint8_t i = 0; i < IMU_BUFFER_SIZE; ++i)
  8006f9a:	2300      	movs	r3, #0
  8006f9c:	73fb      	strb	r3, [r7, #15]
  8006f9e:	e00d      	b.n	8006fbc <_ZN3IMU24Prepare_For_MeasurementsEv+0x2a>
-    {
-        transmit_buffer_1[i] = 0;
+	{
+		transmit_buffer_1[i] = 0;
  8006fa0:	7bfb      	ldrb	r3, [r7, #15]
  8006fa2:	687a      	ldr	r2, [r7, #4]
  8006fa4:	4413      	add	r3, r2
  8006fa6:	2200      	movs	r2, #0
  8006fa8:	739a      	strb	r2, [r3, #14]
-        transmit_buffer_2[i] = 0;
+		transmit_buffer_2[i] = 0;
  8006faa:	7bfb      	ldrb	r3, [r7, #15]
  8006fac:	687a      	ldr	r2, [r7, #4]
  8006fae:	4413      	add	r3, r2
  8006fb0:	2200      	movs	r2, #0
  8006fb2:	f883 2028 	strb.w	r2, [r3, #40]	@ 0x28
-    for (uint8_t i = 0; i < IMU_BUFFER_SIZE; ++i)
+	for (uint8_t i = 0; i < IMU_BUFFER_SIZE; ++i)
  8006fb6:	7bfb      	ldrb	r3, [r7, #15]
  8006fb8:	3301      	adds	r3, #1
  8006fba:	73fb      	strb	r3, [r7, #15]
  8006fbc:	7bfb      	ldrb	r3, [r7, #15]
  8006fbe:	2b0c      	cmp	r3, #12
  8006fc0:	d9ee      	bls.n	8006fa0 <_ZN3IMU24Prepare_For_MeasurementsEv+0xe>
-    }
+	}
 
-    transmit_buffer_1[0] =
-        Get_Read_Command(
+	transmit_buffer_1[0] = Get_Read_Command(
  8006fc2:	687a      	ldr	r2, [r7, #4]
  8006fc4:	687b      	ldr	r3, [r7, #4]
  8006fc6:	681b      	ldr	r3, [r3, #0]
@@ -19357,13 +19350,11 @@ void IMU::Prepare_For_Measurements()
  8006fd0:	4798      	blx	r3
  8006fd2:	4603      	mov	r3, r0
  8006fd4:	461a      	mov	r2, r3
-    transmit_buffer_1[0] =
  8006fd6:	687b      	ldr	r3, [r7, #4]
  8006fd8:	739a      	strb	r2, [r3, #14]
-            static_cast<uint8_t>(IMU_REGISTERS::IMU_MEASUREMENT_REG));
+			static_cast<uint8_t>(IMU_REGISTERS::IMU_MEASUREMENT_REG));
 
-    transmit_buffer_2[0] =
-        Get_Read_Command(
+	transmit_buffer_2[0] = Get_Read_Command(
  8006fda:	687a      	ldr	r2, [r7, #4]
  8006fdc:	687b      	ldr	r3, [r7, #4]
  8006fde:	681b      	ldr	r3, [r3, #0]
@@ -19374,10 +19365,9 @@ void IMU::Prepare_For_Measurements()
  8006fe8:	4798      	blx	r3
  8006fea:	4603      	mov	r3, r0
  8006fec:	461a      	mov	r2, r3
-    transmit_buffer_2[0] =
  8006fee:	687b      	ldr	r3, [r7, #4]
  8006ff0:	f883 2028 	strb.w	r2, [r3, #40]	@ 0x28
-            static_cast<uint8_t>(IMU_REGISTERS::IMU_MEASUREMENT_REG));
+			static_cast<uint8_t>(IMU_REGISTERS::IMU_MEASUREMENT_REG));
 }
  8006ff4:	bf00      	nop
  8006ff6:	3710      	adds	r7, #16
@@ -19392,7 +19382,7 @@ void IMU::Measurement_Cycle_Finished()
  8006ffe:	b082      	sub	sp, #8
  8007000:	af00      	add	r7, sp, #0
  8007002:	6078      	str	r0, [r7, #4]
-    Change_Buffer_Pointers();
+	Change_Buffer_Pointers();
  8007004:	687a      	ldr	r2, [r7, #4]
  8007006:	687b      	ldr	r3, [r7, #4]
  8007008:	681b      	ldr	r3, [r3, #0]
@@ -19414,7 +19404,7 @@ void IMU::Task_Perform_Transaction()
  800701c:	b084      	sub	sp, #16
  800701e:	af00      	add	r7, sp, #0
  8007020:	6078      	str	r0, [r7, #4]
-    HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
  8007022:	687b      	ldr	r3, [r7, #4]
  8007024:	6898      	ldr	r0, [r3, #8]
  8007026:	687b      	ldr	r3, [r7, #4]
@@ -19423,30 +19413,26 @@ void IMU::Task_Perform_Transaction()
  800702c:	4619      	mov	r1, r3
  800702e:	f7fa ff2f 	bl	8001e90 <HAL_GPIO_WritePin>
 
-    HAL_StatusTypeDef code =
-        HAL_SPI_TransmitReceive_DMA(
+	HAL_StatusTypeDef code = HAL_SPI_TransmitReceive_DMA(spi,
  8007032:	687b      	ldr	r3, [r7, #4]
  8007034:	6858      	ldr	r0, [r3, #4]
-            spi,
-            current_transmit_buffer,
+			current_transmit_buffer, current_receive_buffer, IMU_BUFFER_SIZE);
  8007036:	687b      	ldr	r3, [r7, #4]
  8007038:	6c59      	ldr	r1, [r3, #68]	@ 0x44
-        HAL_SPI_TransmitReceive_DMA(
+	HAL_StatusTypeDef code = HAL_SPI_TransmitReceive_DMA(spi,
  800703a:	687b      	ldr	r3, [r7, #4]
  800703c:	6c9a      	ldr	r2, [r3, #72]	@ 0x48
  800703e:	230d      	movs	r3, #13
  8007040:	f7fe f9fe 	bl	8005440 <HAL_SPI_TransmitReceive_DMA>
  8007044:	4603      	mov	r3, r0
  8007046:	73fb      	strb	r3, [r7, #15]
-            current_receive_buffer,
-            IMU_BUFFER_SIZE);
 
-    if (code != HAL_OK)
+	if (code != HAL_OK)
  8007048:	7bfb      	ldrb	r3, [r7, #15]
  800704a:	2b00      	cmp	r3, #0
  800704c:	d007      	beq.n	800705e <_ZN3IMU24Task_Perform_TransactionEv+0x44>
-    {
-        HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
+	{
+		HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
  800704e:	687b      	ldr	r3, [r7, #4]
  8007050:	6898      	ldr	r0, [r3, #8]
  8007052:	687b      	ldr	r3, [r7, #4]
@@ -19454,7 +19440,7 @@ void IMU::Task_Perform_Transaction()
  8007056:	2201      	movs	r2, #1
  8007058:	4619      	mov	r1, r3
  800705a:	f7fa ff19 	bl	8001e90 <HAL_GPIO_WritePin>
-    }
+	}
 }
  800705e:	bf00      	nop
  8007060:	3710      	adds	r7, #16
@@ -19469,32 +19455,28 @@ HAL_StatusTypeDef IMU::Reset_Chip()
  8007068:	b085      	sub	sp, #20
  800706a:	af00      	add	r7, sp, #0
  800706c:	6078      	str	r0, [r7, #4]
-    current_transmit_buffer[0] =
-        Get_Write_Command(
+	current_transmit_buffer[0] = Get_Write_Command(
  800706e:	6878      	ldr	r0, [r7, #4]
  8007070:	687b      	ldr	r3, [r7, #4]
  8007072:	681b      	ldr	r3, [r3, #0]
  8007074:	3304      	adds	r3, #4
  8007076:	681b      	ldr	r3, [r3, #0]
-    current_transmit_buffer[0] =
  8007078:	687a      	ldr	r2, [r7, #4]
  800707a:	6c54      	ldr	r4, [r2, #68]	@ 0x44
-        Get_Write_Command(
  800707c:	2112      	movs	r1, #18
  800707e:	4798      	blx	r3
  8007080:	4603      	mov	r3, r0
-    current_transmit_buffer[0] =
  8007082:	7023      	strb	r3, [r4, #0]
-            static_cast<uint8_t>(IMU_REGISTERS::IMU_CTRL3_REG));
+			static_cast<uint8_t>(IMU_REGISTERS::IMU_CTRL3_REG));
 
-    current_transmit_buffer[1] = 0b0000'0101;
+	current_transmit_buffer[1] = 0b0000'0101;
  8007084:	687b      	ldr	r3, [r7, #4]
  8007086:	6c5b      	ldr	r3, [r3, #68]	@ 0x44
  8007088:	3301      	adds	r3, #1
  800708a:	2205      	movs	r2, #5
  800708c:	701a      	strb	r2, [r3, #0]
 
-    HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
  800708e:	687b      	ldr	r3, [r7, #4]
  8007090:	6898      	ldr	r0, [r3, #8]
  8007092:	687b      	ldr	r3, [r7, #4]
@@ -19503,24 +19485,19 @@ HAL_StatusTypeDef IMU::Reset_Chip()
  8007098:	4619      	mov	r1, r3
  800709a:	f7fa fef9 	bl	8001e90 <HAL_GPIO_WritePin>
 
-    HAL_StatusTypeDef code =
-        HAL_SPI_Transmit(
+	HAL_StatusTypeDef code = HAL_SPI_Transmit(spi, current_transmit_buffer, 2,
  800709e:	687b      	ldr	r3, [r7, #4]
  80070a0:	6858      	ldr	r0, [r3, #4]
-            spi,
-            current_transmit_buffer,
  80070a2:	687b      	ldr	r3, [r7, #4]
  80070a4:	6c59      	ldr	r1, [r3, #68]	@ 0x44
-        HAL_SPI_Transmit(
  80070a6:	f04f 33ff 	mov.w	r3, #4294967295
  80070aa:	2202      	movs	r2, #2
  80070ac:	f7fd fe29 	bl	8004d02 <HAL_SPI_Transmit>
  80070b0:	4603      	mov	r3, r0
  80070b2:	73fb      	strb	r3, [r7, #15]
-            2,
-            HAL_MAX_DELAY);
+	HAL_MAX_DELAY);
 
-    HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
  80070b4:	687b      	ldr	r3, [r7, #4]
  80070b6:	6898      	ldr	r0, [r3, #8]
  80070b8:	687b      	ldr	r3, [r7, #4]
@@ -19529,7 +19506,7 @@ HAL_StatusTypeDef IMU::Reset_Chip()
  80070be:	4619      	mov	r1, r3
  80070c0:	f7fa fee6 	bl	8001e90 <HAL_GPIO_WritePin>
 
-    Change_Buffer_Pointers();
+	Change_Buffer_Pointers();
  80070c4:	687a      	ldr	r2, [r7, #4]
  80070c6:	687b      	ldr	r3, [r7, #4]
  80070c8:	681b      	ldr	r3, [r3, #0]
@@ -19538,7 +19515,7 @@ HAL_StatusTypeDef IMU::Reset_Chip()
  80070ce:	4610      	mov	r0, r2
  80070d0:	4798      	blx	r3
 
-    return code;
+	return code;
  80070d2:	7bfb      	ldrb	r3, [r7, #15]
 }
  80070d4:	4618      	mov	r0, r3
@@ -19551,7 +19528,7 @@ HAL_StatusTypeDef IMU::Reset_Chip()
 
 #pragma region Data Parsing
 
-bool IMU::Parse_Measurement(uint8_t* received_data, uint8_t size)
+bool IMU::Parse_Measurement(uint8_t *received_data, uint8_t size)
 {
  80070dc:	b480      	push	{r7}
  80070de:	b089      	sub	sp, #36	@ 0x24
@@ -19560,214 +19537,196 @@ bool IMU::Parse_Measurement(uint8_t* received_data, uint8_t size)
  80070e4:	60b9      	str	r1, [r7, #8]
  80070e6:	4613      	mov	r3, r2
  80070e8:	71fb      	strb	r3, [r7, #7]
-    if (size != IMU_BUFFER_SIZE)
+	if (size != IMU_BUFFER_SIZE)
  80070ea:	79fb      	ldrb	r3, [r7, #7]
  80070ec:	2b0d      	cmp	r3, #13
  80070ee:	d001      	beq.n	80070f4 <_ZN3IMU17Parse_MeasurementEPhh+0x18>
-    {
-        return false;
+	{
+		return false;
  80070f0:	2300      	movs	r3, #0
  80070f2:	e0a0      	b.n	8007236 <_ZN3IMU17Parse_MeasurementEPhh+0x15a>
-    }
+	}
 
-    const int16_t raw_A_x = static_cast<int16_t>(
-        (static_cast<uint16_t>(
-            received_data[static_cast<uint8_t>(
-                IMU_MEASUREMENT_DATA_LAYOUT::OUTX_H_A)]) << 8) |
+	const int16_t raw_A_x =
+			static_cast<int16_t>((static_cast<uint16_t>(received_data[static_cast<uint8_t>(IMU_MEASUREMENT_DATA_LAYOUT::OUTX_H_A)])
  80070f4:	68bb      	ldr	r3, [r7, #8]
  80070f6:	3308      	adds	r3, #8
  80070f8:	781b      	ldrb	r3, [r3, #0]
+					<< 8)
+					| received_data[static_cast<uint8_t>(IMU_MEASUREMENT_DATA_LAYOUT::OUTX_L_A)]);
  80070fa:	b21b      	sxth	r3, r3
  80070fc:	021b      	lsls	r3, r3, #8
  80070fe:	b21a      	sxth	r2, r3
-        received_data[static_cast<uint8_t>(
-            IMU_MEASUREMENT_DATA_LAYOUT::OUTX_L_A)]);
  8007100:	68bb      	ldr	r3, [r7, #8]
  8007102:	3307      	adds	r3, #7
  8007104:	781b      	ldrb	r3, [r3, #0]
  8007106:	b21b      	sxth	r3, r3
-    const int16_t raw_A_x = static_cast<int16_t>(
+	const int16_t raw_A_x =
  8007108:	4313      	orrs	r3, r2
  800710a:	83fb      	strh	r3, [r7, #30]
 
-    const int16_t raw_A_y = static_cast<int16_t>(
-        (static_cast<uint16_t>(
-            received_data[static_cast<uint8_t>(
-                IMU_MEASUREMENT_DATA_LAYOUT::OUTY_H_A)]) << 8) |
+	const int16_t raw_A_y =
+			static_cast<int16_t>((static_cast<uint16_t>(received_data[static_cast<uint8_t>(IMU_MEASUREMENT_DATA_LAYOUT::OUTY_H_A)])
  800710c:	68bb      	ldr	r3, [r7, #8]
  800710e:	330a      	adds	r3, #10
  8007110:	781b      	ldrb	r3, [r3, #0]
+					<< 8)
+					| received_data[static_cast<uint8_t>(IMU_MEASUREMENT_DATA_LAYOUT::OUTY_L_A)]);
  8007112:	b21b      	sxth	r3, r3
  8007114:	021b      	lsls	r3, r3, #8
  8007116:	b21a      	sxth	r2, r3
-        received_data[static_cast<uint8_t>(
-            IMU_MEASUREMENT_DATA_LAYOUT::OUTY_L_A)]);
  8007118:	68bb      	ldr	r3, [r7, #8]
  800711a:	3309      	adds	r3, #9
  800711c:	781b      	ldrb	r3, [r3, #0]
  800711e:	b21b      	sxth	r3, r3
-    const int16_t raw_A_y = static_cast<int16_t>(
+	const int16_t raw_A_y =
  8007120:	4313      	orrs	r3, r2
  8007122:	83bb      	strh	r3, [r7, #28]
 
-    const int16_t raw_A_z = static_cast<int16_t>(
-        (static_cast<uint16_t>(
-            received_data[static_cast<uint8_t>(
-                IMU_MEASUREMENT_DATA_LAYOUT::OUTZ_H_A)]) << 8) |
+	const int16_t raw_A_z =
+			static_cast<int16_t>((static_cast<uint16_t>(received_data[static_cast<uint8_t>(IMU_MEASUREMENT_DATA_LAYOUT::OUTZ_H_A)])
  8007124:	68bb      	ldr	r3, [r7, #8]
  8007126:	330c      	adds	r3, #12
  8007128:	781b      	ldrb	r3, [r3, #0]
+					<< 8)
+					| received_data[static_cast<uint8_t>(IMU_MEASUREMENT_DATA_LAYOUT::OUTZ_L_A)]);
  800712a:	b21b      	sxth	r3, r3
  800712c:	021b      	lsls	r3, r3, #8
  800712e:	b21a      	sxth	r2, r3
-        received_data[static_cast<uint8_t>(
-            IMU_MEASUREMENT_DATA_LAYOUT::OUTZ_L_A)]);
  8007130:	68bb      	ldr	r3, [r7, #8]
  8007132:	330b      	adds	r3, #11
  8007134:	781b      	ldrb	r3, [r3, #0]
  8007136:	b21b      	sxth	r3, r3
-    const int16_t raw_A_z = static_cast<int16_t>(
+	const int16_t raw_A_z =
  8007138:	4313      	orrs	r3, r2
  800713a:	837b      	strh	r3, [r7, #26]
 
-    const int16_t raw_G_x = static_cast<int16_t>(
-        (static_cast<uint16_t>(
-            received_data[static_cast<uint8_t>(
-                IMU_MEASUREMENT_DATA_LAYOUT::OUTX_H_G)]) << 8) |
+	const int16_t raw_G_x =
+			static_cast<int16_t>((static_cast<uint16_t>(received_data[static_cast<uint8_t>(IMU_MEASUREMENT_DATA_LAYOUT::OUTX_H_G)])
  800713c:	68bb      	ldr	r3, [r7, #8]
  800713e:	3302      	adds	r3, #2
  8007140:	781b      	ldrb	r3, [r3, #0]
+					<< 8)
+					| received_data[static_cast<uint8_t>(IMU_MEASUREMENT_DATA_LAYOUT::OUTX_L_G)]);
  8007142:	b21b      	sxth	r3, r3
  8007144:	021b      	lsls	r3, r3, #8
  8007146:	b21a      	sxth	r2, r3
-        received_data[static_cast<uint8_t>(
-            IMU_MEASUREMENT_DATA_LAYOUT::OUTX_L_G)]);
  8007148:	68bb      	ldr	r3, [r7, #8]
  800714a:	3301      	adds	r3, #1
  800714c:	781b      	ldrb	r3, [r3, #0]
  800714e:	b21b      	sxth	r3, r3
-    const int16_t raw_G_x = static_cast<int16_t>(
+	const int16_t raw_G_x =
  8007150:	4313      	orrs	r3, r2
  8007152:	833b      	strh	r3, [r7, #24]
 
-    const int16_t raw_G_y = static_cast<int16_t>(
-        (static_cast<uint16_t>(
-            received_data[static_cast<uint8_t>(
-                IMU_MEASUREMENT_DATA_LAYOUT::OUTY_H_G)]) << 8) |
+	const int16_t raw_G_y =
+			static_cast<int16_t>((static_cast<uint16_t>(received_data[static_cast<uint8_t>(IMU_MEASUREMENT_DATA_LAYOUT::OUTY_H_G)])
  8007154:	68bb      	ldr	r3, [r7, #8]
  8007156:	3304      	adds	r3, #4
  8007158:	781b      	ldrb	r3, [r3, #0]
+					<< 8)
+					| received_data[static_cast<uint8_t>(IMU_MEASUREMENT_DATA_LAYOUT::OUTY_L_G)]);
  800715a:	b21b      	sxth	r3, r3
  800715c:	021b      	lsls	r3, r3, #8
  800715e:	b21a      	sxth	r2, r3
-        received_data[static_cast<uint8_t>(
-            IMU_MEASUREMENT_DATA_LAYOUT::OUTY_L_G)]);
  8007160:	68bb      	ldr	r3, [r7, #8]
  8007162:	3303      	adds	r3, #3
  8007164:	781b      	ldrb	r3, [r3, #0]
  8007166:	b21b      	sxth	r3, r3
-    const int16_t raw_G_y = static_cast<int16_t>(
+	const int16_t raw_G_y =
  8007168:	4313      	orrs	r3, r2
  800716a:	82fb      	strh	r3, [r7, #22]
 
-    const int16_t raw_G_z = static_cast<int16_t>(
-        (static_cast<uint16_t>(
-            received_data[static_cast<uint8_t>(
-                IMU_MEASUREMENT_DATA_LAYOUT::OUTZ_H_G)]) << 8) |
+	const int16_t raw_G_z =
+			static_cast<int16_t>((static_cast<uint16_t>(received_data[static_cast<uint8_t>(IMU_MEASUREMENT_DATA_LAYOUT::OUTZ_H_G)])
  800716c:	68bb      	ldr	r3, [r7, #8]
  800716e:	3306      	adds	r3, #6
  8007170:	781b      	ldrb	r3, [r3, #0]
+					<< 8)
+					| received_data[static_cast<uint8_t>(IMU_MEASUREMENT_DATA_LAYOUT::OUTZ_L_G)]);
  8007172:	b21b      	sxth	r3, r3
  8007174:	021b      	lsls	r3, r3, #8
  8007176:	b21a      	sxth	r2, r3
-        received_data[static_cast<uint8_t>(
-            IMU_MEASUREMENT_DATA_LAYOUT::OUTZ_L_G)]);
  8007178:	68bb      	ldr	r3, [r7, #8]
  800717a:	3305      	adds	r3, #5
  800717c:	781b      	ldrb	r3, [r3, #0]
  800717e:	b21b      	sxth	r3, r3
-    const int16_t raw_G_z = static_cast<int16_t>(
+	const int16_t raw_G_z =
  8007180:	4313      	orrs	r3, r2
  8007182:	82bb      	strh	r3, [r7, #20]
 
-    current_measurement.acc_x =
-        static_cast<float>(raw_A_x) * acc_sensitivity_g;
+	current_measurement.acc_x = static_cast<float>(raw_A_x) * acc_sensitivity_g;
  8007184:	f9b7 301e 	ldrsh.w	r3, [r7, #30]
  8007188:	ee07 3a90 	vmov	s15, r3
  800718c:	eeb8 7ae7 	vcvt.f32.s32	s14, s15
  8007190:	68fb      	ldr	r3, [r7, #12]
  8007192:	edd3 7a14 	vldr	s15, [r3, #80]	@ 0x50
  8007196:	ee67 7a27 	vmul.f32	s15, s14, s15
-    current_measurement.acc_x =
  800719a:	68fb      	ldr	r3, [r7, #12]
  800719c:	edc3 7a16 	vstr	s15, [r3, #88]	@ 0x58
 
-    current_measurement.acc_y =
-        static_cast<float>(raw_A_y) * acc_sensitivity_g;
+	current_measurement.acc_y = static_cast<float>(raw_A_y) * acc_sensitivity_g;
  80071a0:	f9b7 301c 	ldrsh.w	r3, [r7, #28]
  80071a4:	ee07 3a90 	vmov	s15, r3
  80071a8:	eeb8 7ae7 	vcvt.f32.s32	s14, s15
  80071ac:	68fb      	ldr	r3, [r7, #12]
  80071ae:	edd3 7a14 	vldr	s15, [r3, #80]	@ 0x50
  80071b2:	ee67 7a27 	vmul.f32	s15, s14, s15
-    current_measurement.acc_y =
  80071b6:	68fb      	ldr	r3, [r7, #12]
  80071b8:	edc3 7a17 	vstr	s15, [r3, #92]	@ 0x5c
 
-    current_measurement.acc_z =
-        static_cast<float>(raw_A_z) * acc_sensitivity_g;
+	current_measurement.acc_z = static_cast<float>(raw_A_z) * acc_sensitivity_g;
  80071bc:	f9b7 301a 	ldrsh.w	r3, [r7, #26]
  80071c0:	ee07 3a90 	vmov	s15, r3
  80071c4:	eeb8 7ae7 	vcvt.f32.s32	s14, s15
  80071c8:	68fb      	ldr	r3, [r7, #12]
  80071ca:	edd3 7a14 	vldr	s15, [r3, #80]	@ 0x50
  80071ce:	ee67 7a27 	vmul.f32	s15, s14, s15
-    current_measurement.acc_z =
  80071d2:	68fb      	ldr	r3, [r7, #12]
  80071d4:	edc3 7a18 	vstr	s15, [r3, #96]	@ 0x60
 
-    current_measurement.gyro_x =
-        static_cast<float>(raw_G_x) * gyro_sensitivity_dps;
+	current_measurement.gyro_x = static_cast<float>(raw_G_x)
  80071d8:	f9b7 3018 	ldrsh.w	r3, [r7, #24]
  80071dc:	ee07 3a90 	vmov	s15, r3
  80071e0:	eeb8 7ae7 	vcvt.f32.s32	s14, s15
+			* gyro_sensitivity_dps;
  80071e4:	68fb      	ldr	r3, [r7, #12]
  80071e6:	edd3 7a15 	vldr	s15, [r3, #84]	@ 0x54
  80071ea:	ee67 7a27 	vmul.f32	s15, s14, s15
-    current_measurement.gyro_x =
+	current_measurement.gyro_x = static_cast<float>(raw_G_x)
  80071ee:	68fb      	ldr	r3, [r7, #12]
  80071f0:	edc3 7a19 	vstr	s15, [r3, #100]	@ 0x64
 
-    current_measurement.gyro_y =
-        static_cast<float>(raw_G_y) * gyro_sensitivity_dps;
+	current_measurement.gyro_y = static_cast<float>(raw_G_y)
  80071f4:	f9b7 3016 	ldrsh.w	r3, [r7, #22]
  80071f8:	ee07 3a90 	vmov	s15, r3
  80071fc:	eeb8 7ae7 	vcvt.f32.s32	s14, s15
+			* gyro_sensitivity_dps;
  8007200:	68fb      	ldr	r3, [r7, #12]
  8007202:	edd3 7a15 	vldr	s15, [r3, #84]	@ 0x54
  8007206:	ee67 7a27 	vmul.f32	s15, s14, s15
-    current_measurement.gyro_y =
+	current_measurement.gyro_y = static_cast<float>(raw_G_y)
  800720a:	68fb      	ldr	r3, [r7, #12]
  800720c:	edc3 7a1a 	vstr	s15, [r3, #104]	@ 0x68
 
-    current_measurement.gyro_z =
-        static_cast<float>(raw_G_z) * gyro_sensitivity_dps;
+	current_measurement.gyro_z = static_cast<float>(raw_G_z)
  8007210:	f9b7 3014 	ldrsh.w	r3, [r7, #20]
  8007214:	ee07 3a90 	vmov	s15, r3
  8007218:	eeb8 7ae7 	vcvt.f32.s32	s14, s15
+			* gyro_sensitivity_dps;
  800721c:	68fb      	ldr	r3, [r7, #12]
  800721e:	edd3 7a15 	vldr	s15, [r3, #84]	@ 0x54
  8007222:	ee67 7a27 	vmul.f32	s15, s14, s15
-    current_measurement.gyro_z =
+	current_measurement.gyro_z = static_cast<float>(raw_G_z)
  8007226:	68fb      	ldr	r3, [r7, #12]
  8007228:	edc3 7a1b 	vstr	s15, [r3, #108]	@ 0x6c
 
-    data_ready = true;
+	data_ready = true;
  800722c:	68fb      	ldr	r3, [r7, #12]
  800722e:	2201      	movs	r2, #1
  8007230:	f883 204c 	strb.w	r2, [r3, #76]	@ 0x4c
 
-    return true;
+	return true;
  8007234:	2301      	movs	r3, #1
 }
  8007236:	4618      	mov	r0, r3
@@ -19787,7 +19746,7 @@ void Magnetometer::DMA_TxRxCompleteCallback()
  8007244:	b082      	sub	sp, #8
  8007246:	af00      	add	r7, sp, #0
  8007248:	6078      	str	r0, [r7, #4]
-    HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
  800724a:	687b      	ldr	r3, [r7, #4]
  800724c:	6898      	ldr	r0, [r3, #8]
  800724e:	687b      	ldr	r3, [r7, #4]
@@ -19796,35 +19755,35 @@ void Magnetometer::DMA_TxRxCompleteCallback()
  8007254:	4619      	mov	r1, r3
  8007256:	f7fa fe1b 	bl	8001e90 <HAL_GPIO_WritePin>
 
-    switch (current_state) {
+	switch (current_state)
  800725a:	687b      	ldr	r3, [r7, #4]
  800725c:	f893 303c 	ldrb.w	r3, [r3, #60]	@ 0x3c
  8007260:	2b04      	cmp	r3, #4
  8007262:	d002      	beq.n	800726a <_ZN12Magnetometer24DMA_TxRxCompleteCallbackEv+0x28>
  8007264:	2b08      	cmp	r3, #8
  8007266:	d014      	beq.n	8007292 <_ZN12Magnetometer24DMA_TxRxCompleteCallbackEv+0x50>
-	        Parse_Data();
-	        current_state = MAGNETOMETER_INTERNAL_STATES::CLEAR_INTERRUPT_2;
-	        Change_Buffer_Pointers();
-	        break;
-		default:
-			break;
+		Parse_Data();
+		current_state = MAGNETOMETER_INTERNAL_STATES::CLEAR_INTERRUPT_2;
+		Change_Buffer_Pointers();
+		break;
+	default:
+		break;
  8007268:	e02a      	b.n	80072c0 <_ZN12Magnetometer24DMA_TxRxCompleteCallbackEv+0x7e>
-			Store_Measurement(
+		Store_Measurement(current_receive_buffer, MAGNETOMETER_BUFFER_SIZE,
  800726a:	687b      	ldr	r3, [r7, #4]
  800726c:	6b19      	ldr	r1, [r3, #48]	@ 0x30
 				set_raw_measurement);
  800726e:	687b      	ldr	r3, [r7, #4]
  8007270:	3340      	adds	r3, #64	@ 0x40
-			Store_Measurement(
+		Store_Measurement(current_receive_buffer, MAGNETOMETER_BUFFER_SIZE,
  8007272:	220d      	movs	r2, #13
  8007274:	6878      	ldr	r0, [r7, #4]
  8007276:	f000 fad7 	bl	8007828 <_ZN12Magnetometer17Store_MeasurementEPhhR18Raw_Magnetic_Value>
-			current_state = MAGNETOMETER_INTERNAL_STATES::CLEAR_INTERRUPT_1;
+		current_state = MAGNETOMETER_INTERNAL_STATES::CLEAR_INTERRUPT_1;
  800727a:	687b      	ldr	r3, [r7, #4]
  800727c:	2205      	movs	r2, #5
  800727e:	f883 203c 	strb.w	r2, [r3, #60]	@ 0x3c
-		    Change_Buffer_Pointers();
+		Change_Buffer_Pointers();
  8007282:	687a      	ldr	r2, [r7, #4]
  8007284:	687b      	ldr	r3, [r7, #4]
  8007286:	681b      	ldr	r3, [r3, #0]
@@ -19832,26 +19791,26 @@ void Magnetometer::DMA_TxRxCompleteCallback()
  800728a:	681b      	ldr	r3, [r3, #0]
  800728c:	4610      	mov	r0, r2
  800728e:	4798      	blx	r3
-			break;
+		break;
  8007290:	e016      	b.n	80072c0 <_ZN12Magnetometer24DMA_TxRxCompleteCallbackEv+0x7e>
-	        Store_Measurement(
+		Store_Measurement(current_receive_buffer, MAGNETOMETER_BUFFER_SIZE,
  8007292:	687b      	ldr	r3, [r7, #4]
  8007294:	6b19      	ldr	r1, [r3, #48]	@ 0x30
-	            reset_raw_measurement);
+				reset_raw_measurement);
  8007296:	687b      	ldr	r3, [r7, #4]
  8007298:	334c      	adds	r3, #76	@ 0x4c
-	        Store_Measurement(
+		Store_Measurement(current_receive_buffer, MAGNETOMETER_BUFFER_SIZE,
  800729a:	220d      	movs	r2, #13
  800729c:	6878      	ldr	r0, [r7, #4]
  800729e:	f000 fac3 	bl	8007828 <_ZN12Magnetometer17Store_MeasurementEPhhR18Raw_Magnetic_Value>
-	        Parse_Data();
+		Parse_Data();
  80072a2:	6878      	ldr	r0, [r7, #4]
  80072a4:	f000 faf2 	bl	800788c <_ZN12Magnetometer10Parse_DataEv>
-	        current_state = MAGNETOMETER_INTERNAL_STATES::CLEAR_INTERRUPT_2;
+		current_state = MAGNETOMETER_INTERNAL_STATES::CLEAR_INTERRUPT_2;
  80072a8:	687b      	ldr	r3, [r7, #4]
  80072aa:	2209      	movs	r2, #9
  80072ac:	f883 203c 	strb.w	r2, [r3, #60]	@ 0x3c
-	        Change_Buffer_Pointers();
+		Change_Buffer_Pointers();
  80072b0:	687a      	ldr	r2, [r7, #4]
  80072b2:	687b      	ldr	r3, [r7, #4]
  80072b4:	681b      	ldr	r3, [r3, #0]
@@ -19859,7 +19818,7 @@ void Magnetometer::DMA_TxRxCompleteCallback()
  80072b8:	681b      	ldr	r3, [r3, #0]
  80072ba:	4610      	mov	r0, r2
  80072bc:	4798      	blx	r3
-	        break;
+		break;
  80072be:	bf00      	nop
 	}
 }
@@ -19898,7 +19857,7 @@ void Magnetometer::DMA_ErrorCallback()
  80072ea:	b082      	sub	sp, #8
  80072ec:	af00      	add	r7, sp, #0
  80072ee:	6078      	str	r0, [r7, #4]
-    HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
  80072f0:	687b      	ldr	r3, [r7, #4]
  80072f2:	6898      	ldr	r0, [r3, #8]
  80072f4:	687b      	ldr	r3, [r7, #4]
@@ -19920,7 +19879,7 @@ void Magnetometer::Data_Ready_EXTI_Handler()
  800730a:	b083      	sub	sp, #12
  800730c:	af00      	add	r7, sp, #0
  800730e:	6078      	str	r0, [r7, #4]
-    chip_output_ready = true;
+	chip_output_ready = true;
  8007310:	687b      	ldr	r3, [r7, #4]
  8007312:	2201      	movs	r2, #1
  8007314:	f883 2035 	strb.w	r2, [r3, #53]	@ 0x35
@@ -19972,7 +19931,7 @@ void Magnetometer::Task_Perform_Transaction()
  800734e:	b082      	sub	sp, #8
  8007350:	af00      	add	r7, sp, #0
  8007352:	6078      	str	r0, [r7, #4]
-    switch (current_state)
+	switch (current_state)
  8007354:	687b      	ldr	r3, [r7, #4]
  8007356:	f893 303c 	ldrb.w	r3, [r3, #60]	@ 0x3c
  800735a:	3b01      	subs	r3, #1
@@ -19990,74 +19949,74 @@ void Magnetometer::Task_Perform_Transaction()
  8007380:	080073bd 	.word	0x080073bd
  8007384:	080073c5 	.word	0x080073c5
  8007388:	080073cd 	.word	0x080073cd
-    {
-    	case MAGNETOMETER_INTERNAL_STATES::RECOVER:
-			Recover();
+	{
+	case MAGNETOMETER_INTERNAL_STATES::RECOVER:
+		Recover();
  800738c:	6878      	ldr	r0, [r7, #4]
  800738e:	f000 f859 	bl	8007444 <_ZN12Magnetometer7RecoverEv>
-			break;
+		break;
  8007392:	e020      	b.n	80073d6 <_ZN12Magnetometer24Task_Perform_TransactionEv+0x8a>
 
-    	case MAGNETOMETER_INTERNAL_STATES::SET:
-            Perform_Set();
+	case MAGNETOMETER_INTERNAL_STATES::SET:
+		Perform_Set();
  8007394:	6878      	ldr	r0, [r7, #4]
  8007396:	f000 f890 	bl	80074ba <_ZN12Magnetometer11Perform_SetEv>
-            break;
+		break;
  800739a:	e01c      	b.n	80073d6 <_ZN12Magnetometer24Task_Perform_TransactionEv+0x8a>
 
-        case MAGNETOMETER_INTERNAL_STATES::ENABLE_MEASUREMENT_1:
-            Enable_Measurement();
+	case MAGNETOMETER_INTERNAL_STATES::ENABLE_MEASUREMENT_1:
+		Enable_Measurement();
  800739c:	6878      	ldr	r0, [r7, #4]
  800739e:	f000 f910 	bl	80075c2 <_ZN12Magnetometer18Enable_MeasurementEv>
-            break;
+		break;
  80073a2:	e018      	b.n	80073d6 <_ZN12Magnetometer24Task_Perform_TransactionEv+0x8a>
 
-        case MAGNETOMETER_INTERNAL_STATES::READ_MEASUREMENT_1:
-            Read_Measurement();
+	case MAGNETOMETER_INTERNAL_STATES::READ_MEASUREMENT_1:
+		Read_Measurement();
  80073a4:	6878      	ldr	r0, [r7, #4]
  80073a6:	f000 f956 	bl	8007656 <_ZN12Magnetometer16Read_MeasurementEv>
-        	break;
+		break;
  80073aa:	e014      	b.n	80073d6 <_ZN12Magnetometer24Task_Perform_TransactionEv+0x8a>
 
-        case MAGNETOMETER_INTERNAL_STATES::CLEAR_INTERRUPT_1:
-            Clear_Interrupt();
+	case MAGNETOMETER_INTERNAL_STATES::CLEAR_INTERRUPT_1:
+		Clear_Interrupt();
  80073ac:	6878      	ldr	r0, [r7, #4]
  80073ae:	f000 f9a7 	bl	8007700 <_ZN12Magnetometer15Clear_InterruptEv>
-            break;
+		break;
  80073b2:	e010      	b.n	80073d6 <_ZN12Magnetometer24Task_Perform_TransactionEv+0x8a>
 
-        case MAGNETOMETER_INTERNAL_STATES::RESET:
-            Perform_Reset();
+	case MAGNETOMETER_INTERNAL_STATES::RESET:
+		Perform_Reset();
  80073b4:	6878      	ldr	r0, [r7, #4]
  80073b6:	f000 f8c2 	bl	800753e <_ZN12Magnetometer13Perform_ResetEv>
-            break;
+		break;
  80073ba:	e00c      	b.n	80073d6 <_ZN12Magnetometer24Task_Perform_TransactionEv+0x8a>
 
-        case MAGNETOMETER_INTERNAL_STATES::ENABLE_MEASUREMENT_2:
-            Enable_Measurement();
+	case MAGNETOMETER_INTERNAL_STATES::ENABLE_MEASUREMENT_2:
+		Enable_Measurement();
  80073bc:	6878      	ldr	r0, [r7, #4]
  80073be:	f000 f900 	bl	80075c2 <_ZN12Magnetometer18Enable_MeasurementEv>
-            break;
+		break;
  80073c2:	e008      	b.n	80073d6 <_ZN12Magnetometer24Task_Perform_TransactionEv+0x8a>
 
-        case MAGNETOMETER_INTERNAL_STATES::READ_MEASUREMENT_2:
-            Read_Measurement();
+	case MAGNETOMETER_INTERNAL_STATES::READ_MEASUREMENT_2:
+		Read_Measurement();
  80073c4:	6878      	ldr	r0, [r7, #4]
  80073c6:	f000 f946 	bl	8007656 <_ZN12Magnetometer16Read_MeasurementEv>
-            break;
+		break;
  80073ca:	e004      	b.n	80073d6 <_ZN12Magnetometer24Task_Perform_TransactionEv+0x8a>
 
-        case MAGNETOMETER_INTERNAL_STATES::CLEAR_INTERRUPT_2:
-            Clear_Interrupt();
+	case MAGNETOMETER_INTERNAL_STATES::CLEAR_INTERRUPT_2:
+		Clear_Interrupt();
  80073cc:	6878      	ldr	r0, [r7, #4]
  80073ce:	f000 f997 	bl	8007700 <_ZN12Magnetometer15Clear_InterruptEv>
-            break;
+		break;
  80073d2:	e000      	b.n	80073d6 <_ZN12Magnetometer24Task_Perform_TransactionEv+0x8a>
 
-        default:
-            break;
+	default:
+		break;
  80073d4:	bf00      	nop
-    }
+	}
 }
  80073d6:	bf00      	nop
  80073d8:	3708      	adds	r7, #8
@@ -20075,30 +20034,27 @@ HAL_StatusTypeDef Magnetometer::Reset_Chip()
  80073e2:	b085      	sub	sp, #20
  80073e4:	af00      	add	r7, sp, #0
  80073e6:	6078      	str	r0, [r7, #4]
-	current_transmit_buffer[0] =
-		Get_Write_Command(
+	current_transmit_buffer[0] = Get_Write_Command(
  80073e8:	6878      	ldr	r0, [r7, #4]
  80073ea:	687b      	ldr	r3, [r7, #4]
  80073ec:	681b      	ldr	r3, [r3, #0]
  80073ee:	3304      	adds	r3, #4
  80073f0:	681b      	ldr	r3, [r3, #0]
-	current_transmit_buffer[0] =
  80073f2:	687a      	ldr	r2, [r7, #4]
  80073f4:	6ad4      	ldr	r4, [r2, #44]	@ 0x2c
-		Get_Write_Command(
  80073f6:	210a      	movs	r1, #10
  80073f8:	4798      	blx	r3
  80073fa:	4603      	mov	r3, r0
-	current_transmit_buffer[0] =
  80073fc:	7023      	strb	r3, [r4, #0]
 			static_cast<uint8_t>(MAGNETOMETER_REGISTERS::CONTROL_1));
 
-	current_transmit_buffer[1] = static_cast<uint8_t>(MAGNETOMETER_CONTROL_1_COMMANDS::CHIP_RESET);
+	current_transmit_buffer[1] =
  80073fe:	687b      	ldr	r3, [r7, #4]
  8007400:	6adb      	ldr	r3, [r3, #44]	@ 0x2c
  8007402:	3301      	adds	r3, #1
  8007404:	2280      	movs	r2, #128	@ 0x80
  8007406:	701a      	strb	r2, [r3, #0]
+			static_cast<uint8_t>(MAGNETOMETER_CONTROL_1_COMMANDS::CHIP_RESET);
 
 	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
  8007408:	687b      	ldr	r3, [r7, #4]
@@ -20108,8 +20064,7 @@ HAL_StatusTypeDef Magnetometer::Reset_Chip()
  8007410:	2200      	movs	r2, #0
  8007412:	4619      	mov	r1, r3
  8007414:	f7fa fd3c 	bl	8001e90 <HAL_GPIO_WritePin>
-	HAL_StatusTypeDef code =
-		HAL_SPI_Transmit_DMA(spi, current_transmit_buffer, 2);
+	HAL_StatusTypeDef code = HAL_SPI_Transmit_DMA(spi, current_transmit_buffer,
  8007418:	687b      	ldr	r3, [r7, #4]
  800741a:	6858      	ldr	r0, [r3, #4]
  800741c:	687b      	ldr	r3, [r7, #4]
@@ -20119,6 +20074,7 @@ HAL_StatusTypeDef Magnetometer::Reset_Chip()
  8007424:	f7fd ff5a 	bl	80052dc <HAL_SPI_Transmit_DMA>
  8007428:	4603      	mov	r3, r0
  800742a:	73fb      	strb	r3, [r7, #15]
+			2);
 
 	Change_Buffer_Pointers();
  800742c:	687a      	ldr	r2, [r7, #4]
@@ -20139,7 +20095,7 @@ HAL_StatusTypeDef Magnetometer::Reset_Chip()
 
 08007444 <_ZN12Magnetometer7RecoverEv>:
 
-    return code;
+	return code;
 }
 
 HAL_StatusTypeDef Magnetometer::Recover()
@@ -20148,21 +20104,17 @@ HAL_StatusTypeDef Magnetometer::Recover()
  8007446:	b085      	sub	sp, #20
  8007448:	af00      	add	r7, sp, #0
  800744a:	6078      	str	r0, [r7, #4]
-	current_transmit_buffer[0] =
-		Get_Write_Command(
+	current_transmit_buffer[0] = Get_Write_Command(
  800744c:	6878      	ldr	r0, [r7, #4]
  800744e:	687b      	ldr	r3, [r7, #4]
  8007450:	681b      	ldr	r3, [r3, #0]
  8007452:	3304      	adds	r3, #4
  8007454:	681b      	ldr	r3, [r3, #0]
-	current_transmit_buffer[0] =
  8007456:	687a      	ldr	r2, [r7, #4]
  8007458:	6ad4      	ldr	r4, [r2, #44]	@ 0x2c
-		Get_Write_Command(
  800745a:	2109      	movs	r1, #9
  800745c:	4798      	blx	r3
  800745e:	4603      	mov	r3, r0
-	current_transmit_buffer[0] =
  8007460:	7023      	strb	r3, [r4, #0]
 			static_cast<uint8_t>(MAGNETOMETER_REGISTERS::CONTROL_0));
 
@@ -20172,8 +20124,7 @@ HAL_StatusTypeDef Magnetometer::Recover()
  8007466:	3301      	adds	r3, #1
  8007468:	2204      	movs	r2, #4
  800746a:	701a      	strb	r2, [r3, #0]
-		static_cast<uint8_t>(
-			MAGNETOMETER_CONTROL_0_COMMANDS::INTERRUPT_ENABLE);
+			static_cast<uint8_t>(MAGNETOMETER_CONTROL_0_COMMANDS::INTERRUPT_ENABLE);
 
 	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
  800746c:	687b      	ldr	r3, [r7, #4]
@@ -20183,8 +20134,7 @@ HAL_StatusTypeDef Magnetometer::Recover()
  8007474:	2200      	movs	r2, #0
  8007476:	4619      	mov	r1, r3
  8007478:	f7fa fd0a 	bl	8001e90 <HAL_GPIO_WritePin>
-	HAL_StatusTypeDef code =
-		HAL_SPI_Transmit_DMA(spi, current_transmit_buffer, 2);
+	HAL_StatusTypeDef code = HAL_SPI_Transmit_DMA(spi, current_transmit_buffer,
  800747c:	687b      	ldr	r3, [r7, #4]
  800747e:	6858      	ldr	r0, [r3, #4]
  8007480:	687b      	ldr	r3, [r7, #4]
@@ -20194,6 +20144,7 @@ HAL_StatusTypeDef Magnetometer::Recover()
  8007488:	f7fd ff28 	bl	80052dc <HAL_SPI_Transmit_DMA>
  800748c:	4603      	mov	r3, r0
  800748e:	73fb      	strb	r3, [r7, #15]
+			2);
 
 	if (code != HAL_OK)
  8007490:	7bfb      	ldrb	r3, [r7, #15]
@@ -20233,47 +20184,41 @@ HAL_StatusTypeDef Magnetometer::Perform_Set()
  80074bc:	b085      	sub	sp, #20
  80074be:	af00      	add	r7, sp, #0
  80074c0:	6078      	str	r0, [r7, #4]
-    if (current_state != MAGNETOMETER_INTERNAL_STATES::SET)
+	if (current_state != MAGNETOMETER_INTERNAL_STATES::SET)
  80074c2:	687b      	ldr	r3, [r7, #4]
  80074c4:	f893 303c 	ldrb.w	r3, [r3, #60]	@ 0x3c
  80074c8:	2b01      	cmp	r3, #1
  80074ca:	d001      	beq.n	80074d0 <_ZN12Magnetometer11Perform_SetEv+0x16>
-    {
-        return HAL_ERROR;
+	{
+		return HAL_ERROR;
  80074cc:	2301      	movs	r3, #1
  80074ce:	e032      	b.n	8007536 <_ZN12Magnetometer11Perform_SetEv+0x7c>
-    }
+	}
 
-    current_transmit_buffer[0] =
-        Get_Write_Command(
+	current_transmit_buffer[0] = Get_Write_Command(
  80074d0:	6878      	ldr	r0, [r7, #4]
  80074d2:	687b      	ldr	r3, [r7, #4]
  80074d4:	681b      	ldr	r3, [r3, #0]
  80074d6:	3304      	adds	r3, #4
  80074d8:	681b      	ldr	r3, [r3, #0]
-    current_transmit_buffer[0] =
  80074da:	687a      	ldr	r2, [r7, #4]
  80074dc:	6ad4      	ldr	r4, [r2, #44]	@ 0x2c
-        Get_Write_Command(
  80074de:	2109      	movs	r1, #9
  80074e0:	4798      	blx	r3
  80074e2:	4603      	mov	r3, r0
-    current_transmit_buffer[0] =
  80074e4:	7023      	strb	r3, [r4, #0]
-            static_cast<uint8_t>(MAGNETOMETER_REGISTERS::CONTROL_0));
+			static_cast<uint8_t>(MAGNETOMETER_REGISTERS::CONTROL_0));
 
-    current_transmit_buffer[1] =
+	current_transmit_buffer[1] =
  80074e6:	687b      	ldr	r3, [r7, #4]
  80074e8:	6adb      	ldr	r3, [r3, #44]	@ 0x2c
  80074ea:	3301      	adds	r3, #1
  80074ec:	220c      	movs	r2, #12
  80074ee:	701a      	strb	r2, [r3, #0]
-        static_cast<uint8_t>(
-            MAGNETOMETER_CONTROL_0_COMMANDS::INTERRUPT_ENABLE) |
-        static_cast<uint8_t>(
-            MAGNETOMETER_CONTROL_0_COMMANDS::SET);
+			static_cast<uint8_t>(MAGNETOMETER_CONTROL_0_COMMANDS::INTERRUPT_ENABLE)
+					| static_cast<uint8_t>(MAGNETOMETER_CONTROL_0_COMMANDS::SET);
 
-    HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
  80074f0:	687b      	ldr	r3, [r7, #4]
  80074f2:	6898      	ldr	r0, [r3, #8]
  80074f4:	687b      	ldr	r3, [r7, #4]
@@ -20281,8 +20226,7 @@ HAL_StatusTypeDef Magnetometer::Perform_Set()
  80074f8:	2200      	movs	r2, #0
  80074fa:	4619      	mov	r1, r3
  80074fc:	f7fa fcc8 	bl	8001e90 <HAL_GPIO_WritePin>
-    HAL_StatusTypeDef code =
-        HAL_SPI_Transmit_DMA(spi, current_transmit_buffer, 2);
+	HAL_StatusTypeDef code = HAL_SPI_Transmit_DMA(spi, current_transmit_buffer,
  8007500:	687b      	ldr	r3, [r7, #4]
  8007502:	6858      	ldr	r0, [r3, #4]
  8007504:	687b      	ldr	r3, [r7, #4]
@@ -20292,18 +20236,19 @@ HAL_StatusTypeDef Magnetometer::Perform_Set()
  800750c:	f7fd fee6 	bl	80052dc <HAL_SPI_Transmit_DMA>
  8007510:	4603      	mov	r3, r0
  8007512:	73fb      	strb	r3, [r7, #15]
+			2);
 
-    if (code != HAL_OK)
+	if (code != HAL_OK)
  8007514:	7bfb      	ldrb	r3, [r7, #15]
  8007516:	2b00      	cmp	r3, #0
  8007518:	d001      	beq.n	800751e <_ZN12Magnetometer11Perform_SetEv+0x64>
-    {
-    	return code;
+	{
+		return code;
  800751a:	7bfb      	ldrb	r3, [r7, #15]
  800751c:	e00b      	b.n	8007536 <_ZN12Magnetometer11Perform_SetEv+0x7c>
-    }
+	}
 
-    Change_Buffer_Pointers();
+	Change_Buffer_Pointers();
  800751e:	687a      	ldr	r2, [r7, #4]
  8007520:	687b      	ldr	r3, [r7, #4]
  8007522:	681b      	ldr	r3, [r3, #0]
@@ -20312,12 +20257,12 @@ HAL_StatusTypeDef Magnetometer::Perform_Set()
  8007528:	4610      	mov	r0, r2
  800752a:	4798      	blx	r3
 
-    current_state = MAGNETOMETER_INTERNAL_STATES::ENABLE_MEASUREMENT_1;
+	current_state = MAGNETOMETER_INTERNAL_STATES::ENABLE_MEASUREMENT_1;
  800752c:	687b      	ldr	r3, [r7, #4]
  800752e:	2203      	movs	r2, #3
  8007530:	f883 203c 	strb.w	r2, [r3, #60]	@ 0x3c
 
-    return code;
+	return code;
  8007534:	7bfb      	ldrb	r3, [r7, #15]
 }
  8007536:	4618      	mov	r0, r3
@@ -20333,47 +20278,41 @@ HAL_StatusTypeDef Magnetometer::Perform_Reset()
  8007540:	b085      	sub	sp, #20
  8007542:	af00      	add	r7, sp, #0
  8007544:	6078      	str	r0, [r7, #4]
-    if (current_state != MAGNETOMETER_INTERNAL_STATES::RESET)
+	if (current_state != MAGNETOMETER_INTERNAL_STATES::RESET)
  8007546:	687b      	ldr	r3, [r7, #4]
  8007548:	f893 303c 	ldrb.w	r3, [r3, #60]	@ 0x3c
  800754c:	2b06      	cmp	r3, #6
  800754e:	d001      	beq.n	8007554 <_ZN12Magnetometer13Perform_ResetEv+0x16>
-    {
-        return HAL_ERROR;
+	{
+		return HAL_ERROR;
  8007550:	2301      	movs	r3, #1
  8007552:	e032      	b.n	80075ba <_ZN12Magnetometer13Perform_ResetEv+0x7c>
-    }
+	}
 
-    current_transmit_buffer[0] =
-        Get_Write_Command(
+	current_transmit_buffer[0] = Get_Write_Command(
  8007554:	6878      	ldr	r0, [r7, #4]
  8007556:	687b      	ldr	r3, [r7, #4]
  8007558:	681b      	ldr	r3, [r3, #0]
  800755a:	3304      	adds	r3, #4
  800755c:	681b      	ldr	r3, [r3, #0]
-    current_transmit_buffer[0] =
  800755e:	687a      	ldr	r2, [r7, #4]
  8007560:	6ad4      	ldr	r4, [r2, #44]	@ 0x2c
-        Get_Write_Command(
  8007562:	2109      	movs	r1, #9
  8007564:	4798      	blx	r3
  8007566:	4603      	mov	r3, r0
-    current_transmit_buffer[0] =
  8007568:	7023      	strb	r3, [r4, #0]
-            static_cast<uint8_t>(MAGNETOMETER_REGISTERS::CONTROL_0));
+			static_cast<uint8_t>(MAGNETOMETER_REGISTERS::CONTROL_0));
 
-    current_transmit_buffer[1] =
+	current_transmit_buffer[1] =
  800756a:	687b      	ldr	r3, [r7, #4]
  800756c:	6adb      	ldr	r3, [r3, #44]	@ 0x2c
  800756e:	3301      	adds	r3, #1
  8007570:	2214      	movs	r2, #20
  8007572:	701a      	strb	r2, [r3, #0]
-        static_cast<uint8_t>(
-            MAGNETOMETER_CONTROL_0_COMMANDS::INTERRUPT_ENABLE) |
-        static_cast<uint8_t>(
-            MAGNETOMETER_CONTROL_0_COMMANDS::RESET);
+			static_cast<uint8_t>(MAGNETOMETER_CONTROL_0_COMMANDS::INTERRUPT_ENABLE)
+					| static_cast<uint8_t>(MAGNETOMETER_CONTROL_0_COMMANDS::RESET);
 
-    HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
  8007574:	687b      	ldr	r3, [r7, #4]
  8007576:	6898      	ldr	r0, [r3, #8]
  8007578:	687b      	ldr	r3, [r7, #4]
@@ -20381,8 +20320,7 @@ HAL_StatusTypeDef Magnetometer::Perform_Reset()
  800757c:	2200      	movs	r2, #0
  800757e:	4619      	mov	r1, r3
  8007580:	f7fa fc86 	bl	8001e90 <HAL_GPIO_WritePin>
-    HAL_StatusTypeDef code =
-        HAL_SPI_Transmit_DMA(spi, current_transmit_buffer, 2);
+	HAL_StatusTypeDef code = HAL_SPI_Transmit_DMA(spi, current_transmit_buffer,
  8007584:	687b      	ldr	r3, [r7, #4]
  8007586:	6858      	ldr	r0, [r3, #4]
  8007588:	687b      	ldr	r3, [r7, #4]
@@ -20392,8 +20330,9 @@ HAL_StatusTypeDef Magnetometer::Perform_Reset()
  8007590:	f7fd fea4 	bl	80052dc <HAL_SPI_Transmit_DMA>
  8007594:	4603      	mov	r3, r0
  8007596:	73fb      	strb	r3, [r7, #15]
+			2);
 
-    if (code != HAL_OK)
+	if (code != HAL_OK)
  8007598:	7bfb      	ldrb	r3, [r7, #15]
  800759a:	2b00      	cmp	r3, #0
  800759c:	d001      	beq.n	80075a2 <_ZN12Magnetometer13Perform_ResetEv+0x64>
@@ -20403,7 +20342,7 @@ HAL_StatusTypeDef Magnetometer::Perform_Reset()
  80075a0:	e00b      	b.n	80075ba <_ZN12Magnetometer13Perform_ResetEv+0x7c>
 	}
 
-    Change_Buffer_Pointers();
+	Change_Buffer_Pointers();
  80075a2:	687a      	ldr	r2, [r7, #4]
  80075a4:	687b      	ldr	r3, [r7, #4]
  80075a6:	681b      	ldr	r3, [r3, #0]
@@ -20412,12 +20351,12 @@ HAL_StatusTypeDef Magnetometer::Perform_Reset()
  80075ac:	4610      	mov	r0, r2
  80075ae:	4798      	blx	r3
 
-    current_state = MAGNETOMETER_INTERNAL_STATES::ENABLE_MEASUREMENT_2;
+	current_state = MAGNETOMETER_INTERNAL_STATES::ENABLE_MEASUREMENT_2;
  80075b0:	687b      	ldr	r3, [r7, #4]
  80075b2:	2207      	movs	r2, #7
  80075b4:	f883 203c 	strb.w	r2, [r3, #60]	@ 0x3c
 
-    return code;
+	return code;
  80075b8:	7bfb      	ldrb	r3, [r7, #15]
 }
  80075ba:	4618      	mov	r0, r3
@@ -20433,36 +20372,30 @@ HAL_StatusTypeDef Magnetometer::Enable_Measurement()
  80075c4:	b085      	sub	sp, #20
  80075c6:	af00      	add	r7, sp, #0
  80075c8:	6078      	str	r0, [r7, #4]
-    current_transmit_buffer[0] =
-        Get_Write_Command(
+	current_transmit_buffer[0] = Get_Write_Command(
  80075ca:	6878      	ldr	r0, [r7, #4]
  80075cc:	687b      	ldr	r3, [r7, #4]
  80075ce:	681b      	ldr	r3, [r3, #0]
  80075d0:	3304      	adds	r3, #4
  80075d2:	681b      	ldr	r3, [r3, #0]
-    current_transmit_buffer[0] =
  80075d4:	687a      	ldr	r2, [r7, #4]
  80075d6:	6ad4      	ldr	r4, [r2, #44]	@ 0x2c
-        Get_Write_Command(
  80075d8:	2109      	movs	r1, #9
  80075da:	4798      	blx	r3
  80075dc:	4603      	mov	r3, r0
-    current_transmit_buffer[0] =
  80075de:	7023      	strb	r3, [r4, #0]
-            static_cast<uint8_t>(MAGNETOMETER_REGISTERS::CONTROL_0));
+			static_cast<uint8_t>(MAGNETOMETER_REGISTERS::CONTROL_0));
 
-    current_transmit_buffer[1] =
+	current_transmit_buffer[1] =
  80075e0:	687b      	ldr	r3, [r7, #4]
  80075e2:	6adb      	ldr	r3, [r3, #44]	@ 0x2c
  80075e4:	3301      	adds	r3, #1
  80075e6:	2205      	movs	r2, #5
  80075e8:	701a      	strb	r2, [r3, #0]
-        static_cast<uint8_t>(
-            MAGNETOMETER_CONTROL_0_COMMANDS::INTERRUPT_ENABLE) |
-        static_cast<uint8_t>(
-            MAGNETOMETER_CONTROL_0_COMMANDS::INIT_MAGNETOMETER_MEASUREMENT);
+			static_cast<uint8_t>(MAGNETOMETER_CONTROL_0_COMMANDS::INTERRUPT_ENABLE)
+					| static_cast<uint8_t>(MAGNETOMETER_CONTROL_0_COMMANDS::INIT_MAGNETOMETER_MEASUREMENT);
 
-    HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
  80075ea:	687b      	ldr	r3, [r7, #4]
  80075ec:	6898      	ldr	r0, [r3, #8]
  80075ee:	687b      	ldr	r3, [r7, #4]
@@ -20470,8 +20403,7 @@ HAL_StatusTypeDef Magnetometer::Enable_Measurement()
  80075f2:	2200      	movs	r2, #0
  80075f4:	4619      	mov	r1, r3
  80075f6:	f7fa fc4b 	bl	8001e90 <HAL_GPIO_WritePin>
-    HAL_StatusTypeDef code =
-        HAL_SPI_Transmit_DMA(spi, current_transmit_buffer, 2);
+	HAL_StatusTypeDef code = HAL_SPI_Transmit_DMA(spi, current_transmit_buffer,
  80075fa:	687b      	ldr	r3, [r7, #4]
  80075fc:	6858      	ldr	r0, [r3, #4]
  80075fe:	687b      	ldr	r3, [r7, #4]
@@ -20481,8 +20413,9 @@ HAL_StatusTypeDef Magnetometer::Enable_Measurement()
  8007606:	f7fd fe69 	bl	80052dc <HAL_SPI_Transmit_DMA>
  800760a:	4603      	mov	r3, r0
  800760c:	73fb      	strb	r3, [r7, #15]
+			2);
 
-    if (code != HAL_OK)
+	if (code != HAL_OK)
  800760e:	7bfb      	ldrb	r3, [r7, #15]
  8007610:	2b00      	cmp	r3, #0
  8007612:	d001      	beq.n	8007618 <_ZN12Magnetometer18Enable_MeasurementEv+0x56>
@@ -20492,7 +20425,7 @@ HAL_StatusTypeDef Magnetometer::Enable_Measurement()
  8007616:	e01a      	b.n	800764e <_ZN12Magnetometer18Enable_MeasurementEv+0x8c>
 	}
 
-    Change_Buffer_Pointers();
+	Change_Buffer_Pointers();
  8007618:	687a      	ldr	r2, [r7, #4]
  800761a:	687b      	ldr	r3, [r7, #4]
  800761c:	681b      	ldr	r3, [r3, #0]
@@ -20513,18 +20446,19 @@ HAL_StatusTypeDef Magnetometer::Enable_Measurement()
  8007634:	f883 203c 	strb.w	r2, [r3, #60]	@ 0x3c
  8007638:	e008      	b.n	800764c <_ZN12Magnetometer18Enable_MeasurementEv+0x8a>
 	}
-	else if (current_state == MAGNETOMETER_INTERNAL_STATES::ENABLE_MEASUREMENT_2)
+	else if (current_state
  800763a:	687b      	ldr	r3, [r7, #4]
  800763c:	f893 303c 	ldrb.w	r3, [r3, #60]	@ 0x3c
  8007640:	2b07      	cmp	r3, #7
  8007642:	d103      	bne.n	800764c <_ZN12Magnetometer18Enable_MeasurementEv+0x8a>
+			== MAGNETOMETER_INTERNAL_STATES::ENABLE_MEASUREMENT_2)
 	{
 		current_state = MAGNETOMETER_INTERNAL_STATES::READ_MEASUREMENT_2;
  8007644:	687b      	ldr	r3, [r7, #4]
  8007646:	2208      	movs	r2, #8
  8007648:	f883 203c 	strb.w	r2, [r3, #60]	@ 0x3c
 	}
-    return code;
+	return code;
  800764c:	7bfb      	ldrb	r3, [r7, #15]
 }
  800764e:	4618      	mov	r0, r3
@@ -20540,76 +20474,72 @@ HAL_StatusTypeDef Magnetometer::Read_Measurement()
  8007658:	b085      	sub	sp, #20
  800765a:	af00      	add	r7, sp, #0
  800765c:	6078      	str	r0, [r7, #4]
-    if (!chip_output_ready)
+	if (!chip_output_ready)
  800765e:	687b      	ldr	r3, [r7, #4]
  8007660:	f893 3035 	ldrb.w	r3, [r3, #53]	@ 0x35
  8007664:	f083 0301 	eor.w	r3, r3, #1
  8007668:	b2db      	uxtb	r3, r3
  800766a:	2b00      	cmp	r3, #0
  800766c:	d012      	beq.n	8007694 <_ZN12Magnetometer16Read_MeasurementEv+0x3e>
-    {
-    	read_chip_safety_counter++;
+	{
+		read_chip_safety_counter++;
  800766e:	687b      	ldr	r3, [r7, #4]
  8007670:	8edb      	ldrh	r3, [r3, #54]	@ 0x36
  8007672:	3301      	adds	r3, #1
  8007674:	b29a      	uxth	r2, r3
  8007676:	687b      	ldr	r3, [r7, #4]
  8007678:	86da      	strh	r2, [r3, #54]	@ 0x36
-        if (read_chip_safety_counter >= 5)
+		if (read_chip_safety_counter >= 5)
  800767a:	687b      	ldr	r3, [r7, #4]
  800767c:	8edb      	ldrh	r3, [r3, #54]	@ 0x36
  800767e:	2b04      	cmp	r3, #4
  8007680:	d906      	bls.n	8007690 <_ZN12Magnetometer16Read_MeasurementEv+0x3a>
-        {
-        	current_state = MAGNETOMETER_INTERNAL_STATES::RECOVER;
+		{
+			current_state = MAGNETOMETER_INTERNAL_STATES::RECOVER;
  8007682:	687b      	ldr	r3, [r7, #4]
  8007684:	2202      	movs	r2, #2
  8007686:	f883 203c 	strb.w	r2, [r3, #60]	@ 0x3c
-        	read_chip_safety_counter = 0;
+			read_chip_safety_counter = 0;
  800768a:	687b      	ldr	r3, [r7, #4]
  800768c:	2200      	movs	r2, #0
  800768e:	86da      	strh	r2, [r3, #54]	@ 0x36
-        }
-    	return HAL_ERROR;
+		}
+		return HAL_ERROR;
  8007690:	2301      	movs	r3, #1
  8007692:	e031      	b.n	80076f8 <_ZN12Magnetometer16Read_MeasurementEv+0xa2>
-    }
-    read_chip_safety_counter = 0;
+	}
+	read_chip_safety_counter = 0;
  8007694:	687b      	ldr	r3, [r7, #4]
  8007696:	2200      	movs	r2, #0
  8007698:	86da      	strh	r2, [r3, #54]	@ 0x36
 
-    chip_output_ready = false;
+	chip_output_ready = false;
  800769a:	687b      	ldr	r3, [r7, #4]
  800769c:	2200      	movs	r2, #0
  800769e:	f883 2035 	strb.w	r2, [r3, #53]	@ 0x35
 
-    current_transmit_buffer[0] =
-        Get_Read_Command(
+	current_transmit_buffer[0] = Get_Read_Command(
  80076a2:	6878      	ldr	r0, [r7, #4]
  80076a4:	687b      	ldr	r3, [r7, #4]
  80076a6:	681b      	ldr	r3, [r3, #0]
  80076a8:	3308      	adds	r3, #8
  80076aa:	681b      	ldr	r3, [r3, #0]
-    current_transmit_buffer[0] =
  80076ac:	687a      	ldr	r2, [r7, #4]
  80076ae:	6ad4      	ldr	r4, [r2, #44]	@ 0x2c
-        Get_Read_Command(
  80076b0:	2100      	movs	r1, #0
  80076b2:	4798      	blx	r3
  80076b4:	4603      	mov	r3, r0
-    current_transmit_buffer[0] =
  80076b6:	7023      	strb	r3, [r4, #0]
-            static_cast<uint8_t>(MAGNETOMETER_REGISTERS::MEASUREMENT_REG));
+			static_cast<uint8_t>(MAGNETOMETER_REGISTERS::MEASUREMENT_REG));
 
-    current_transmit_buffer[1] = 0x00;
+	current_transmit_buffer[1] = 0x00;
  80076b8:	687b      	ldr	r3, [r7, #4]
  80076ba:	6adb      	ldr	r3, [r3, #44]	@ 0x2c
  80076bc:	3301      	adds	r3, #1
  80076be:	2200      	movs	r2, #0
  80076c0:	701a      	strb	r2, [r3, #0]
 
-    HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
  80076c2:	687b      	ldr	r3, [r7, #4]
  80076c4:	6898      	ldr	r0, [r3, #8]
  80076c6:	687b      	ldr	r3, [r7, #4]
@@ -20618,25 +20548,22 @@ HAL_StatusTypeDef Magnetometer::Read_Measurement()
  80076cc:	4619      	mov	r1, r3
  80076ce:	f7fa fbdf 	bl	8001e90 <HAL_GPIO_WritePin>
 
-    HAL_StatusTypeDef code =
-        HAL_SPI_TransmitReceive_DMA(
+	HAL_StatusTypeDef code = HAL_SPI_TransmitReceive_DMA(spi,
  80076d2:	687b      	ldr	r3, [r7, #4]
  80076d4:	6858      	ldr	r0, [r3, #4]
-            spi,
-            current_transmit_buffer,
+			current_transmit_buffer, current_receive_buffer,
  80076d6:	687b      	ldr	r3, [r7, #4]
  80076d8:	6ad9      	ldr	r1, [r3, #44]	@ 0x2c
-        HAL_SPI_TransmitReceive_DMA(
+	HAL_StatusTypeDef code = HAL_SPI_TransmitReceive_DMA(spi,
  80076da:	687b      	ldr	r3, [r7, #4]
  80076dc:	6b1a      	ldr	r2, [r3, #48]	@ 0x30
  80076de:	230d      	movs	r3, #13
  80076e0:	f7fd feae 	bl	8005440 <HAL_SPI_TransmitReceive_DMA>
  80076e4:	4603      	mov	r3, r0
  80076e6:	73fb      	strb	r3, [r7, #15]
-            current_receive_buffer,
-            MAGNETOMETER_BUFFER_SIZE);
+			MAGNETOMETER_BUFFER_SIZE);
 
-    if (code != HAL_OK)
+	if (code != HAL_OK)
  80076e8:	7bfb      	ldrb	r3, [r7, #15]
  80076ea:	2b00      	cmp	r3, #0
  80076ec:	d003      	beq.n	80076f6 <_ZN12Magnetometer16Read_MeasurementEv+0xa0>
@@ -20647,7 +20574,7 @@ HAL_StatusTypeDef Magnetometer::Read_Measurement()
  80076f2:	f883 2035 	strb.w	r2, [r3, #53]	@ 0x35
 	}
 
-    return code;
+	return code;
  80076f6:	7bfb      	ldrb	r3, [r7, #15]
 }
  80076f8:	4618      	mov	r0, r3
@@ -20663,36 +20590,30 @@ HAL_StatusTypeDef Magnetometer::Clear_Interrupt()
  8007702:	b085      	sub	sp, #20
  8007704:	af00      	add	r7, sp, #0
  8007706:	6078      	str	r0, [r7, #4]
-    current_transmit_buffer[0] =
-        Get_Write_Command(
+	current_transmit_buffer[0] = Get_Write_Command(
  8007708:	6878      	ldr	r0, [r7, #4]
  800770a:	687b      	ldr	r3, [r7, #4]
  800770c:	681b      	ldr	r3, [r3, #0]
  800770e:	3304      	adds	r3, #4
  8007710:	681b      	ldr	r3, [r3, #0]
-    current_transmit_buffer[0] =
  8007712:	687a      	ldr	r2, [r7, #4]
  8007714:	6ad4      	ldr	r4, [r2, #44]	@ 0x2c
-        Get_Write_Command(
  8007716:	2108      	movs	r1, #8
  8007718:	4798      	blx	r3
  800771a:	4603      	mov	r3, r0
-    current_transmit_buffer[0] =
  800771c:	7023      	strb	r3, [r4, #0]
-            static_cast<uint8_t>(MAGNETOMETER_REGISTERS::STATUS));
+			static_cast<uint8_t>(MAGNETOMETER_REGISTERS::STATUS));
 
-    current_transmit_buffer[1] =
+	current_transmit_buffer[1] =
  800771e:	687b      	ldr	r3, [r7, #4]
  8007720:	6adb      	ldr	r3, [r3, #44]	@ 0x2c
  8007722:	3301      	adds	r3, #1
  8007724:	2203      	movs	r2, #3
  8007726:	701a      	strb	r2, [r3, #0]
-        static_cast<uint8_t>(
-            MAGNETOMETER_STATUS_COMMANDS::MEAS_MAGNETOMETER_DONE) |
-        static_cast<uint8_t>(
-            MAGNETOMETER_STATUS_COMMANDS::MEAS_TEMP_DONE);
+			static_cast<uint8_t>(MAGNETOMETER_STATUS_COMMANDS::MEAS_MAGNETOMETER_DONE)
+					| static_cast<uint8_t>(MAGNETOMETER_STATUS_COMMANDS::MEAS_TEMP_DONE);
 
-    HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
  8007728:	687b      	ldr	r3, [r7, #4]
  800772a:	6898      	ldr	r0, [r3, #8]
  800772c:	687b      	ldr	r3, [r7, #4]
@@ -20701,8 +20622,7 @@ HAL_StatusTypeDef Magnetometer::Clear_Interrupt()
  8007732:	4619      	mov	r1, r3
  8007734:	f7fa fbac 	bl	8001e90 <HAL_GPIO_WritePin>
 
-    HAL_StatusTypeDef code =
-        HAL_SPI_Transmit_DMA(spi, current_transmit_buffer, 2);
+	HAL_StatusTypeDef code = HAL_SPI_Transmit_DMA(spi, current_transmit_buffer,
  8007738:	687b      	ldr	r3, [r7, #4]
  800773a:	6858      	ldr	r0, [r3, #4]
  800773c:	687b      	ldr	r3, [r7, #4]
@@ -20712,8 +20632,9 @@ HAL_StatusTypeDef Magnetometer::Clear_Interrupt()
  8007744:	f7fd fdca 	bl	80052dc <HAL_SPI_Transmit_DMA>
  8007748:	4603      	mov	r3, r0
  800774a:	73fb      	strb	r3, [r7, #15]
+			2);
 
-    if (code != HAL_OK)
+	if (code != HAL_OK)
  800774c:	7bfb      	ldrb	r3, [r7, #15]
  800774e:	2b00      	cmp	r3, #0
  8007750:	d001      	beq.n	8007756 <_ZN12Magnetometer15Clear_InterruptEv+0x56>
@@ -20723,7 +20644,7 @@ HAL_StatusTypeDef Magnetometer::Clear_Interrupt()
  8007754:	e01a      	b.n	800778c <_ZN12Magnetometer15Clear_InterruptEv+0x8c>
 	}
 
-    Change_Buffer_Pointers();
+	Change_Buffer_Pointers();
  8007756:	687a      	ldr	r2, [r7, #4]
  8007758:	687b      	ldr	r3, [r7, #4]
  800775a:	681b      	ldr	r3, [r3, #0]
@@ -20732,30 +20653,30 @@ HAL_StatusTypeDef Magnetometer::Clear_Interrupt()
  8007760:	4610      	mov	r0, r2
  8007762:	4798      	blx	r3
 
-    if (current_state == MAGNETOMETER_INTERNAL_STATES::CLEAR_INTERRUPT_1)
+	if (current_state == MAGNETOMETER_INTERNAL_STATES::CLEAR_INTERRUPT_1)
  8007764:	687b      	ldr	r3, [r7, #4]
  8007766:	f893 303c 	ldrb.w	r3, [r3, #60]	@ 0x3c
  800776a:	2b05      	cmp	r3, #5
  800776c:	d104      	bne.n	8007778 <_ZN12Magnetometer15Clear_InterruptEv+0x78>
-    {
-    	current_state = MAGNETOMETER_INTERNAL_STATES::RESET;
+	{
+		current_state = MAGNETOMETER_INTERNAL_STATES::RESET;
  800776e:	687b      	ldr	r3, [r7, #4]
  8007770:	2206      	movs	r2, #6
  8007772:	f883 203c 	strb.w	r2, [r3, #60]	@ 0x3c
  8007776:	e008      	b.n	800778a <_ZN12Magnetometer15Clear_InterruptEv+0x8a>
-    }
-    else if (current_state == MAGNETOMETER_INTERNAL_STATES::CLEAR_INTERRUPT_2)
+	}
+	else if (current_state == MAGNETOMETER_INTERNAL_STATES::CLEAR_INTERRUPT_2)
  8007778:	687b      	ldr	r3, [r7, #4]
  800777a:	f893 303c 	ldrb.w	r3, [r3, #60]	@ 0x3c
  800777e:	2b09      	cmp	r3, #9
  8007780:	d103      	bne.n	800778a <_ZN12Magnetometer15Clear_InterruptEv+0x8a>
-    {
-    	current_state = MAGNETOMETER_INTERNAL_STATES::SET;
+	{
+		current_state = MAGNETOMETER_INTERNAL_STATES::SET;
  8007782:	687b      	ldr	r3, [r7, #4]
  8007784:	2201      	movs	r2, #1
  8007786:	f883 203c 	strb.w	r2, [r3, #60]	@ 0x3c
-    }
-    return code;
+	}
+	return code;
  800778a:	7bfb      	ldrb	r3, [r7, #15]
 }
  800778c:	4618      	mov	r0, r3
@@ -20771,25 +20692,21 @@ bool Magnetometer::Assert_ID_Register()
  8007796:	b087      	sub	sp, #28
  8007798:	af02      	add	r7, sp, #8
  800779a:	6078      	str	r0, [r7, #4]
-    current_transmit_buffer[0] =
-        Get_Read_Command(
+	current_transmit_buffer[0] = Get_Read_Command(
  800779c:	6878      	ldr	r0, [r7, #4]
  800779e:	687b      	ldr	r3, [r7, #4]
  80077a0:	681b      	ldr	r3, [r3, #0]
  80077a2:	3308      	adds	r3, #8
  80077a4:	681b      	ldr	r3, [r3, #0]
-    current_transmit_buffer[0] =
  80077a6:	687a      	ldr	r2, [r7, #4]
  80077a8:	6ad4      	ldr	r4, [r2, #44]	@ 0x2c
-        Get_Read_Command(
  80077aa:	212f      	movs	r1, #47	@ 0x2f
  80077ac:	4798      	blx	r3
  80077ae:	4603      	mov	r3, r0
-    current_transmit_buffer[0] =
  80077b0:	7023      	strb	r3, [r4, #0]
-            static_cast<uint8_t>(MAGNETOMETER_REGISTERS::PRODUCT_ID));
+			static_cast<uint8_t>(MAGNETOMETER_REGISTERS::PRODUCT_ID));
 
-    HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET);
  80077b2:	687b      	ldr	r3, [r7, #4]
  80077b4:	6898      	ldr	r0, [r3, #8]
  80077b6:	687b      	ldr	r3, [r7, #4]
@@ -20798,15 +20715,13 @@ bool Magnetometer::Assert_ID_Register()
  80077bc:	4619      	mov	r1, r3
  80077be:	f7fa fb67 	bl	8001e90 <HAL_GPIO_WritePin>
 
-    HAL_StatusTypeDef code =
-        HAL_SPI_TransmitReceive(
+	HAL_StatusTypeDef code = HAL_SPI_TransmitReceive(spi,
  80077c2:	687b      	ldr	r3, [r7, #4]
  80077c4:	6858      	ldr	r0, [r3, #4]
-            spi,
-            current_transmit_buffer,
+			current_transmit_buffer, current_receive_buffer, 2,
  80077c6:	687b      	ldr	r3, [r7, #4]
  80077c8:	6ad9      	ldr	r1, [r3, #44]	@ 0x2c
-        HAL_SPI_TransmitReceive(
+	HAL_StatusTypeDef code = HAL_SPI_TransmitReceive(spi,
  80077ca:	687b      	ldr	r3, [r7, #4]
  80077cc:	6b1a      	ldr	r2, [r3, #48]	@ 0x30
  80077ce:	f04f 33ff 	mov.w	r3, #4294967295
@@ -20815,11 +20730,9 @@ bool Magnetometer::Assert_ID_Register()
  80077d6:	f7fd fbd8 	bl	8004f8a <HAL_SPI_TransmitReceive>
  80077da:	4603      	mov	r3, r0
  80077dc:	73fb      	strb	r3, [r7, #15]
-            current_receive_buffer,
-            2,
-            HAL_MAX_DELAY);
+			HAL_MAX_DELAY);
 
-    HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
  80077de:	687b      	ldr	r3, [r7, #4]
  80077e0:	6898      	ldr	r0, [r3, #8]
  80077e2:	687b      	ldr	r3, [r7, #4]
@@ -20828,7 +20741,7 @@ bool Magnetometer::Assert_ID_Register()
  80077e8:	4619      	mov	r1, r3
  80077ea:	f7fa fb51 	bl	8001e90 <HAL_GPIO_WritePin>
 
-    bool ok = current_receive_buffer[1] == TARGET_PRODUCT_ID;
+	bool ok = current_receive_buffer[1] == TARGET_PRODUCT_ID;
  80077ee:	687b      	ldr	r3, [r7, #4]
  80077f0:	6b1b      	ldr	r3, [r3, #48]	@ 0x30
  80077f2:	3301      	adds	r3, #1
@@ -20839,7 +20752,7 @@ bool Magnetometer::Assert_ID_Register()
  80077fc:	2300      	movne	r3, #0
  80077fe:	73bb      	strb	r3, [r7, #14]
 
-    Change_Buffer_Pointers();
+	Change_Buffer_Pointers();
  8007800:	687a      	ldr	r2, [r7, #4]
  8007802:	687b      	ldr	r3, [r7, #4]
  8007804:	681b      	ldr	r3, [r3, #0]
@@ -20848,7 +20761,7 @@ bool Magnetometer::Assert_ID_Register()
  800780a:	4610      	mov	r0, r2
  800780c:	4798      	blx	r3
 
-    return (code == HAL_OK) && (ok == true);
+	return (code == HAL_OK) && (ok == true);
  800780e:	7bfb      	ldrb	r3, [r7, #15]
  8007810:	2b00      	cmp	r3, #0
  8007812:	d104      	bne.n	800781e <_ZN12Magnetometer18Assert_ID_RegisterEv+0x8a>
@@ -20867,9 +20780,9 @@ bool Magnetometer::Assert_ID_Register()
 08007828 <_ZN12Magnetometer17Store_MeasurementEPhhR18Raw_Magnetic_Value>:
 
 bool Magnetometer::Store_Measurement(
-    uint8_t *received_data,
-    uint8_t size,
-    Raw_Magnetic_Value& meas)
+		uint8_t *received_data,
+		uint8_t size,
+		Raw_Magnetic_Value &meas)
 {
  8007828:	b480      	push	{r7}
  800782a:	b085      	sub	sp, #20
@@ -20879,59 +20792,59 @@ bool Magnetometer::Store_Measurement(
  8007832:	603b      	str	r3, [r7, #0]
  8007834:	4613      	mov	r3, r2
  8007836:	71fb      	strb	r3, [r7, #7]
-    if (size != MAGNETOMETER_BUFFER_SIZE)
+	if (size != MAGNETOMETER_BUFFER_SIZE)
  8007838:	79fb      	ldrb	r3, [r7, #7]
  800783a:	2b0d      	cmp	r3, #13
  800783c:	d001      	beq.n	8007842 <_ZN12Magnetometer17Store_MeasurementEPhhR18Raw_Magnetic_Value+0x1a>
-    {
-        return false;
+	{
+		return false;
  800783e:	2300      	movs	r3, #0
  8007840:	e01e      	b.n	8007880 <_ZN12Magnetometer17Store_MeasurementEPhhR18Raw_Magnetic_Value+0x58>
-    }
+	}
 
-    meas.x = (static_cast<uint32_t>(received_data[1]) << 8) |
+	meas.x = (static_cast<uint32_t>(received_data[1]) << 8)
  8007842:	68bb      	ldr	r3, [r7, #8]
  8007844:	3301      	adds	r3, #1
  8007846:	781b      	ldrb	r3, [r3, #0]
  8007848:	021b      	lsls	r3, r3, #8
-             static_cast<uint32_t>(received_data[2]);
+			| static_cast<uint32_t>(received_data[2]);
  800784a:	68ba      	ldr	r2, [r7, #8]
  800784c:	3202      	adds	r2, #2
  800784e:	7812      	ldrb	r2, [r2, #0]
-    meas.x = (static_cast<uint32_t>(received_data[1]) << 8) |
  8007850:	431a      	orrs	r2, r3
+	meas.x = (static_cast<uint32_t>(received_data[1]) << 8)
  8007852:	683b      	ldr	r3, [r7, #0]
  8007854:	601a      	str	r2, [r3, #0]
 
-    meas.y = (static_cast<uint32_t>(received_data[3]) << 8) |
+	meas.y = (static_cast<uint32_t>(received_data[3]) << 8)
  8007856:	68bb      	ldr	r3, [r7, #8]
  8007858:	3303      	adds	r3, #3
  800785a:	781b      	ldrb	r3, [r3, #0]
  800785c:	021b      	lsls	r3, r3, #8
-             static_cast<uint32_t>(received_data[4]);
+			| static_cast<uint32_t>(received_data[4]);
  800785e:	68ba      	ldr	r2, [r7, #8]
  8007860:	3204      	adds	r2, #4
  8007862:	7812      	ldrb	r2, [r2, #0]
-    meas.y = (static_cast<uint32_t>(received_data[3]) << 8) |
  8007864:	431a      	orrs	r2, r3
+	meas.y = (static_cast<uint32_t>(received_data[3]) << 8)
  8007866:	683b      	ldr	r3, [r7, #0]
  8007868:	605a      	str	r2, [r3, #4]
 
-    meas.z = (static_cast<uint32_t>(received_data[5]) << 8) |
+	meas.z = (static_cast<uint32_t>(received_data[5]) << 8)
  800786a:	68bb      	ldr	r3, [r7, #8]
  800786c:	3305      	adds	r3, #5
  800786e:	781b      	ldrb	r3, [r3, #0]
  8007870:	021b      	lsls	r3, r3, #8
-             static_cast<uint32_t>(received_data[6]);
+			| static_cast<uint32_t>(received_data[6]);
  8007872:	68ba      	ldr	r2, [r7, #8]
  8007874:	3206      	adds	r2, #6
  8007876:	7812      	ldrb	r2, [r2, #0]
-    meas.z = (static_cast<uint32_t>(received_data[5]) << 8) |
  8007878:	431a      	orrs	r2, r3
+	meas.z = (static_cast<uint32_t>(received_data[5]) << 8)
  800787a:	683b      	ldr	r3, [r7, #0]
  800787c:	609a      	str	r2, [r3, #8]
 
-    return true;
+	return true;
  800787e:	2301      	movs	r3, #1
 }
  8007880:	4618      	mov	r0, r3
@@ -20948,74 +20861,65 @@ bool Magnetometer::Parse_Data()
  800788e:	b083      	sub	sp, #12
  8007890:	af00      	add	r7, sp, #0
  8007892:	6078      	str	r0, [r7, #4]
-    current_measurement.mag_x =
-        (static_cast<float>(set_raw_measurement.x) -
+	current_measurement.mag_x = (static_cast<float>(set_raw_measurement.x)
  8007894:	687b      	ldr	r3, [r7, #4]
  8007896:	6c1b      	ldr	r3, [r3, #64]	@ 0x40
  8007898:	ee07 3a90 	vmov	s15, r3
  800789c:	eeb8 7a67 	vcvt.f32.u32	s14, s15
-         static_cast<float>(reset_raw_measurement.x)) /
+			- static_cast<float>(reset_raw_measurement.x))
  80078a0:	687b      	ldr	r3, [r7, #4]
  80078a2:	6cdb      	ldr	r3, [r3, #76]	@ 0x4c
  80078a4:	ee07 3a90 	vmov	s15, r3
  80078a8:	eef8 7a67 	vcvt.f32.u32	s15, s15
-        (static_cast<float>(set_raw_measurement.x) -
  80078ac:	ee37 7a67 	vsub.f32	s14, s14, s15
-         static_cast<float>(reset_raw_measurement.x)) /
+			/ (2.0f * MAG_SENSITIVITY);
  80078b0:	eddf 6a1d 	vldr	s13, [pc, #116]	@ 8007928 <_ZN12Magnetometer10Parse_DataEv+0x9c>
  80078b4:	eec7 7a26 	vdiv.f32	s15, s14, s13
-    current_measurement.mag_x =
+	current_measurement.mag_x = (static_cast<float>(set_raw_measurement.x)
  80078b8:	687b      	ldr	r3, [r7, #4]
  80078ba:	edc3 7a16 	vstr	s15, [r3, #88]	@ 0x58
-        (2.0f * MAG_SENSITIVITY);
 
-    current_measurement.mag_y =
-        (static_cast<float>(set_raw_measurement.y) -
+	current_measurement.mag_y = (static_cast<float>(set_raw_measurement.y)
  80078be:	687b      	ldr	r3, [r7, #4]
  80078c0:	6c5b      	ldr	r3, [r3, #68]	@ 0x44
  80078c2:	ee07 3a90 	vmov	s15, r3
  80078c6:	eeb8 7a67 	vcvt.f32.u32	s14, s15
-         static_cast<float>(reset_raw_measurement.y)) /
+			- static_cast<float>(reset_raw_measurement.y))
  80078ca:	687b      	ldr	r3, [r7, #4]
  80078cc:	6d1b      	ldr	r3, [r3, #80]	@ 0x50
  80078ce:	ee07 3a90 	vmov	s15, r3
  80078d2:	eef8 7a67 	vcvt.f32.u32	s15, s15
-        (static_cast<float>(set_raw_measurement.y) -
  80078d6:	ee37 7a67 	vsub.f32	s14, s14, s15
-         static_cast<float>(reset_raw_measurement.y)) /
+			/ (2.0f * MAG_SENSITIVITY);
  80078da:	eddf 6a13 	vldr	s13, [pc, #76]	@ 8007928 <_ZN12Magnetometer10Parse_DataEv+0x9c>
  80078de:	eec7 7a26 	vdiv.f32	s15, s14, s13
-    current_measurement.mag_y =
+	current_measurement.mag_y = (static_cast<float>(set_raw_measurement.y)
  80078e2:	687b      	ldr	r3, [r7, #4]
  80078e4:	edc3 7a17 	vstr	s15, [r3, #92]	@ 0x5c
-        (2.0f * MAG_SENSITIVITY);
 
-    current_measurement.mag_z =
-        (static_cast<float>(set_raw_measurement.z) -
+	current_measurement.mag_z = (static_cast<float>(set_raw_measurement.z)
  80078e8:	687b      	ldr	r3, [r7, #4]
  80078ea:	6c9b      	ldr	r3, [r3, #72]	@ 0x48
  80078ec:	ee07 3a90 	vmov	s15, r3
  80078f0:	eeb8 7a67 	vcvt.f32.u32	s14, s15
-         static_cast<float>(reset_raw_measurement.z)) /
+			- static_cast<float>(reset_raw_measurement.z))
  80078f4:	687b      	ldr	r3, [r7, #4]
  80078f6:	6d5b      	ldr	r3, [r3, #84]	@ 0x54
  80078f8:	ee07 3a90 	vmov	s15, r3
  80078fc:	eef8 7a67 	vcvt.f32.u32	s15, s15
-        (static_cast<float>(set_raw_measurement.z) -
  8007900:	ee37 7a67 	vsub.f32	s14, s14, s15
-         static_cast<float>(reset_raw_measurement.z)) /
+			/ (2.0f * MAG_SENSITIVITY);
  8007904:	eddf 6a08 	vldr	s13, [pc, #32]	@ 8007928 <_ZN12Magnetometer10Parse_DataEv+0x9c>
  8007908:	eec7 7a26 	vdiv.f32	s15, s14, s13
-    current_measurement.mag_z =
+	current_measurement.mag_z = (static_cast<float>(set_raw_measurement.z)
  800790c:	687b      	ldr	r3, [r7, #4]
  800790e:	edc3 7a18 	vstr	s15, [r3, #96]	@ 0x60
-        (2.0f * MAG_SENSITIVITY);
 
-    data_ready = true;
+	data_ready = true;
  8007912:	687b      	ldr	r3, [r7, #4]
  8007914:	2201      	movs	r2, #1
  8007916:	f883 2034 	strb.w	r2, [r3, #52]	@ 0x34
-    return true;
+	return true;
  800791a:	2301      	movs	r3, #1
 }
  800791c:	4618      	mov	r0, r3
