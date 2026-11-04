@@ -14,6 +14,7 @@ private:
 	struct Kalman_State
 	{
 		float d_0th, d_1st, d_2nd;
+		float &operator[](uint8_t i);
 	}; // value, 1st derivative, 2nd derivative
 
 	Kalman_State X_kk1_predicted;
@@ -34,8 +35,8 @@ private:
 	void _calculate_P_kk1();
 
 	void _build_R(float variance);
-	void _calculate_gain_K(float measurement_value, MEASUREMENT_ORDER measurement_order);
-	void _fuse_estimate_with_measurement(MEASUREMENT_ORDER measurement_order);
+	void _calculate_gain_K(MEASUREMENT_ORDER measurement_order);
+	void _fuse_estimate_with_measurement(float measurement_value, MEASUREMENT_ORDER measurement_order);
 	void _update_uncertainty(MEASUREMENT_ORDER measurement_order);
 
 

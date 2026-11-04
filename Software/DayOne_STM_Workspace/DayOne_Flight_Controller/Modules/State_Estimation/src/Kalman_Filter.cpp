@@ -27,10 +27,10 @@ void Kalman_Filter::Update_With_Measurement(
 		float (&dt_array)[DT_POWER_ARRAY_LENGTH] )
 {
 	_build_R(variance);
-	float gain_K = _calculate_gain_K(measurement_value, measurement_order);
+	_calculate_gain_K(measurement_order);
 
-	_fuse_estimate_with_measurement(gain_K, measurement_order);
-	_update_uncertainty(gain_K, measurement_order);
+	_fuse_estimate_with_measurement(measurement_value, measurement_order);
+	_update_uncertainty(measurement_order);
 }
 
 
@@ -164,7 +164,7 @@ void Kalman_Filter::_build_R(float variance)
 	R_last_measurement_variance = variance;
 }
 
-void Kalman_Filter::_calculate_gain_K(float measurement_value, MEASUREMENT_ORDER measurement_order)
+void Kalman_Filter::_calculate_gain_K(MEASUREMENT_ORDER measurement_order)
 {
 	float HPH_R;
 	uint8_t H_index = Get_Index_From_Measurement_Order(measurement_order);
@@ -179,7 +179,7 @@ void Kalman_Filter::_calculate_gain_K(float measurement_value, MEASUREMENT_ORDER
 	{
 		for (uint8_t i=0; i<3; i++)
 		{
-			K[i] = P_kk1_covariance_matrix_predicted[i][H_index] / HPH_R;
+			K_gain[i] = P_kk1_covariance_matrix_predicted[i][H_index] / HPH_R;
 		}
 	}
 
@@ -206,6 +206,20 @@ void Kalman_Filter::_update_uncertainty(MEASUREMENT_ORDER measurement_order)
 			P_k1_covariance_matrix_optimal_past[i][j] = (1.0 - K_gain[H_index]) *
 					P_kk1_covariance_matrix_predicted[i][j];
 		}
+	}
+}
+
+float& Kalman_Filter::Kalman_State::operator [](int i)
+{
+	switch (i) {
+		case 0:
+			return d_0th;
+		case 1:
+			return d_1th;
+		case 2:
+			return d_2th;
+		default:
+			return -1.0;
 	}
 }
 
