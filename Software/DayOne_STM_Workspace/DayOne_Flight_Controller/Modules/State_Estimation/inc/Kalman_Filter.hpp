@@ -26,6 +26,7 @@ private:
 	float Q_propagation_covariance_matrix[DIM][DIM];
 
 	float R_last_measurement_variance;
+	float K_gain[DIM];
 
 	void _build_A(float dt1, float dt2);
 	void _build_Q(float acc_variance, float dt1, float dt2, float dt3, float dt4, float dt5);
@@ -33,10 +34,12 @@ private:
 	void _calculate_P_kk1();
 
 	void _build_R(float variance);
-	float _calculate_gain_K(float measurement_value, MEASUREMENT_ORDER measurement_order);
+	void _calculate_gain_K(float measurement_value, MEASUREMENT_ORDER measurement_order);
 	void _fuse_estimate_with_measurement(float gain_K, MEASUREMENT_ORDER measurement_order);
 	void _update_uncertainty(float gain_K, MEASUREMENT_ORDER measurement_order);
 
+
+	uint8_t Get_Index_From_Measurement_Order(MEASUREMENT_ORDER measurement_order);
 	void Propagate_State(float (&dt_array)[DT_POWER_ARRAY_LENGTH]);
 	void Update_With_Measurement(float measurement_value, MEASUREMENT_ORDER measurement_order, float variance, float (&dt_array)[DT_POWER_ARRAY_LENGTH]);
 

@@ -34,9 +34,9 @@ enum class MEASUREMENT_TYPE
 
 enum class MEASUREMENT_ORDER
 {
-	D_0TH, // Position or orientation
-	D_1TH, // velocity
-	D_2TH, // acceleration
+	D_0TH = 0, // Position or orientation
+	D_1TH = 1, // velocity
+	D_2TH = 2, // acceleration
 };
 
 #endif /* STATE_ESTIMATION_INC_MEASUREMENT_UTILS_HPP_ */

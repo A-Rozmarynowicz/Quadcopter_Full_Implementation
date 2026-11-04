@@ -71,6 +71,12 @@ void Kalman_Filter::Initialize()
 
 }
 
+uint8_t Kalman_Filter::Get_Index_From_Measurement_Order(
+		MEASUREMENT_ORDER measurement_order)
+{
+	return static_cast<uint8_t>(measurement_order);
+}
+
 #pragma region Propagate_State
 
 void Kalman_Filter::_build_A(float dt1, float dt2)
@@ -158,8 +164,24 @@ void Kalman_Filter::_build_R(float variance)
 	R_last_measurement_variance = variance;
 }
 
-float Kalman_Filter::_calculate_gain_K(float measurement_value, MEASUREMENT_ORDER measurement_order)
+void Kalman_Filter::_calculate_gain_K(float measurement_value, MEASUREMENT_ORDER measurement_order)
 {
+	float HPH_R;
+	uint8_t H_index = Get_Index_From_Measurement_Order(measurement_order);
+
+	HPH_R = P_kk1_covariance_matrix_predicted[H_index][H_index] + R_last_measurement_variance;
+
+	if (HPH_R == 0.0)
+	{
+		return;
+	}
+	else
+	{
+		for (uint8_t i=0; i<3; i++)
+		{
+			K[i] = P_kk1_covariance_matrix_predicted[i][H_index] / HPH_R;
+		}
+	}
 
 }
 
