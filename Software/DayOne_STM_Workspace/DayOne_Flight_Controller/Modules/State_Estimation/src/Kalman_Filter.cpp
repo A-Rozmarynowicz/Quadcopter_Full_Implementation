@@ -27,7 +27,10 @@ void Kalman_Filter::Update_With_Measurement(
 		float (&dt_array)[DT_POWER_ARRAY_LENGTH] )
 {
 	_build_R(variance);
-	float gain_K = _calculate_gain_K(measurement, measurement_order);
+	float gain_K = _calculate_gain_K(measurement_value, measurement_order);
+
+	_fuse_estimate_with_measurement(gain_K, measurement_order);
+	_update_uncertainty(gain_K, measurement_order);
 }
 
 
@@ -164,7 +167,7 @@ void Kalman_Filter::_fuse_estimate_with_measurement(float gain_K, MEASUREMENT_OR
 {
 }
 
-void Kalman_Filter::_update_uncertainty(MEASUREMENT_ORDER measurement_order)
+void Kalman_Filter::_update_uncertainty(float gain_K, MEASUREMENT_ORDER measurement_order)
 {
 }
 
