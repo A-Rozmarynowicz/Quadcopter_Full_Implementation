@@ -78,16 +78,16 @@ void Kalman_Filter::_build_Q(float acc_variance, float dt1, float dt2, float dt3
 
 void Kalman_Filter::_calculate_X_kk1()
 {
-	X_kk1_predicted[0] =
-			X_k1_optimal_past[0] +
-			A_state_transition_matrix[0][1] * X_k1_optimal_past[1] +
-			A_state_transition_matrix[0][2] * X_k1_optimal_past[2];
+	X_kk1_predicted.d_0th =
+			X_k1_optimal_past.d_0th +
+			A_state_transition_matrix[0][1] * X_k1_optimal_past.d_1st +
+			A_state_transition_matrix[0][2] * X_k1_optimal_past.d_2nd;
 
-	X_kk1_predicted[1] =
-			X_k1_optimal_past[1] +
-			A_state_transition_matrix[1][2] * X_k1_optimal_past[2];
+	X_kk1_predicted.d_1st =
+			X_k1_optimal_past.d_1st +
+			A_state_transition_matrix[1][2] * X_k1_optimal_past.d_2nd;
 
-	X_kk1_predicted[2] = X_k1_optimal_past[2];
+	X_kk1_predicted.d_2nd = X_k1_optimal_past.d_2nd;
 }
 
 void Kalman_Filter::_calculate_P_kk1()

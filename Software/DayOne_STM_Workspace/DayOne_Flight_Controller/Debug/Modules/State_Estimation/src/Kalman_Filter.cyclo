@@ -1,4 +1,9 @@
 ../Modules/State_Estimation/src/Kalman_Filter.cpp:4:6:void Kalman_Filter::Propagate_State()	1
 ../Modules/State_Estimation/src/Kalman_Filter.cpp:8:6:void Kalman_Filter::Update_With_Measurement()	1
-../Modules/State_Estimation/src/Kalman_Filter.cpp:12:6:void Kalman_Filter::Initialize()	4
-../Modules/State_Estimation/src/Kalman_Filter.cpp:32:6:void Kalman_Filter::Measurement_Received(float, float, float)	1
+../Modules/State_Estimation/src/Kalman_Filter.cpp:12:6:void Kalman_Filter::Initialize()	7
+../Modules/State_Estimation/src/Kalman_Filter.cpp:49:6:void Kalman_Filter::Measurement_Received(float, float, float (&)[5])	1
+../Modules/State_Estimation/src/Kalman_Filter.cpp:57:6:void Kalman_Filter::_build_A(float, float)	1
+../Modules/State_Estimation/src/Kalman_Filter.cpp:64:6:void Kalman_Filter::_build_Q(float, float, float, float, float, float)	1
+../Modules/State_Estimation/src/Kalman_Filter.cpp:79:6:void Kalman_Filter::_calculate_X_kk1()	1
+../Modules/State_Estimation/src/Kalman_Filter.cpp:93:6:void Kalman_Filter::_calculate_P_kk1()	9
+../Modules/State_Estimation/src/Kalman_Filter.cpp:133:6:void Kalman_Filter::Perform_Cycle()	1

@@ -2,6 +2,8 @@
 #define STATE_ESTIMATION_INC_KALMAN_FILTER_HPP_
 #include <cstdint>
 
+#include "State_Estimation/inc/Measurement_Utils.hpp"
+
 class Kalman_Filter
 {
 private:
