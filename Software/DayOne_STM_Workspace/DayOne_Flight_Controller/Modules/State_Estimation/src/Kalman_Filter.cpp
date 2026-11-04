@@ -185,11 +185,12 @@ void Kalman_Filter::_calculate_gain_K(float measurement_value, MEASUREMENT_ORDER
 
 }
 
-void Kalman_Filter::_fuse_estimate_with_measurement(float gain_K, MEASUREMENT_ORDER measurement_order)
+void Kalman_Filter::_fuse_estimate_with_measurement(MEASUREMENT_ORDER measurement_order)
 {
+
 }
 
-void Kalman_Filter::_update_uncertainty(float gain_K, MEASUREMENT_ORDER measurement_order)
+void Kalman_Filter::_update_uncertainty(MEASUREMENT_ORDER measurement_order)
 {
 }
 

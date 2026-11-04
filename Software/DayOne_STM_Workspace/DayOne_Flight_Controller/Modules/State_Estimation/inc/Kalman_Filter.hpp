@@ -35,8 +35,8 @@ private:
 
 	void _build_R(float variance);
 	void _calculate_gain_K(float measurement_value, MEASUREMENT_ORDER measurement_order);
-	void _fuse_estimate_with_measurement(float gain_K, MEASUREMENT_ORDER measurement_order);
-	void _update_uncertainty(float gain_K, MEASUREMENT_ORDER measurement_order);
+	void _fuse_estimate_with_measurement(MEASUREMENT_ORDER measurement_order);
+	void _update_uncertainty(MEASUREMENT_ORDER measurement_order);
 
 
 	uint8_t Get_Index_From_Measurement_Order(MEASUREMENT_ORDER measurement_order);
