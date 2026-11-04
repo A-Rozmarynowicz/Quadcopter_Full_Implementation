@@ -3,6 +3,8 @@
 
 #include <cstdint>
 
+constexpr uint8_t DT_POWER_ARRAY_LENGTH = 5;
+
 enum class MEASUREMENT_TYPE
 {
 	POSITION_X,

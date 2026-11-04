@@ -61,7 +61,7 @@ void Kalman_Filter::_build_A(float dt)
 	A_state_transition_matrix[0][2] = 0.5*dt*dt;
 }
 
-void Kalman_Filter::_build_Q(float dt, float acc_variance)
+void Kalman_Filter::_build_Q(float acc_variance, float dt1, float dt2, float dt3)
 {
 	Q_propagation_covariance_matrix[0][0] = acc_variance * dt * dt * dt * dt * dt / 20.0;
 	Q_propagation_covariance_matrix[0][1] = acc_variance * dt * dt * dt * dt / 8.0;
@@ -88,7 +88,6 @@ void Kalman_Filter::_calculate_X_kk1()
 			A_state_transition_matrix[1][2] * X_k1_optimal_past[2];
 
 	X_kk1_predicted[2] = X_k1_optimal_past[2];
-
 }
 
 void Kalman_Filter::_calculate_P_kk1()

@@ -23,8 +23,8 @@ private:
 
 	float R_last_measurement_variance;
 
-	void _build_A(float dt);
-	void _build_Q(float dt, float acc_variance);
+	void _build_A(float dt1, float dt2);
+	void _build_Q(float acc_variance, float dt1, float dt2, float dt3);
 	void _calculate_X_kk1();
 	void _calculate_P_kk1();
 
