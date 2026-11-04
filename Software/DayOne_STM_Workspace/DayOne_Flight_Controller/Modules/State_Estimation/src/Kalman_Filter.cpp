@@ -185,13 +185,28 @@ void Kalman_Filter::_calculate_gain_K(float measurement_value, MEASUREMENT_ORDER
 
 }
 
-void Kalman_Filter::_fuse_estimate_with_measurement(MEASUREMENT_ORDER measurement_order)
+void Kalman_Filter::_fuse_estimate_with_measurement(float measurement_value, MEASUREMENT_ORDER measurement_order)
 {
-
+	uint8_t H_index = Get_Index_From_Measurement_Order(measurement_order);
+	for (uint8_t i=0; i<3; i++)
+	{
+		X_k1_optimal_past[i] = X_kk1_predicted[i] +
+				K_gain[i] * (measurement_value - X_kk1_predicted[H_index]);
+	}
 }
 
 void Kalman_Filter::_update_uncertainty(MEASUREMENT_ORDER measurement_order)
 {
+	uint8_t H_index = Get_Index_From_Measurement_Order(measurement_order);
+
+	for (uint8_t i=0; i<3; i++)
+	{
+		for (uint8_t j=0; j<3; j++)
+		{
+			P_k1_covariance_matrix_optimal_past[i][j] = (1.0 - K_gain[H_index]) *
+					P_kk1_covariance_matrix_predicted[i][j];
+		}
+	}
 }
 
 #pragma endregion
