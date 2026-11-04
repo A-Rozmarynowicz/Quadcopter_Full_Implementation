@@ -9,6 +9,8 @@ class Kalman_Filter
 private:
 	static constexpr uint8_t DIM = 3;
 
+	const float ACCURACY_VARIANCE_CONFIDENCE = 1.0;
+
 	struct Kalman_State
 	{
 		float d_0th, d_1st, d_2nd;
@@ -30,13 +32,12 @@ private:
 	void _calculate_X_kk1();
 	void _calculate_P_kk1();
 
-	void Propagate_State();
-	void Update_With_Measurement();
+	void Propagate_State(float measurement, float variance, float (&dt_array)[DT_POWER_ARRAY_LENGTH]);
+	void Update_With_Measurement(float measurement, float variance, float (&dt_array)[DT_POWER_ARRAY_LENGTH]);
 
 public:
 	void Initialize();
 	void Measurement_Received(float measurement, float variance, float (&dt_array)[DT_POWER_ARRAY_LENGTH]);
-	void Perform_Cycle();
 };
 
 #endif /* STATE_ESTIMATION_INC_KALMAN_FILTER_HPP_ */

@@ -1,12 +1,25 @@
 #include "State_Estimation/inc/Kalman_Filter.hpp"
 
-
-void Kalman_Filter::Propagate_State()
+void Kalman_Filter::Measurement_Received(
+		float measurement,
+		float variance,
+		float (&dt_array)[DT_POWER_ARRAY_LENGTH] )
 {
+	Propagate_State(measurement, variance, dt_array);
+	Update_With_Measurement(measurement, variance, dt_array);
 }
 
-void Kalman_Filter::Update_With_Measurement()
+void Kalman_Filter::Propagate_State(float measurement, float variance, float (&dt_array)[DT_POWER_ARRAY_LENGTH])
 {
+	_build_A(dt_array[0], dt_array[1]);
+	_build_Q(ACCURACY_VARIANCE_CONFIDENCE, dt_array[0], dt_array[1], dt_array[2], dt_array[3], dt_array[4]);
+	_calculate_X_kk1();
+	_calculate_P_kk1();
+}
+
+void Kalman_Filter::Update_With_Measurement(float measurement, float variance, float (&dt_array)[DT_POWER_ARRAY_LENGTH])
+{
+
 }
 
 void Kalman_Filter::Initialize()
@@ -46,13 +59,6 @@ void Kalman_Filter::Initialize()
 
 }
 
-void Kalman_Filter::Measurement_Received(
-		float measurement,
-		float variance,
-		float (&dt_array)[DT_POWER_ARRAY_LENGTH] )
-{
-
-}
 
 void Kalman_Filter::_build_A(float dt1, float dt2)
 {
@@ -128,8 +134,4 @@ void Kalman_Filter::_calculate_P_kk1()
 		}
 	}
 
-}
-
-void Kalman_Filter::Perform_Cycle()
-{
 }
