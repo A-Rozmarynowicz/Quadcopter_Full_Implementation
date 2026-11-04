@@ -24,7 +24,7 @@ private:
 	float R_last_measurement_variance;
 
 	void _build_A(float dt1, float dt2);
-	void _build_Q(float acc_variance, float dt1, float dt2, float dt3);
+	void _build_Q(float acc_variance, float dt1, float dt2, float dt3, float dt4, float dt5);
 	void _calculate_X_kk1();
 	void _calculate_P_kk1();
 
@@ -33,7 +33,7 @@ private:
 
 public:
 	void Initialize();
-	void Measurement_Received(float measurement, float dt, float variance);
+	void Measurement_Received(float measurement, float variance, float (&dt_array)[DT_POWER_ARRAY_LENGTH]);
 	void Perform_Cycle();
 };
 
