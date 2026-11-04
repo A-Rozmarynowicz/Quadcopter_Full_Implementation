@@ -9,7 +9,8 @@ void Kalman_Filter::Measurement_Received(
 		float (&dt_array)[DT_POWER_ARRAY_LENGTH] )
 {
 	Propagate_State(dt_array);
-	Update_With_Measurement(measurement_value, measurement_order, variance, dt_array);
+	Update_With_Measurement(measurement_value, measurement_order, variance);
+	state_ready = false
 }
 
 void Kalman_Filter::Propagate_State(float (&dt_array)[DT_POWER_ARRAY_LENGTH] )
@@ -23,8 +24,7 @@ void Kalman_Filter::Propagate_State(float (&dt_array)[DT_POWER_ARRAY_LENGTH] )
 void Kalman_Filter::Update_With_Measurement(
 		float measurement_value,
 		MEASUREMENT_ORDER measurement_order,
-		float variance,
-		float (&dt_array)[DT_POWER_ARRAY_LENGTH] )
+		float variance)
 {
 	_build_R(variance);
 	_calculate_gain_K(measurement_order);
@@ -36,13 +36,15 @@ void Kalman_Filter::Update_With_Measurement(
 
 void Kalman_Filter::Initialize()
 {
+	state_ready = false;
+
 	for (uint8_t i = 0; i < DIM; i++)
 	{
 		for (uint8_t j = 0; j < DIM; j++)
 		{
 			if (i == j)
 			{
-				P_k1_covariance_matrix_optimal_past[i][j] = 10e9;
+				P_k1_covariance_matrix_optimal_past[i][j] = 10e9f;
 			}
 			else
 			{
@@ -166,12 +168,11 @@ void Kalman_Filter::_build_R(float variance)
 
 void Kalman_Filter::_calculate_gain_K(MEASUREMENT_ORDER measurement_order)
 {
-	float HPH_R;
 	uint8_t H_index = Get_Index_From_Measurement_Order(measurement_order);
 
-	HPH_R = P_kk1_covariance_matrix_predicted[H_index][H_index] + R_last_measurement_variance;
+	float HPH_R = P_kk1_covariance_matrix_predicted[H_index][H_index] + R_last_measurement_variance;
 
-	if (HPH_R == 0.0)
+	if (HPH_R <= 0.0)
 	{
 		return;
 	}
@@ -197,30 +198,50 @@ void Kalman_Filter::_fuse_estimate_with_measurement(float measurement_value, MEA
 
 void Kalman_Filter::_update_uncertainty(MEASUREMENT_ORDER measurement_order)
 {
-	uint8_t H_index = Get_Index_From_Measurement_Order(measurement_order);
+    uint8_t H_index = Get_Index_From_Measurement_Order(measurement_order);
 
-	for (uint8_t i=0; i<3; i++)
-	{
-		for (uint8_t j=0; j<3; j++)
-		{
-			P_k1_covariance_matrix_optimal_past[i][j] = (1.0 - K_gain[H_index]) *
-					P_kk1_covariance_matrix_predicted[i][j];
-		}
-	}
+    for (uint8_t i = 0; i < 3; i++)
+    {
+        for (uint8_t j = 0; j < 3; j++)
+        {
+            P_k1_covariance_matrix_optimal_past[i][j] =
+                P_kk1_covariance_matrix_predicted[i][j] -
+                K_gain[i] *
+                P_kk1_covariance_matrix_predicted[H_index][j];
+        }
+    }
 }
 
-float& Kalman_Filter::Kalman_State::operator [](int i)
+float& Kalman_Filter::Kalman_State::operator [](uint8_t i)
 {
 	switch (i) {
 		case 0:
 			return d_0th;
 		case 1:
-			return d_1th;
+			return d_1st;
 		case 2:
-			return d_2th;
+			return d_2nd;
 		default:
-			return -1.0;
+			return d_0th;
 	}
+}
+
+bool Kalman_Filter::Is_State_Ready()
+{
+	return state_ready;
+}
+
+bool Kalman_Filter::Get_State_Estimation(float (&state)[3])
+{
+	if (!state_ready){ return false; }
+
+	for (uint8_t i=0; i<3; i++)
+	{
+		state[i] = X_k1_optimal_past[i];
+	}
+
+	state_ready = false;
+	return true;
 }
 
 #pragma endregion

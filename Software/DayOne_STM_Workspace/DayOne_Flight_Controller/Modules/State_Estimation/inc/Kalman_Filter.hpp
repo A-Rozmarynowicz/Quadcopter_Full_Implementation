@@ -39,14 +39,17 @@ private:
 	void _fuse_estimate_with_measurement(float measurement_value, MEASUREMENT_ORDER measurement_order);
 	void _update_uncertainty(MEASUREMENT_ORDER measurement_order);
 
-
 	uint8_t Get_Index_From_Measurement_Order(MEASUREMENT_ORDER measurement_order);
 	void Propagate_State(float (&dt_array)[DT_POWER_ARRAY_LENGTH]);
-	void Update_With_Measurement(float measurement_value, MEASUREMENT_ORDER measurement_order, float variance, float (&dt_array)[DT_POWER_ARRAY_LENGTH]);
+	void Update_With_Measurement(float measurement_value, MEASUREMENT_ORDER measurement_order, float variance);
+
+	bool state_ready = false;
 
 public:
 	void Initialize();
 	void Measurement_Received(float measurement_value, MEASUREMENT_ORDER measurement_order, float variance, float (&dt_array)[DT_POWER_ARRAY_LENGTH]);
+	bool Is_State_Ready();
+	bool Get_State_Estimation(float (&state)[3]);
 };
 
 #endif /* STATE_ESTIMATION_INC_KALMAN_FILTER_HPP_ */

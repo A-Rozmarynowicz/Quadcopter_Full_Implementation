@@ -3554,14 +3554,16 @@ Discarded input sections
  .bss           0x00000000        0x0 ./Modules/State_Estimation/src/Kalman_Filter.o
  .rodata._ZL21DT_POWER_ARRAY_LENGTH
                 0x00000000        0x1 ./Modules/State_Estimation/src/Kalman_Filter.o
- .text._ZN13Kalman_Filter15Propagate_StateEv
-                0x00000000       0x14 ./Modules/State_Estimation/src/Kalman_Filter.o
- .text._ZN13Kalman_Filter23Update_With_MeasurementEv
-                0x00000000       0x14 ./Modules/State_Estimation/src/Kalman_Filter.o
+ .text._ZN13Kalman_Filter20Measurement_ReceivedEf17MEASUREMENT_ORDERfRA5_f
+                0x00000000       0x34 ./Modules/State_Estimation/src/Kalman_Filter.o
+ .text._ZN13Kalman_Filter15Propagate_StateERA5_f
+                0x00000000       0x7a ./Modules/State_Estimation/src/Kalman_Filter.o
+ .text._ZN13Kalman_Filter23Update_With_MeasurementEf17MEASUREMENT_ORDERf
+                0x00000000       0x40 ./Modules/State_Estimation/src/Kalman_Filter.o
  .text._ZN13Kalman_Filter10InitializeEv
                 0x00000000       0xf8 ./Modules/State_Estimation/src/Kalman_Filter.o
- .text._ZN13Kalman_Filter20Measurement_ReceivedEffRA5_f
-                0x00000000       0x1e ./Modules/State_Estimation/src/Kalman_Filter.o
+ .text._ZN13Kalman_Filter32Get_Index_From_Measurement_OrderE17MEASUREMENT_ORDER
+                0x00000000       0x1a ./Modules/State_Estimation/src/Kalman_Filter.o
  .text._ZN13Kalman_Filter8_build_AEff
                 0x00000000       0x3a ./Modules/State_Estimation/src/Kalman_Filter.o
  .text._ZN13Kalman_Filter8_build_QEffffff
@@ -3569,15 +3571,23 @@ Discarded input sections
  .text._ZN13Kalman_Filter16_calculate_X_kk1Ev
                 0x00000000       0x70 ./Modules/State_Estimation/src/Kalman_Filter.o
  .text._ZN13Kalman_Filter16_calculate_P_kk1Ev
-                0x00000000      0x24a ./Modules/State_Estimation/src/Kalman_Filter.o
- .text._ZN13Kalman_Filter13Perform_CycleEv
-                0x00000000       0x14 ./Modules/State_Estimation/src/Kalman_Filter.o
- .debug_info    0x00000000      0x888 ./Modules/State_Estimation/src/Kalman_Filter.o
- .debug_abbrev  0x00000000      0x1f3 ./Modules/State_Estimation/src/Kalman_Filter.o
+                0x00000000      0x24c ./Modules/State_Estimation/src/Kalman_Filter.o
+ .text._ZN13Kalman_Filter8_build_REf
+                0x00000000       0x20 ./Modules/State_Estimation/src/Kalman_Filter.o
+ .text._ZN13Kalman_Filter17_calculate_gain_KE17MEASUREMENT_ORDER
+                0x00000000       0x98 ./Modules/State_Estimation/src/Kalman_Filter.o
+ .text._ZN13Kalman_Filter31_fuse_estimate_with_measurementEf17MEASUREMENT_ORDER
+                0x00000000       0x98 ./Modules/State_Estimation/src/Kalman_Filter.o
+ .text._ZN13Kalman_Filter19_update_uncertaintyE17MEASUREMENT_ORDER
+                0x00000000       0xa6 ./Modules/State_Estimation/src/Kalman_Filter.o
+ .text._ZN13Kalman_Filter12Kalman_StateixEh
+                0x00000000       0x3e ./Modules/State_Estimation/src/Kalman_Filter.o
+ .debug_info    0x00000000      0xb99 ./Modules/State_Estimation/src/Kalman_Filter.o
+ .debug_abbrev  0x00000000      0x244 ./Modules/State_Estimation/src/Kalman_Filter.o
  .debug_aranges
-                0x00000000       0x60 ./Modules/State_Estimation/src/Kalman_Filter.o
+                0x00000000       0x88 ./Modules/State_Estimation/src/Kalman_Filter.o
  .debug_rnglists
-                0x00000000       0x46 ./Modules/State_Estimation/src/Kalman_Filter.o
+                0x00000000       0x67 ./Modules/State_Estimation/src/Kalman_Filter.o
  .debug_macro   0x00000000       0xa9 ./Modules/State_Estimation/src/Kalman_Filter.o
  .debug_macro   0x00000000      0xbb0 ./Modules/State_Estimation/src/Kalman_Filter.o
  .debug_macro   0x00000000      0x1f2 ./Modules/State_Estimation/src/Kalman_Filter.o
@@ -3590,10 +3600,10 @@ Discarded input sections
  .debug_macro   0x00000000      0x103 ./Modules/State_Estimation/src/Kalman_Filter.o
  .debug_macro   0x00000000       0x6a ./Modules/State_Estimation/src/Kalman_Filter.o
  .debug_macro   0x00000000      0x1df ./Modules/State_Estimation/src/Kalman_Filter.o
- .debug_line    0x00000000      0x995 ./Modules/State_Estimation/src/Kalman_Filter.o
- .debug_str     0x00000000     0x6316 ./Modules/State_Estimation/src/Kalman_Filter.o
+ .debug_line    0x00000000      0xb1a ./Modules/State_Estimation/src/Kalman_Filter.o
+ .debug_str     0x00000000     0x6543 ./Modules/State_Estimation/src/Kalman_Filter.o
  .comment       0x00000000       0x44 ./Modules/State_Estimation/src/Kalman_Filter.o
- .debug_frame   0x00000000      0x178 ./Modules/State_Estimation/src/Kalman_Filter.o
+ .debug_frame   0x00000000      0x238 ./Modules/State_Estimation/src/Kalman_Filter.o
  .ARM.attributes
                 0x00000000       0x34 ./Modules/State_Estimation/src/Kalman_Filter.o
  .text          0x00000000        0x0 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(del_ops.o)
