@@ -10,7 +10,7 @@ void Kalman_Filter::Measurement_Received(
 {
 	Propagate_State(dt_array);
 	Update_With_Measurement(measurement_value, measurement_order, variance);
-	state_ready = false
+	state_ready = true;
 }
 
 void Kalman_Filter::Propagate_State(float (&dt_array)[DT_POWER_ARRAY_LENGTH] )
