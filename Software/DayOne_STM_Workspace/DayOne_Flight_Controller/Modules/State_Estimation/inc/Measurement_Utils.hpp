@@ -32,4 +32,11 @@ enum class MEASUREMENT_TYPE
 	ANGULAR_ACCELERATION_Z,
 };
 
+enum class MEASUREMENT_ORDER
+{
+	D_0TH, // Position or orientation
+	D_1TH, // velocity
+	D_2TH, // acceleration
+};
+
 #endif /* STATE_ESTIMATION_INC_MEASUREMENT_UTILS_HPP_ */

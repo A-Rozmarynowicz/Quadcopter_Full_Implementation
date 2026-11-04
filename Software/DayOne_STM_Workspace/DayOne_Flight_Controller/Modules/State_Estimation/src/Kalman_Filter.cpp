@@ -1,15 +1,18 @@
 #include "State_Estimation/inc/Kalman_Filter.hpp"
 
+
+
 void Kalman_Filter::Measurement_Received(
-		float measurement,
+		float measurement_value,
+		MEASUREMENT_ORDER measurement_order,
 		float variance,
 		float (&dt_array)[DT_POWER_ARRAY_LENGTH] )
 {
-	Propagate_State(measurement, variance, dt_array);
-	Update_With_Measurement(measurement, variance, dt_array);
+	Propagate_State(dt_array);
+	Update_With_Measurement(measurement_value, measurement_order, variance, dt_array);
 }
 
-void Kalman_Filter::Propagate_State(float measurement, float variance, float (&dt_array)[DT_POWER_ARRAY_LENGTH])
+void Kalman_Filter::Propagate_State(float (&dt_array)[DT_POWER_ARRAY_LENGTH] )
 {
 	_build_A(dt_array[0], dt_array[1]);
 	_build_Q(ACCURACY_VARIANCE_CONFIDENCE, dt_array[0], dt_array[1], dt_array[2], dt_array[3], dt_array[4]);
@@ -17,10 +20,16 @@ void Kalman_Filter::Propagate_State(float measurement, float variance, float (&d
 	_calculate_P_kk1();
 }
 
-void Kalman_Filter::Update_With_Measurement(float measurement, float variance, float (&dt_array)[DT_POWER_ARRAY_LENGTH])
+void Kalman_Filter::Update_With_Measurement(
+		float measurement_value,
+		MEASUREMENT_ORDER measurement_order,
+		float variance,
+		float (&dt_array)[DT_POWER_ARRAY_LENGTH] )
 {
-
+	_build_R(variance);
+	float gain_K = _calculate_gain_K(measurement, measurement_order);
 }
+
 
 void Kalman_Filter::Initialize()
 {
@@ -59,6 +68,7 @@ void Kalman_Filter::Initialize()
 
 }
 
+#pragma region Propagate_State
 
 void Kalman_Filter::_build_A(float dt1, float dt2)
 {
@@ -135,3 +145,27 @@ void Kalman_Filter::_calculate_P_kk1()
 	}
 
 }
+
+#pragma endregion
+
+#pragma region Update_With_Measurement
+
+void Kalman_Filter::_build_R(float variance)
+{
+	R_last_measurement_variance = variance;
+}
+
+float Kalman_Filter::_calculate_gain_K(float measurement_value, MEASUREMENT_ORDER measurement_order)
+{
+
+}
+
+void Kalman_Filter::_fuse_estimate_with_measurement(float gain_K, MEASUREMENT_ORDER measurement_order)
+{
+}
+
+void Kalman_Filter::_update_uncertainty(MEASUREMENT_ORDER measurement_order)
+{
+}
+
+#pragma endregion

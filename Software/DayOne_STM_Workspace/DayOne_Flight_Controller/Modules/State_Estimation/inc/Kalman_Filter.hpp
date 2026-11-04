@@ -32,12 +32,17 @@ private:
 	void _calculate_X_kk1();
 	void _calculate_P_kk1();
 
-	void Propagate_State(float measurement, float variance, float (&dt_array)[DT_POWER_ARRAY_LENGTH]);
-	void Update_With_Measurement(float measurement, float variance, float (&dt_array)[DT_POWER_ARRAY_LENGTH]);
+	void _build_R(float variance);
+	float _calculate_gain_K(float measurement_value, MEASUREMENT_ORDER measurement_order);
+	void _fuse_estimate_with_measurement(float gain_K, MEASUREMENT_ORDER measurement_order);
+	void _update_uncertainty(MEASUREMENT_ORDER measurement_order);
+
+	void Propagate_State(float (&dt_array)[DT_POWER_ARRAY_LENGTH]);
+	void Update_With_Measurement(float measurement_value, MEASUREMENT_ORDER measurement_order, float variance, float (&dt_array)[DT_POWER_ARRAY_LENGTH]);
 
 public:
 	void Initialize();
-	void Measurement_Received(float measurement, float variance, float (&dt_array)[DT_POWER_ARRAY_LENGTH]);
+	void Measurement_Received(float measurement_value, MEASUREMENT_ORDER measurement_order, float variance, float (&dt_array)[DT_POWER_ARRAY_LENGTH]);
 };
 
 #endif /* STATE_ESTIMATION_INC_KALMAN_FILTER_HPP_ */
