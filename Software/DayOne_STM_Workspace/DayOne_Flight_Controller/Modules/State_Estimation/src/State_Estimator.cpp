@@ -5,7 +5,15 @@
 
 bool State_Estimator::Initialize()
 {
-	return false;
+	KF_linear_x.Initialize();
+	KF_linear_y.Initialize();
+	KF_linear_z.Initialize();
+
+	KF_angular_x.Initialize();
+	KF_angular_y.Initialize();
+	KF_angular_z.Initialize();
+
+	return true;
 }
 
 bool State_Estimator::Initialize_Sensors(
