@@ -9,16 +9,26 @@
 class State_Estimator
 {
 private:
+	bool enabled;
+
 	Kalman_Filter KF_linear_x, KF_linear_y, KF_linear_z,
 		KF_angular_x, KF_angular_y, KF_angular_z;
 
 	IMU imu;
 	Magnetometer magnetometer;
 public:
-	void Initialize();
-	void Setup_SPI(
+	bool Initialize();
+	bool Setup_SPI(
 			SPI_BUS_STRUCTURE &imu_spi,
 			SPI_BUS_STRUCTURE &magnetometer_spi);
+	bool Initialize_Sensors();
+
+	bool SPI_DMA_TxCompleteCallback();
+	bool SPI_DMA_TxRxCompleteCallback();
+	bool SPI_DMA_ErrorCallback();
+	bool GPIO_EXTI_Callback(uint16_t GPIO_Pin);
+
+	void Set_Enable(bool en);
 };
 
 

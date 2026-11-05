@@ -71,6 +71,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 	}
 }
 
+#pragma region I2C
 void HAL_I2C_AddrCallback(
 		I2C_HandleTypeDef *hi2c,
 		uint8_t TransferDirection,
@@ -82,7 +83,6 @@ void HAL_I2C_AddrCallback(
 	}
 }
 
-#pragma region I2C
 void HAL_I2C_SlaveRxCpltCallback(I2C_HandleTypeDef *hi2c)
 {
 	if (hi2c->Instance == I2C1)
@@ -107,8 +107,6 @@ void HAL_I2C_ListenCpltCallback(I2C_HandleTypeDef *hi2c)
 void HAL_I2C_ErrorCallback(I2C_HandleTypeDef *hi2c)
 {
 	uint32_t error = HAL_I2C_GetError(hi2c);
-
-	// Inspect error and perform appropriate recovery.
 }
 
 #pragma endregion
