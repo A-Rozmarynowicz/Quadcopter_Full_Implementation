@@ -15,7 +15,7 @@ private:
 	{
 		float d_0th, d_1st, d_2nd;
 		float &operator[](uint8_t i);
-	}; // value, 1st derivative, 2nd derivative
+	}; // quantity, 1st derivative, 2nd derivative
 
 	Kalman_State X_kk1_predicted;
 	Kalman_State X_k1_optimal_past;

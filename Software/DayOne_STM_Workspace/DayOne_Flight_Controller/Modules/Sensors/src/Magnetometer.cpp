@@ -44,7 +44,7 @@ constexpr uint8_t TARGET_PRODUCT_ID = 0x30;
 
 #pragma endregion
 
-SENSOR_STATUS Magnetometer::Initialize(MAGNETOMETER_UPDATE_RATES p_update_rate)
+SENSOR_STATUS Magnetometer::Initialize(MAGNETOMETER_UPDATE_RATES_ENUM p_update_rate)
 {
 	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
 
@@ -427,17 +427,17 @@ uint8_t Magnetometer::Get_Update_Rate_Command()
 
 	switch (update_rate)
 	{
-	case MAGNETOMETER_UPDATE_RATES::Hz_100:
+	case MAGNETOMETER_UPDATE_RATES_ENUM::Hz_100:
 		command =
 				static_cast<uint8_t>(MAGNETOMETER_CONTROL_1_COMMANDS::BW_100HZ);
 		break;
 
-	case MAGNETOMETER_UPDATE_RATES::Hz_225:
+	case MAGNETOMETER_UPDATE_RATES_ENUM::Hz_225:
 		command =
 				static_cast<uint8_t>(MAGNETOMETER_CONTROL_1_COMMANDS::BW_225HZ);
 		break;
 
-	case MAGNETOMETER_UPDATE_RATES::Hz_580:
+	case MAGNETOMETER_UPDATE_RATES_ENUM::Hz_580:
 		command =
 				static_cast<uint8_t>(MAGNETOMETER_CONTROL_1_COMMANDS::BW_580HZ);
 		break;

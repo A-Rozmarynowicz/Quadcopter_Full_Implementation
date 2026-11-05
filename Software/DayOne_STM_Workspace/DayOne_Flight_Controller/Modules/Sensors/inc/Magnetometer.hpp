@@ -4,6 +4,7 @@
 #include "stm32f4xx_hal.h"
 #include "Sensor.hpp"
 #include <cstdint>
+#include "Configuration/inc/Sensor_Settings.hpp"
 
 constexpr uint8_t MAGNETOMETER_BUFFER_SIZE = 13;
 
@@ -17,10 +18,6 @@ struct Raw_Magnetic_Value
 	uint32_t x, y, z;
 };
 
-enum class MAGNETOMETER_UPDATE_RATES
-{
-	Hz_100, Hz_225, Hz_580,
-};
 
 enum class MAGNETOMETER_INTERNAL_STATES : uint8_t
 {
@@ -42,7 +39,7 @@ private:
 	bool chip_output_ready = false;
 	uint16_t read_chip_safety_counter = 0;
 
-	MAGNETOMETER_UPDATE_RATES update_rate;
+	MAGNETOMETER_UPDATE_RATES_ENUM update_rate;
 	MAGNETOMETER_INTERNAL_STATES current_state =
 			MAGNETOMETER_INTERNAL_STATES::INIT;
 
@@ -70,7 +67,7 @@ private:
 protected:
 	bool Assert_ID_Register() override;
 public:
-	SENSOR_STATUS Initialize(MAGNETOMETER_UPDATE_RATES p_update_rate);
+	SENSOR_STATUS Initialize(MAGNETOMETER_UPDATE_RATES_ENUM p_update_rate);
 
 	void Prepare_For_Measurements() override;
 

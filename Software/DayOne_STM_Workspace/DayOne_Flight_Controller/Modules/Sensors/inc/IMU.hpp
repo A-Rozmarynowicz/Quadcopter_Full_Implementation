@@ -4,6 +4,7 @@
 #include "stm32f4xx_hal.h"
 #include "Sensor.hpp"
 #include <cstdint>
+#include "Configuration/inc/Sensor_Settings.hpp"
 
 constexpr uint8_t IMU_BUFFER_SIZE = 13;
 
@@ -13,27 +14,12 @@ struct IMU_Measurement
 	float gyro_x, gyro_y, gyro_z;
 };
 
-enum class IMU_UPDATE_RATES : uint8_t
-{
-	Hz_833 = 0b0111'0000, Hz_1660 = 0b1000'0000,
-};
-
-enum class IMU_ACC_SCALE : uint8_t
-{
-	G_8 = 0b0000'1100, G_16 = 0b0000'0100,
-};
-
-enum class IMU_GYRO_SCALE : uint8_t
-{
-	DPS_500 = 0b0000'0100, DPS_1000 = 0b0000'1000,
-};
-
 class IMU: public Sensor<IMU_BUFFER_SIZE>
 {
 private:
-	IMU_UPDATE_RATES update_rate;
-	IMU_ACC_SCALE acc_scale;
-	IMU_GYRO_SCALE gyro_scale;
+	IMU_UPDATE_RATES_ENUM update_rate;
+	IMU_ACC_SCALES_ENUM acc_scale;
+	IMU_GYRO_SCALES_ENUM gyro_scale;
 	float acc_sensitivity_g;
 	float gyro_sensitivity_dps;
 	IMU_Measurement current_measurement;
@@ -47,9 +33,9 @@ protected:
 	bool Assert_ID_Register() override;
 public:
 	SENSOR_STATUS Initialize(
-			IMU_UPDATE_RATES p_update_rate,
-			IMU_ACC_SCALE p_acc_scale,
-			IMU_GYRO_SCALE p_gyro_scale);
+			IMU_UPDATE_RATES_ENUM p_update_rate,
+			IMU_ACC_SCALES_ENUM p_acc_scale,
+			IMU_GYRO_SCALES_ENUM p_gyro_scale);
 
 	void DMA_TxRxCompleteCallback() override;
 	void DMA_TxCompleteCallback() override;

@@ -26,9 +26,9 @@ enum class IMU_MEASUREMENT_DATA_LAYOUT : uint8_t
 #pragma endregion
 
 SENSOR_STATUS IMU::Initialize(
-		IMU_UPDATE_RATES p_update_rate,
-		IMU_ACC_SCALE p_acc_scale,
-		IMU_GYRO_SCALE p_gyro_scale)
+		IMU_UPDATE_RATES_ENUM p_update_rate,
+		IMU_ACC_SCALES_ENUM p_acc_scale,
+		IMU_GYRO_SCALES_ENUM p_gyro_scale)
 {
 	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);
 
@@ -136,11 +136,11 @@ void IMU::Update_Sensitivities()
 {
 	switch (acc_scale)
 	{
-	case IMU_ACC_SCALE::G_8:
+	case IMU_ACC_SCALES_ENUM::G_8:
 		acc_sensitivity_g = 0.244f * 0.001f;
 		break;
 
-	case IMU_ACC_SCALE::G_16:
+	case IMU_ACC_SCALES_ENUM::G_16:
 		acc_sensitivity_g = 0.488f * 0.001f;
 		break;
 
@@ -150,11 +150,11 @@ void IMU::Update_Sensitivities()
 
 	switch (gyro_scale)
 	{
-	case IMU_GYRO_SCALE::DPS_500:
+	case IMU_GYRO_SCALES_ENUM::DPS_500:
 		gyro_sensitivity_dps = 17.50f * 0.001f;
 		break;
 
-	case IMU_GYRO_SCALE::DPS_1000:
+	case IMU_GYRO_SCALES_ENUM::DPS_1000:
 		gyro_sensitivity_dps = 35.0f * 0.001f;
 		break;
 

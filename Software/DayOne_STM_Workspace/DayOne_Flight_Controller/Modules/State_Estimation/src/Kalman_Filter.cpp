@@ -73,11 +73,15 @@ void Kalman_Filter::Initialize()
 
 }
 
+#pragma region Utils
+
 uint8_t Kalman_Filter::Get_Index_From_Measurement_Order(
 		MEASUREMENT_ORDER measurement_order)
 {
 	return static_cast<uint8_t>(measurement_order);
 }
+
+#pragma endregion
 
 #pragma region Propagate_State
 

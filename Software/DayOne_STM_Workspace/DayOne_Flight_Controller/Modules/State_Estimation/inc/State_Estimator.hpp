@@ -16,6 +16,9 @@ private:
 
 	IMU imu;
 	Magnetometer magnetometer;
+
+	bool _setup_imu(SPI_BUS_STRUCTURE &imu_spi);
+	bool _setup_magnetometer(SPI_BUS_STRUCTURE &magnetometer_spi);
 public:
 	bool Initialize();
 	bool Setup_SPI(
@@ -27,6 +30,8 @@ public:
 	bool SPI_DMA_TxRxCompleteCallback();
 	bool SPI_DMA_ErrorCallback();
 	bool GPIO_EXTI_Callback(uint16_t GPIO_Pin);
+
+	void Task_1ms();
 
 	void Set_Enable(bool en);
 };
