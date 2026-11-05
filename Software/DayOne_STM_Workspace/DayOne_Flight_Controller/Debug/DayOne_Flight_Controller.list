@@ -27,25 +27,25 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000030  00000000  00000000  0000905c  2**0
                   CONTENTS, READONLY
- 12 .debug_info   000152d3  00000000  00000000  0000908c  2**0
+ 12 .debug_info   0001535a  00000000  00000000  0000908c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 000030a1  00000000  00000000  0001e35f  2**0
+ 13 .debug_abbrev 000030a1  00000000  00000000  0001e3e6  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_aranges 000012f8  00000000  00000000  00021400  2**3
+ 14 .debug_aranges 000012f8  00000000  00000000  00021488  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_rnglists 00000ec5  00000000  00000000  000226f8  2**0
+ 15 .debug_rnglists 00000ec5  00000000  00000000  00022780  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  00023ea9  00000000  00000000  000235bd  2**0
+ 16 .debug_macro  00023ee5  00000000  00000000  00023645  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   0001600e  00000000  00000000  00047466  2**0
+ 17 .debug_line   00016383  00000000  00000000  0004752a  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    000d38eb  00000000  00000000  0005d474  2**0
+ 18 .debug_str    000d3937  00000000  00000000  0005d8ad  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000043  00000000  00000000  00130d5f  2**0
+ 19 .comment      00000043  00000000  00000000  001311e4  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00005450  00000000  00000000  00130da4  2**2
+ 20 .debug_frame  00005450  00000000  00000000  00131228  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 000000aa  00000000  00000000  001361f4  2**0
+ 21 .debug_line_str 000000aa  00000000  00000000  00136678  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -17910,9 +17910,9 @@ public:
  800673a:	bd80      	pop	{r7, pc}
 
 0800673c <_ZN3IMUC1Ev>:
-enum class IMU_GYRO_SCALE : uint8_t
 {
-	DPS_500 = 0b0000'0100, DPS_1000 = 0b0000'1000,
+	float acc_x, acc_y, acc_z;
+	float gyro_x, gyro_y, gyro_z;
 };
 
 class IMU: public Sensor<IMU_BUFFER_SIZE>
@@ -18233,7 +18233,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
  8006958:	20000478 	.word	0x20000478
 
 0800695c <HAL_I2C_AddrCallback>:
-
+#pragma region I2C
 void HAL_I2C_AddrCallback(
 		I2C_HandleTypeDef *hi2c,
 		uint8_t TransferDirection,
@@ -18270,7 +18270,6 @@ void HAL_I2C_AddrCallback(
 
 08006990 <HAL_I2C_SlaveRxCpltCallback>:
 
-#pragma region I2C
 void HAL_I2C_SlaveRxCpltCallback(I2C_HandleTypeDef *hi2c)
 {
  8006990:	b580      	push	{r7, lr}
@@ -18352,8 +18351,6 @@ void HAL_I2C_ErrorCallback(I2C_HandleTypeDef *hi2c)
  80069fe:	6878      	ldr	r0, [r7, #4]
  8006a00:	f7fc f8c6 	bl	8002b90 <HAL_I2C_GetError>
  8006a04:	60f8      	str	r0, [r7, #12]
-
-	// Inspect error and perform appropriate recovery.
 }
  8006a06:	bf00      	nop
  8006a08:	3710      	adds	r7, #16

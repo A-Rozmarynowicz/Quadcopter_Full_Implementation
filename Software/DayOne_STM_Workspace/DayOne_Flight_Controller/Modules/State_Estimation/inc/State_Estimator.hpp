@@ -29,10 +29,9 @@ private:
 			MAGNETOMETER_UPDATE_RATES_ENUM magnetometer_update_rate);
 public:
 	bool Initialize();
-	bool Setup_SPI(
+	bool Initialize_Sensors(
 			SPI_BUS_STRUCTURE &imu_spi,
 			SPI_BUS_STRUCTURE &magnetometer_spi);
-	bool Initialize_Sensors();
 
 	bool SPI_DMA_TxCompleteCallback();
 	bool SPI_DMA_TxRxCompleteCallback();

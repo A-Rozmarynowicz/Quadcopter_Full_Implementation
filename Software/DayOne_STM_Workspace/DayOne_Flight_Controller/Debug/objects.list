@@ -28,3 +28,4 @@
 "./Modules/Sensors/src/IMU.o"
 "./Modules/Sensors/src/Magnetometer.o"
 "./Modules/State_Estimation/src/Kalman_Filter.o"
+"./Modules/State_Estimation/src/State_Estimator.o"

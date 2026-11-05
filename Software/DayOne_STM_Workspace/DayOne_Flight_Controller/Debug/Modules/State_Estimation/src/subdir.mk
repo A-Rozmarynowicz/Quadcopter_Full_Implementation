@@ -5,13 +5,16 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
-../Modules/State_Estimation/src/Kalman_Filter.cpp 
+../Modules/State_Estimation/src/Kalman_Filter.cpp \
+../Modules/State_Estimation/src/State_Estimator.cpp 
 
 OBJS += \
-./Modules/State_Estimation/src/Kalman_Filter.o 
+./Modules/State_Estimation/src/Kalman_Filter.o \
+./Modules/State_Estimation/src/State_Estimator.o 
 
 CPP_DEPS += \
-./Modules/State_Estimation/src/Kalman_Filter.d 
+./Modules/State_Estimation/src/Kalman_Filter.d \
+./Modules/State_Estimation/src/State_Estimator.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -21,7 +24,7 @@ Modules/State_Estimation/src/%.o Modules/State_Estimation/src/%.su Modules/State
 clean: clean-Modules-2f-State_Estimation-2f-src
 
 clean-Modules-2f-State_Estimation-2f-src:
-	-$(RM) ./Modules/State_Estimation/src/Kalman_Filter.cyclo ./Modules/State_Estimation/src/Kalman_Filter.d ./Modules/State_Estimation/src/Kalman_Filter.o ./Modules/State_Estimation/src/Kalman_Filter.su
+	-$(RM) ./Modules/State_Estimation/src/Kalman_Filter.cyclo ./Modules/State_Estimation/src/Kalman_Filter.d ./Modules/State_Estimation/src/Kalman_Filter.o ./Modules/State_Estimation/src/Kalman_Filter.su ./Modules/State_Estimation/src/State_Estimator.cyclo ./Modules/State_Estimation/src/State_Estimator.d ./Modules/State_Estimation/src/State_Estimator.o ./Modules/State_Estimation/src/State_Estimator.su
 
 .PHONY: clean-Modules-2f-State_Estimation-2f-src
 

@@ -5,19 +5,24 @@
 
 bool State_Estimator::Initialize()
 {
+	return false;
 }
 
-bool State_Estimator::Setup_SPI(
+bool State_Estimator::Initialize_Sensors(
 		SPI_BUS_STRUCTURE &imu_spi,
 		SPI_BUS_STRUCTURE &magnetometer_spi)
 {
-	_setup_imu(imu_spi, IMU_UPDATE_RATE, IMU_ACC_SCALE, IMU_GYRO_SCALE);
-	_setup_magnetometer(magnetometer_spi, MAGNETOMETER_UPDATE_RATE);
+	bool imu_ok = _setup_imu(imu_spi, IMU_UPDATE_RATE, IMU_ACC_SCALE, IMU_GYRO_SCALE);
+	bool mag_ok = _setup_magnetometer(magnetometer_spi, MAGNETOMETER_UPDATE_RATE);
+
+	if (imu_ok && mag_ok)
+	{
+		return true;
+	}
+	return false;
 }
 
-bool State_Estimator::Initialize_Sensors()
-{
-}
+
 #pragma endregion
 
 
@@ -44,7 +49,16 @@ bool State_Estimator::_setup_magnetometer(
 		SPI_BUS_STRUCTURE &magnetometer_spi,
 		MAGNETOMETER_UPDATE_RATES_ENUM magnetometer_update_rate)
 {
+	magnetometer.Setup(magnetometer_spi);
+	HAL_StatusTypeDef code1 = magnetometer.Reset_Chip();
+	HAL_Delay(15);
+	SENSOR_STATUS code2 = magnetometer.Initialize(magnetometer_update_rate);
 
+	if (code1 != HAL_OK || code2 != SENSOR_STATUS::INIT_OK)
+	{
+		return false;
+	}
+	return true;
 }
 
 #pragma endregion
@@ -54,18 +68,22 @@ bool State_Estimator::_setup_magnetometer(
 
 bool State_Estimator::SPI_DMA_TxCompleteCallback()
 {
+	return false;
 }
 
 bool State_Estimator::SPI_DMA_TxRxCompleteCallback()
 {
+	return false;
 }
 
 bool State_Estimator::SPI_DMA_ErrorCallback()
 {
+	return false;
 }
 
 bool State_Estimator::GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
+	return false;
 }
 
 void State_Estimator::Task_1ms()
