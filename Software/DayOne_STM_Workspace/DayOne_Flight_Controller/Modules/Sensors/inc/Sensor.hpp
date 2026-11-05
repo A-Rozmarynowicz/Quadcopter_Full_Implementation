@@ -3,6 +3,7 @@
 
 #include <cstdint>
 #include "stm32f4xx_hal.h"
+#include "Communication/inc/Bus_Structures.hpp"
 
 enum class SENSOR_STATUS
 {
@@ -36,10 +37,7 @@ public:
 	Sensor() = default;
 	virtual ~Sensor() = default;
 
-	void Setup(
-			SPI_HandleTypeDef *hspi,
-			GPIO_TypeDef *cs_port_spi,
-			uint16_t cs_pin_spi);
+	void Setup(SPI_BUS_STRUCTURE &spi_bus);
 
 	virtual void DMA_TxRxCompleteCallback() = 0;
 	virtual void DMA_TxCompleteCallback() = 0;

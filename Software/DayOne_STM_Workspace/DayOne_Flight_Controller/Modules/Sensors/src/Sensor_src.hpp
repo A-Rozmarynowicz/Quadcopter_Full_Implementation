@@ -2,14 +2,11 @@
 #define SENSOR_SRC_HPP
 
 template<size_t BUFFER_SIZE>
-void Sensor<BUFFER_SIZE>::Setup(
-		SPI_HandleTypeDef *hspi,
-		GPIO_TypeDef *cs_port_spi,
-		uint16_t cs_pin_spi)
+void Sensor<BUFFER_SIZE>::Setup(SPI_BUS_STRUCTURE &spi_bus)
 {
-	spi = hspi;
-	cs_port = cs_port_spi;
-	cs_pin = cs_pin_spi;
+	spi = spi_bus.hspi;
+	cs_port = spi_bus.cs_port;
+	cs_pin = spi_bus.cs_pin;
 }
 
 template<size_t BUFFER_SIZE>

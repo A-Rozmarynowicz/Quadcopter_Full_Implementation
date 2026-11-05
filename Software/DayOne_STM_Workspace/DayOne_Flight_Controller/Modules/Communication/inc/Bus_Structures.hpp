@@ -1,0 +1,12 @@
+#ifndef COMMUNICATION_INC_BUS_STRUCTURES_HPP_
+#define COMMUNICATION_INC_BUS_STRUCTURES_HPP_
+
+struct SPI_BUS_STRUCTURE
+{
+	SPI_HandleTypeDef *hspi;
+	GPIO_TypeDef *cs_port;
+	uint16_t cs_pin;
+};
+
+
+#endif /* COMMUNICATION_INC_BUS_STRUCTURES_HPP_ */
