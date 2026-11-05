@@ -6,6 +6,7 @@
 #include "State_Estimation/inc/Kalman_Filter.hpp"
 #include "Communication/inc/Bus_Structures.hpp"
 
+
 class State_Estimator
 {
 private:
@@ -17,8 +18,15 @@ private:
 	IMU imu;
 	Magnetometer magnetometer;
 
-	bool _setup_imu(SPI_BUS_STRUCTURE &imu_spi);
-	bool _setup_magnetometer(SPI_BUS_STRUCTURE &magnetometer_spi);
+	bool _setup_imu(
+			SPI_BUS_STRUCTURE &imu_spi,
+			IMU_UPDATE_RATES_ENUM imu_update_rate,
+			IMU_ACC_SCALES_ENUM imu_acc_scale,
+			IMU_GYRO_SCALES_ENUM imu_gyro_scale);
+
+	bool _setup_magnetometer(
+			SPI_BUS_STRUCTURE &magnetometer_spi,
+			MAGNETOMETER_UPDATE_RATES_ENUM magnetometer_update_rate);
 public:
 	bool Initialize();
 	bool Setup_SPI(

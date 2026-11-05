@@ -1,4 +1,5 @@
 #include "State_Estimation/inc/State_Estimator.hpp"
+#include "Configuration/inc/Sensor_Config.hpp"
 
 #pragma region Setup
 
@@ -10,8 +11,8 @@ bool State_Estimator::Setup_SPI(
 		SPI_BUS_STRUCTURE &imu_spi,
 		SPI_BUS_STRUCTURE &magnetometer_spi)
 {
-	imu.Setup(imu_spi);
-
+	_setup_imu(imu_spi, IMU_UPDATE_RATE, IMU_ACC_SCALE, IMU_GYRO_SCALE);
+	_setup_magnetometer(magnetometer_spi, MAGNETOMETER_UPDATE_RATE);
 }
 
 bool State_Estimator::Initialize_Sensors()
@@ -39,7 +40,9 @@ bool State_Estimator::_setup_imu(
 	return false;
 }
 
-bool State_Estimator::_setup_magnetometer(SPI_BUS_STRUCTURE &magnetometer_spi)
+bool State_Estimator::_setup_magnetometer(
+		SPI_BUS_STRUCTURE &magnetometer_spi,
+		MAGNETOMETER_UPDATE_RATES_ENUM magnetometer_update_rate)
 {
 
 }
