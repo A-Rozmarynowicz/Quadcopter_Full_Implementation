@@ -3,12 +3,10 @@
 
 #ifdef __cplusplus
 
-#include "Sensors/inc/IMU.hpp"
-#include "Sensors/inc/Magnetometer.hpp"
 #include "Communication/inc/ESP_Handler.hpp"
+#include "State_Estimation/inc/State_Estimator.hpp"
 
-extern IMU imu;
-extern Magnetometer magnetometer;
+extern State_Estimator state_estimator;
 extern ESP_Handler esp_handler;
 
 extern "C"

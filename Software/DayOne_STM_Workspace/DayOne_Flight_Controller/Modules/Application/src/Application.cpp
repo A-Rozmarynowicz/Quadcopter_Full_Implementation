@@ -1,8 +1,8 @@
 #include "Application/inc/Application.hpp"
 #include "main.h"
+#include "Communication/inc/Bus_Structures.hpp"
 
-IMU imu;
-Magnetometer magnetometer;
+State_Estimator state_estimator;
 ESP_Handler esp_handler;
 
 extern "C" void App_Init(
@@ -10,13 +10,20 @@ extern "C" void App_Init(
 		SPI_HandleTypeDef *hspi2,
 		I2C_HandleTypeDef *i2c1)
 {
-//    imu.Setup(hspi1, IMU_CS_GPIO_Port, IMU_CS_Pin);
-//    SENSOR_STATUS code = imu.Initialize(IMU_UPDATE_RATES::Hz_833, IMU_ACC_SCALE::G_8, IMU_GYRO_SCALE::DPS_500);
-//    imu.Prepare_For_Measurements();
-//	magnetometer.Setup(hspi2, MAGNETOMETER_CS_GPIO_Port, MAGNETOMETER_CS_Pin);
-//	HAL_StatusTypeDef code1 = magnetometer.Reset_Chip();
-//	HAL_Delay(15);
-//	SENSOR_STATUS code2 = magnetometer.Initialize(MAGNETOMETER_UPDATE_RATES::Hz_580);
+	SPI_BUS_STRUCTURE imu_spi = {
+			.hspi = hspi1,
+			.cs_pin = IMU_CS_Pin,
+			.cs_port = IMU_CS_GPIO_Port
+	};
+
+	SPI_BUS_STRUCTURE magnetometer_spi = {
+			.hspi = hspi2,
+			.cs_pin = MAGNETOMETER_CS_Pin,
+			.cs_port = MAGNETOMETER_CS_GPIO_Port
+	};
+
+	state_estimator.Initialize();
+	state_estimator.Initialize_Sensors(imu_spi, magnetometer_spi);
 
 	esp_handler.Setup(i2c1, ESP_REQUEST_GPIO_Port, ESP_REQUEST_Pin);
 	esp_handler.Initialize();
